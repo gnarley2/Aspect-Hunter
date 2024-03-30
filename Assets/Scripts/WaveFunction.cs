@@ -44,7 +44,7 @@ public class WaveFunction : MonoBehaviour
         int arrLength = tempGrid[0].tileOptions.Length;
         int stopIndex = default;
 
-        for (int i = 0; i < tempGrid.Count; i++)
+        for (int i = 1; i < tempGrid.Count; i++)
         {
             if (tempGrid[i].tileOptions.Length > arrLength)
             {
@@ -121,7 +121,8 @@ public class WaveFunction : MonoBehaviour
                     //Update right
                     if (x < dimensions - 1)
                     {
-                        Cell right = gridComponents[x + 1 + y * dimensions].GetComponent<Cell>();
+                        // Cell right = gridComponents[x + 1 + y * dimensions].GetComponent<Cell>();
+                        Cell right = gridComponents[x + 1 + y * dimensions];
                         List<Tile> validOptions = new List<Tile>();
 
                         foreach (Tile possibleOptions in right.tileOptions)
@@ -139,7 +140,8 @@ public class WaveFunction : MonoBehaviour
                     // Update down
                     if (y < dimensions - 1)
                     {
-                        Cell down = gridComponents[x + 1 + y * dimensions].GetComponent<Cell>();
+                        // Cell right = gridComponents[x + (y + 1) * dimensions].GetComponent<Cell>();
+                        Cell down = gridComponents[x + (y + 1) * dimensions];
                         List<Tile> validOptions = new List<Tile>();
 
                         foreach (Tile possibleOptions in down.tileOptions)
@@ -155,9 +157,9 @@ public class WaveFunction : MonoBehaviour
                     }
 
                     // Update left
-                    if (y > 0)
+                    if (x > 0)
                     {
-                        Cell left = gridComponents[x + (y - 1) * dimensions];
+                        Cell left = gridComponents[x - 1 + y * dimensions];
                         List<Tile> validOptions = new List<Tile>();
 
                         foreach (Tile possibleOptions in left.tileOptions)
@@ -186,7 +188,7 @@ public class WaveFunction : MonoBehaviour
         gridComponents = newGenerationCell;
         iterations++;
 
-        if(iterations < dimensions * dimensions)
+        if (iterations < dimensions * dimensions)
         {
             StartCoroutine(CheckEntropy());
         }
