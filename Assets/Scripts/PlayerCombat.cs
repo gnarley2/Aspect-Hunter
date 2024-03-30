@@ -16,7 +16,7 @@ public class PlayerCombat : MonoBehaviour
     void Update()
     {
         CalculateDirection();
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)||Input.GetMouseButtonDown(0))
         {
           
             Attack(direction);
