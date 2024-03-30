@@ -24,7 +24,7 @@ public class PlayerCombat : MonoBehaviour
             ProjectileAttack(direction);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(1))
         {
             MeleeAttack(direction);
         }
