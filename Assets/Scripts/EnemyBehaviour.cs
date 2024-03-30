@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    public float moveSpeed = 3.0f;
+
     // Start is called before the first frame update
     void Start()
     {
