@@ -12,6 +12,51 @@ public class Menus : MonoBehaviour
     [SerializeField] GameObject MenuPanel;
     [SerializeField] GameObject InstructionPanel;
 
+    [SerializeField] GameObject PauseMenuUI;
+    [SerializeField] GameObject OptionsUI;
+    bool isPaused;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+        PauseMenuUI.SetActive(false);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {   
+            Time.timeScale = 0f;
+            isPaused = true;
+            PauseMenuUI.SetActive(true);
+        }
+
+        if (MenuPanel == null || InstructionPanel == null)
+        {
+            return;
+        }        
+        
+        if (PauseMenuUI == null || OptionsUI == null)
+        {
+            return;
+        }
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+        PauseMenuUI.SetActive(false);
+    }
+
+    public void Options()
+    {
+        OptionsUI.SetActive(true);
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene(1);
@@ -30,8 +75,14 @@ public class Menus : MonoBehaviour
 
     public void Back()
     {
-        MenuPanel.SetActive(true);
-        InstructionPanel.SetActive(false);
+        if (isPaused == true)
+            OptionsUI.SetActive(false);
+        else
+        {
+            MenuPanel.SetActive(true);
+            InstructionPanel.SetActive(false);
+        }
+
     }
 
 }
