@@ -184,7 +184,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -225,36 +225,44 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
       propertyPath: dimensions
-      value: 17
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
+      propertyPath: dimensionsX
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
+      propertyPath: dimensionsY
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
       propertyPath: tileObjects.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
       propertyPath: tileObjects.Array.data[0]
       value: 
-      objectReference: {fileID: -6476753976296132407, guid: 6b77ee496ea2e504382091d160822127, type: 3}
+      objectReference: {fileID: 7374070563776663785, guid: 2a0eb8d22eca12447bf6dd66f82cd1f1, type: 3}
     - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
       propertyPath: tileObjects.Array.data[1]
       value: 
-      objectReference: {fileID: -2187361653241344007, guid: 33667d0495bb99e44bda431838ecd117, type: 3}
+      objectReference: {fileID: 3974082992621504581, guid: 01827ef790513ae41aa0563bd34d7310, type: 3}
     - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
       propertyPath: tileObjects.Array.data[2]
       value: 
-      objectReference: {fileID: -4071365981668859018, guid: e8f2e11311ff4914aaeeaa0cfc57eb3d, type: 3}
+      objectReference: {fileID: 4566040219661954117, guid: 7d5e2fc13c66bb84facfbd4dec48f075, type: 3}
     - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
       propertyPath: tileObjects.Array.data[3]
       value: 
-      objectReference: {fileID: -7014577551821722603, guid: 83b41e28ebd88304ab7e8acbfa482329, type: 3}
+      objectReference: {fileID: -6538107514382532244, guid: d8e4856e7beb8cb46aaddcde90bcf785, type: 3}
     - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
       propertyPath: tileObjects.Array.data[4]
       value: 
-      objectReference: {fileID: -6538107514382532244, guid: d8e4856e7beb8cb46aaddcde90bcf785, type: 3}
+      objectReference: {fileID: 891637536323859555, guid: 6a8149f91115c2d439aa80e675784092, type: 3}
     - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
       propertyPath: tileObjects.Array.data[5]
       value: 
-      objectReference: {fileID: -9111685948928568773, guid: 05861a39df93f3049bb59869c1f1191a, type: 3}
+      objectReference: {fileID: 3180612330054638590, guid: 0f954a6795496eb4d9c9d0276ae44eff, type: 3}
     - target: {fileID: 1674316588201335454, guid: c9df6386b7c127a41adc10b430430632, type: 3}
       propertyPath: m_Name
       value: MapGenerator
