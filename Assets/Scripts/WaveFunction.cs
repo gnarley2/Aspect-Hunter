@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+// using UnityEditor;
 
+// [ExecuteInEditMode]
 public class WaveFunction : MonoBehaviour
 {
     public int dimensions;
@@ -18,17 +20,21 @@ public class WaveFunction : MonoBehaviour
         gridComponents = new List<Cell>();
         InitializeGrid();
     }
-    void InitializeGrid()
+    public void InitializeGrid()
     {
         for (int y = 0; y < dimensions; y++)
         {
             for (int x = 0; x < dimensions; x++)
             {
-                Cell newCell = Instantiate(cellObject, new Vector2(x, y), Quaternion.identity);
+                Cell newCell = Instantiate(cellObject, new Vector2(
+                    (x + this.transform.position.x) - dimensions/2, 
+                    (y + this.transform.position.y) - dimensions/2), Quaternion.identity);
                 newCell.CreateCell(false, tileObjects);
                 gridComponents.Add(newCell);
             }
         }
+
+        // move the grid to the center of the map generator object
 
         StartCoroutine(CheckEntropy());
     }
@@ -58,7 +64,7 @@ public class WaveFunction : MonoBehaviour
             tempGrid.RemoveRange(stopIndex, tempGrid.Count - stopIndex);
         }
 
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.005f);
 
         CollapseCell(tempGrid);
     }
@@ -206,3 +212,20 @@ public class WaveFunction : MonoBehaviour
         }
     }
 }
+
+// [CustomEditor(typeof(WaveFunction))]
+// public class CustomEditorButton : Editor
+// {
+//     public override void OnInspectorGUI()
+//     {
+//         DrawDefaultInspector();
+
+//         WaveFunction wf = (WaveFunction)target;
+
+//         if (GUILayout.Button("Generate Map"))
+//         {
+//             wf.gridComponents = new List<Cell>();
+//             wf.InitializeGrid();
+//         }
+//     }
+// }
