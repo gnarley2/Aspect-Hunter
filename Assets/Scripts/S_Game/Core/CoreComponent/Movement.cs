@@ -10,9 +10,6 @@ public class Movement : CoreComponent
     bool canSetVelocity = true;
     float gravityScale;
     
-    public bool isDashing { get; private set; }
-    public bool isDashAttacking { get; private set; }
-    
     protected override void Awake() 
     {
         base.Awake();
@@ -151,9 +148,5 @@ public class Movement : CoreComponent
     }
 
     #endregion
-
-    #region Movement Methods
-
-
-    #endregion
+    
 }

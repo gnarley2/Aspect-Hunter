@@ -17,7 +17,6 @@ public class Combat : CoreComponent, IDamageable
     Health _heath;
 
     GameSettings settings;
-    MeleeCombat meleeCombat;
     TouchCombat touchCombat;
 
     private bool canTouchCombat = true;
@@ -33,8 +32,6 @@ public class Combat : CoreComponent, IDamageable
         this.damagerTarget = damagerTarget;
         this.knockbackType = knockbackType;
         
-        meleeCombat = new MeleeCombat(col, damagerTarget);
-
         if (damagerTarget == IDamageable.DamagerTarget.Player) return ;
         touchCombat = new TouchCombat(col, damagerTarget);
     }
@@ -56,25 +53,7 @@ public class Combat : CoreComponent, IDamageable
     #endregion
 
     #region Damage Method
-
-    public bool MeleeAttack(MeleeAttackData attackData)
-    {
-        return meleeCombat.MeleeAttack(attackData, SetAttackPosition(attackData), movement.faceDirection);
-    }
-
-    Vector2 SetAttackPosition(MeleeAttackData attackData)
-    {
-        if (movement.faceDirection == Vector2.left)
-        {
-            attackPosition = (Vector2)transform.position + attackData.leftAttackPos;
-        }
-        else if (movement.faceDirection == Vector2.right)
-        {
-            attackPosition = (Vector2)transform.position + attackData.rightAttackPos;
-        }
-
-        return attackPosition;
-    }
+    
 
     public IDamageable.DamagerTarget GetDamagerType()
     {
