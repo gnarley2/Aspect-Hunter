@@ -25,9 +25,6 @@ public class GameSettings : MonoBehaviour
     public float WeakKnockbackAmount = 200;
     public float StrongKnockbackAmount = 10000;
 
-    [Header("Drop")] 
-    public PooledObjectData soul;
-
     [Header("Flash")] 
     public Material flashMat;
     public float flashCoolDown;

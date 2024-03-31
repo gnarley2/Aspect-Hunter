@@ -4,7 +4,7 @@ using UnityEngine.VFX;
 
 public class ShootNode : ActionNode
 {
-    [SerializeField] private ProjectileData data;
+    [SerializeField] private GameObject prefab;
 
 
     public override void CopyNode(Node copyNode)
@@ -13,7 +13,7 @@ public class ShootNode : ActionNode
 
         if (node)
         {
-            data = node.data;
+            prefab = node.prefab;
         }
     }
 

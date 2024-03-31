@@ -1,15 +1,16 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class VFXNode : ActionNode
 {
-    [SerializeField] private VFXData data;
+    [SerializeField] private GameObject vfx;
     
     public override void CopyNode(Node copyNode)
     {
         VFXNode node = copyNode as VFXNode;
         if (node)
         {
-            data = node.data;
+            vfx = node.vfx;
         }
     }
     
