@@ -10,7 +10,6 @@ public class MoveToPositionNode : ActionNode
     }
 
     public MoveToPositionType type;
-    public bool canFly = false;
     public Vector2 movePos;
     public float speed;
 
@@ -25,7 +24,6 @@ public class MoveToPositionNode : ActionNode
         {
             type = node.type;
             movePos = node.movePos;
-            canFly = node.canFly;
             speed = node.speed;
         }
     }
@@ -50,12 +48,12 @@ public class MoveToPositionNode : ActionNode
         }
 
         direction = destination - (Vector2)treeComponent.transform.position;
-        if (!canFly) direction.y = 0;
         direction = direction.normalized;
     }
 
     protected override void OnStop()
     {
+        movement.SetVelocityZero();
         base.OnStop();
     }
 
