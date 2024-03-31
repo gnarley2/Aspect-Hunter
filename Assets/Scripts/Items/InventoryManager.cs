@@ -7,50 +7,48 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
-    public List<Item> Items = new List<Item>();
+    public Dictionary<Item, int> inventory = new Dictionary<Item, int>();
 
-    public Transform ItemContent;
-    public GameObject InventoryItem;
 
-    private Text itemName;
-    private Image itemIcon;
     private void Awake()
     {
         Instance = this;
     }
 
-    public void Add(Item Item)
+    public void Add(Item item)
     {
-        Items.Add(Item);
-       // ListItems();
-        //debug messages to just check if adding correctly
-        Debug.Log("Item Added to Inventory");
-        string TotalInventory = "";
-        foreach (Item i in Items)
+        if (inventory.ContainsKey(item))
         {
-            if (TotalInventory == "")
+            inventory[item]++;
+        }
+        else
+        {
+            inventory.Add(item, 1);
+        }
+        Debug.Log("Inventory Items:");
+        foreach (KeyValuePair<Item, int> entry in inventory)
+        {
+            Debug.Log(entry.Key.itemName + ": " + entry.Value);
+        }
+
+    }
+
+    public void Remove(Item item)
+    {
+        if (inventory.ContainsKey(item))
+        {
+            if (inventory[item] > 1)
             {
-                TotalInventory += i.itemName;
+                inventory[item]--;
             }
             else
             {
-                TotalInventory += ", " + i.itemName;
+                inventory.Remove(item);
             }
+
+
         }
-        Debug.Log("Inventory - " + TotalInventory); 
     }
 
-    public void Remove(Item Item)
-    {
-        Items.Remove(Item);
-    }
-
-
-    public void ListItems()
-    {
-
-
-     
-    }
 }
 
