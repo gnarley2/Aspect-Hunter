@@ -4,15 +4,48 @@ using UnityEngine;
 
 public class AspectManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static AspectManager Instance;
+    public Dictionary<Aspect, int> aspectInventory = new Dictionary<Aspect, int>();
+
+
+    private void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Add(Aspect aspect)
     {
-        
+        if (aspectInventory.ContainsKey(aspect))
+        {
+            aspectInventory[aspect]++;
+        }
+        else
+        {
+            aspectInventory.Add(aspect, 1);
+        }
+        Debug.Log("Aspect Inventory:");
+        foreach (KeyValuePair<Aspect, int> entry in aspectInventory)
+        {
+            Debug.Log(entry.Key.aspectName + ": " + entry.Value);
+        }
+
     }
+
+    public void Remove(Aspect aspect)
+    {
+        if (aspectInventory.ContainsKey(aspect))
+        {
+            if (aspectInventory[aspect] > 1)
+            {
+                aspectInventory[aspect]--;
+            }
+            else
+            {
+                aspectInventory.Remove(aspect);
+            }
+
+
+        }
+    }
+
 }
