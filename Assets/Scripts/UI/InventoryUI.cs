@@ -5,14 +5,19 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField] GameObject InventoryPanel;
+    [SerializeField] Menus menus; // Assign this in the inspector or find it in Awake/Start
     public static bool openInventory;
 
-    // Update is called once per frame
+    private void Awake()
+    {
+        menus = FindObjectOfType<Menus>(); // Only use this if Menus is not a Singleton
+    }
+
     void Update()
     {
         if (Input.GetKeyDown("i"))
         {
-            if (!Menus.isPaused)
+            if (!menus.isPaused) // Use the instance of Menus to check if it's paused
             {
                 // Toggle the state of the inventory
                 openInventory = !openInventory;
@@ -20,8 +25,7 @@ public class InventoryUI : MonoBehaviour
             }
         }
 
-        // Optionally, you could also disable the inventory when the game is paused
-        if (Menus.isPaused && openInventory)
+        if (menus.isPaused && openInventory) // Again, use the instance of Menus
         {
             // Close inventory when the game is paused
             InventoryPanel.SetActive(false);
