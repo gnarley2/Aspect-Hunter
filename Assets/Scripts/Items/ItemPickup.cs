@@ -23,7 +23,6 @@ public class ItemPickup : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Pickup();
-       
         }
     }
 }

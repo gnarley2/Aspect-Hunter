@@ -7,35 +7,40 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
-    public Dictionary<Item, int> inventory = new Dictionary<Item, int>();
+    //public List<Item> Items = new List<Item>();
+    public Dictionary<Item, int> Items = new Dictionary<Item, int>();
     public GameObject player;
     public GameObject lanternPrefab;
+    public Image[] itemIcons;
 
     private int numberOfLanterns = 0;
-
-    private void Update()
-    {
-
-    }
 
     private void Awake()
     {
         Instance = this;
+        Transform itemsParent = GameObject.Find("itemsParent").transform;
+        itemIcons = new Image[itemsParent.childCount];
+        for (int i = 0; i < itemsParent.childCount; i++)
+        {
+            itemIcons[i] = itemsParent.GetChild(i).Find("itembutton/icon").GetComponent<Image>();
+        }
     }
 
     public void Add(Item item)
     {
-        if (inventory.ContainsKey(item))
+        if (Items.ContainsKey(item))
         {
-            inventory[item]++;
+            Items[item]++;
         }
         else
         {
-            inventory.Add(item, 1);
+            Items.Add(item, 1);
         }
 
+        UpdateInventoryUI(item.icon);
+
         Debug.Log("Inventory Items:");
-        foreach (KeyValuePair<Item, int> entry in inventory)
+        foreach (KeyValuePair<Item, int> entry in Items)
         {
             Debug.Log(entry.Key.itemName + ": " + entry.Value);
         }
@@ -49,17 +54,29 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    void UpdateInventoryUI(Sprite icon)
+    {
+        foreach (var itemIcon in itemIcons)
+        {
+            if (itemIcon.sprite == null) // This finds the first empty slot
+            {
+                itemIcon.sprite = icon;
+                break; // Exit the loop after setting the icon
+            }
+        }
+    }
+
     public void Remove(Item item)
     {
-        if (inventory.ContainsKey(item))
+        if (Items.ContainsKey(item))
         {
-            if (inventory[item] > 1)
+            if (Items[item] > 1)
             {
-                inventory[item]--;
+                Items[item]--;
             }
             else
             {
-                inventory.Remove(item);
+                Items.Remove(item);
             }
 
 
@@ -70,6 +87,4 @@ public class InventoryManager : MonoBehaviour
             numberOfLanterns--;
         }
     }
-
 }
-
