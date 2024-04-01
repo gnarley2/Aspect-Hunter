@@ -8,7 +8,15 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
     public Dictionary<Item, int> inventory = new Dictionary<Item, int>();
+    public GameObject player;
+    public GameObject lanternPrefab;
 
+    private int numberOfLanterns = 0;
+
+    private void Update()
+    {
+
+    }
 
     private void Awake()
     {
@@ -25,12 +33,20 @@ public class InventoryManager : MonoBehaviour
         {
             inventory.Add(item, 1);
         }
+
         Debug.Log("Inventory Items:");
         foreach (KeyValuePair<Item, int> entry in inventory)
         {
             Debug.Log(entry.Key.itemName + ": " + entry.Value);
         }
 
+        if (item.itemName == "Lantern" && numberOfLanterns==0)
+        {
+            numberOfLanterns++;
+            // Instantiate the lantern prefab and attach it to the player
+            GameObject lantern = Instantiate(lanternPrefab, player.transform);
+            lantern.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
+        }
     }
 
     public void Remove(Item item)
@@ -47,6 +63,11 @@ public class InventoryManager : MonoBehaviour
             }
 
 
+        }
+
+        if (item.itemName == "Lantern")
+        {
+            numberOfLanterns--;
         }
     }
 
