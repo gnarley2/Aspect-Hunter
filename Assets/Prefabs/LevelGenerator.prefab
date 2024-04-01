@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1674316588201335455}
   - component: {fileID: 1674316588201335452}
   m_Layer: 0
-  m_Name: MapGenerator
+  m_Name: LevelGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18f05af277ece884b9dd95c0290e3f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dimensions: 4
+  dimensionsX: 0
+  dimensionsY: 0
   tileObjects: []
   gridComponents: []
   cellObject: {fileID: 8974540792149901632, guid: 676f3f5d32f87934294ef9c8b4748d03, type: 3}
