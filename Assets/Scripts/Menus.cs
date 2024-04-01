@@ -14,7 +14,7 @@ public class Menus : MonoBehaviour
 
     [SerializeField] GameObject PauseMenuUI;
     [SerializeField] GameObject OptionsUI;
-    bool isPaused;
+    public static bool isPaused;
 
     // Start is called before the first frame update
     void Start()
