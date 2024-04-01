@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Net.Mime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +8,11 @@ public class InventoryManager : MonoBehaviour
     //public List<Item> Items = new List<Item>();
     public Dictionary<Item, int> Items = new Dictionary<Item, int>();
     public GameObject player;
-    public GameObject lanternPrefab;
+    // public GameObject lanternPrefab;
+    public GameObject itemPrefab;
     public Image[] itemIcons;
 
-    private int numberOfLanterns = 0;
+    private int numberOfItems = 0;
 
     private void Awake()
     {
@@ -45,12 +44,19 @@ public class InventoryManager : MonoBehaviour
             Debug.Log(entry.Key.itemName + ": " + entry.Value);
         }
 
-        if (item.itemName == "Lantern" && numberOfLanterns==0)
+        // if (item.itemName == "Lantern" && numberOfItems==0)
+        // {
+        //     numberOfItems++;
+        //     // Instantiate the lantern prefab and attach it to the player
+        //     GameObject lantern = Instantiate(lanternPrefab, player.transform);
+        //     lantern.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
+        // }
+        if (item.itemName == "Lantern" && numberOfItems == 0)
         {
-            numberOfLanterns++;
+            numberOfItems++;
             // Instantiate the lantern prefab and attach it to the player
-            GameObject lantern = Instantiate(lanternPrefab, player.transform);
-            lantern.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
+            GameObject i = Instantiate(itemPrefab, player.transform);
+            i.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
         }
     }
 
@@ -82,9 +88,10 @@ public class InventoryManager : MonoBehaviour
 
         }
 
-        if (item.itemName == "Lantern")
-        {
-            numberOfLanterns--;
-        }
+        numberOfItems--;
+        // if (item.itemName == "Lantern")
+        // {
+        //     numberOfItems--;
+        // }
     }
 }
