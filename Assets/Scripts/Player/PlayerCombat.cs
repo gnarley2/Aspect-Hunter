@@ -14,19 +14,24 @@ public class PlayerCombat : MonoBehaviour
     private Vector3 direction;
     [SerializeField] private GameObject projectiilePrefab;
     [SerializeField] private GameObject meleePrefab;
-
+    public Menus menuScript; // Reference to the Menu script
     void Update()
     {
-        CalculateDirection();
-        if (Input.GetKeyDown(KeyCode.Space)||Input.GetMouseButtonDown(0))
+        GameObject menuObject = GameObject.Find("UIManager");
+        menuScript = menuObject.GetComponent<Menus>();
+        if (menuScript.isPaused == false)
         {
-          
-            ProjectileAttack(direction);
-        }
+            CalculateDirection();
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            {
 
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(1))
-        {
-            MeleeAttack(direction);
+                ProjectileAttack(direction);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(1))
+            {
+                MeleeAttack(direction);
+            }
         }
     }
 
