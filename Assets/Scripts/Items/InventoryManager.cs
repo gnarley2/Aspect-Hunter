@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -51,12 +52,17 @@ public class InventoryManager : MonoBehaviour
         //     GameObject lantern = Instantiate(lanternPrefab, player.transform);
         //     lantern.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
         // }
-        if (item.itemName == "Lantern" && numberOfItems == 0)
+        if (numberOfItems == 0)
         {
+            if (item.itemName == "Lantern")
+            {
+                // Instantiate the lantern prefab and attach it to the player
+                GameObject i = Instantiate(itemPrefab, player.transform);
+                i.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
+            }
+
+            Debug.Log(item.name);
             numberOfItems++;
-            // Instantiate the lantern prefab and attach it to the player
-            GameObject i = Instantiate(itemPrefab, player.transform);
-            i.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
         }
     }
 
@@ -93,5 +99,19 @@ public class InventoryManager : MonoBehaviour
         // {
         //     numberOfItems--;
         // }
+    }
+
+    public bool Find()
+    {
+        foreach (var item in Items)
+        {
+            if (item.Key.name == "Key")
+            {
+                Debug.Log(item.Key.name);
+                return true;
+            }
+        }
+
+        return false;
     }
 }
