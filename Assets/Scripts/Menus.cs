@@ -35,14 +35,10 @@ public class Menus : MonoBehaviour
         }
 
         if (MenuPanel == null || InstructionPanel == null)
-        {
             return;
-        }        
         
         if (PauseMenuUI == null || OptionsUI == null)
-        {
             return;
-        }
     }
 
     public void Resume()
@@ -54,6 +50,7 @@ public class Menus : MonoBehaviour
 
     public void Options()
     {
+        PauseMenuUI.SetActive(false);
         OptionsUI.SetActive(true);
     }
 
@@ -76,7 +73,10 @@ public class Menus : MonoBehaviour
     public void Back()
     {
         if (isPaused == true)
+        {
             OptionsUI.SetActive(false);
+            PauseMenuUI.SetActive(true);
+        }
         else
         {
             MenuPanel.SetActive(true);
