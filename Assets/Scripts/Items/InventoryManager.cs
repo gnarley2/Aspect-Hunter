@@ -11,6 +11,9 @@ public class InventoryManager : MonoBehaviour
     public GameObject player;
     public GameObject lanternPrefab;
 
+    [SerializeField] private GameObject inventoryItem;
+    [SerializeField] private Transform itemsParent;
+
     private int numberOfLanterns = 0;
 
     private void Update()
@@ -21,6 +24,10 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        if (itemsParent == null)
+        {
+            Debug.LogError("ItemsParent is not assigned in the InventoryManager");
+        }
     }
 
     public void Add(Item item)
@@ -47,6 +54,9 @@ public class InventoryManager : MonoBehaviour
             GameObject lantern = Instantiate(lanternPrefab, player.transform);
             lantern.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
         }
+
+        GameObject itemUI = Instantiate(inventoryItem, itemsParent);
+        itemUI.GetComponentInChildren<Image>().sprite = item.icon;
     }
 
     public void Remove(Item item)

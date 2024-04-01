@@ -28,15 +28,23 @@ public class Menus : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {   
-            Time.timeScale = 0f;
-            isPaused = true;
-            PauseMenuUI.SetActive(true);
+        {
+            isPaused = !isPaused;
+
+            if (isPaused)
+            {
+                Time.timeScale = 0f;
+                PauseMenuUI.SetActive(true);
+            }
+            else
+            {
+                Resume();
+            }
         }
 
         if (MenuPanel == null || InstructionPanel == null)
             return;
-        
+
         if (PauseMenuUI == null || OptionsUI == null)
             return;
     }
@@ -46,6 +54,13 @@ public class Menus : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
         PauseMenuUI.SetActive(false);
+
+        // Find the InventoryUI component and close the inventory
+        InventoryUI inventoryUI = FindObjectOfType<InventoryUI>();
+        if (inventoryUI != null)
+        {
+            inventoryUI.CloseInventory();
+        }
     }
 
     public void Options()
