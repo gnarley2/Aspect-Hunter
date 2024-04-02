@@ -15,8 +15,7 @@ GameObject:
   - component: {fileID: 1568891421582735543}
   - component: {fileID: 1568891421582735533}
   - component: {fileID: 1568891421582735532}
-  - component: {fileID: 7295944121170333171}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -38,7 +37,7 @@ Transform:
   - {fileID: 1568891422513200767}
   - {fileID: 1900682909392131139}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1568891421582735537
 SpriteRenderer:
@@ -78,10 +77,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 237808439
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2043996687, guid: a6530d1ed6f2d6b458bf0ba5269e7b02, type: 3}
+  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -196,26 +195,6 @@ MonoBehaviour:
   projectiilePrefab: {fileID: 6453512598273269386, guid: 353f10057ed832948bcb78300e9704c0, type: 3}
   meleePrefab: {fileID: 2039880518984152032, guid: e25d441dc09b7e54eb76869628272465, type: 3}
   menuScript: {fileID: 0}
---- !u!95 &7295944121170333171
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568891421582735542}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f5d83753acac4f349bea19e000936f99, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &2724685374852071282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -338,6 +317,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 6260253266612411799, guid: 835da3705f34c7745ba0305ac0704c3d, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1568891421582735542}
+    - target: {fileID: 6260253266612411799, guid: 835da3705f34c7745ba0305ac0704c3d, type: 3}
+      propertyPath: lanternPrefab
+      value: 
+      objectReference: {fileID: 4012472879744785423, guid: 9941e0efba2b91945a64c202183a9a6b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
