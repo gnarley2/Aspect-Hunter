@@ -58,7 +58,7 @@ public class InventoryManager : MonoBehaviour
             {
                 // Instantiate the lantern prefab and attach it to the player
                 GameObject i = Instantiate(itemPrefab, player.transform);
-                i.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
+                i.transform.localPosition = new Vector3(-0, 0, 0); // Adjust the position as needed
             }
 
             Debug.Log(item.name);
