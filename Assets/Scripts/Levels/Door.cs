@@ -1,8 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    bool _hasKey = false;
+    bool _isPressingSwitch = false;
+    float _switchDelay = 0.2f;
     Animator _animator;
 
 
@@ -13,7 +16,7 @@ public class Door : MonoBehaviour
 
     void Update()
     {
-        if (_hasKey)
+        if (_isPressingSwitch)
         {
             OpenDoor();
         }
@@ -37,8 +40,7 @@ public class Door : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            _hasKey = InventoryManager.Instance.Find();
-            Debug.Log(_hasKey.ToString());
+            _isPressingSwitch = !_isPressingSwitch;
         }
     }
 }
