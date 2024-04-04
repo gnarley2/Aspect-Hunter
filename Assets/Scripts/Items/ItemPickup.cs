@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,24 +6,19 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     public Item Item;
-    public Collider2D Collider;
 
-    void Start()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            Pickup();
+        }
     }
-
+    
     void Pickup()
     {
         InventoryManager.Instance.Add(Item);
         Destroy(gameObject);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            Pickup();
-        }
-    }
 }

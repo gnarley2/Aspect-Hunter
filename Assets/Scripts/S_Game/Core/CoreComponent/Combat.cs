@@ -80,40 +80,16 @@ public class Combat : CoreComponent, IDamageable
             hitDirection = attackDirection;
         }
         
-        Knockback(hitDirection);
     }
 
     #endregion
-
-    #region Knockback
+    
 
     public IDamageable.KnockbackType GetKnockbackType()
     {
         return knockbackType;
     }
-
-    void Knockback(Vector2 hitDirection)
-    {
-        float knockbackAmount = 0;
-        switch(knockbackType)
-        {
-            case IDamageable.KnockbackType.weak:
-                knockbackAmount = settings.WeakKnockbackAmount;
-                break;
-            case IDamageable.KnockbackType.strong:
-                knockbackAmount = settings.StrongKnockbackAmount;
-                break;
-            case IDamageable.KnockbackType.player:
-                knockbackAmount = settings.PlayerKnockbackAmount;
-                break;
-            case IDamageable.KnockbackType.none:
-                return;
-        }
-        
-        movement.AddForce(hitDirection, knockbackAmount);
-    }
-
-    #endregion
+    
 
     #region Collider
 

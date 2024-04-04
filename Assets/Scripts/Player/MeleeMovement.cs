@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,6 @@ using UnityEngine;
 public class MeleeMovement : MonoBehaviour
 {
     private Vector3 direction;
-    private GameObject player;
     private Transform playerTransform;
     [SerializeField] public float radius = 2f; // Radius of the arc
     [SerializeField] public float speed = 20f; // Speed of movement along the arc
@@ -14,16 +14,16 @@ public class MeleeMovement : MonoBehaviour
   
     private float initialAngle = 0f; // Initial angle for the arc
 
-    // Start is called before the first frame update
-    void Start()
+    private int damage;
+    
+
+    public void Initialize(Transform playerTransform, Vector3 initialDirection, int damage)
     {
-       
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            playerTransform = player.transform;
-        }
+        this.playerTransform = playerTransform;
+        SetInitialDirection(initialDirection);
+        this.damage = damage;
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -54,8 +54,24 @@ public class MeleeMovement : MonoBehaviour
     { 
         initialAngle = Mathf.Atan2(initialDirection.y, initialDirection.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.LookRotation(Vector3.forward, initialDirection);
-    
 
-        
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log(other.transform.name);
+        if (other.transform.TryGetComponent<IDamageable>(out IDamageable target))
+        {
+            target.TakeDamage(1, IDamageable.DamagerTarget.Player, Vector2.zero);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.TryGetComponent<IDamageable>(out IDamageable target))
+        {
+            Debug.Log(other.name);
+            target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
+        }
     }
 }

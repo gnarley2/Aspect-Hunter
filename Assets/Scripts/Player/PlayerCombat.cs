@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -12,9 +13,14 @@ public class PlayerCombat : MonoBehaviour
 {
     private Vector3 mousePosition;
     private Vector3 direction;
-    [SerializeField] private GameObject projectiilePrefab;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private int rangeDamage = 10;
     [SerializeField] private GameObject meleePrefab;
+    [SerializeField] private int meleeDamage = 15;
+    
+    
     public Menus menuScript; // Reference to the Menu script
+    
     void Update()
     {
         GameObject menuObject = GameObject.Find("UIManager");
@@ -43,7 +49,7 @@ public class PlayerCombat : MonoBehaviour
 
     void ProjectileAttack(Vector3 attackDirection)
     {
-        GameObject projectile = Instantiate(projectiilePrefab, transform.position, Quaternion.identity);
+        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         projectile.transform.up = attackDirection;
         ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();       // Pass the direction to the ProjectileMovement script
       
@@ -63,7 +69,7 @@ public class PlayerCombat : MonoBehaviour
         if (meleeMovement != null)
         {
             // Pass the direction to the MeleeMovement script
-            meleeMovement.SetInitialDirection(attackDirection);
+            meleeMovement.Initialize(transform, attackDirection, meleeDamage);
         }
     }
 }
