@@ -57,20 +57,11 @@ public class MeleeMovement : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        Debug.Log(other.transform.name);
-        if (other.transform.TryGetComponent<IDamageable>(out IDamageable target))
-        {
-            target.TakeDamage(1, IDamageable.DamagerTarget.Player, Vector2.zero);
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.TryGetComponent<IDamageable>(out IDamageable target))
         {
-            Debug.Log(other.name);
             target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
         }
     }

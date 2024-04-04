@@ -51,12 +51,9 @@ public class PlayerCombat : MonoBehaviour
     {
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         projectile.transform.up = attackDirection;
+        
         ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();       // Pass the direction to the ProjectileMovement script
-      
-        if (projectileMovement != null)
-        {
-            projectileMovement.SetDirection(attackDirection);
-        }
+        projectileMovement.Initialize(attackDirection, rangeDamage);
     }
 
     void MeleeAttack(Vector3 attackDirection)
@@ -65,12 +62,9 @@ public class PlayerCombat : MonoBehaviour
         // Calculate the direction based on the mouse position
         meleeWeapon.transform.up = attackDirection;
        // Vector3 directionToMouse = (attackDirection - transform.position).normalized;
+       
         MeleeMovement meleeMovement = meleeWeapon.GetComponent<MeleeMovement>();
-        if (meleeMovement != null)
-        {
-            // Pass the direction to the MeleeMovement script
-            meleeMovement.Initialize(transform, attackDirection, meleeDamage);
-        }
+        meleeMovement.Initialize(transform, attackDirection, meleeDamage);
     }
 }
 
