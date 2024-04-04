@@ -51,7 +51,7 @@ public class PlayerCombat : MonoBehaviour
     {
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         projectile.transform.up = attackDirection;
-        
+         
         ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();       // Pass the direction to the ProjectileMovement script
         projectileMovement.Initialize(attackDirection, rangeDamage);
     }

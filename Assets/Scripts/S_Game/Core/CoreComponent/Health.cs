@@ -74,8 +74,8 @@ public class Health : CoreComponent
         OnDie?.Invoke();
     }
 
-    public int GetPercent()
+    public float GetPercent()
     {
-        return Mathf.RoundToInt(health * 1.0f / maxHealth * 100) ;
+        return health * 1.0f / maxHealth;
     }
 }

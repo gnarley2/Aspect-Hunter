@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
         PlayHitClip();
         
         // todo spawn loot
-        gameObject.SetActive(false);
+        transform.parent.gameObject.SetActive(false);
     }
 
     #region Play Sound
