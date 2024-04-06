@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
-    //public List<Item> Items = new List<Item>();
     public Dictionary<Item, int> Items = new Dictionary<Item, int>();
     public GameObject player;
-    // public GameObject lanternPrefab;
     public GameObject itemPrefab;
     public Image[] itemIcons;
 
-    private int numberOfItems = 0;
+   //this is to control adding lights to the player
+    private int numberOfLanterns= 0;
+    public GameObject lanternPrefab;
 
     private void Awake()
     {
@@ -45,25 +45,14 @@ public class InventoryManager : MonoBehaviour
             Debug.Log(entry.Key.itemName + ": " + entry.Value);
         }
 
-        // if (item.itemName == "Lantern" && numberOfItems==0)
-        // {
-        //     numberOfItems++;
-        //     // Instantiate the lantern prefab and attach it to the player
-        //     GameObject lantern = Instantiate(lanternPrefab, player.transform);
-        //     lantern.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
-        // }
-        if (numberOfItems == 0)
+        //this adds a lantern prefab //Do not change
+        if (item.itemName == "Lantern" && numberOfLanterns == 0)
         {
-            if (item.itemName == "Lantern")
-            {
-                // Instantiate the lantern prefab and attach it to the player
-                GameObject i = Instantiate(itemPrefab, player.transform);
-                i.transform.localPosition = new Vector3(-0, 0, 0); // Adjust the position as needed
-            }
-
-            Debug.Log(item.name);
-            numberOfItems++;
+             numberOfLanterns++;
+            GameObject lantern = Instantiate(lanternPrefab, player.transform);
+            lantern.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
         }
+
     }
 
     void UpdateInventoryUI(Sprite icon)
@@ -90,15 +79,11 @@ public class InventoryManager : MonoBehaviour
             {
                 Items.Remove(item);
             }
-
-
+            if (item.itemName == "Lantern")
+            {
+                numberOfLanterns--;
+            }
         }
-
-        numberOfItems--;
-        // if (item.itemName == "Lantern")
-        // {
-        //     numberOfItems--;
-        // }
     }
 
     public bool Find()
