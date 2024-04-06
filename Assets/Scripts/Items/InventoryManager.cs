@@ -10,7 +10,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject player;
     public GameObject itemPrefab;
     public Image[] itemIcons;
-
+ 
    //this is to control adding lights to the player
     private int numberOfLanterns= 0;
     public GameObject lanternPrefab;
@@ -18,7 +18,7 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        Transform itemsParent = GameObject.Find("itemsParent").transform;
+       Transform itemsParent = GameObject.Find("itemsParent").transform;
         itemIcons = new Image[itemsParent.childCount];
         for (int i = 0; i < itemsParent.childCount; i++)
         {

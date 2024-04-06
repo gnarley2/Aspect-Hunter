@@ -11,6 +11,8 @@ public class InventoryUI : MonoBehaviour
     private void Awake()
     {
         menus = FindObjectOfType<Menus>(); // Only use this if Menus is not a Singleton
+        InventoryPanel.SetActive(false);
+        openInventory = false;
     }
 
     void Update()
