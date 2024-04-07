@@ -42,6 +42,15 @@ public class Enemy : MonoBehaviour
         transform.parent.gameObject.SetActive(false);
     }
 
+    #region MonsterData
+
+    public MonsterData GetMonsterData()
+    {
+        return data.monsterData;
+    }
+
+    #endregion
+
     #region Play Sound
     
     private void PlayHitClip(bool obj = false)

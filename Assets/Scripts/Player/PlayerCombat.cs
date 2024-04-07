@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
 
@@ -13,11 +14,16 @@ public class PlayerCombat : MonoBehaviour
 {
     private Vector3 mousePosition;
     private Vector3 direction;
+    
+    [Header("Range")]
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private int rangeDamage = 10;
+    
+    [Header("Melee")]
     [SerializeField] private GameObject meleePrefab;
     [SerializeField] private int meleeDamage = 15;
-    
+
+    [Header("Ball")] [SerializeField] private GameObject ballPrefab;
     
     public Menus menuScript; // Reference to the Menu script
     
@@ -38,6 +44,11 @@ public class PlayerCombat : MonoBehaviour
             {
                 MeleeAttack(direction);
             }
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                CatchMonster(direction);
+            }
         }
     }
 
@@ -47,16 +58,18 @@ public class PlayerCombat : MonoBehaviour
         direction = (mousePosition - transform.position).normalized;
     }
 
-    void ProjectileAttack(Vector3 attackDirection)
+    void ProjectileAttack(Vector2 attackDirection)
     {
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         projectile.transform.up = attackDirection;
          
-        ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();       // Pass the direction to the ProjectileMovement script
+        ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();       
+        
+        // Pass the direction to the ProjectileMovement script
         projectileMovement.Initialize(attackDirection, rangeDamage);
     }
 
-    void MeleeAttack(Vector3 attackDirection)
+    void MeleeAttack(Vector2 attackDirection)
     {
         GameObject meleeWeapon = Instantiate(meleePrefab, transform.position, Quaternion.identity);
         // Calculate the direction based on the mouse position
@@ -65,6 +78,17 @@ public class PlayerCombat : MonoBehaviour
        
         MeleeMovement meleeMovement = meleeWeapon.GetComponent<MeleeMovement>();
         meleeMovement.Initialize(transform, attackDirection, meleeDamage);
+    }
+
+    void CatchMonster(Vector2 throwPosition)
+    {
+        GameObject projectile = Instantiate(ballPrefab, transform.position, Quaternion.identity);
+        projectile.transform.up = throwPosition;
+         
+        BallMovement projectileMovement = projectile.GetComponent<BallMovement>();       
+        
+        // Pass the direction to the ProjectileMovement script
+        projectileMovement.Initialize(throwPosition, BallMovement.BallType.Uncommon);
     }
 }
 
