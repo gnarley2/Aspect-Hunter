@@ -33,7 +33,8 @@ public class Enemy : MonoBehaviour
     void SetupComponent()
     {
         combat.SetUpCombatComponent(IDamageable.DamagerTarget.Enemy, data.KnockbackType);
-        health.SetHealth(data.healthData); 
+        health.SetHealth(data.healthData);
+        data.currentHealth = data.healthData.maxHealth;
     }
 
     private void Die()
@@ -41,6 +42,11 @@ public class Enemy : MonoBehaviour
         PlayHitClip();
         
         // todo spawn loot
+        Destroy();
+    }
+
+    public void Destroy()
+    {
         transform.parent.gameObject.SetActive(false);
     }
 

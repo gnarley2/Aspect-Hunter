@@ -62,6 +62,7 @@ public class BallMovement : MonoBehaviour
         if (other.TryGetComponent<Enemy>(out Enemy enemy))
         {
             InventoryManager.Instance.AddMonster(enemy.GetData());
+            enemy.Destroy();
             Destroy(gameObject);
         }
     }
