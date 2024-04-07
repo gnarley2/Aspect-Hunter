@@ -46,9 +46,9 @@ public class Enemy : MonoBehaviour
 
     #region MonsterData
 
-    public MonsterData GetMonsterData()
+    public EnemyData GetData()
     {
-        return data.monsterData;
+        return data;
     }
 
     #endregion

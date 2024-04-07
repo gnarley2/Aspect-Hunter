@@ -7,7 +7,7 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
     public Dictionary<Item, int> Items = new Dictionary<Item, int>();
-    public List<MonsterData> Monsters = new List<MonsterData>();
+    public List<EnemyData> Monsters = new List<EnemyData>();
     public GameObject player;
     public GameObject itemPrefab;
     public Image[] itemIcons;
@@ -107,7 +107,7 @@ public class InventoryManager : MonoBehaviour
 
     #region Monster
 
-    public void AddMonster(MonsterData data)
+    public void AddMonster(EnemyData data)
     {
         Monsters.Add(data);
     }
