@@ -21,7 +21,7 @@ public class Health : CoreComponent
     
     public void SetHealth(HealthData data)
     {
-        maxHealth = data.health;
+        maxHealth = data.maxHealth;
         health = maxHealth;
         OnUpdateHealth?.Invoke(health);
     }

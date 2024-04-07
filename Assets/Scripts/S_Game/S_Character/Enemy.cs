@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         core = GetComponentInChildren<Core>();
+        data = data.Clone();
     }
 
     void Start() 
@@ -24,7 +25,8 @@ public class Enemy : MonoBehaviour
         health = core.GetCoreComponent<Health>();
         SetupComponent();
 
-        health.OnTakeDamage += PlayHitClip;
+        health.OnTakeDamage += OnTakeDamage;
+        health.OnUpdateHealth += data.UpdateCurrentHealth;
         health.OnDie += Die;
     }
 
@@ -51,9 +53,18 @@ public class Enemy : MonoBehaviour
 
     #endregion
 
+    #region Events
+
+    private void OnTakeDamage(bool obj = false)
+    {
+        PlayHitClip();
+    }
+
+    #endregion
+
     #region Play Sound
     
-    private void PlayHitClip(bool obj = false)
+    private void PlayHitClip()
     {
         // todo playsound
     }
