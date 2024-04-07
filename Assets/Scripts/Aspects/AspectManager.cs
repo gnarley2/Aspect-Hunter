@@ -23,6 +23,9 @@ public class AspectManager : MonoBehaviour
         {
             aspectInventory.Add(aspect, 1);
         }
+
+        InventoryManager.Instance.UpdateAspectInventoryUI(aspect);
+
         Debug.Log("Aspect Inventory:");
         foreach (KeyValuePair<Aspect, int> entry in aspectInventory)
         {

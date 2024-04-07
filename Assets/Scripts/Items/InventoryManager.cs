@@ -18,7 +18,7 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-       Transform itemsParent = GameObject.Find("itemsParent").transform;
+        Transform itemsParent = GameObject.Find("itemsParent").transform;
         itemIcons = new Image[itemsParent.childCount];
         for (int i = 0; i < itemsParent.childCount; i++)
         {
@@ -52,7 +52,21 @@ public class InventoryManager : MonoBehaviour
             GameObject lantern = Instantiate(lanternPrefab, player.transform);
             lantern.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
         }
+    }
 
+    public void UpdateAspectInventoryUI(Aspect aspect)
+    {
+        Transform aspectParent = GameObject.Find("AspectParent").transform;
+        Image[] aspectIcons = new Image[aspectParent.childCount];
+        for (int i = 0; i < aspectParent.childCount; i++)
+        {
+            aspectIcons[i] = aspectParent.GetChild(i).Find("itembutton/icon").GetComponent<Image>();
+            if (aspectIcons[i].sprite == null) // This finds the first empty slot
+            {
+                aspectIcons[i].sprite = aspect.icon; // Set the aspect's icon.
+                break; // Exit the loop after setting the icon
+            }
+        }
     }
 
     void UpdateInventoryUI(Sprite icon)
@@ -98,5 +112,10 @@ public class InventoryManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void ChangeDescription()
+    {
+
     }
 }
