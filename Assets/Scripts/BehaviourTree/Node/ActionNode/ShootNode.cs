@@ -26,7 +26,14 @@ public class ShootNode : ActionNode
     {
         base.OnStart();
 
-        //todo
+        
+        Shoot();
+    }
+
+    void Shoot()
+    {
+        // Vector2 direction = (treeComponent.player.transform.position -)
+        // Instantiate()
     }
 
     protected override void OnStop()
