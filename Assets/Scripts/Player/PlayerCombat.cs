@@ -66,7 +66,7 @@ public class PlayerCombat : MonoBehaviour
         ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();       
         
         // Pass the direction to the ProjectileMovement script
-        projectileMovement.Initialize(attackDirection, rangeDamage);
+        projectileMovement.Initialize(attackDirection, IDamageable.DamagerTarget.Player, rangeDamage);
     }
 
     void MeleeAttack(Vector2 attackDirection)

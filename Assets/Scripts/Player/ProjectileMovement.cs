@@ -10,6 +10,7 @@ public class ProjectileMovement : MonoBehaviour
     private Vector3 initialPosition;
     public float maxDistance = 10f;
 
+    private IDamageable.DamagerTarget currentTarget;
     private int damage = 0;
 
     void Start()
@@ -30,9 +31,10 @@ public class ProjectileMovement : MonoBehaviour
         }
     }
     
-    public void Initialize(Vector3 newDirection, int damage)
+    public void Initialize(Vector3 newDirection, IDamageable.DamagerTarget target, int damage)
     {
         SetDirection(newDirection);
+        currentTarget = target;
         this.damage = damage;
     }
 
@@ -47,9 +49,9 @@ public class ProjectileMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent<IDamageable>(out IDamageable target))
+        if (other.TryGetComponent<IDamageable>(out IDamageable target) && target.GetDamagerType() != currentTarget)
         {
-            target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
+            target.TakeDamage(damage, currentTarget, Vector2.zero);
         }
     }
 }
