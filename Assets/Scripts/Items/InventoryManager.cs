@@ -54,21 +54,6 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void UpdateAspectInventoryUI(Aspect aspect)
-    {
-        Transform aspectParent = GameObject.Find("AspectParent").transform;
-        Image[] aspectIcons = new Image[aspectParent.childCount];
-        for (int i = 0; i < aspectParent.childCount; i++)
-        {
-            aspectIcons[i] = aspectParent.GetChild(i).Find("itembutton/icon").GetComponent<Image>();
-            if (aspectIcons[i].sprite == null) // This finds the first empty slot
-            {
-                aspectIcons[i].sprite = aspect.icon; // Set the aspect's icon.
-                break; // Exit the loop after setting the icon
-            }
-        }
-    }
-
     void UpdateInventoryUI(Sprite icon)
     {
         foreach (var itemIcon in itemIcons)

@@ -5,25 +5,19 @@ using UnityEngine;
 public class AspectPickup : MonoBehaviour
 {
     public Aspect Aspect;
-    public Collider2D Collider;
 
-    void Start()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Picking up aspect...");
+            Pickup();
+        }
     }
 
     void Pickup()
     {
         AspectManager.Instance.Add(Aspect);
         Destroy(gameObject);
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            Pickup();
-
-        }
     }
 }
