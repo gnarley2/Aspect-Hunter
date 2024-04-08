@@ -71,10 +71,10 @@ RectTransform:
   m_Father: {fileID: 5819280464180908552}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 32, y: 32}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5819280463953152080
 CanvasRenderer:
@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 5819280464180908554}
   - component: {fileID: 5819280464180908553}
   - component: {fileID: 5554027659634558891}
+  - component: {fileID: 8103933266881126246}
   m_Layer: 5
   m_Name: itembutton
   m_TagString: Untagged
@@ -263,3 +264,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb5f59d75c26454297e44c53f28d09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8103933266881126246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5819280464180908551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 40, y: 40}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
