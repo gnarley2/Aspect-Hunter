@@ -91,19 +91,20 @@ public class InventoryManager : MonoBehaviour
 			dragItemSlot = itemSlot;
 			draggableItem.sprite = itemSlot.Item.Icon;
 			draggableItem.transform.position = Input.mousePosition;
-			draggableItem.gameObject.SetActive(true);
+			draggableItem.enabled = true;
 		}
 	}
 
 	private void Drag(ItemSlot itemSlot)
 	{
-		draggableItem.transform.position = Input.mousePosition;
+        if (draggableItem.enabled)
+		    draggableItem.transform.position = Input.mousePosition;
 	}
 
 	private void EndDrag(ItemSlot itemSlot)
 	{
 		dragItemSlot = null;
-		draggableItem.gameObject.SetActive(false);
+		draggableItem.enabled = false;
 		this.enabled = false;
 	}
 
