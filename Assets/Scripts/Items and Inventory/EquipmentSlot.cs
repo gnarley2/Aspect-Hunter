@@ -1,14 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class EquipmentSlot : ItemSlot
 {
-    public ItemType ItemType;
+	public EquipmentType EquipmentType;
 
-    protected override void OnValidate()
-    {
-        base.OnValidate();
-        gameObject.name = ItemType.ToString() + " Slot";
-    }
+	protected override void OnValidate()
+	{
+		base.OnValidate();
+		gameObject.name = EquipmentType.ToString() + " Slot";
+	}
+
+	public override bool CanReceiveItem(Item item)
+	{
+		if (item == null)
+			return true;
+
+		EquippableItem equippableItem = item as EquippableItem;
+		return equippableItem != null && equippableItem.EquipmentType == EquipmentType;
+	}
 }
