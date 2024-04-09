@@ -14,7 +14,10 @@ public class InventoryManager : MonoBehaviour
    //this is to control adding lights to the player
     private int numberOfLanterns= 0;
     public GameObject lanternPrefab;
-
+    public GameObject FlashlightPrefab;
+    public GameObject LanternBugPrefab;
+    private int numberOfFlashlights = 0;
+    private int numberOfLanternBugs = 0;
     private void Awake()
     {
         Instance = this;
@@ -52,7 +55,18 @@ public class InventoryManager : MonoBehaviour
             GameObject lantern = Instantiate(lanternPrefab, player.transform);
             lantern.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
         }
-
+        if (item.itemName == "Flashlight")
+        {
+            
+            GameObject flashlight = Instantiate(FlashlightPrefab, player.transform);
+            flashlight.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
+        }
+        if (item.itemName == "LanternBug" && numberOfLanternBugs == 0)
+        {
+            numberOfFlashlights++;
+            GameObject lanternbug = Instantiate(LanternBugPrefab, player.transform);
+            lanternbug.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
+        }
     }
 
     void UpdateInventoryUI(Sprite icon)
