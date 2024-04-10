@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "Monster", menuName = "ScriptableObjects/Data/Monster")]
-public class MonsterData : ScriptableObject
+public class MonsterDetails : ScriptableObject
 {
     [Header("Information")]
     public string name;

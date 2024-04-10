@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Enemy : MonoBehaviour
+public class Monster : MonoBehaviour
 {
-    [SerializeField] private EnemyData data;
+    [SerializeField] private MonsterData data;
     
     private Collider2D col;
     private Core core;
@@ -45,19 +45,19 @@ public class Enemy : MonoBehaviour
     }
 
     #region Tamed
-        public void Initialize(EnemyData data)
+        public void Initialize(MonsterData data)
         {
             StartCoroutine(InitializeCoroutine(data));
         }
 
-        IEnumerator InitializeCoroutine(EnemyData data)
+        IEnumerator InitializeCoroutine(MonsterData data)
         {
             this.data = data;
             yield return new WaitUntil(() => combat != null);
             
             SetupComponent();
             AddEvent();
-            GetComponent<BehaviourTreeRunner>().InitializeTree(data.monsterData.tamedTree);
+            GetComponent<BehaviourTreeRunner>().InitializeTree(data.monsterDetails.tamedTree);
         }
 
     #endregion
@@ -75,9 +75,9 @@ public class Enemy : MonoBehaviour
         transform.parent.gameObject.SetActive(false);
     }
 
-    #region MonsterData
+    #region MonsterDetails
 
-    public EnemyData GetData()
+    public MonsterData GetData()
     {
         return data;
     }

@@ -21,7 +21,7 @@ public class BallMovement : MonoBehaviour
     private Vector2 initialPosition;
     private Vector2 direction;
 
-    private EnemyData data; // for releasing monster
+    private MonsterData data; // for releasing monster
 
     private void Awake()
     {
@@ -34,10 +34,10 @@ public class BallMovement : MonoBehaviour
         this.ballType = ballType;
     }
 
-    public void Initialize(Vector3 newDirection, EnemyData enemyData)
+    public void Initialize(Vector3 newDirection, MonsterData monsterData)
     {
         SetDirection(newDirection);
-        data = enemyData;
+        data = monsterData;
         maxDistance = 2f;
     }
     
@@ -75,22 +75,22 @@ public class BallMovement : MonoBehaviour
     {
         if (data != null) return;
         
-        if (other.TryGetComponent<Enemy>(out Enemy enemy))
+        if (other.TryGetComponent<Monster>(out Monster enemy))
         {
             CatchMonster(enemy);   
         }
     }
 
-    void CatchMonster(Enemy enemy)
+    void CatchMonster(Monster monster)
     {
-        InventoryManager.Instance.AddMonster(enemy.GetData());
-        enemy.Destroy();
+        InventoryManager.Instance.AddMonster(monster.GetData());
+        monster.Destroy();
         Destroy(gameObject);
     }
 
     void ReleaseMonster()
     {
         GameObject prefab = Instantiate(GameSettings.Instance.enemyReleasedPrefab, transform.position, Quaternion.identity);
-        prefab.GetComponentInChildren<Enemy>().Initialize(data);
+        prefab.GetComponentInChildren<Monster>().Initialize(data);
     }
 }

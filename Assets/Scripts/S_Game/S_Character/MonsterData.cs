@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/Data/EnemyData", fileName = "Enemy Data")]
-public class EnemyData : ScriptableObject
+[CreateAssetMenu(menuName = "ScriptableObjects/Data/MonsterData", fileName = "Monster Data")]
+public class MonsterData : ScriptableObject
 {
     public string ID;
-    public MonsterData monsterData;
+    public MonsterDetails monsterDetails;
     
     [Header("Changed Component")]
     public HealthData healthData;
@@ -15,9 +16,9 @@ public class EnemyData : ScriptableObject
 
     public IDamageable.KnockbackType KnockbackType = IDamageable.KnockbackType.none;
 
-    public EnemyData Clone()
+    public MonsterData Clone()
     {
-        EnemyData newData = Instantiate(this);
+        MonsterData newData = Instantiate(this);
         newData.CreateID();
         return newData;
     }
