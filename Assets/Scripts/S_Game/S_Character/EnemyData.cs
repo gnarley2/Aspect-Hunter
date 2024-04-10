@@ -9,7 +9,7 @@ public class EnemyData : ScriptableObject
     public string ID;
     public MonsterData monsterData;
     
-    [Header("Character Component")]
+    [Header("Changed Component")]
     public HealthData healthData;
     public int currentHealth;
 

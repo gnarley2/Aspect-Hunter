@@ -8,16 +8,27 @@ public class BehaviourTreeRunner : MonoBehaviour
     public BehaviourTreeComponent treeComponent {get; private set;}
     
 
-    private void Awake() {
-        InitializeTreeComponent();
-
-        CloneTree();
+    private void Awake()
+    {
+        InitializeTree(tree);
+    }
+    
+    public void InitializeTree(BehaviourTree tree)
+    {
+        if (tree == null) return;
         
+        StartCoroutine(InitializeTreeCoroutine(tree));
     }
 
-    void Start() 
+    IEnumerator InitializeTreeCoroutine(BehaviourTree tree)
     {
-        InitializeNodeComponent();  
+        this.tree = tree;
+        InitializeTreeComponent();
+        CloneTree();
+
+        yield return null;
+        
+        InitializeNodeComponent();
     }
 
     public void InitializeTreeComponent() 
@@ -37,6 +48,7 @@ public class BehaviourTreeRunner : MonoBehaviour
             n.OnInitialize(treeComponent);
         });
     }
+    
 
 
     void Update()

@@ -25,17 +25,33 @@ public class Enemy : MonoBehaviour
         health = core.GetCoreComponent<Health>();
         SetupComponent();
 
+        AddEvent();
+    }
+    
+    public void SetupComponent()
+    {
+        combat.SetUpCombatComponent(IDamageable.DamagerTarget.Enemy, data.KnockbackType);
+
+        if (data == null) return;
+        health.SetHealth(data.healthData);
+        data.currentHealth = data.healthData.maxHealth;
+    }
+
+    public void AddEvent()
+    {
         health.OnTakeDamage += OnTakeDamage;
         health.OnUpdateHealth += data.UpdateCurrentHealth;
         health.OnDie += Die;
     }
 
-    void SetupComponent()
-    {
-        combat.SetUpCombatComponent(IDamageable.DamagerTarget.Enemy, data.KnockbackType);
-        health.SetHealth(data.healthData);
-        data.currentHealth = data.healthData.maxHealth;
-    }
+    #region Tamed
+        public void Initialize(EnemyData data)
+        {
+            this.data = data;
+            GetComponent<BehaviourTreeRunner>().tree = this.data.monsterData.tamedTree;
+        }
+
+    #endregion
 
     private void Die()
     {

@@ -15,4 +15,7 @@ public class MonsterData : ScriptableObject
 
     [Header("Attack")] 
     public int damage;
+
+    [Header("Tamed Behaviour")] 
+    public BehaviourTree tamedTree;
 }
