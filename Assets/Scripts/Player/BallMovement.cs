@@ -21,15 +21,24 @@ public class BallMovement : MonoBehaviour
     private Vector2 initialPosition;
     private Vector2 direction;
 
+    private EnemyData data; // for releasing monster
+
     private void Awake()
     {
         initialPosition = transform.position;
     }
-
+    
     public void Initialize(Vector3 newDirection, BallType ballType)
     {
         SetDirection(newDirection);
         this.ballType = ballType;
+    }
+
+    public void Initialize(Vector3 newDirection, EnemyData enemyData)
+    {
+        SetDirection(newDirection);
+        data = enemyData;
+        maxDistance = 2f;
     }
     
     // Set the direction of movement for the projectile
@@ -54,16 +63,34 @@ public class BallMovement : MonoBehaviour
         if (Vector3.Distance(initialPosition, transform.position) >= maxDistance)
         {
             Destroy(gameObject); // Destroy the projectile
+
+            if (data != null)
+            {
+                ReleaseMonster();
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (data != null) return;
+        
         if (other.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            InventoryManager.Instance.AddMonster(enemy.GetData());
-            enemy.Destroy();
-            Destroy(gameObject);
+            CatchMonster(enemy);   
         }
+    }
+
+    void CatchMonster(Enemy enemy)
+    {
+        InventoryManager.Instance.AddMonster(enemy.GetData());
+        enemy.Destroy();
+        Destroy(gameObject);
+    }
+
+    void ReleaseMonster()
+    {
+        GameObject prefab = Instantiate(GameSettings.Instance.enemyReleasedPrefab, transform.position, Quaternion.identity);
+        prefab.GetComponentInChildren<Enemy>().Initialize(data);
     }
 }

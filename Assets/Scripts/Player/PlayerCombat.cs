@@ -40,7 +40,7 @@ public class PlayerCombat : MonoBehaviour
                 ProjectileAttack(direction);
             }
 
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1))
             {
                 MeleeAttack(direction);
             }
@@ -48,6 +48,11 @@ public class PlayerCombat : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 CatchMonster(direction);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ReleaseMonster(direction);
             }
         }
     }
@@ -89,6 +94,18 @@ public class PlayerCombat : MonoBehaviour
         
         // Pass the direction to the ProjectileMovement script
         projectileMovement.Initialize(throwPosition, BallMovement.BallType.Uncommon);
+    }
+
+    void ReleaseMonster(Vector2 throwPosition)
+    {
+        GameObject projectile = Instantiate(ballPrefab, transform.position, Quaternion.identity);
+        projectile.transform.up = throwPosition;
+         
+        BallMovement projectileMovement = projectile.GetComponent<BallMovement>();
+        
+        if (InventoryManager.Instance.HasMonster(0))
+            // Pass the direction to the ProjectileMovement script
+            projectileMovement.Initialize(throwPosition, InventoryManager.Instance.GetMonster(0));
     }
 }
 

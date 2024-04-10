@@ -6,7 +6,8 @@ public class BehaviourTreeRunner : MonoBehaviour
 {
     public BehaviourTree tree;
     public BehaviourTreeComponent treeComponent {get; private set;}
-    
+
+    private bool canRun = false;
 
     private void Awake()
     {
@@ -29,6 +30,8 @@ public class BehaviourTreeRunner : MonoBehaviour
         yield return null;
         
         InitializeNodeComponent();
+
+        canRun = true;
     }
 
     public void InitializeTreeComponent() 
@@ -48,11 +51,10 @@ public class BehaviourTreeRunner : MonoBehaviour
             n.OnInitialize(treeComponent);
         });
     }
-    
-
 
     void Update()
     {
+        if (tree == null || !canRun) return;
         tree.Update();
     }
 }

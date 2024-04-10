@@ -23,8 +23,9 @@ public class Enemy : MonoBehaviour
     {
         combat = core.GetCoreComponent<Combat>();
         health = core.GetCoreComponent<Health>();
-        SetupComponent();
 
+        if (data == null) return;
+        SetupComponent();
         AddEvent();
     }
     
@@ -32,11 +33,10 @@ public class Enemy : MonoBehaviour
     {
         combat.SetUpCombatComponent(IDamageable.DamagerTarget.Enemy, data.KnockbackType);
 
-        if (data == null) return;
         health.SetHealth(data.healthData);
         data.currentHealth = data.healthData.maxHealth;
     }
-
+    
     public void AddEvent()
     {
         health.OnTakeDamage += OnTakeDamage;
@@ -47,8 +47,17 @@ public class Enemy : MonoBehaviour
     #region Tamed
         public void Initialize(EnemyData data)
         {
+            StartCoroutine(InitializeCoroutine(data));
+        }
+
+        IEnumerator InitializeCoroutine(EnemyData data)
+        {
             this.data = data;
-            GetComponent<BehaviourTreeRunner>().tree = this.data.monsterData.tamedTree;
+            yield return new WaitUntil(() => combat != null);
+            
+            SetupComponent();
+            AddEvent();
+            GetComponent<BehaviourTreeRunner>().InitializeTree(data.monsterData.tamedTree);
         }
 
     #endregion

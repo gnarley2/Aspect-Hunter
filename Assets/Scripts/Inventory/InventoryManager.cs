@@ -117,7 +117,19 @@ public class InventoryManager : MonoBehaviour
         Monsters.RemoveAt(index);
     }
     
-    
+    public bool HasMonster(int index)
+    {
+        if (index < 0 || index >= Monsters.Count) return false;
+
+        return true;
+    }
+
+    public EnemyData GetMonster(int index)
+    {
+        if (index < 0 || index >= Monsters.Count) return null;
+
+        return Monsters[index];
+    }
 
     #endregion
 }
