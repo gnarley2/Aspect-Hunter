@@ -17,6 +17,7 @@ public class MoveToPlayerNode : ActionNode
     private Vector2 destination;
     private Vector2 startPos;
     private Vector2 direction;
+    
     public override void CopyNode(Node copyNode)
     {
         MoveToPlayerNode node = copyNode as MoveToPlayerNode;

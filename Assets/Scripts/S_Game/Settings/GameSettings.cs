@@ -17,9 +17,6 @@ public class GameSettings : MonoBehaviour
     public Material flashMat;
     public float flashCoolDown;
 
-    [Header("Prefab")] 
-    public GameObject enemyReleasedPrefab;
-
 
     public Action OnGameInitialized;
 

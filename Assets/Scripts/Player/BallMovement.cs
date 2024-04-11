@@ -90,7 +90,8 @@ public class BallMovement : MonoBehaviour
 
     void ReleaseMonster()
     {
-        GameObject prefab = Instantiate(GameSettings.Instance.enemyReleasedPrefab, transform.position, Quaternion.identity);
+        GameObject prefabToSpawn = MonsterDatabase.Instance.GetMonsterPrefab(data.monsterDetails.name);
+        GameObject prefab = Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
         prefab.GetComponentInChildren<Monster>().Initialize(data);
     }
 }
