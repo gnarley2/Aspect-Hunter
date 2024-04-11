@@ -4,9 +4,9 @@ using UnityEngine.VFX;
 
 public class ShootNode : ActionNode
 {
-    [SerializeField] private GameObject prefab;
-
-
+    public ProjectileMovement prefab;
+    public Vector2 offset;
+    
     public override void CopyNode(Node copyNode)
     {
         ShootNode node = copyNode as ShootNode;
@@ -32,8 +32,15 @@ public class ShootNode : ActionNode
 
     void Shoot()
     {
-        // Vector2 direction = (treeComponent.player.transform.position -)
-        // Instantiate()
+        Vector2 direction = (treeComponent.player.transform.position - treeComponent.transform.position).normalized;
+             
+         GameObject projectile = Instantiate(prefab.gameObject, treeComponent.transform.position, Quaternion.identity);
+         projectile.transform.up = direction;
+         
+         ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();       
+        
+         // Pass the direction to the ProjectileMovement script
+         projectileMovement.Initialize(direction, IDamageable.DamagerTarget.Enemy, 1);
     }
 
     protected override void OnStop()
@@ -44,5 +51,11 @@ public class ShootNode : ActionNode
     protected override NodeComponent.State OnUpdate()
     {
         return NodeComponent.State.SUCCESS;
+    }
+
+    public override void DrawGizmos(GameObject selectedGameObject)
+    {
+        base.DrawGizmos(selectedGameObject);
+        GizmosDrawer.DrawSphere(selectedGameObject.transform.position + (Vector3)offset, 0.5f);
     }
 }

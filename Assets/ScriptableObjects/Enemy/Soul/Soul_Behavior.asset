@@ -88,11 +88,12 @@ MonoBehaviour:
     started: 0
     guid: 3a68c21284b133640a85a0bfc09c238f
     Tree: {fileID: 11400000}
-    position: {x: 511.9265, y: 503.4096}
+    position: {x: 502.25095, y: 455.19998}
     Name: 
     description: 
   linkNode: {fileID: 0}
-  prefab: {fileID: 0}
+  prefab: {fileID: 3934221966773532347, guid: 353f10057ed832948bcb78300e9704c0, type: 3}
+  offset: {x: 0, y: 1}
 --- !u!114 &-4490418288817932176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,8 +115,8 @@ MonoBehaviour:
     Name: 
     description: 
   children:
-  - {fileID: -6429485835466029539}
   - {fileID: -4921954284583080329}
+  - {fileID: -6429485835466029539}
 --- !u!114 &-4334834234558546235
 MonoBehaviour:
   m_ObjectHideFlags: 0

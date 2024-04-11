@@ -52,6 +52,7 @@ public class ProjectileMovement : MonoBehaviour
         if (other.TryGetComponent<IDamageable>(out IDamageable target) && target.GetDamagerType() != currentTarget)
         {
             target.TakeDamage(damage, currentTarget, Vector2.zero);
+            Destroy(gameObject);
         }
     }
 }
