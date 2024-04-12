@@ -98,14 +98,14 @@ public class PlayerCombat : MonoBehaviour
 
     void ReleaseMonster(Vector2 throwPosition)
     {
-        GameObject projectile = Instantiate(ballPrefab, transform.position, Quaternion.identity);
-        projectile.transform.up = throwPosition;
+        GameObject ball = Instantiate(ballPrefab, transform.position, Quaternion.identity);
+        ball.transform.up = throwPosition;
          
-        BallMovement projectileMovement = projectile.GetComponent<BallMovement>();
+        BallMovement ballMovement = ball.GetComponent<BallMovement>();
         
         if (InventoryManager.Instance.HasMonster(0))
             // Pass the direction to the ProjectileMovement script
-            projectileMovement.Initialize(throwPosition, InventoryManager.Instance.GetMonster(0));
+            ballMovement.Initialize(throwPosition, 0);
     }
 }
 

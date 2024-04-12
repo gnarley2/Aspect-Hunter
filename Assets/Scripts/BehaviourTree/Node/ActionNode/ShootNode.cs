@@ -34,7 +34,7 @@ public class ShootNode : ActionNode
     {
         Vector2 direction = (treeComponent.player.transform.position - treeComponent.transform.position).normalized;
              
-         GameObject projectile = Instantiate(prefab.gameObject, treeComponent.transform.position, Quaternion.identity);
+         GameObject projectile = Instantiate(prefab.gameObject, treeComponent.transform.position + (Vector3)offset, Quaternion.identity);
          projectile.transform.up = direction;
          
          ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();       

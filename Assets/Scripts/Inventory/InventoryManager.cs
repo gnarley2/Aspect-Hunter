@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -5,9 +6,16 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
+    [Serializable]
+    public class SingleMonsterInventory
+    {
+        public MonsterData monsterData;
+        public bool isInInventory = true;
+    }
+    
     public static InventoryManager Instance;
     public Dictionary<Item, int> Items = new Dictionary<Item, int>();
-    public List<MonsterData> Monsters = new List<MonsterData>();
+    public List<SingleMonsterInventory> Monsters = new List<SingleMonsterInventory>();
     public GameObject player;
     public GameObject itemPrefab;
     public Image[] itemIcons;
@@ -109,7 +117,10 @@ public class InventoryManager : MonoBehaviour
 
     public void AddMonster(MonsterData data)
     {
-        Monsters.Add(data);
+        SingleMonsterInventory monsterInventory = new SingleMonsterInventory();
+        monsterInventory.monsterData = data;
+        
+        Monsters.Add(monsterInventory);
     }
 
     public void RemoveMonster(int index)
@@ -128,7 +139,53 @@ public class InventoryManager : MonoBehaviour
     {
         if (index < 0 || index >= Monsters.Count) return null;
 
-        return Monsters[index];
+        return Monsters[index].monsterData;
+    }
+
+    public int GetMonsterIndex(MonsterName name)
+    {
+        for (int i = 0; i < Monsters.Count; i++)
+        {
+            if (Monsters[i].monsterData.monsterDetails.name == name)
+            {
+                return i;
+            }
+        }
+
+        Debug.LogError("Can't find this monster index");
+        return -1;
+    }
+
+    public GameObject ReleaseMonster(MonsterName name)
+    {
+        return ReleaseMonster(GetMonsterIndex(name));
+    }
+
+    public GameObject ReleaseMonster(int index)
+    {
+        if (index < 0 || index >= Monsters.Count)
+        {
+            Debug.LogError("Out of index monster inventory");
+            return null;
+        }
+
+        if (Monsters[index].isInInventory)
+        {
+            Monsters[index].isInInventory = false;
+
+            MonsterData data = Monsters[index].monsterData;
+            
+            GameObject prefab = Instantiate(MonsterDatabase.Instance.GetMonsterPrefab(data.monsterDetails.name), transform.position, Quaternion.identity);
+            prefab.GetComponentInChildren<Monster>().Initialize(data);
+            
+            return prefab;
+        }
+        else
+        {
+            Debug.LogError("Monster have been released");
+        }
+        
+        return null;
     }
 
     #endregion
