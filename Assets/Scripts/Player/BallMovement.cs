@@ -21,7 +21,7 @@ public class BallMovement : MonoBehaviour
     private Vector2 initialPosition;
     private Vector2 direction;
 
-    private int monsterIndex = -1; // for releasing monster
+    private int holdingMonsterIndex = -1; // for releasing monster
 
     private void Awake()
     {
@@ -37,7 +37,7 @@ public class BallMovement : MonoBehaviour
     public void Initialize(Vector3 newDirection, int monsterIndex)
     {
         SetDirection(newDirection);
-        this.monsterIndex = monsterIndex;
+        this.holdingMonsterIndex = monsterIndex;
         maxDistance = 2f;
     }
     
@@ -64,7 +64,7 @@ public class BallMovement : MonoBehaviour
         {
             Destroy(gameObject); // Destroy the projectile
 
-            if (monsterIndex != -1)
+            if (holdingMonsterIndex != -1)
             {
                 ReleaseMonster();
             }
@@ -73,23 +73,41 @@ public class BallMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (monsterIndex != -1) return;
+        if (holdingMonsterIndex != -1) return;
         
         if (other.TryGetComponent<Monster>(out Monster enemy))
         {
-            CatchMonster(enemy);   
+            ProcessMonster(enemy);
         }
+    }
+
+    void ProcessMonster(Monster monster)
+    {
+        if (monster.monsterIndex == -1)
+        {
+            CatchMonster(monster);
+        }
+        else
+        {
+            UnReleaseMonster(monster);
+        }
+        
+        monster.Destroy();
+        Destroy(gameObject);
     }
 
     void CatchMonster(Monster monster)
     {
         InventoryManager.Instance.AddMonster(monster.GetData());
-        monster.Destroy();
-        Destroy(gameObject);
+    }
+    
+    void UnReleaseMonster(Monster monster)
+    {
+        InventoryManager.Instance.UnReleaseMonster(monster, monster.monsterIndex);
     }
 
     void ReleaseMonster()
     {
-        InventoryManager.Instance.ReleaseMonster(monsterIndex);
+        InventoryManager.Instance.ReleaseMonster(holdingMonsterIndex);
     }
 }

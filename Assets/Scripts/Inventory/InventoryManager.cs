@@ -176,7 +176,7 @@ public class InventoryManager : MonoBehaviour
             MonsterData data = Monsters[index].monsterData;
             
             GameObject prefab = Instantiate(MonsterDatabase.Instance.GetMonsterPrefab(data.monsterDetails.name), transform.position, Quaternion.identity);
-            prefab.GetComponentInChildren<Monster>().InitializeUponReleasing(data);
+            prefab.GetComponentInChildren<Monster>().InitializeUponReleasing(data, index);
             
             return prefab;
         }
@@ -186,6 +186,25 @@ public class InventoryManager : MonoBehaviour
         }
         
         return null;
+    }
+    
+    public void UnReleaseMonster(Monster monster, int index)
+    {
+        if (index < 0 || index >= Monsters.Count)
+        {
+            Debug.LogError("Out of index monster inventory");
+            return ;
+        }
+
+        if (!Monsters[index].isInInventory)
+        {
+            Monsters[index].isInInventory = true;
+            monster.Destroy();
+        }
+        else
+        {
+            Debug.LogError("Monster have been unreleased");
+        }
     }
 
     #endregion

@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class Monster : MonoBehaviour
 {
     [SerializeField] private MonsterData data;
     public IDamageable.DamagerTarget damagerTarget = IDamageable.DamagerTarget.Enemy;
+    public int monsterIndex = -1;
     
     private Collider2D col;
     private Core core;
@@ -46,9 +48,10 @@ public class Monster : MonoBehaviour
     }
 
     #region Tamed
-        public void InitializeUponReleasing(MonsterData data)
+        public void InitializeUponReleasing(MonsterData data, int index)
         {
             damagerTarget = IDamageable.DamagerTarget.Player;
+            monsterIndex = index;
             StartCoroutine(InitializeCoroutine(data));
         }
 
@@ -62,19 +65,27 @@ public class Monster : MonoBehaviour
             GetComponent<BehaviourTreeRunner>().InitializeTree(data.monsterDetails.tamedTree);
         }
 
+        public void UnRelease()
+        {
+            InventoryManager.Instance.UnReleaseMonster(this, monsterIndex);
+        }
+
     #endregion
 
     private void Die()
     {
         PlayHitClip();
         
-        // todo spawn loot
         Destroy();
     }
 
     public void Destroy()
     {
-        transform.parent.gameObject.SetActive(false);
+        // todo spawn loot
+        Destroy(transform.parent.gameObject);
+        
+        // todo adding pool object   
+        // transform.parent.gameObject.SetActive(false);
     }
 
     #region MonsterDetails

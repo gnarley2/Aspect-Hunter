@@ -51,18 +51,6 @@ public class AnimatorController : CoreComponent
         health.OnTakeDamage += StartHitVFX;
     }
 
-    private void OnEnable()
-    {
-        StartCoroutine(OnEnableCoroutine());
-    }
-
-    IEnumerator OnEnableCoroutine()
-    {
-        yield return new WaitUntil(() => core.GetCoreComponent<Health>() != null);
-        health = core.GetCoreComponent<Health>();
-        health.OnTakeDamage += StartHitVFX;
-    }
-
     private void OnDisable()
     {
         health.OnTakeDamage -= StartHitVFX;
