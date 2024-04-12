@@ -63,8 +63,19 @@ public class Combat : CoreComponent, IDamageable
 
     public void TakeDamage(int damage, IDamageable.DamagerTarget damagerType, Vector2 attackDirection, bool needResetPlayerPosition)
     {
-        if (damagerTarget == damagerType) return;
+        if (!CanAttack(damagerType)) return;
         if(!health.TakeDamage(damage, needResetPlayerPosition)) return;
+    }
+
+    bool CanAttack(IDamageable.DamagerTarget damagerType)
+    {
+        if (damagerTarget == damagerType) return false;
+        if ((damagerTarget == IDamageable.DamagerTarget.Player &&
+             damagerType == IDamageable.DamagerTarget.TamedMonster) ||
+            damagerTarget == IDamageable.DamagerTarget.TamedMonster &&
+            damagerType == IDamageable.DamagerTarget.Player) return false;
+
+        return true;
     }
 
     #endregion

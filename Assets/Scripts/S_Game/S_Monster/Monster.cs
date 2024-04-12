@@ -50,7 +50,7 @@ public class Monster : MonoBehaviour
     #region Tamed
         public void InitializeUponReleasing(MonsterData data, int index)
         {
-            damagerTarget = IDamageable.DamagerTarget.Player;
+            damagerTarget = IDamageable.DamagerTarget.TamedMonster;
             monsterIndex = index;
             StartCoroutine(InitializeCoroutine(data));
         }

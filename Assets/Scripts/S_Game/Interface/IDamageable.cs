@@ -6,6 +6,7 @@ public interface IDamageable
     {
         Player,
         Enemy,
+        TamedMonster,
         Trap
     }
 
