@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class Monster : MonoBehaviour
 {
     [SerializeField] private MonsterData data;
+    public IDamageable.DamagerTarget damagerTarget = IDamageable.DamagerTarget.Enemy;
     
     private Collider2D col;
     private Core core;
@@ -31,7 +32,7 @@ public class Monster : MonoBehaviour
     
     public void SetupComponent()
     {
-        combat.SetUpCombatComponent(IDamageable.DamagerTarget.Enemy, data.KnockbackType);
+        combat.SetUpCombatComponent(damagerTarget, data.KnockbackType);
 
         health.SetHealth(data.healthData);
         data.currentHealth = data.healthData.maxHealth;
@@ -45,8 +46,9 @@ public class Monster : MonoBehaviour
     }
 
     #region Tamed
-        public void Initialize(MonsterData data)
+        public void InitializeUponReleasing(MonsterData data)
         {
+            damagerTarget = IDamageable.DamagerTarget.Player;
             StartCoroutine(InitializeCoroutine(data));
         }
 

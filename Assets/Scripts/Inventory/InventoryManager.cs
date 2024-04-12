@@ -176,7 +176,7 @@ public class InventoryManager : MonoBehaviour
             MonsterData data = Monsters[index].monsterData;
             
             GameObject prefab = Instantiate(MonsterDatabase.Instance.GetMonsterPrefab(data.monsterDetails.name), transform.position, Quaternion.identity);
-            prefab.GetComponentInChildren<Monster>().Initialize(data);
+            prefab.GetComponentInChildren<Monster>().InitializeUponReleasing(data);
             
             return prefab;
         }
