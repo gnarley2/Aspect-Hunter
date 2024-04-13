@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 203282664}
   - component: {fileID: 203282663}
   - component: {fileID: 203282662}
+  - component: {fileID: 203282665}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -215,105 +216,123 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1674316588017906890
-PrefabInstance:
+--- !u!114 &203282665
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: dimensions
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: dimensionsX
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: dimensionsY
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: tileObjects.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: tileObjects.Array.data[0]
-      value: 
-      objectReference: {fileID: 7374070563776663785, guid: 2a0eb8d22eca12447bf6dd66f82cd1f1, type: 3}
-    - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: tileObjects.Array.data[1]
-      value: 
-      objectReference: {fileID: 3974082992621504581, guid: 01827ef790513ae41aa0563bd34d7310, type: 3}
-    - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: tileObjects.Array.data[2]
-      value: 
-      objectReference: {fileID: 4566040219661954117, guid: 7d5e2fc13c66bb84facfbd4dec48f075, type: 3}
-    - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: tileObjects.Array.data[3]
-      value: 
-      objectReference: {fileID: -6538107514382532244, guid: d8e4856e7beb8cb46aaddcde90bcf785, type: 3}
-    - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: tileObjects.Array.data[4]
-      value: 
-      objectReference: {fileID: 891637536323859555, guid: 6a8149f91115c2d439aa80e675784092, type: 3}
-    - target: {fileID: 1674316588201335452, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: tileObjects.Array.data[5]
-      value: 
-      objectReference: {fileID: 3180612330054638590, guid: 0f954a6795496eb4d9c9d0276ae44eff, type: 3}
-    - target: {fileID: 1674316588201335454, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: m_Name
-      value: LevelGenerator
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674316588201335455, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674316588201335455, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674316588201335455, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674316588201335455, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674316588201335455, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674316588201335455, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674316588201335455, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674316588201335455, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674316588201335455, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674316588201335455, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674316588201335455, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1674316588201335453, guid: c9df6386b7c127a41adc10b430430632, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c9df6386b7c127a41adc10b430430632, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203282661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
+--- !u!1 &1175993881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1175993882}
+  - component: {fileID: 1175993883}
+  m_Layer: 0
+  m_Name: DungeonGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1175993882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175993881}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1175993883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175993881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11725bdbb93631241b38951f78cae60c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 3
+  EnableDiagnostics: 0
+  FixedLevelGraphConfig:
+    LevelGraph: {fileID: 11400000, guid: ae7855d9ed271a34fb64097be97f1263, type: 2}
+    UseCorridors: 1
+  GeneratorConfig:
+    RootGameObject: {fileID: 0}
+    Timeout: 10000
+    RepeatModeOverride: 0
+    MinimumRoomDistance: 1
+    RoomTemplatePrefabMode: 0
+  PostProcessConfig:
+    InitializeSharedTilemaps: 1
+    TilemapLayersStructure: 0
+    TilemapLayersHandler: {fileID: 0}
+    TilemapLayersExample: {fileID: 0}
+    TilemapMaterial: {fileID: 0}
+    CopyTilesToSharedTilemaps: 1
+    CenterGrid: 1
+    DisableRoomTemplatesRenderers: 1
+    DisableRoomTemplatesColliders: 1
+  CustomPostProcessTasks: []
+  OtherConfig:
+    UseRandomSeed: 1
+    RandomGeneratorSeed: 0
+    GenerateOnStart: 1
+  AdvancedConfig:
+    ThrowExceptionsImmediately: 0
+  UseRandomSeed: 1
+  RandomGeneratorSeed: 0
+  GenerateOnStart: 1
+  ThrowExceptionsImmediately: 0
+  DisableCustomPostProcessing: 0
