@@ -1292,6 +1292,11 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!4 &775318774 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1568891421582735538, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
+  m_PrefabInstance: {fileID: 1522489383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &847717630
 GameObject:
   m_ObjectHideFlags: 0
@@ -4119,6 +4124,7 @@ GameObject:
   - component: {fileID: 1406754590}
   - component: {fileID: 1406754589}
   - component: {fileID: 1406754588}
+  - component: {fileID: 1406754592}
   - component: {fileID: 1406754591}
   m_Layer: 0
   m_Name: Main Camera
@@ -4244,6 +4250,19 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &1406754592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406754587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9645e18dee655494fbd006839ced1ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 775318774}
 --- !u!1001 &1522489383
 PrefabInstance:
   m_ObjectHideFlags: 0
