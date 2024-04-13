@@ -70,8 +70,13 @@ public class GameManager : MonoBehaviour
 
 
 
+    /// ////////////////////////////////////////////////////////////
+    /// ///////////////////////////////////////////////////////////
+    /// Xp and Leveling up System
+    
     //This is called from the XPOrb script when it is picked up.
     //Debug messages for now, but can be UI later.
+
     public void AddXP(int xpToAdd)
     {
         currentXP += xpToAdd;
@@ -113,5 +118,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    }
+    ////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////
+}
 
