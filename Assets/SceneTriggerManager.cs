@@ -12,28 +12,38 @@ public class SceneTriggerManager : MonoBehaviour
     private void Start()
     {
         currentLevelName = SceneManager.GetActiveScene().name;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Update()
     {
-        string newLevelName = SceneManager.GetActiveScene().name;
-        currentLevelName = newLevelName;
-           
-        
+
     }
 
     public void LoadSceneFromTrigger(SceneAsset targetScene)
     {
         if (targetScene != null)
         {
-            Debug.Log("Loading level: " + targetScene.name);
+            
             SceneManager.LoadScene(targetScene.name);
-           
         }
         else
         {
             Debug.LogWarning("Target scene is not assigned.");
         }
     }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        string newLevelName = SceneManager.GetActiveScene().name;
+        currentLevelName = newLevelName;
+        Debug.Log($"Entered Level: {currentLevelName}");
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
 
 }

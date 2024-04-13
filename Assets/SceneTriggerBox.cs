@@ -25,7 +25,7 @@ public class SceneTriggerBox : MonoBehaviour
     {
         if (targetScene != null)
         {
-            SceneManager.LoadScene(targetScene.name);
+            levelManager.LoadSceneFromTrigger(targetScene);
         }
         else
         {
