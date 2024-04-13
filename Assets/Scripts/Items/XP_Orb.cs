@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class XP_Orb : MonoBehaviour
 {
+    public int xpValue = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class XP_Orb : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            GameManager.Instance.AddXP(xpValue);// Call the AddXP method in the GameManager
             Destroy(gameObject);
         }
     }
