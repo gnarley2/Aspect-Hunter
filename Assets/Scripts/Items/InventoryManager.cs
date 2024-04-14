@@ -49,7 +49,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         //this adds a lantern prefab //Do not change
-        if (item.itemName == "Lantern" && numberOfLanterns == 0)
+        if (numberOfLanterns==0 && (item.itemName == "Lantern"|| item.itemName == "Lantern 2"))
         {
              numberOfLanterns++;
             GameObject lantern = Instantiate(lanternPrefab, player.transform);

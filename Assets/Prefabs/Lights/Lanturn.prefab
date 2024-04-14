@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 1773395337807623232}
   - component: {fileID: 4339034281517459787}
   - component: {fileID: -8713312553006219156}
+  - component: {fileID: -7480225745961984462}
   m_Layer: 0
   m_Name: Lanturn
   m_TagString: Light
@@ -260,3 +261,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Item: {fileID: 11400000, guid: 237f0ad4d5be1c840af8cd8e0f36f562, type: 2}
+  moveSpeed: 5
+  destroyDistance: 0.1
+--- !u!58 &-7480225745961984462
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7170844697313724779}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.089056015}
+  serializedVersion: 2
+  m_Radius: 1.1036022

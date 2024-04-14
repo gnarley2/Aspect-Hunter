@@ -5,24 +5,38 @@ using UnityEngine;
 public class XP_Orb : MonoBehaviour
 {
     public int xpValue = 10;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float moveSpeed = 5f; // Speed at which the XP orb moves towards the player
+    public float destroyDistance = 0.1f; // Distance threshold at which the XP orb destroys itself
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private Transform playerTransform; // Reference to the player's transform
+    private bool isMovingTowardsPlayer; // Flag to check if the coroutine is running
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance.AddXP(xpValue);// Call the AddXP method in the GameManager
-            Destroy(gameObject);
+            playerTransform = other.transform; // Get the player's transform
+            if (!isMovingTowardsPlayer)
+            {
+                StartCoroutine(VacuumEffect());
+            }
         }
+    }
+
+    private IEnumerator VacuumEffect()
+    {
+        isMovingTowardsPlayer = true;
+
+        while (Vector3.Distance(transform.position, playerTransform.position) > destroyDistance)
+        {
+            Vector3 direction = (playerTransform.position - transform.position).normalized;
+            transform.position += direction * moveSpeed * Time.deltaTime;
+            yield return null;
+        }
+
+        GameManager.Instance.AddXP(xpValue); // Call the AddXP function in the GameManager
+        Destroy(gameObject);
+
+        isMovingTowardsPlayer = false;
     }
 }

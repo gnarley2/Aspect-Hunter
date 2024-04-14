@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class AspectManager : MonoBehaviour
 {
-    public static AspectManager Instance;
+   public static AspectManager Instance;
     public Dictionary<Aspect, int> aspectInventory = new Dictionary<Aspect, int>();
-
+   
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Add(Aspect aspect)

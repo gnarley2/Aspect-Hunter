@@ -15,16 +15,30 @@ public class Flashlight : MonoBehaviour
 
     void Start()
     {
-        playerTransform = Camera.main.transform;
+        // Find the player's transform
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            playerTransform = playerObject.transform;
+        }
+        else
+        {
+            Debug.LogError("Player GameObject not found in the scene.");
+        }
     }
 
     void Update()
     {
-        // Calculate the target position on the arc
-        Vector3 playerPos = playerTransform.position;
+        if (playerTransform == null)
+            return;
+
+        // Calculate the mouse position relative to the player
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+        // Calculate the target position on the arc
+        Vector3 playerPos = playerTransform.position;
         Vector3 direction = (mousePos - playerPos).normalized;
+
         currentAngle = Vector2.SignedAngle(Vector2.right, direction);
         currentAngle = Mathf.Clamp(currentAngle, -arcAngle / 2, arcAngle / 2);
 

@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public LevelData[] levelData;
 
 
+    public int totalCoinsCollected;
+
     [System.Serializable]
     public class LevelData
     {
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        totalCoinsCollected = 0;
         currentXP = 0;
         currentLevel = 1;
         levelData = new LevelData[maxLevels];
@@ -118,7 +121,22 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    ////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////
+
+
+
+
+    ///////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////
+    /// Coin Collecting
+    public void AddCoin()
+    {
+        totalCoinsCollected++;
+        Debug.Log($"Total coins collected: {totalCoinsCollected}");
+    }
+
+    ///////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////
 }
 
