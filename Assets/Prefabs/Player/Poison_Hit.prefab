@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 1580532891494031516}
   - component: {fileID: 1580532891494031517}
   - component: {fileID: 1580532891494031506}
-  - component: {fileID: 1580532891494031519}
+  - component: {fileID: -7674491004045311479}
   - component: {fileID: -1556725451683697421}
   m_Layer: 0
   m_Name: Poison_Hit
@@ -246,7 +246,7 @@ Transform:
   m_GameObject: {fileID: 1580532891494031507}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.68, y: -1.454, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
+  m_LocalScale: {x: 4, y: 3.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1580532891500480237}
@@ -326,13 +326,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!65 &1580532891494031519
-BoxCollider:
+--- !u!61 &-7674491004045311479
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580532891494031507}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -341,12 +343,34 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.60050744, y: 0.5304567, z: 0.2}
-  m_Center: {x: -0.03761419, y: -0.02477169, z: 0}
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.5, y: 0.5}
+    newSize: {x: 0.5, y: 0.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5}
+  m_EdgeRadius: 0
 --- !u!114 &-1556725451683697421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +383,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfc7dad8598f8b459642eacdfeb35bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyTimer: 20
+  poisonDuration: 4
+  damagePerSecond: 3
+  damageInterval: 1
 --- !u!1 &1580532891500480226
 GameObject:
   m_ObjectHideFlags: 0

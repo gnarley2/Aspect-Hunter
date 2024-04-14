@@ -58,6 +58,12 @@ public class PlayerCombat : MonoBehaviour
             Fire_Projectile fireprojectileMovement = projectile.GetComponent<Fire_Projectile>();
             fireprojectileMovement.Initialize(attackDirection, rangeDamage);
         }
+        if (projectilePrefab.name == "Poison_Projectile")
+        {
+            rangeDamage = 0;
+            Poison_Projectile poisonprojectileMovement = projectile.GetComponent<Poison_Projectile>();
+            poisonprojectileMovement.Initialize(attackDirection, rangeDamage);
+        }
         if (projectilePrefab.name == "projectile")
         {
             rangeDamage = 10;
