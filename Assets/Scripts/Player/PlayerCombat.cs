@@ -5,6 +5,7 @@ using System.Numerics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
+using static MoveNode;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -53,24 +54,40 @@ public class PlayerCombat : MonoBehaviour
 
     void ProjectileAttack(Vector3 attackDirection)
     {
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        projectile.transform.up = attackDirection;
+        GameObject projectile;
+
 
         if (projectilePrefab.name == "Fire_Projectile")
         {
             rangeDamage = 15;
+            projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            projectile.transform.up = attackDirection;
             Fire_Projectile fireprojectileMovement = projectile.GetComponent<Fire_Projectile>();
             fireprojectileMovement.Initialize(attackDirection, rangeDamage);
         }
         if (projectilePrefab.name == "Poison_Projectile")
         {
             rangeDamage = 0;
+            projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            projectile.transform.up = attackDirection;
             Poison_Projectile poisonprojectileMovement = projectile.GetComponent<Poison_Projectile>();
             poisonprojectileMovement.Initialize(attackDirection, rangeDamage);
+        }
+        if (projectilePrefab.name == "Frost_Wall")
+        {
+            rangeDamage = 0;
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0;
+            projectile = Instantiate(projectilePrefab, mousePosition, Quaternion.identity);
+            projectile.transform.up = attackDirection;
+            Frost_Wall frostwallSpawn = projectile.GetComponent<Frost_Wall>();
+            frostwallSpawn.Initialize(Vector3.zero, rangeDamage);
         }
         if (projectilePrefab.name == "projectile")
         {
             rangeDamage = 10;
+            projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            projectile.transform.up = attackDirection;
             ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>(); // Pass the direction to the ProjectileMovement script
             projectileMovement.Initialize(attackDirection, rangeDamage);
         }
