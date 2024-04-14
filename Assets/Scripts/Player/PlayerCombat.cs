@@ -20,8 +20,8 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private int rangeDamage = 10;
     [SerializeField] private GameObject meleePrefab;
     [SerializeField] private int meleeDamage = 15;
-    
-    
+    GameObject projectile;
+
     public Menus menuScript; // Reference to the Menu script
     
     void Update()
@@ -54,9 +54,6 @@ public class PlayerCombat : MonoBehaviour
 
     void ProjectileAttack(Vector3 attackDirection)
     {
-        GameObject projectile;
-
-
         if (projectilePrefab.name == "Fire_Projectile")
         {
             rangeDamage = 15;
@@ -79,7 +76,6 @@ public class PlayerCombat : MonoBehaviour
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0;
             projectile = Instantiate(projectilePrefab, mousePosition, Quaternion.identity);
-            projectile.transform.up = attackDirection;
             Frost_Wall frostwallSpawn = projectile.GetComponent<Frost_Wall>();
             frostwallSpawn.Initialize(Vector3.zero, rangeDamage);
         }
