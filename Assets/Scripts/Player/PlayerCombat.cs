@@ -13,6 +13,8 @@ public class PlayerCombat : MonoBehaviour
 {
     private Vector3 mousePosition;
     private Vector3 direction;
+
+ 
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private int rangeDamage = 10;
     [SerializeField] private GameObject meleePrefab;
@@ -28,6 +30,7 @@ public class PlayerCombat : MonoBehaviour
         if (menuScript.isPaused == false)
         {
             CalculateDirection();
+
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
 
@@ -46,6 +49,7 @@ public class PlayerCombat : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = (mousePosition - transform.position).normalized;
     }
+
 
     void ProjectileAttack(Vector3 attackDirection)
     {

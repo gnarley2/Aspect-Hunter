@@ -294,7 +294,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1544450207
   m_SortingLayer: 3
-  m_SortingOrder: 12
+  m_SortingOrder: 0
   m_Sprite: {fileID: 1783537155, guid: ea66a5e31face3a4ab3a0f7d9f3c0d80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfc7dad8598f8b459642eacdfeb35bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyTimer: 20
+  DestroyTimer: 10
   poisonDuration: 4
   damagePerSecond: 3
   damageInterval: 1
