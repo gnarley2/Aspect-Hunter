@@ -79,6 +79,16 @@ public class PlayerCombat : MonoBehaviour
             Frost_Wall frostwallSpawn = projectile.GetComponent<Frost_Wall>();
             frostwallSpawn.Initialize(Vector3.zero, rangeDamage);
         }
+        if (projectilePrefab.name == "Shock_Hit")
+        {
+            rangeDamage = 15;
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0;
+            mousePosition.y += 1;
+            projectile = Instantiate(projectilePrefab, mousePosition, Quaternion.identity);
+            Shock_Hit shockhit = projectile.GetComponent<Shock_Hit>();
+            shockhit.Initialize(Vector3.zero, rangeDamage);
+        }
         if (projectilePrefab.name == "projectile")
         {
             rangeDamage = 10;
