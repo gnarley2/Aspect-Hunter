@@ -51,10 +51,19 @@ public class PlayerCombat : MonoBehaviour
     {
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         projectile.transform.up = attackDirection;
-         
-        ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();       // Pass the direction to the ProjectileMovement script
-        projectileMovement.Initialize(attackDirection, rangeDamage);
 
+        if (projectilePrefab.name == "Fire_Projectile")
+        {
+            rangeDamage = 15;
+            Fire_Projectile fireprojectileMovement = projectile.GetComponent<Fire_Projectile>();
+            fireprojectileMovement.Initialize(attackDirection, rangeDamage);
+        }
+        if (projectilePrefab.name == "projectile")
+        {
+            rangeDamage = 10;
+            ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>(); // Pass the direction to the ProjectileMovement script
+            projectileMovement.Initialize(attackDirection, rangeDamage);
+        }
     }
 
     void MeleeAttack(Vector3 attackDirection)

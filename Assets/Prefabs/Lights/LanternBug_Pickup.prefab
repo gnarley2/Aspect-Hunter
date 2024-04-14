@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1376460838703795199}
   m_Layer: 0
   m_Name: LanternBug_Pickup
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,3 +179,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Item: {fileID: 11400000, guid: 7711718a3fc4bed46a9a03434bed243a, type: 2}
+  moveSpeed: 5
+  destroyDistance: 0.1
