@@ -5429,7 +5429,7 @@ PrefabInstance:
     - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: projectilePrefab
       value: 
-      objectReference: {fileID: 6453512598273269386, guid: 353f10057ed832948bcb78300e9704c0, type: 3}
+      objectReference: {fileID: 7169754804731957956, guid: 40f2b6663e0e6464bab4d1b7de421456, type: 3}
     - target: {fileID: 1568891421582735537, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -5507,6 +5507,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 348867762}
     m_Modifications:
+    - target: {fileID: 1560984463940785842, guid: 0a45e0a6e5f9dd3458dada9993168bc6, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5809299163833866496, guid: 0a45e0a6e5f9dd3458dada9993168bc6, type: 3}
       propertyPath: m_Name
       value: Poison Aspect
@@ -5646,7 +5650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2225646507674372453, guid: 67510ecc61812264ab1c5f5d94b84734, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.55
+      value: 9.37
       objectReference: {fileID: 0}
     - target: {fileID: 2225646507674372453, guid: 67510ecc61812264ab1c5f5d94b84734, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5654,11 +5658,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2225646507841037416, guid: 67510ecc61812264ab1c5f5d94b84734, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.85
+      value: 12.08
       objectReference: {fileID: 0}
     - target: {fileID: 2225646507841037416, guid: 67510ecc61812264ab1c5f5d94b84734, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.49
+      value: 1.13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5736,6 +5740,10 @@ PrefabInstance:
     - target: {fileID: 5788295548098661868, guid: f081d8657fa578144912c167a1a0d5d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7154023539160848681, guid: f081d8657fa578144912c167a1a0d5d7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7154023539160848681, guid: f081d8657fa578144912c167a1a0d5d7, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -5883,6 +5891,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 348867762}
     m_Modifications:
+    - target: {fileID: 2658781555929267009, guid: 1fc6d6119db79f9478e9646030de4217, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4863784857217025019, guid: 1fc6d6119db79f9478e9646030de4217, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -6364,6 +6376,10 @@ PrefabInstance:
     - target: {fileID: 933903221456392100, guid: 82d38fc370089f34d890a3e4ffc2f956, type: 3}
       propertyPath: m_Name
       value: Shock Aspect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918772374031020255, guid: 82d38fc370089f34d890a3e4ffc2f956, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
