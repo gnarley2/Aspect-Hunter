@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 1363481315903118727}
   - component: {fileID: 1773395337807623232}
   - component: {fileID: 3076322524692668176}
-  - component: {fileID: 4339034281517459787}
-  - component: {fileID: -8713312553006219156}
   - component: {fileID: -4526011597846719611}
   m_Layer: 0
   m_Name: Lanturn
@@ -133,32 +131,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4339034281517459787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7170844697313724779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c458a4e80685c3046845029d4e013068, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: efb5b978ff0932043a6a9f272a591a1e, type: 2}
---- !u!114 &-8713312553006219156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7170844697313724779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdece474bcd20914e890604914d2b707, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: efb5b978ff0932043a6a9f272a591a1e, type: 2}
 --- !u!114 &-4526011597846719611
 MonoBehaviour:
   m_ObjectHideFlags: 0
