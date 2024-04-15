@@ -89,6 +89,16 @@ public class PlayerCombat : MonoBehaviour
             Shock_Hit shockhit = projectile.GetComponent<Shock_Hit>();
             shockhit.Initialize(Vector3.zero, rangeDamage);
         }
+        if (projectilePrefab.name == "Water_Splash")
+        {
+            rangeDamage = 10;
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0;
+         //   mousePosition.y += 1;
+            projectile = Instantiate(projectilePrefab, mousePosition, Quaternion.identity);
+            Water_Splash waterSplash = projectile.GetComponent<Water_Splash>();
+            waterSplash.Initialize(Vector3.zero, rangeDamage);
+        }
         if (projectilePrefab.name == "projectile")
         {
             rangeDamage = 10;

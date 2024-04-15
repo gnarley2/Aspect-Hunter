@@ -2,21 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shock_Hit : MonoBehaviour
+public class Water_Splash : MonoBehaviour
 {
     [SerializeField] private float destroyDuration = 2f; // Duration before destroying the game object
     private int damage = 10;
-    public GameObject shockEffect;
-    private Vector3 transform1;
+    public GameObject waterEffect;
     private void Start()
     {
         // Start a coroutine to destroy the game object after the specified duration
         StartCoroutine(DestroyAfterDuration());
-        transform1 = transform.position;
     }
     public void Initialize(Vector3 newDirection, int damage)
     {
-       // SetDirection(newDirection);
+        // SetDirection(newDirection);
         this.damage = damage;
     }
 
@@ -25,8 +23,7 @@ public class Shock_Hit : MonoBehaviour
     {
         // Wait for the specified duration
         yield return new WaitForSeconds(destroyDuration);
-        transform1.y -= 0.25f;
-        Instantiate(shockEffect, transform1, Quaternion.identity);
+         Instantiate(waterEffect, transform.position, Quaternion.identity);
         // Destroy the game object
         Destroy(gameObject);
     }
@@ -36,6 +33,7 @@ public class Shock_Hit : MonoBehaviour
         if (other.TryGetComponent<IDamageable>(out IDamageable target))
         {
             target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
+            Instantiate(waterEffect, transform.position, Quaternion.identity);
         }
     }
 }
