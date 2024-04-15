@@ -1,4 +1,3 @@
-
 public class EquipmentSlot : ItemSlot
 {
 	public EquipmentType EquipmentType;

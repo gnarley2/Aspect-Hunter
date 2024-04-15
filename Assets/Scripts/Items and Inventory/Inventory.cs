@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 
 public class Inventory : MonoBehaviour
 {
+	[FormerlySerializedAs("items")]
 	[SerializeField] List<Item> startingItems;
 	[SerializeField] Transform itemsParent;
 	[SerializeField] ItemSlot[] itemSlots;
@@ -65,7 +66,6 @@ public class Inventory : MonoBehaviour
 				return true;
 			}
 		}
-		Debug.Log("item added");
 		return false;
 	}
 
