@@ -5,7 +5,6 @@ using UnityEngine.Serialization;
 
 public class Inventory : MonoBehaviour
 {
-	[FormerlySerializedAs("items")]
 	[SerializeField] List<Item> startingItems;
 	[SerializeField] Transform itemsParent;
 	[SerializeField] ItemSlot[] itemSlots;
@@ -63,9 +62,11 @@ public class Inventory : MonoBehaviour
 			if (itemSlots[i].Item == null)
 			{
 				itemSlots[i].Item = item;
+				Debug.Log("Item added to slot " + i);
 				return true;
 			}
 		}
+		Debug.Log("Failed to add item: No empty slots available.");
 		return false;
 	}
 

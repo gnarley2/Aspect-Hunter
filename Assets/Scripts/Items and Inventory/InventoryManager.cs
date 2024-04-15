@@ -4,14 +4,8 @@ using Kryz.CharacterStats;
 
 public class InventoryManager : MonoBehaviour
 {
-	public CharacterStat Strength;
-	public CharacterStat Agility;
-	public CharacterStat Intelligence;
-	public CharacterStat Vitality;
-
 	[SerializeField] Inventory inventory;
 	[SerializeField] EquipmentPanel equipmentPanel;
-	[SerializeField] StatPanel statPanel;
 	[SerializeField] ItemTooltip itemTooltip;
 	[SerializeField] Image draggableItem;
 
@@ -22,8 +16,6 @@ public class InventoryManager : MonoBehaviour
 		if (itemTooltip == null)
 			itemTooltip = FindObjectOfType<ItemTooltip>();
 
-		statPanel.SetStats(Strength, Agility, Intelligence, Vitality);
-		statPanel.UpdateStatValues();
 
 		// Setup Events:
 		// Right Click
@@ -125,7 +117,6 @@ public class InventoryManager : MonoBehaviour
 				if (dragItem != null) dragItem.Unequip(this);
 				if (dropItem != null) dropItem.Equip(this);
 			}
-			statPanel.UpdateStatValues();
 
 			Item draggedItem = dragItemSlot.Item;
 			dragItemSlot.Item = dropItemSlot.Item;
@@ -144,10 +135,8 @@ public class InventoryManager : MonoBehaviour
 				{
 					inventory.AddItem(previousItem);
 					previousItem.Unequip(this);
-					statPanel.UpdateStatValues();
 				}
 				item.Equip(this);
-				statPanel.UpdateStatValues();
 			}
 			else
 			{
@@ -161,7 +150,6 @@ public class InventoryManager : MonoBehaviour
 		if (!inventory.IsFull() && equipmentPanel.RemoveItem(item))
 		{
 			item.Unequip(this);
-			statPanel.UpdateStatValues();
 			inventory.AddItem(item);
 		}
 	}

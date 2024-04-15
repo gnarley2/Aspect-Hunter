@@ -8,7 +8,6 @@ public class ItemPickup : MonoBehaviour
 	[SerializeField] Inventory inventory;
 
     private bool isInRange;
-	private bool isEmpty;
 
     private void OnValidate()
 	{
@@ -18,14 +17,10 @@ public class ItemPickup : MonoBehaviour
 
 	private void Update()
 	{
-		if (isInRange)
+		if (isInRange && !inventory.IsFull())
 		{
-			if (!isEmpty)
-			{
-				inventory.AddItem(item);
-                Destroy(gameObject);
-				isEmpty = true;
-			}
+            inventory.AddItem(Instantiate(item));
+            Destroy(gameObject);
 		}
 	}
 
@@ -46,4 +41,6 @@ public class ItemPickup : MonoBehaviour
 			isInRange = state;
 		}
 	}
+
+    
 }
