@@ -108,6 +108,8 @@ public class InventoryManager : MonoBehaviour
 
 	private void Drop(ItemSlot dropItemSlot)
 	{
+		if (dragItemSlot == null) return;
+
 		if (dropItemSlot.CanReceiveItem(dragItemSlot.Item) && dragItemSlot.CanReceiveItem(dropItemSlot.Item))
 		{
 			EquippableItem dragItem = dragItemSlot.Item as EquippableItem;

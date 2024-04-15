@@ -47,7 +47,7 @@ public class Inventory : MonoBehaviour
 		int i = 0;
 		for (; i < startingItems.Count && i < itemSlots.Length; i++)
 		{
-			itemSlots[i].Item = startingItems[i];
+			itemSlots[i].Item = Instantiate(startingItems[i]);
 		}
 
 		for (; i < itemSlots.Length; i++)
