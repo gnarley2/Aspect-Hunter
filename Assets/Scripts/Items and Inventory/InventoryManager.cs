@@ -9,7 +9,7 @@ public class InventoryManager : MonoBehaviour
 	[SerializeField] ItemTooltip itemTooltip;
 	[SerializeField] Image draggableItem;
 
-	private ItemSlot dragItemSlot;
+    private ItemSlot dragItemSlot;
 
 	private void Awake()
 	{
@@ -39,9 +39,9 @@ public class InventoryManager : MonoBehaviour
 		// Drop
 		inventory.OnDropEvent += Drop;
 		equipmentPanel.OnDropEvent += Drop;
-	}
+    }
 
-	private void Equip(ItemSlot itemSlot)
+    private void Equip(ItemSlot itemSlot)
 	{
 		EquippableItem equippableItem = itemSlot.Item as EquippableItem;
 		if (equippableItem != null)
@@ -76,29 +76,29 @@ public class InventoryManager : MonoBehaviour
 		}
 	}
 
-	private void BeginDrag(ItemSlot itemSlot)
-	{
-		if (itemSlot.Item != null)
-		{
-			dragItemSlot = itemSlot;
-			draggableItem.sprite = itemSlot.Item.Icon;
-			draggableItem.transform.position = Input.mousePosition;
-			draggableItem.gameObject.SetActive(true);
-		}
-	}
+    private void BeginDrag(ItemSlot itemSlot)
+    {
+        if (itemSlot.Item != null)
+        {
+            dragItemSlot = itemSlot;
+            draggableItem.sprite = itemSlot.Item.Icon;
+            draggableItem.transform.position = Input.mousePosition;
+            draggableItem.gameObject.SetActive(true);
+        }
+    }
 
-	private void Drag(ItemSlot itemSlot)
-	{
-		draggableItem.transform.position = Input.mousePosition;
-	}
+    private void Drag(ItemSlot itemSlot)
+    {
+        draggableItem.transform.position = Input.mousePosition;
+    }
 
-	private void EndDrag(ItemSlot itemSlot)
-	{
-		dragItemSlot = null;
-		draggableItem.gameObject.SetActive(false);
-	}
+    private void EndDrag(ItemSlot itemSlot)
+    {
+        dragItemSlot = null;
+        draggableItem.gameObject.SetActive(false);
+    }
 
-	private void Drop(ItemSlot dropItemSlot)
+    private void Drop(ItemSlot dropItemSlot)
 	{
 		if (dragItemSlot == null) return;
 
