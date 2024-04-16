@@ -18,6 +18,8 @@ public class InventoryManager : MonoBehaviour
     public GameObject LanternBugPrefab;
     private int numberOfFlashlights = 0;
     private int numberOfLanternBugs = 0;
+    
+    
     private void Awake()
     {
         Instance = this;
@@ -40,28 +42,28 @@ public class InventoryManager : MonoBehaviour
             Items.Add(item, 1);
         }
 
-        UpdateInventoryUI(item.icon);
+        UpdateInventoryUI(item.Icon);
 
         Debug.Log("Inventory Items:");
         foreach (KeyValuePair<Item, int> entry in Items)
         {
-            Debug.Log(entry.Key.itemName + ": " + entry.Value);
+            Debug.Log(entry.Key.ItemName + ": " + entry.Value);
         }
 
         //this adds a lantern prefab //Do not change
-        if (numberOfLanterns==0 && (item.itemName == "Lantern"|| item.itemName == "Lantern 2"))
+        if (numberOfLanterns==0 && (item.ItemName == "Lantern"|| item.ItemName == "Lantern 2"))
         {
              numberOfLanterns++;
             GameObject lantern = Instantiate(lanternPrefab, player.transform);
             lantern.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
         }
-        if (item.itemName == "Flashlight")
+        if (item.ItemName == "Flashlight")
         {
             
             GameObject flashlight = Instantiate(FlashlightPrefab, player.transform);
             flashlight.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
         }
-        if (item.itemName == "LanternBug" && numberOfLanternBugs == 0)
+        if (item.ItemName == "LanternBug" && numberOfLanternBugs == 0)
         {
             numberOfFlashlights++;
             GameObject lanternbug = Instantiate(LanternBugPrefab, player.transform);
@@ -93,7 +95,7 @@ public class InventoryManager : MonoBehaviour
             {
                 Items.Remove(item);
             }
-            if (item.itemName == "Lantern")
+            if (item.ItemName == "Lantern")
             {
                 numberOfLanterns--;
             }

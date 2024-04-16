@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Kryz.CharacterStats;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManagerUI : MonoBehaviour
 {
 	[SerializeField] Inventory inventory;
 	[SerializeField] EquipmentPanel equipmentPanel;

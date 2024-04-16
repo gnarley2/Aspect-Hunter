@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     public int currentLevel;
     public int maxLevels = 10; // Set the maximum number of levels
     public LevelData[] levelData;
-
+    
+    [SerializeField] private Inventory inventory;
 
     public int totalCoinsCollected;
 
@@ -138,5 +139,10 @@ public class GameManager : MonoBehaviour
 
     ///////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////
+    
+    public Inventory GetInventory()
+    {
+        return inventory;
+    }
 }
 
