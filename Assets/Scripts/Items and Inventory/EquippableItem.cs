@@ -4,7 +4,9 @@ using Kryz.CharacterStats;
 public enum EquipmentType
 {
 	Lantern,
-	Aspect
+	Aspect,
+	FireAspect,
+	FrostAspect
 }
 
 [CreateAssetMenu]
