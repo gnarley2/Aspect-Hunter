@@ -12,6 +12,7 @@ public enum EquipmentType
 [CreateAssetMenu]
 public class EquippableItem : Item
 {
+	public string ItemName;
 	public EquipmentType EquipmentType;
 
 	public void Equip(InventoryManagerUI c)

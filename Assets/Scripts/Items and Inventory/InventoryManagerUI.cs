@@ -81,7 +81,7 @@ public class InventoryManagerUI : MonoBehaviour
         if (itemSlot.Item != null)
         {
             dragItemSlot = itemSlot;
-            draggableItem.sprite = itemSlot.Item.Icon;
+            draggableItem.sprite = itemSlot.Item.icon;
             draggableItem.transform.position = Input.mousePosition;
             draggableItem.gameObject.SetActive(true);
         }
