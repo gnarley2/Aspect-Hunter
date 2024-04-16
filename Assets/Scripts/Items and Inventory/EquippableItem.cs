@@ -1,0 +1,26 @@
+using UnityEngine;
+using Kryz.CharacterStats;
+
+public enum EquipmentType
+{
+	Lantern,
+	Aspect,
+	FireAspect,
+	FrostAspect
+}
+
+[CreateAssetMenu]
+public class EquippableItem : Item
+{
+	public EquipmentType EquipmentType;
+
+	public void Equip(InventoryManager c)
+	{
+		//add code for buffs
+	}
+
+	public void Unequip(InventoryManager c)
+	{
+		//add code to remove buffs
+	}
+}
