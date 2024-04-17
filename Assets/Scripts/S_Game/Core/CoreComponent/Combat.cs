@@ -10,9 +10,6 @@ public class Combat : CoreComponent, IDamageable
     IDamageable.DamagerTarget damagerTarget;
     IDamageable.KnockbackType knockbackType;
 
-    Movement movement {get => _movement ??= core.GetCoreComponent<Movement>(); }
-    Movement _movement;
-
     Health health {get => _heath ??= core.GetCoreComponent<Health>(); }
     Health _heath;
 
@@ -22,7 +19,6 @@ public class Combat : CoreComponent, IDamageable
     private bool canTouchCombat = true;
 
     Vector2 attackPosition;
-    Vector2 hitDirection;
 
 
     #region Set up
@@ -67,19 +63,19 @@ public class Combat : CoreComponent, IDamageable
 
     public void TakeDamage(int damage, IDamageable.DamagerTarget damagerType, Vector2 attackDirection, bool needResetPlayerPosition)
     {
-        if (this.damagerTarget == damagerType) return;
+        if (!CanAttack(damagerType)) return;
         if(!health.TakeDamage(damage, needResetPlayerPosition)) return;
-        if (needResetPlayerPosition) return;
+    }
 
-        if (attackDirection == Vector2.zero)
-        {
-            hitDirection = -movement.faceDirection;
-        }
-        else
-        {
-            hitDirection = attackDirection;
-        }
-        
+    bool CanAttack(IDamageable.DamagerTarget damagerType)
+    {
+        if (damagerTarget == damagerType) return false;
+        if ((damagerTarget == IDamageable.DamagerTarget.Player &&
+             damagerType == IDamageable.DamagerTarget.TamedMonster) ||
+            damagerTarget == IDamageable.DamagerTarget.TamedMonster &&
+            damagerType == IDamageable.DamagerTarget.Player) return false;
+
+        return true;
     }
 
     #endregion
@@ -89,7 +85,16 @@ public class Combat : CoreComponent, IDamageable
     {
         return knockbackType;
     }
-    
+
+    public Vector2 GetPosition()
+    {
+        return transform.position;
+    }
+
+    public Health GetHealth()
+    {
+        return health;
+    }
 
     #region Collider
 

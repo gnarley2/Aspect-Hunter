@@ -16,7 +16,6 @@ public class GameSettings : MonoBehaviour
     [Header("Flash")] 
     public Material flashMat;
     public float flashCoolDown;
-    
 
 
     public Action OnGameInitialized;

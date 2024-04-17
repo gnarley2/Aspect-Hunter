@@ -64,6 +64,7 @@ public class MeleeMovement : MonoBehaviour
         if (other.TryGetComponent<IDamageable>(out IDamageable target))
         {
             target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
+            PlayerCombat.SetTarget(target);
         }
     }
 }

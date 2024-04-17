@@ -5,20 +5,19 @@ using UnityEngine;
 
 public class ProjectileMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 25f; // Speed of the projectile
+    [SerializeField] private float speed = 0f; // Speed of the projectile
     private Vector3 direction;
     private Vector3 initialPosition;
     public float maxDistance = 10f;
 
+    private IDamageable.DamagerTarget currentTarget;
     private int damage = 0;
 
     void Start()
     {
         initialPosition = transform.position;
     }
-
     
-
     void Update()
     {
         // Move the projectile in the specified direction
@@ -30,10 +29,12 @@ public class ProjectileMovement : MonoBehaviour
         }
     }
     
-    public void Initialize(Vector3 newDirection, int damage)
+    public void Initialize(Vector3 newDirection, IDamageable.DamagerTarget target, int damage, float speed)
     {
         SetDirection(newDirection);
+        currentTarget = target;
         this.damage = damage;
+        this.speed = speed;
     }
 
     // Set the direction of movement for the projectile
@@ -47,9 +48,16 @@ public class ProjectileMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent<IDamageable>(out IDamageable target))
+        if (other.TryGetComponent<IDamageable>(out IDamageable target) && target.GetDamagerType() != currentTarget)
         {
-            target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
+            if (target.GetDamagerType() == currentTarget) return;
+            if (target.GetDamagerType() == IDamageable.DamagerTarget.TamedMonster &&
+                currentTarget == IDamageable.DamagerTarget.Player) return;
+            if (target.GetDamagerType() == IDamageable.DamagerTarget.Player &&
+                currentTarget == IDamageable.DamagerTarget.TamedMonster) return;
+            
+            target.TakeDamage(damage, currentTarget, Vector2.zero);
+            Destroy(gameObject);
         }
     }
 }

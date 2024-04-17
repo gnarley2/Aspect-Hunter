@@ -4959,6 +4959,7 @@ MonoBehaviour:
   currentLevel: 0
   maxLevels: 10
   levelData: []
+  totalCoinsCollected: 0
 --- !u!114 &1986416284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5356,22 +5357,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
-      propertyPath: meleePrefab
-      value: 
-      objectReference: {fileID: 5465766930649564204, guid: 21dd226fb64335b48814e21ec96fb51d, type: 3}
-    - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 6453512598273269386, guid: 353f10057ed832948bcb78300e9704c0, type: 3}
-    - target: {fileID: 1568891421582735537, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1568891421582735537, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 237808439
-      objectReference: {fileID: 0}
     - target: {fileID: 1568891421582735538, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -5420,14 +5405,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1568891422513200760, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
-      propertyPath: FlashlightPrefab
-      value: 
-      objectReference: {fileID: 6085495501509300380, guid: 179d937eaf1b4374da2d568c7912d9bd, type: 3}
-    - target: {fileID: 1568891422513200760, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
-      propertyPath: LanternBugPrefab
-      value: 
-      objectReference: {fileID: 3612874585030435300, guid: 97e15fb04224e814bb8507ed63d3f947, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

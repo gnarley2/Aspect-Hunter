@@ -55,7 +55,7 @@ public class Menus : MonoBehaviour
         isPaused = false;
         PauseMenuUI.SetActive(false);
 
-        // Find the InventoryUI component and close the inventory
+        // FindItem the InventoryUI component and close the inventory
         InventoryUI inventoryUI = FindObjectOfType<InventoryUI>();
         if (inventoryUI != null)
         {
