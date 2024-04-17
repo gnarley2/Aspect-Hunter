@@ -37,7 +37,7 @@ public class Door : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            _hasKey = InventoryManager.Instance.Find();
+            // _hasKey = InventoryManager.Instance.Find();
             Debug.Log(_hasKey.ToString());
         }
     }
