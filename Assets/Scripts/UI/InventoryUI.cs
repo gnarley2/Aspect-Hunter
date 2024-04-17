@@ -7,6 +7,8 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] GameObject InventoryPanel;
     [SerializeField] Menus menus; // Assign this in the inspector or find it in Awake/Start
     public static bool openInventory;
+    bool itemDescription = false;
+    [SerializeField] GameObject DescriptionPanel;
 
     private void Awake()
     {
@@ -33,11 +35,22 @@ public class InventoryUI : MonoBehaviour
             InventoryPanel.SetActive(false);
             openInventory = false;
         }
+
+        if (itemDescription)
+        {
+            DescriptionPanel.SetActive(true);
+        }
+
     }
 
     public void CloseInventory()
     {
         InventoryPanel.SetActive(false);
         openInventory = false;
+    }
+
+    public void OpenDescription()
+    {
+        itemDescription = true;
     }
 }
