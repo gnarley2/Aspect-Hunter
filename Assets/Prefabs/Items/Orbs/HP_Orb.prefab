@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4188184838737686125}
   - component: {fileID: 4188184838737686122}
   - component: {fileID: 3508188313024678464}
-  - component: {fileID: 8563303506682531339}
+  - component: {fileID: 5427898738609502388}
   m_Layer: 0
   m_Name: HP_Orb
   m_TagString: Item
@@ -142,7 +142,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.023097232}
   serializedVersion: 2
   m_Radius: 0.15938784
---- !u!114 &8563303506682531339
+--- !u!114 &5427898738609502388
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4188184838737686123}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45ecc4c8f45c6cf478641121bac2b07b, type: 3}
+  m_Script: {fileID: 11500000, guid: f259976ca0b46d640b3a700cff523bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5

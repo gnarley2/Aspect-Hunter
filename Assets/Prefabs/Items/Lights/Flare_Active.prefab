@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6079958159957234809}
   - component: {fileID: 4067481675346727296}
   - component: {fileID: 6079958159957234810}
-  - component: {fileID: 6079958159957234811}
+  - component: {fileID: 2269222669755822530}
   m_Layer: 0
   m_Name: Flare_Active
   m_TagString: Light
@@ -220,7 +220,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &6079958159957234811
+--- !u!114 &2269222669755822530
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,11 +229,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6079958159957234812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c258547a87604844914876e99bb4cc5, type: 3}
+  m_Script: {fileID: 11500000, guid: c9b54305bc8ebe741983a1b716007e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTime: 20
-  dimDuration: 19
+  destroyTime: 10
+  dimDuration: 2
 --- !u!1 &6079958160745193862
 GameObject:
   m_ObjectHideFlags: 0

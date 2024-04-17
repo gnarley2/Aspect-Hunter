@@ -38,7 +38,7 @@ Transform:
   - {fileID: 1568891422513200767}
   - {fileID: 1900682909392131139}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1568891421582735537
 SpriteRenderer:
@@ -197,6 +197,7 @@ MonoBehaviour:
   rangeDamage: 10
   meleePrefab: {fileID: 2039880518984152032, guid: e25d441dc09b7e54eb76869628272465, type: 3}
   meleeDamage: 15
+  ballPrefab: {fileID: 0}
   menuScript: {fileID: 0}
 --- !u!95 &1274437205
 Animator:
@@ -274,7 +275,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Aspect Manager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7398370502292177271, guid: e51ec6688c50d074ba045fd936d6726b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -352,7 +354,8 @@ PrefabInstance:
       propertyPath: lanternPrefab
       value: 
       objectReference: {fileID: 4012472879744785423, guid: 9941e0efba2b91945a64c202183a9a6b, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6260253266612411799, guid: 835da3705f34c7745ba0305ac0704c3d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
