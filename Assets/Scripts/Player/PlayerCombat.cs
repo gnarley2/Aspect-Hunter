@@ -33,6 +33,7 @@ public class PlayerCombat : MonoBehaviour
     [Header("Range")]
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private int rangeDamage = 10;
+    [SerializeField] private float speed = 15f;
     
     [Header("Melee")]
     [SerializeField] private GameObject meleePrefab;
@@ -86,7 +87,7 @@ public class PlayerCombat : MonoBehaviour
         ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();       
         
         // Pass the direction to the ProjectileMovement script
-        projectileMovement.Initialize(attackDirection, IDamageable.DamagerTarget.Player, rangeDamage);
+        projectileMovement.Initialize(attackDirection, IDamageable.DamagerTarget.Player, rangeDamage, speed);
     }
 
     void MeleeAttack(Vector2 attackDirection)

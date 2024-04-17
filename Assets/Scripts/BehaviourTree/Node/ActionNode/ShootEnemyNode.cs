@@ -4,6 +4,8 @@ public class ShootEnemyNode : ActionNode
 {
     public ProjectileMovement prefab;
     public Vector2 offset;
+    public float speed;
+    public int damage;
     
     public override void CopyNode(Node copyNode)
     {
@@ -13,6 +15,9 @@ public class ShootEnemyNode : ActionNode
         if (node)
         {
             prefab = node.prefab;
+            offset = node.offset;
+            speed = node.speed;
+            damage = node.damage;
         }
     }
     
@@ -40,7 +45,7 @@ public class ShootEnemyNode : ActionNode
         ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();       
 
         // Pass the direction to the ProjectileMovement script
-        projectileMovement.Initialize(direction, IDamageable.DamagerTarget.TamedMonster, 1);
+        projectileMovement.Initialize(direction, IDamageable.DamagerTarget.TamedMonster, damage, speed);
     }
 
     protected override void OnStop()

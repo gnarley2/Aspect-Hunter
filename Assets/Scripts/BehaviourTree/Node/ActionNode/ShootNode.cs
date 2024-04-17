@@ -6,6 +6,8 @@ public class ShootNode : ActionNode
 {
     public ProjectileMovement prefab;
     public Vector2 offset;
+    public float speed;
+    public int damage;
     
     public override void CopyNode(Node copyNode)
     {
@@ -14,6 +16,9 @@ public class ShootNode : ActionNode
         if (node)
         {
             prefab = node.prefab;
+            offset = node.offset;
+            speed = node.speed;
+            damage = node.damage;
         }
     }
 
@@ -32,7 +37,7 @@ public class ShootNode : ActionNode
 
     void Shoot()
     {
-        Vector2 direction = (treeComponent.player.transform.position - treeComponent.transform.position).normalized;
+        Vector2 direction = (treeComponent.player.transform.position - (treeComponent.transform.position + (Vector3)offset)).normalized;
              
         GameObject projectile = Instantiate(prefab.gameObject, treeComponent.transform.position + (Vector3)offset, Quaternion.identity);
         projectile.transform.up = direction;
@@ -40,7 +45,7 @@ public class ShootNode : ActionNode
         ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();       
 
         // Pass the direction to the ProjectileMovement script
-        projectileMovement.Initialize(direction, IDamageable.DamagerTarget.Enemy, 1);
+        projectileMovement.Initialize(direction, IDamageable.DamagerTarget.Enemy, damage, speed);
     }
 
     protected override void OnStop()
