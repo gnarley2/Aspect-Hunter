@@ -27,6 +27,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject LanternBugPrefab;
     private int numberOfFlashlights = 0;
     private int numberOfLanternBugs = 0;
+    
     private void Awake()
     {
         Instance = this;
@@ -49,7 +50,7 @@ public class InventoryManager : MonoBehaviour
             Items.Add(item, 1);
         }
 
-        UpdateInventoryUI(item.icon);
+        // UpdateInventoryUI(item.icon); todo
 
         Debug.Log("Inventory Items:");
         foreach (KeyValuePair<Item, int> entry in Items)
@@ -60,7 +61,7 @@ public class InventoryManager : MonoBehaviour
         //this adds a lantern prefab //Do not change
         if (numberOfLanterns==0 && (item.itemName == "Lantern"|| item.itemName == "Lantern 2"))
         {
-             numberOfLanterns++;
+            numberOfLanterns++;
             GameObject lantern = Instantiate(lanternPrefab, player.transform);
             lantern.transform.localPosition = new Vector3(0, 0, 0); // Adjust the position as needed
         }

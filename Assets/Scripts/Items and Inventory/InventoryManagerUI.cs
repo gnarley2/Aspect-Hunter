@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Kryz.CharacterStats;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManagerUI : MonoBehaviour
 {
 	[SerializeField] Inventory inventory;
 	[SerializeField] EquipmentPanel equipmentPanel;
@@ -81,7 +81,7 @@ public class InventoryManager : MonoBehaviour
         if (itemSlot.Item != null)
         {
             dragItemSlot = itemSlot;
-            draggableItem.sprite = itemSlot.Item.Icon;
+            draggableItem.sprite = itemSlot.Item.icon;
             draggableItem.transform.position = Input.mousePosition;
             draggableItem.gameObject.SetActive(true);
         }

@@ -158,8 +158,8 @@ GameObject:
   - component: {fileID: 1363481315903118727}
   - component: {fileID: 1773395337807623232}
   - component: {fileID: 4339034281517459787}
-  - component: {fileID: -8713312553006219156}
   - component: {fileID: -7480225745961984462}
+  - component: {fileID: 546898017527122895}
   m_Layer: 0
   m_Name: Lanturn
   m_TagString: Light
@@ -248,21 +248,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Item: {fileID: 11400000, guid: 237f0ad4d5be1c840af8cd8e0f36f562, type: 2}
---- !u!114 &-8713312553006219156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7170844697313724779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdece474bcd20914e890604914d2b707, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 237f0ad4d5be1c840af8cd8e0f36f562, type: 2}
-  moveSpeed: 5
-  destroyDistance: 0.1
 --- !u!58 &-7480225745961984462
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -298,3 +283,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.089056015}
   serializedVersion: 2
   m_Radius: 1.1036022
+--- !u!114 &546898017527122895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7170844697313724779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75def596ecae2724096abecdabf5945e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 833a9e56716e0eb48a0abbdb808a0bdd, type: 2}
+  inventory: {fileID: 0}

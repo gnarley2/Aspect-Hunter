@@ -12,7 +12,7 @@ public class ItemTooltip : MonoBehaviour
 
 	public void ShowTooltip(EquippableItem item)
 	{
-		ItemNameText.text = item.ItemName;
+		ItemNameText.text = item.itemName;
 		ItemSlotText.text = item.EquipmentType.ToString();
 
 		sb.Length = 0;

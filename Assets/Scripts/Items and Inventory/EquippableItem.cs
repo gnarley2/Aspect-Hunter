@@ -14,12 +14,12 @@ public class EquippableItem : Item
 {
 	public EquipmentType EquipmentType;
 
-	public void Equip(InventoryManager c)
+	public void Equip(InventoryManagerUI c)
 	{
 		//add code for buffs
 	}
 
-	public void Unequip(InventoryManager c)
+	public void Unequip(InventoryManagerUI c)
 	{
 		//add code to remove buffs
 	}

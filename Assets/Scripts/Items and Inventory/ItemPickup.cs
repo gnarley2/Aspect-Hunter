@@ -17,9 +17,9 @@ public class ItemPickup : MonoBehaviour
 
 	private void Update()
 	{
-		if (isInRange && !inventory.IsFull())
+		if (isInRange)
 		{
-            inventory.AddItem(Instantiate(item));
+            InventoryManager.Instance.AddItem(Instantiate(item));
             Destroy(gameObject);
 		}
 	}

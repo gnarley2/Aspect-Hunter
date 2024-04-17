@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3236210455771183977}
   - component: {fileID: 2986314976269325160}
   - component: {fileID: 8456447393718863336}
-  - component: {fileID: 1233417262796477999}
   - component: {fileID: 2239948944698960125}
+  - component: {fileID: 430865019902920718}
   m_Layer: 0
   m_Name: Flashlight_Pickup
   m_TagString: Item
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2986314976269325160
 SpriteRenderer:
@@ -100,19 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Item: {fileID: 11400000, guid: 22458ee1ad6c37c4ebd9fa129e6a023e, type: 2}
---- !u!114 &1233417262796477999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7202413039386955294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdece474bcd20914e890604914d2b707, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: 22458ee1ad6c37c4ebd9fa129e6a023e, type: 2}
 --- !u!61 &2239948944698960125
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -158,3 +145,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.22084188, y: 0.1559749}
   m_EdgeRadius: 0
+--- !u!114 &430865019902920718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7202413039386955294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75def596ecae2724096abecdabf5945e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 4d21e1a01dff6254caaaa2330a12e2e5, type: 2}
+  inventory: {fileID: 0}
