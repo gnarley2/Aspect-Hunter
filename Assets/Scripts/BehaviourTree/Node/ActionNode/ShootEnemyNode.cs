@@ -40,7 +40,7 @@ public class ShootEnemyNode : ActionNode
         ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();       
 
         // Pass the direction to the ProjectileMovement script
-        projectileMovement.Initialize(direction, IDamageable.DamagerTarget.Enemy, 1);
+        projectileMovement.Initialize(direction, IDamageable.DamagerTarget.TamedMonster, 1);
     }
 
     protected override void OnStop()

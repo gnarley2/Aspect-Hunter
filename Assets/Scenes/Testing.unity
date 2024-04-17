@@ -979,11 +979,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 897352485747607546, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
       propertyPath: m_Name
-      value: f
+      value: Tamed
       objectReference: {fileID: 0}
     - target: {fileID: 897352485747607546, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 897352485747607548, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
       propertyPath: m_RootOrder
@@ -991,11 +991,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 897352485747607548, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.09
+      value: -1.24
       objectReference: {fileID: 0}
     - target: {fileID: 897352485747607548, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.28
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 897352485747607548, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1043,11 +1043,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3832590570754524447, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3832590570754524447, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3875598155846434502, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1060,6 +1060,14 @@ PrefabInstance:
     - target: {fileID: 5871538611718680726, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6951852507876313720, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: bd11c7c100f5994488bf7a2a10f5bdc2, type: 2}
+    - target: {fileID: 6951852507876313720, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
+      propertyPath: damagerTarget
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -12,24 +12,19 @@ using Vector3 = UnityEngine.Vector3;
 
 public class PlayerCombat : MonoBehaviour
 {
-    public static PlayerCombat Instance;
     public static IDamageable Target {
         get; private set; }
 
     public static void SetTarget(IDamageable target)
     {
         Target = target;
+        Debug.Log(target);
         target.GetHealth().OnDie += RemoveTarget;
     }
 
     static void RemoveTarget()
     {
         Target = null;
-    }
-
-    private void Awake()
-    {
-        Instance = this;
     }
 
     private Vector3 mousePosition;

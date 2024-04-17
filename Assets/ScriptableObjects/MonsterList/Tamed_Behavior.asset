@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8813330385292680600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85694c64078b8a44ebbb5e6f6982427e, type: 3}
+  m_Name: ShootEnemyNode
+  m_EditorClassIdentifier: 
+  NodeComponent:
+    state: 0
+    started: 0
+    guid: 099f301eb173ad64ab003c26d3cee7cb
+    Tree: {fileID: 11400000}
+    position: {x: -314.20074, y: 644.40045}
+    Name: 
+    description: 
+  linkNode: {fileID: 0}
+  prefab: {fileID: 3934221966773532347, guid: 353f10057ed832948bcb78300e9704c0, type: 3}
+  offset: {x: 0, y: 1}
 --- !u!114 &-8688324086256755511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24,6 +47,27 @@ MonoBehaviour:
   - {fileID: 8154934541963762425}
   - {fileID: -2397765288225514108}
   currentIndex: -1
+--- !u!114 &-8582947365480253510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075b26e66de13864388366ebe4a11610, type: 3}
+  m_Name: CheckTargetNode
+  m_EditorClassIdentifier: 
+  NodeComponent:
+    state: 0
+    started: 0
+    guid: 2ee9a3d4e9cf5324b8a19cd5191b5e62
+    Tree: {fileID: 11400000}
+    position: {x: -539.8007, y: 644.40045}
+    Name: 
+    description: 
+  linkNode: {fileID: 0}
 --- !u!114 &-8554894942179524726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,13 +85,13 @@ MonoBehaviour:
     started: 0
     guid: cc9b80aa7d6680548a540c4526ded8d4
     Tree: {fileID: 11400000}
-    position: {x: -132.59741, y: 472.00003}
+    position: {x: -581.6263, y: 469.687}
     Name: CheckClose
     description: 
   linkNode: {fileID: 0}
   checkType: 0
   checkRelativePos: {x: 0, y: 0}
-  radius: 3
+  radius: 4
   size: {x: 0, y: 0}
 --- !u!114 &-6534386319878980850
 MonoBehaviour:
@@ -110,7 +154,7 @@ MonoBehaviour:
     started: 0
     guid: 738b82e60a25c974ab051bf9d889c495
     Tree: {fileID: 11400000}
-    position: {x: 491.19995, y: 753.8}
+    position: {x: 597.6001, y: 760.5393}
     Name: 
     description: 
   linkNode: {fileID: 0}
@@ -137,7 +181,7 @@ MonoBehaviour:
     Tree: {fileID: 11400000}
     position: {x: 767.8556, y: 344.97998}
     Name: 
-    description: 
+    description: Move to player
   children:
   - {fileID: -6534386319878980850}
   - {fileID: 9018986043972542034}
@@ -169,6 +213,8 @@ MonoBehaviour:
   - {fileID: -4324260223802514415}
   - {fileID: 1565097180860047177}
   - {fileID: -6534386319878980850}
+  - {fileID: -8582947365480253510}
+  - {fileID: -8813330385292680600}
   groups: []
   offset: {x: 300, y: 0}
 --- !u!114 &1565097180860047177
@@ -188,7 +234,7 @@ MonoBehaviour:
     started: 0
     guid: ef529dda21776c04ea0f703d72f363db
     Tree: {fileID: 11400000}
-    position: {x: 490.39996, y: 620.2}
+    position: {x: 596.8001, y: 626.9394}
     Name: 
     description: 
   child: {fileID: -4324260223802514415}
@@ -209,11 +255,11 @@ MonoBehaviour:
     started: 0
     guid: 5ac89798139973c4080bc354b32cb71d
     Tree: {fileID: 11400000}
-    position: {x: 156.20262, y: 588}
+    position: {x: -103.0008, y: 644.40045}
     Name: 
     description: 
   linkNode: {fileID: 0}
-  idleTime: 3
+  idleTime: 2
 --- !u!114 &4670155928922819180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,10 +277,12 @@ MonoBehaviour:
     started: 0
     guid: 5039564e9a0648a47909dcb2688933d4
     Tree: {fileID: 11400000}
-    position: {x: 111.4026, y: 448}
+    position: {x: -300.59106, y: 469.6001}
     Name: 
     description: 
   children:
+  - {fileID: -8582947365480253510}
+  - {fileID: -8813330385292680600}
   - {fileID: 3762964257190147803}
 --- !u!114 &5199882927292344719
 MonoBehaviour:
@@ -274,9 +322,11 @@ MonoBehaviour:
     started: 0
     guid: ca745a02625d81a40809831258b3baf6
     Tree: {fileID: 11400000}
-    position: {x: 17.802582, y: 312}
+    position: {x: -431.22623, y: 309.68695}
     Name: 
-    description: Move Sequence
+    description: 'Check Player in range
+
+      attack'
   children:
   - {fileID: -8554894942179524726}
   - {fileID: 4670155928922819180}
