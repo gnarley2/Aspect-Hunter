@@ -51,6 +51,12 @@ public class ProjectileMovement : MonoBehaviour
     {
         if (other.TryGetComponent<IDamageable>(out IDamageable target) && target.GetDamagerType() != currentTarget)
         {
+            if (target.GetDamagerType() == currentTarget) return;
+            if (target.GetDamagerType() == IDamageable.DamagerTarget.TamedMonster &&
+                currentTarget == IDamageable.DamagerTarget.Player) return;
+            if (target.GetDamagerType() == IDamageable.DamagerTarget.Player &&
+                currentTarget == IDamageable.DamagerTarget.TamedMonster) return;
+            
             target.TakeDamage(damage, currentTarget, Vector2.zero);
             Destroy(gameObject);
         }
