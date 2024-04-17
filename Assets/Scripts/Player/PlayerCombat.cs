@@ -18,7 +18,6 @@ public class PlayerCombat : MonoBehaviour
     public static void SetTarget(IDamageable target)
     {
         Target = target;
-        Debug.Log(target);
         target.GetHealth().OnDie += RemoveTarget;
     }
 
@@ -49,8 +48,8 @@ public class PlayerCombat : MonoBehaviour
         // menuScript = menuObject.GetComponent<Menus>();
         // if (menuScript.isPaused == false)
         // {
-        //     CalculateDirection();
         // }
+        CalculateDirection();
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
 

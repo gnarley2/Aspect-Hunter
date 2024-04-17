@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9103244987516479204}
   - component: {fileID: 3612874585030435291}
   - component: {fileID: 7201436576443955896}
-  - component: {fileID: 1604623679691383757}
+  - component: {fileID: 7827079298951491563}
   m_Layer: 0
   m_Name: LanternBug_Active
   m_TagString: Light
@@ -222,7 +222,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &1604623679691383757
+--- !u!114 &7827079298951491563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3612874585030435300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 225bfce2ece7f8946ac465203f44fd5a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f8d0fefe4076fe46aa8e45d6b6b2f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   orbitRadius: 1.5

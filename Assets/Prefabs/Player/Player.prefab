@@ -306,7 +306,7 @@ Transform:
   - {fileID: 1900682909392131139}
   - {fileID: 1175919156}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1568891421582735536
 Rigidbody2D:
@@ -411,7 +411,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 6453512598273269386, guid: 353f10057ed832948bcb78300e9704c0, type: 3}
   rangeDamage: 10
-  meleePrefab: {fileID: 2039880518984152032, guid: e25d441dc09b7e54eb76869628272465, type: 3}
+  speed: 15
+  meleePrefab: {fileID: 5465766930649564204, guid: 21dd226fb64335b48814e21ec96fb51d, type: 3}
   meleeDamage: 15
   ballPrefab: {fileID: 6453512598273269386, guid: 91bd3bf1f52a8ad44b33866081a91521, type: 3}
   menuScript: {fileID: 0}
@@ -549,11 +550,39 @@ PrefabInstance:
       propertyPath: lanternPrefab
       value: 
       objectReference: {fileID: 4012472879744785423, guid: 9941e0efba2b91945a64c202183a9a6b, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6260253266612411799, guid: 835da3705f34c7745ba0305ac0704c3d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6260253266612411793, guid: 835da3705f34c7745ba0305ac0704c3d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1541877229611337669}
   m_SourcePrefab: {fileID: 100100000, guid: 835da3705f34c7745ba0305ac0704c3d, type: 3}
+--- !u!1 &1568891422513200766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6260253266612411793, guid: 835da3705f34c7745ba0305ac0704c3d, type: 3}
+  m_PrefabInstance: {fileID: 4838327535196906479}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1541877229611337669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568891422513200766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a67c5659d36474ea3b150de69ea597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Monsters: []
+  player: {fileID: 1568891421582735542}
+  itemPrefab: {fileID: 7170844697313724779, guid: 2e424c796e688c74687aad5a25fef758, type: 3}
+  itemIcons: []
+  lanternPrefab: {fileID: 1770074088939285838, guid: 689044cbc4582304aa33ffbcab3d048e, type: 3}
+  FlashlightPrefab: {fileID: 6085495501509300380, guid: 179d937eaf1b4374da2d568c7912d9bd, type: 3}
+  LanternBugPrefab: {fileID: 3612874585030435300, guid: 97e15fb04224e814bb8507ed63d3f947, type: 3}
 --- !u!4 &1568891422513200767 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6260253266612411792, guid: 835da3705f34c7745ba0305ac0704c3d, type: 3}
