@@ -21,6 +21,15 @@ public class GameManager : MonoBehaviour
     }
 
 
+    [SerializeField] private Inventory inventory;
+
+
+    public Inventory GetInventory()
+    {
+        return inventory;
+    }
+
+
     /// ////////////////////////////////////////////////////////////////////////
     /// ///////////////////////////////////////////////////////////////////////
     /// //Singleton Pattern to ensure only 1 instance can exist at once
