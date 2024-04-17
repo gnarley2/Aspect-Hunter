@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public class LevelData
     {
         public int xpRequired; //This will be set in the Start method for each lvl.
-        // Add any additional data you want to associate with each level
+        // AddItem any additional data you want to associate with each level
     }
 
 
@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
                 currentLevel++;
                 Debug.Log("Player reached lvl " + currentLevel + "!");
 
-                // Add any additional level up logic here, such as increasing player stats, etc.
+                // AddItem any additional level up logic here, such as increasing player stats, etc.
             }
         }
     }

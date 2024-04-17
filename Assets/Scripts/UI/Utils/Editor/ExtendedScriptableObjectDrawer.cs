@@ -37,7 +37,7 @@ public class ExtendedScriptableObjectDrawer : PropertyDrawer {
 				}
 				while (prop.NextVisible(false));
 			}
-			// Add a tiny bit of height if open for the background
+			// AddItem a tiny bit of height if open for the background
 			totalHeight += EditorGUIUtility.standardVerticalSpacing;
 			serializedObject.Dispose();
 		}

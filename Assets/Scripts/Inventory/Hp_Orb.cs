@@ -46,7 +46,7 @@ public class Hp_Orb : MonoBehaviour
             yield return null;
         }
 
-        // Add Health to Player here!!
+        // AddItem Health to Player here!!
 
         Destroy(gameObject);
         isMovingTowardsPlayer = false;

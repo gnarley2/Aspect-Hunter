@@ -45,37 +45,37 @@ public class PlayerCombat : MonoBehaviour
     
     void Update()
     {
-        GameObject menuObject = GameObject.Find("UIManager");
-        menuScript = menuObject.GetComponent<Menus>();
-        if (menuScript.isPaused == false)
+        // GameObject menuObject = GameObject.Find("UIManager");
+        // menuScript = menuObject.GetComponent<Menus>();
+        // if (menuScript.isPaused == false)
+        // {
+        //     CalculateDirection();
+        // }
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            CalculateDirection();
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-            {
 
-                ProjectileAttack(direction);
-            }
+            ProjectileAttack(direction);
+        }
 
-            if (Input.GetMouseButtonDown(1))
-            {
-                MeleeAttack(direction);
-            }
+        if (Input.GetMouseButtonDown(1))
+        {
+            MeleeAttack(direction);
+        }
 
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                CatchMonster(direction);
-            }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            CatchMonster(direction);
+        }
 
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                ReleaseMonster(direction);
-            }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ReleaseMonster(direction);
         }
     }
 
     void CalculateDirection()
     {
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = (mousePosition - transform.position).normalized;
     }
 
