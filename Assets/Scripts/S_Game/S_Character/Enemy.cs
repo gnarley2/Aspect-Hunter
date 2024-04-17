@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         core = GetComponentInChildren<Core>();
+        data = data.Clone();
     }
 
     void Start() 
@@ -24,14 +25,16 @@ public class Enemy : MonoBehaviour
         health = core.GetCoreComponent<Health>();
         SetupComponent();
 
-        health.OnTakeDamage += PlayHitClip;
+        health.OnTakeDamage += OnTakeDamage;
+        health.OnUpdateHealth += data.UpdateCurrentHealth;
         health.OnDie += Die;
     }
 
     void SetupComponent()
     {
         combat.SetUpCombatComponent(IDamageable.DamagerTarget.Enemy, data.KnockbackType);
-        health.SetHealth(data.healthData); 
+        health.SetHealth(data.healthData);
+        data.currentHealth = data.healthData.maxHealth;
     }
 
     private void Die()
@@ -39,12 +42,35 @@ public class Enemy : MonoBehaviour
         PlayHitClip();
         
         // todo spawn loot
+        Destroy();
+    }
+
+    public void Destroy()
+    {
         transform.parent.gameObject.SetActive(false);
     }
 
+    #region MonsterData
+
+    public EnemyData GetData()
+    {
+        return data;
+    }
+
+    #endregion
+
+    #region Events
+
+    private void OnTakeDamage(bool obj = false)
+    {
+        PlayHitClip();
+    }
+
+    #endregion
+
     #region Play Sound
     
-    private void PlayHitClip(bool obj = false)
+    private void PlayHitClip()
     {
         // todo playsound
     }

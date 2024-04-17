@@ -7,6 +7,7 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
     public Dictionary<Item, int> Items = new Dictionary<Item, int>();
+    public List<EnemyData> Monsters = new List<EnemyData>();
     public GameObject player;
     public GameObject itemPrefab;
     public Image[] itemIcons;
@@ -21,7 +22,7 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-       Transform itemsParent = GameObject.Find("itemsParent").transform;
+        Transform itemsParent = GameObject.Find("itemsParent").transform;
         itemIcons = new Image[itemsParent.childCount];
         for (int i = 0; i < itemsParent.childCount; i++)
         {
@@ -29,7 +30,9 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void Add(Item item)
+    #region Item
+    
+    public void AddItem(Item item)
     {
         if (Items.ContainsKey(item))
         {
@@ -81,7 +84,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void Remove(Item item)
+    public void RemoveItem(Item item)
     {
         if (Items.ContainsKey(item))
         {
@@ -100,7 +103,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public bool Find()
+    public bool FindItem()
     {
         foreach (var item in Items)
         {
@@ -113,4 +116,22 @@ public class InventoryManager : MonoBehaviour
 
         return false;
     }
+
+    #endregion
+
+    #region Monster
+
+    public void AddMonster(EnemyData data)
+    {
+        Monsters.Add(data);
+    }
+
+    public void RemoveMonster(int index)
+    {
+        Monsters.RemoveAt(index);
+    }
+    
+    
+
+    #endregion
 }

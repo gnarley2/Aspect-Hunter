@@ -33,7 +33,6 @@ public class EnemyHealthUI : MonoBehaviour
     private void UpdateHealthUI(int obj)
     {
         slider.value = health.GetPercent();
-        Debug.Log(slider.value);
         fillImg.color = Color.Lerp(noColor, fullColor, slider.value);
     }
 }
