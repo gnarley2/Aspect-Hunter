@@ -41,7 +41,7 @@ public class ItemPickup : MonoBehaviour
             yield return null;
         }
 
-        InventoryManager.Instance.Add(Item); // Add the item to the inventory
+        InventoryManager.Instance.AddItem(Item); // Add the item to the inventory
         Destroy(gameObject);
 
         isMovingTowardsPlayer = false;
