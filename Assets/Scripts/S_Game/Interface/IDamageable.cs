@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public interface IDamageable
@@ -17,8 +18,10 @@ public interface IDamageable
         strong,
         player
     }
-    
+
+    public Health GetHealth();
     public DamagerTarget GetDamagerType();
     public KnockbackType GetKnockbackType();
+    public Vector2 GetPosition();
     public void TakeDamage(int damage, DamagerTarget damagerType, Vector2 attackDirection);
 }

@@ -85,7 +85,16 @@ public class Combat : CoreComponent, IDamageable
     {
         return knockbackType;
     }
-    
+
+    public Vector2 GetPosition()
+    {
+        return transform.position;
+    }
+
+    public Health GetHealth()
+    {
+        return health;
+    }
 
     #region Collider
 

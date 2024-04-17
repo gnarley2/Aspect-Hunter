@@ -1,38 +1,38 @@
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.VFX;
 
-public class ShootNode : ActionNode
+public class ShootEnemyNode : ActionNode
 {
     public ProjectileMovement prefab;
     public Vector2 offset;
     
     public override void CopyNode(Node copyNode)
     {
-        ShootNode node = copyNode as ShootNode;
+        ShootEnemyNode node = copyNode as ShootEnemyNode;
+        
 
         if (node)
         {
             prefab = node.prefab;
         }
     }
-
+    
     public override void OnInitialize(BehaviourTreeComponent component)
     {
         base.OnInitialize(component);
     }
-
+    
     protected override void OnStart()
     {
         base.OnStart();
-
         
         Shoot();
     }
-
+    
     void Shoot()
     {
-        Vector2 direction = (treeComponent.player.transform.position - treeComponent.transform.position).normalized;
+        if (PlayerCombat.Target == null) return;
+        
+        Vector2 direction = (PlayerCombat.Target.GetPosition() - (Vector2)treeComponent.transform.position).normalized;
              
         GameObject projectile = Instantiate(prefab.gameObject, treeComponent.transform.position + (Vector3)offset, Quaternion.identity);
         projectile.transform.up = direction;
@@ -52,10 +52,6 @@ public class ShootNode : ActionNode
     {
         return NodeComponent.State.SUCCESS;
     }
+    
 
-    public override void DrawGizmos(GameObject selectedGameObject)
-    {
-        base.DrawGizmos(selectedGameObject);
-        GizmosDrawer.DrawSphere(selectedGameObject.transform.position + (Vector3)offset, 0.5f);
-    }
 }
