@@ -33,12 +33,12 @@ public class Door : MonoBehaviour
         _animator.Play("Base Layer.DoorCloseAnimClip");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            _hasKey = InventoryManager.Instance.FindItem();
-            Debug.Log(_hasKey.ToString());
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Player"))
+    //    {
+    //        _hasKey = InventoryManager.Instance.FindItem();
+    //        Debug.Log(_hasKey.ToString());
+    //    }
+    //}
 }

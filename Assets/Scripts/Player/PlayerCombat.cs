@@ -118,9 +118,9 @@ public class PlayerCombat : MonoBehaviour
          
         BallMovement ballMovement = ball.GetComponent<BallMovement>();
         
-        if (InventoryManager.Instance.HasMonster(0))
-            // Pass the direction to the ProjectileMovement script
-            ballMovement.Initialize(throwPosition, 0);
+        //if (InventoryManager.Instance.HasMonster(0))
+        //    // Pass the direction to the ProjectileMovement script
+        //    ballMovement.Initialize(throwPosition, 0);
     }
 }
 

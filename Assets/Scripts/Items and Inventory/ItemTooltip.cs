@@ -4,26 +4,26 @@ using UnityEngine.UI;
 
 public class ItemTooltip : MonoBehaviour
 {
-	[SerializeField] Text ItemNameText;
-	[SerializeField] Text ItemSlotText;
-	[SerializeField] Text ItemStatsText;
+    [SerializeField] Text ItemNameText;
+    [SerializeField] Text ItemSlotText;
+    [SerializeField] Text ItemStatsText;
 
-	private StringBuilder sb = new StringBuilder();
+    private StringBuilder sb = new StringBuilder();
 
-	public void ShowTooltip(EquippableItem item)
-	{
-		ItemNameText.text = item.itemName;
-		ItemSlotText.text = item.EquipmentType.ToString();
+    public void ShowTooltip(EquippableItem item)
+    {
+        ItemNameText.text = item.ItemName;
+        ItemSlotText.text = item.EquipmentType.ToString();
 
-		sb.Length = 0;
-		
-		ItemStatsText.text = sb.ToString();
+        sb.Length = 0;
 
-		gameObject.SetActive(true);
-	}
+        ItemStatsText.text = sb.ToString();
 
-	public void HideTooltip()
-	{
-		gameObject.SetActive(false);
-	}
+        gameObject.SetActive(true);
+    }
+
+    public void HideTooltip()
+    {
+        gameObject.SetActive(false);
+    }
 }

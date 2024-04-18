@@ -67,7 +67,7 @@ public class Monster : MonoBehaviour
 
         public void UnRelease()
         {
-            InventoryManager.Instance.UnReleaseMonster(this, monsterIndex);
+            //InventoryManager.Instance.UnReleaseMonster(this, monsterIndex);
         }
 
     #endregion
