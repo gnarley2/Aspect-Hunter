@@ -1297,6 +1297,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1568891421582735538, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
   m_PrefabInstance: {fileID: 1522489383}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &775318777 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1568891421582735533, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
+  m_PrefabInstance: {fileID: 1522489383}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f6f37721e9f944fae647e2177cc096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &847717630
 GameObject:
   m_ObjectHideFlags: 0
@@ -4316,6 +4327,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
+      propertyPath: ballPrefab
+      value: 
+      objectReference: {fileID: 6453512598273269386, guid: 91bd3bf1f52a8ad44b33866081a91521, type: 3}
     - target: {fileID: 1568891421582735537, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -4369,8 +4384,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1568891421582735539, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
+      propertyPath: m_Size.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568891421582735539, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 1568891421582735539, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: m_Offset.y
@@ -4441,8 +4460,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1818020522}
   - component: {fileID: 1818020521}
+  - component: {fileID: 1818020525}
   - component: {fileID: 1818020523}
   - component: {fileID: 1818020524}
+  - component: {fileID: 1818020526}
+  - component: {fileID: 1818020527}
   m_Layer: 0
   m_Name: BossKrabster
   m_TagString: Untagged
@@ -4545,3 +4567,65 @@ MonoBehaviour:
   bubblesAmount: 10
   startAngle: 90
   endAngle: 270
+--- !u!70 &1818020525
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818020520}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 6, y: 4}
+  m_Direction: 1
+--- !u!114 &1818020526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818020520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f6f37721e9f944fae647e2177cc096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+--- !u!114 &1818020527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818020520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76be46f1e3d40e54b9ab12813fdb4da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 775318777}
+  damage: 20

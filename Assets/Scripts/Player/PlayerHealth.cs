@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private float health = 0f;
+    public float health = 0f;
 
     [SerializeField] private float maxHealth = 100f;
 
@@ -16,10 +16,10 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    //void Update()
+    //{
         
-    }
+    //}
 
     public void UpdateHealth(float mod)
     {
@@ -31,7 +31,16 @@ public class PlayerHealth : MonoBehaviour
         }else if (health <= 0f)
         {
             health = 0f;
-            Debug.Log("Player Died");
+            Debug.Log("UpdateHealth: Player Died");
+        }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+        if(health <= 0f) 
+        {
+            Debug.Log("TakeDamage: Player Died");
         }
     }
 }

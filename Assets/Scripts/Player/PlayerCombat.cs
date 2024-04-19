@@ -25,31 +25,31 @@ public class PlayerCombat : MonoBehaviour
 
     [Header("Ball")] [SerializeField] private GameObject ballPrefab;
     
-    public Menus menuScript; // Reference to the Menu script
+    /*public Menus menuScript;*/ // Reference to the Menu script
     
     void Update()
     {
-        GameObject menuObject = GameObject.Find("UIManager");
-        menuScript = menuObject.GetComponent<Menus>();
-        if (menuScript.isPaused == false)
-        {
-            CalculateDirection();
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-            {
+        //GameObject menuObject = GameObject.Find("UIManager");
+        //menuScript = menuObject.GetComponent<Menus>();
+        //if (menuScript.isPaused == false)
+        //{
+        //    CalculateDirection();
+        //    if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        //    {
 
-                ProjectileAttack(direction);
-            }
+        //        ProjectileAttack(direction);
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(1))
-            {
-                MeleeAttack(direction);
-            }
+        //    if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(1))
+        //    {
+        //        MeleeAttack(direction);
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                CatchMonster(direction);
-            }
-        }
+        //    if (Input.GetKeyDown(KeyCode.Q))
+        //    {
+        //        CatchMonster(direction);
+        //    }
+        //}
     }
 
     void CalculateDirection()
