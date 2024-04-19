@@ -41,7 +41,7 @@ public class PlayerCombat : MonoBehaviour
 
     [Header("Ball")] [SerializeField] private GameObject ballPrefab;
     
-    public Menus menuScript; // Reference to the Menu script
+    public Menus menuScript;
 
     public enum ProjectileType
     {
@@ -58,11 +58,7 @@ public class PlayerCombat : MonoBehaviour
 
     void Update()
     {
-        // GameObject menuObject = GameObject.Find("UIManager");
-        // menuScript = menuObject.GetComponent<Menus>();
-        // if (menuScript.isPaused == false)
-        // {
-        // }
+        if (menuScript && menuScript.isPaused == false) return;
         
         CalculateDirection();
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
