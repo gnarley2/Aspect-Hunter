@@ -52,7 +52,7 @@ public class PlayerCombat : MonoBehaviour
         Water,
 
     }
-    [SerializeField] private ProjectileType currentProjectileType;
+    [SerializeField] private ProjectileType currentProjectileType = ProjectileType.Fire;
     [SerializeField] private GameObject[] projectilePrefabs;
 
     void Update()
