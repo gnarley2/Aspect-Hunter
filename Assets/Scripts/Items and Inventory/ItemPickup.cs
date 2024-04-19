@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,9 @@ public class ItemPickup : MonoBehaviour
 
     private bool isInRange;
 
-    private void OnValidate()
+    private void Start()
     {
-        if (inventory == null)
-            inventory = FindObjectOfType<Inventory>();
+        inventory = Inventory.Instance;
     }
 
     private void Update()

@@ -41,7 +41,7 @@ MonoBehaviour:
     started: 0
     guid: cc9b80aa7d6680548a540c4526ded8d4
     Tree: {fileID: 11400000}
-    position: {x: -500.79984, y: 714.4}
+    position: {x: -720.8, y: 725.6001}
     Name: 
     description: 
   linkNode: {fileID: 0}
@@ -70,7 +70,7 @@ MonoBehaviour:
     Name: 
     description: 
   linkNode: {fileID: 0}
-  idleTime: 2
+  idleTime: 1
 --- !u!114 &-4490418288817932176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,11 +132,11 @@ MonoBehaviour:
     started: 0
     guid: af090cc3cb668914083f08051a4f47a4
     Tree: {fileID: 11400000}
-    position: {x: -500.09494, y: 487.20004}
+    position: {x: -720.4225, y: 589.39014}
     Name: 
     description: 
   child: {fileID: -8554894942179524726}
---- !u!114 &-2275105031888847308
+--- !u!114 &-1573274582560339618
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,20 +145,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ee0e450ff6a53d41b313d8e9473446b, type: 3}
-  m_Name: MoveToPositionNode
+  m_Script: {fileID: 11500000, guid: 1b37d2089808bf849a14cf42744ee209, type: 3}
+  m_Name: MoveRandomNode
   m_EditorClassIdentifier: 
   NodeComponent:
     state: 0
     started: 0
-    guid: ee4b892209a9bc641a31c58141ea4138
+    guid: 31f3cfb41cd57b145a4b60aada115c80
     Tree: {fileID: 11400000}
-    position: {x: -294.39856, y: 714.5488}
+    position: {x: -309.6, y: 714.4}
     Name: 
     description: 
   linkNode: {fileID: 0}
-  type: 0
-  movePos: {x: -5, y: 0}
+  type: 1
+  height: 0
+  width: 0
+  radius: 5
   speed: 3
 --- !u!114 &-1464476549122134218
 MonoBehaviour:
@@ -182,9 +184,9 @@ MonoBehaviour:
     description: 
   linkNode: {fileID: 0}
   type: 1
-  speed: 6
+  speed: 5
   minDis: 0.5
-  maxDis: 10
+  maxDis: 6
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,9 +206,6 @@ MonoBehaviour:
   - {fileID: 5199882927292344719}
   - {fileID: 4670155928922819180}
   - {fileID: 3762964257190147803}
-  - {fileID: -2275105031888847308}
-  - {fileID: 6815537652337133885}
-  - {fileID: 2411132256247654224}
   - {fileID: -8554894942179524726}
   - {fileID: 8154934541963762425}
   - {fileID: -2983144089320198067}
@@ -214,9 +213,12 @@ MonoBehaviour:
   - {fileID: -8688324086256755511}
   - {fileID: -4490418288817932176}
   - {fileID: -6429485835466029539}
+  - {fileID: -1573274582560339618}
+  - {fileID: 2000107601557866700}
+  - {fileID: 6856982119510146370}
   groups: []
   offset: {x: 300, y: 0}
---- !u!114 &2411132256247654224
+--- !u!114 &2000107601557866700
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,21 +227,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ee0e450ff6a53d41b313d8e9473446b, type: 3}
-  m_Name: MoveToPositionNode
+  m_Script: {fileID: 11500000, guid: a8385646add66fa479e1002a73e2715d, type: 3}
+  m_Name: CheckGroundNode
   m_EditorClassIdentifier: 
   NodeComponent:
     state: 0
     started: 0
-    guid: 7c11eef5980a84447933064c33cef642
+    guid: f1f50a364112f4f4c84741963dbff0bd
     Tree: {fileID: 11400000}
-    position: {x: 89.60145, y: 714.5488}
+    position: {x: -528.93, y: 588.8}
     Name: 
     description: 
   linkNode: {fileID: 0}
-  type: 0
-  movePos: {x: 5, y: 0}
-  speed: 3
+  checkGroundList:
+  - layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    size: {x: 3, y: 3}
+    relativeStartPos: {x: 0, y: 1.12}
+    gizmosColor: {r: 1, g: 0, b: 0, a: 1}
+    shouldBe: 0
 --- !u!114 &3762964257190147803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,10 +290,8 @@ MonoBehaviour:
     Name: 
     description: 
   children:
-  - {fileID: -2275105031888847308}
+  - {fileID: -1573274582560339618}
   - {fileID: 3762964257190147803}
-  - {fileID: 2411132256247654224}
-  - {fileID: 6815537652337133885}
 --- !u!114 &5199882927292344719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +313,7 @@ MonoBehaviour:
     Name: 
     description: 
   child: {fileID: -8688324086256755511}
---- !u!114 &6815537652337133885
+--- !u!114 &6856982119510146370
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -317,19 +322,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 739273a058b8f854d826d1955c199fda, type: 3}
-  m_Name: IdleNode
+  m_Script: {fileID: 11500000, guid: bc86f223502300145b3416ae79aa5852, type: 3}
+  m_Name: ParallelNode
   m_EditorClassIdentifier: 
   NodeComponent:
     state: 0
     started: 0
-    guid: a0231a0921937fa4fb9bc9caff80415c
+    guid: 7b54a443d7d3f2f4f92e2133b4236212
     Tree: {fileID: 11400000}
-    position: {x: 267.20148, y: 714.5488}
+    position: {x: -557.5698, y: 454.46118}
     Name: 
     description: 
-  linkNode: {fileID: 0}
-  idleTime: 3
+  children:
+  - {fileID: -2983144089320198067}
+  - {fileID: 2000107601557866700}
+  successType: 1
 --- !u!114 &8154934541963762425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +358,6 @@ MonoBehaviour:
     Name: 
     description: Move Sequence
   children:
-  - {fileID: -2983144089320198067}
+  - {fileID: 6856982119510146370}
   - {fileID: 4670155928922819180}
   currentIndex: -1

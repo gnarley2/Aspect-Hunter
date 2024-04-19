@@ -63,6 +63,8 @@ public class PlayerCombat : MonoBehaviour
         // if (menuScript.isPaused == false)
         // {
         // }
+        
+        CalculateDirection();
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             ProjectileAttack(direction);
@@ -99,7 +101,6 @@ public class PlayerCombat : MonoBehaviour
 
     void ProjectileAttack(Vector3 attackDirection)
     {
-        CalculateDirection();
         GameObject projectilePrefab = projectilePrefabs[(int)currentProjectileType];
         
         // Perform additional actions based on the projectile type

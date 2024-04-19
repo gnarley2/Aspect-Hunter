@@ -98,16 +98,16 @@ public class BallMovement : MonoBehaviour
 
     void CatchMonster(Monster monster)
     {
-        //InventoryManager.Instance.AddMonster(monster.GetData());
+        MonsterInventory.Instance.AddMonster(monster.GetData());
     }
     
     void UnReleaseMonster(Monster monster)
     {
-        //InventoryManager.Instance.UnReleaseMonster(monster, monster.monsterIndex);
+        MonsterInventory.Instance.UnReleaseMonster(monster, monster.monsterIndex);
     }
 
     void ReleaseMonster()
     {
-        //InventoryManager.Instance.ReleaseMonster(holdingMonsterIndex);
+        MonsterInventory.Instance.ReleaseMonster(holdingMonsterIndex);
     }
 }

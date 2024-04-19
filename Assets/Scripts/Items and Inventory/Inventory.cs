@@ -5,6 +5,13 @@ using UnityEngine.Serialization;
 
 public class Inventory : MonoBehaviour
 {
+    public static Inventory Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     [SerializeField] List<Item> startingItems;
     [SerializeField] Transform itemsParent;
     [SerializeField] ItemSlot[] itemSlots;
