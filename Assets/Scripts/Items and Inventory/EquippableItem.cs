@@ -9,21 +9,8 @@ public enum EquipmentType
     Flare,
 
     Key,
-    FireKey,
-    FrostKey,
-    PoisonKey,
-    WaterKey,
-    ShockKey,
-    WindKey,
-    SpiritKey,
 
-    FireAspect,
-    FrostAspect,
-    PoisonAspect,
-    WaterAspect,
-    ShockAspect,
-    WindAspect,
-    SpiritAspect,
+    Aspect,
 
 }
 
