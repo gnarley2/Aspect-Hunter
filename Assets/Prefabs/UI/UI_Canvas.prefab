@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8813789253966538182}
   - component: {fileID: 8813789253966538181}
   m_Layer: 5
-  m_Name: Aspect Slot
+  m_Name: FlashLight Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 8813789254243433833}
   - component: {fileID: 8813789254243433832}
   m_Layer: 5
-  m_Name: FireAspect Slot
+  m_Name: LanternBug Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2284,6 +2284,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8813789254248836708}
     m_Modifications:
+    - target: {fileID: 3816433578661521672, guid: 29e290e7a9b33654086841ea11fb96f9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 932c86e34bf66f24f896a3e6bf7bf3f3, type: 3}
+    - target: {fileID: 3816433578661521672, guid: 29e290e7a9b33654086841ea11fb96f9, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816433579340713455, guid: 29e290e7a9b33654086841ea11fb96f9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b7f6cd9125b53e54a8833749d54e245a, type: 3}
+    - target: {fileID: 3816433579340713455, guid: 29e290e7a9b33654086841ea11fb96f9, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816433579502049730, guid: 29e290e7a9b33654086841ea11fb96f9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b7f6cd9125b53e54a8833749d54e245a, type: 3}
+    - target: {fileID: 3816433579502049730, guid: 29e290e7a9b33654086841ea11fb96f9, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3816433579581527170, guid: 29e290e7a9b33654086841ea11fb96f9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2371,6 +2395,22 @@ PrefabInstance:
     - target: {fileID: 3816433579581527933, guid: 29e290e7a9b33654086841ea11fb96f9, type: 3}
       propertyPath: m_Name
       value: Inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816433579680932789, guid: 29e290e7a9b33654086841ea11fb96f9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 932c86e34bf66f24f896a3e6bf7bf3f3, type: 3}
+    - target: {fileID: 3816433579680932789, guid: 29e290e7a9b33654086841ea11fb96f9, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816433580454590881, guid: 29e290e7a9b33654086841ea11fb96f9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b7f6cd9125b53e54a8833749d54e245a, type: 3}
+    - target: {fileID: 3816433580454590881, guid: 29e290e7a9b33654086841ea11fb96f9, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

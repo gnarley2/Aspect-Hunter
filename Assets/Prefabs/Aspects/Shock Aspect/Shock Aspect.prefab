@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 3930603073773947569}
   - component: {fileID: 1918772374031020255}
   - component: {fileID: 783138960554199060}
-  - component: {fileID: 6731970775069943290}
-  - component: {fileID: 7375111862499858270}
+  - component: {fileID: 52570239403773428}
   m_Layer: 0
   m_Name: Shock Aspect
   m_TagString: Untagged
@@ -34,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3930603073773947569
 SpriteRenderer:
@@ -153,7 +152,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &6731970775069943290
+--- !u!114 &52570239403773428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,21 +161,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 933903221456392100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17e8d7256ba32774ab694eedcc57637e, type: 3}
+  m_Script: {fileID: 11500000, guid: 75def596ecae2724096abecdabf5945e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aspect: {fileID: 11400000, guid: 7b885b84e28bd944a84bf048e713810b, type: 2}
---- !u!114 &7375111862499858270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 933903221456392100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd80396b09bf5ec48ada7e229e4456f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Aspect: {fileID: 11400000, guid: 7b885b84e28bd944a84bf048e713810b, type: 2}
-  Collider: {fileID: 1918772374031020255}
+  item: {fileID: 11400000, guid: f6b3591fed1abcf42976bfb0260b4802, type: 2}
+  inventory: {fileID: 3816433579581527169, guid: 29e290e7a9b33654086841ea11fb96f9, type: 3}
