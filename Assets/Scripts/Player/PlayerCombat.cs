@@ -28,7 +28,8 @@ public class PlayerCombat : MonoBehaviour
 
     private Vector3 mousePosition;
     private Vector3 direction;
-    
+    private Vector3 attackDirection;
+
     [Header("Range")]
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private int rangeDamage = 10;
@@ -41,7 +42,19 @@ public class PlayerCombat : MonoBehaviour
     [Header("Ball")] [SerializeField] private GameObject ballPrefab;
     
     public Menus menuScript; // Reference to the Menu script
-    
+
+    public enum ProjectileType
+    {
+        Fire,
+        Frost,
+        Shock,
+        Poison,
+        Water,
+
+    }
+    [SerializeField] private ProjectileType currentProjectileType;
+    [SerializeField] private GameObject[] projectilePrefabs;
+
     void Update()
     {
         // GameObject menuObject = GameObject.Find("UIManager");
@@ -74,19 +87,66 @@ public class PlayerCombat : MonoBehaviour
 
     void CalculateDirection()
     {
-        // mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        direction = (mousePosition - transform.position).normalized;
+        // Get the mouse position in world coordinates
+        Vector3 mouseWorldPosition = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
+        // Calculate the direction from the player to the mouse position
+        direction = (mouseWorldPosition - transform.position).normalized;
     }
 
-    void ProjectileAttack(Vector2 attackDirection)
+    void ProjectileAttack(Vector3 attackDirection)
     {
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        projectile.transform.up = attackDirection;
-         
-        ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();       
+        GameObject projectilePrefab = projectilePrefabs[(int)currentProjectileType];
+
         
-        // Pass the direction to the ProjectileMovement script
-        projectileMovement.Initialize(attackDirection, IDamageable.DamagerTarget.Player, rangeDamage, speed);
+        // Perform additional actions based on the projectile type
+        switch (currentProjectileType)
+        {
+            case ProjectileType.Fire:
+
+                GameObject fireprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Fire_Projectile fireMovement = fireprojectile.GetComponent<Fire_Projectile>();
+                fireMovement.Initialize(attackDirection, rangeDamage);
+                fireprojectile.transform.up = attackDirection;
+                break;
+
+            case ProjectileType.Frost:
+
+                GameObject frostprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Frost_Wall frostWall = frostprojectile.GetComponent<Frost_Wall>();
+                frostWall.Initialize(attackDirection, rangeDamage);
+                frostprojectile.transform.up = attackDirection;
+                break;
+
+
+            case ProjectileType.Poison:
+
+                GameObject poisonprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Poison_Projectile poisonMovement = poisonprojectile.GetComponent<Poison_Projectile>();
+                poisonMovement.Initialize(attackDirection, rangeDamage);
+                poisonprojectile.transform.up = attackDirection;
+
+
+                break;
+            case ProjectileType.Shock:
+
+                GameObject shockprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Shock_Hit shockHit = shockprojectile.GetComponent<Shock_Hit>();
+                shockHit.Initialize(attackDirection, rangeDamage);
+                shockprojectile.transform.up = attackDirection;
+
+
+                break;
+            case ProjectileType.Water:
+
+                GameObject waterprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Water_Splash waterSplash = waterprojectile.GetComponent<Water_Splash>();
+                waterSplash.Initialize(attackDirection, rangeDamage);
+                waterprojectile.transform.up = attackDirection;
+
+
+                break;
+        }
+
     }
 
     void MeleeAttack(Vector2 attackDirection)

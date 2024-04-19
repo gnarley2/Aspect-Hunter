@@ -18,13 +18,16 @@ public class Fire_Projectile : MonoBehaviour
 
     void Update()
     {
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
         // Move the projectile in the specified direction
         transform.Translate(direction * (speed * Time.deltaTime), Space.World);
 
         if (Vector3.Distance(initialPosition, transform.position) >= maxDistance)
         {
-           // Instantiate(hitAnimation, transform.position, Quaternion.identity);
-            Destroy(gameObject); // Destroy the projectile
+       
+           Destroy(gameObject); // Destroy the projectile
         }
     }
 
@@ -38,13 +41,13 @@ public class Fire_Projectile : MonoBehaviour
     public void SetDirection(Vector3 newDirection)
     {
         direction = newDirection.normalized;
-        // Optionally, rotate the projectile to face the direction
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Collided with: " + other.gameObject.name);
         if (other.TryGetComponent<IDamageable>(out IDamageable target))
         {
             target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
@@ -55,10 +58,11 @@ public class Fire_Projectile : MonoBehaviour
             Instantiate(hitAnimation, transform.position, Quaternion.identity);
         }
 
-        if (other.name != "Player" && other.tag != "Light"&& other.tag!="Item"&&other.tag!="Aspect")
+        if (other.gameObject.name != "Combat" && other.name != "Player" && other.tag != "Light"&& other.tag!="Item"&& other.tag!="Aspect")
         {
             Instantiate(hitAnimation, transform.position, Quaternion.identity);
-            StartCoroutine(DestroyWithDelay());
+            Destroy(gameObject);
+            //   StartCoroutine(DestroyWithDelay());
         }
     }
 

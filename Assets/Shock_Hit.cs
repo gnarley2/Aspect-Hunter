@@ -16,7 +16,7 @@ public class Shock_Hit : MonoBehaviour
     }
     public void Initialize(Vector3 newDirection, int damage)
     {
-       // SetDirection(newDirection);
+       //SetDirection(newDirection);
         this.damage = damage;
     }
 
