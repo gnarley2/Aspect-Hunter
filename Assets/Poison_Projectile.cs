@@ -21,17 +21,18 @@ public class Poison_Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
         // Move the projectile in the specified direction
         transform.Translate(direction * (speed * Time.deltaTime), Space.World);
-        transform.rotation = Quaternion.identity;
-   
+
+        // Check if the projectile has reached the maximum distance
         if (Vector3.Distance(initialPosition, transform.position) >= maxDistance)
         {
-            Vector3 aoePosition = transform.position;
-            aoePosition.z = 0; // Ensure the z-position is set to 0
-            aoePosition.y += 0.5f;
-            Instantiate(poisonAoe, aoePosition, Quaternion.identity);
-            Destroy(gameObject);
+            // Instantiate the poison AOE effect
+            Instantiate(poisonAoe, transform.position, Quaternion.identity);
+            Destroy(gameObject); // Destroy the projectile
         }
     }
 
@@ -49,16 +50,14 @@ public class Poison_Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent<IDamageable>(out IDamageable target))
+        if (other.TryGetComponent<IDamageable>(out IDamageable target)&& other.tag=="Enemy")
         {
+            if (target.GetDamagerType() == IDamageable.DamagerTarget.Player) return;
+
             target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
             Instantiate(poisonAoe, transform.position, Quaternion.identity);
             Destroy(gameObject); // Destroy the projectile
         }
-        if (other.name != "Player" && other.tag != "Light" && other.tag != "Item" && other.tag != "Aspect" && other.tag != "Projectile")
-        {
-            Instantiate(poisonAoe, transform.position, Quaternion.identity);
-            Destroy(gameObject); // Destroy the projectile
-        }
+
     }
 }

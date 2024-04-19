@@ -106,11 +106,16 @@ public class PlayerCombat : MonoBehaviour
         switch (currentProjectileType)
         {
             case ProjectileType.Fire:
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mousePos.z = 0; // Make sure the z-coordinate is 0
 
+                // Calculate direction from current position to the mouse position
+                Vector3 direction = (mousePos - transform.position).normalized;
+
+                // Instantiate the projectile at the correct position and set its direction
                 GameObject fireprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Fire_Projectile fireMovement = fireprojectile.GetComponent<Fire_Projectile>();
-                fireMovement.Initialize(attackDirection, rangeDamage);
-                fireprojectile.transform.up = attackDirection;
+                fireMovement.Initialize(direction, rangeDamage);
                 break;
 
             case ProjectileType.Frost:
@@ -124,13 +129,23 @@ public class PlayerCombat : MonoBehaviour
 
             case ProjectileType.Poison:
 
+                // Get the mouse position in world coordinates
+                Vector3 mousePos1 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mousePos.z = 0; // Make sure the z-coordinate is 0
+
+                // Calculate direction from current position to the mouse position
+                Vector3 direction1 = (mousePos1 - transform.position).normalized;
+
+                // Instantiate the projectile at the correct position and set its direction
                 GameObject poisonprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Poison_Projectile poisonMovement = poisonprojectile.GetComponent<Poison_Projectile>();
-                poisonMovement.Initialize(attackDirection, rangeDamage);
-                poisonprojectile.transform.up = attackDirection;
-
+                poisonMovement.Initialize(direction1, rangeDamage);
 
                 break;
+
+                break;
+
+
             case ProjectileType.Shock:
 
                 GameObject shockprojectile = Instantiate(projectilePrefab, GetMouseWorldPosition(), Quaternion.identity);
