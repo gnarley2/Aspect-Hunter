@@ -36,8 +36,13 @@ public class EquippableItem : Item
         if (EquipmentType == EquipmentType.Lantern && LanternPrefab != null)
         {
             GameObject player = GameObject.FindWithTag("Player");
-  
-            Instantiate(LanternPrefab, player.transform.position, player.transform.rotation);
+            GameObject lanternInstance = Instantiate(LanternPrefab);
+            lantern lanternScript = lanternInstance.GetComponent<lantern>();
+
+            if (lanternScript != null)
+            {
+                lanternScript.isLanternEquipped = true; // Set the boolean variable to true
+            }
         }
         if (EquipmentType == EquipmentType.FlashLight && FlashLightPrefab != null)
         {
