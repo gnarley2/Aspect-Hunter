@@ -6,6 +6,9 @@ public class lantern : MonoBehaviour
 {
     private GameObject player;
     public bool isLanternEquipped = false;
+
+    public GameObject lanternprefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +19,9 @@ public class lantern : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isLanternEquipped)
-        {
+        
             transform.position = player.transform.position;
-        }
-    
+         //   Instantiate(lanternprefab, player.transform);
+
     }
 }
