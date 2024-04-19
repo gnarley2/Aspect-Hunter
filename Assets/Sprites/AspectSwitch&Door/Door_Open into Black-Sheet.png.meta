@@ -134,10 +134,10 @@ TextureImporter:
       name: Door_Open into Black-Sheet_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 0
-        width: 52
-        height: 192
+        x: 0
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +155,10 @@ TextureImporter:
       name: Door_Open into Black-Sheet_1
       rect:
         serializedVersion: 2
-        x: 70
-        y: 64
-        width: 52
-        height: 128
+        x: 64
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,10 +176,10 @@ TextureImporter:
       name: Door_Open into Black-Sheet_2
       rect:
         serializedVersion: 2
-        x: 134
-        y: 64
-        width: 52
-        height: 128
+        x: 128
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,6 +189,90 @@ TextureImporter:
       bones: []
       spriteID: a472dbb38142eb549bfb4c413ac2364c
       internalID: 1526287756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Open into Black-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adf22a2d149fd194eb47b14e42b1d72e
+      internalID: 1202425553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Open into Black-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65019f4116a26cd45bd6aa7b524feab5
+      internalID: -506619285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Open into Black-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d5839af038086346a8a97127f4fd523
+      internalID: -123339987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door_Open into Black-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ff19b9aa429f8b4eb898ad4839c9bd1
+      internalID: -1803846108
       vertices: []
       indices: 
       edges: []
@@ -207,6 +291,10 @@ TextureImporter:
       Door_Open into Black-Sheet_0: -1222725138
       Door_Open into Black-Sheet_1: -1754090319
       Door_Open into Black-Sheet_2: 1526287756
+      Door_Open into Black-Sheet_3: 1202425553
+      Door_Open into Black-Sheet_4: -506619285
+      Door_Open into Black-Sheet_5: -123339987
+      Door_Open into Black-Sheet_6: -1803846108
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -50,8 +50,9 @@ public class PlayerCombat : MonoBehaviour
         Shock,
         Poison,
         Water,
-
+        None,
     }
+    
     [SerializeField] private ProjectileType currentProjectileType = ProjectileType.Fire;
     [SerializeField] private GameObject[] projectilePrefabs;
 

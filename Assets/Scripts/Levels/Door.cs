@@ -2,43 +2,24 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    bool _hasKey = false;
-    Animator _animator;
+    [SerializeField] private Switch doorSwitch;
+    Animator anim;
 
 
-    void Start()
+    void Awake()
     {
-        _animator = GetComponent<Animator>();
-    }
-
-    void Update()
-    {
-        if (_hasKey)
-        {
-            OpenDoor();
-        }
-        else
-        {
-            CloseDoor();
-        }
+        anim = GetComponent<Animator>();
+        doorSwitch.OnActivate += OpenDoor;
     }
 
     void OpenDoor()
     {
-        _animator.Play("Base Layer.DoorOpenAnimClip");
+        anim.Play("Open");
     }
-
+    
     void CloseDoor()
     {
-        _animator.Play("Base Layer.DoorCloseAnimClip");
+        anim.Play("Close");
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Player"))
-    //    {
-    //        _hasKey = InventoryManager.Instance.FindItem();
-    //        Debug.Log(_hasKey.ToString());
-    //    }
-    //}
 }
