@@ -27,7 +27,11 @@ public class Poison_HIt : MonoBehaviour
     {
        
     }
-
+    public void Initialize(Vector3 newDirection, int damage)
+    {
+        // SetDirection(newDirection);
+        this.damage = damage;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.TryGetComponent<IDamageable>(out IDamageable target))
