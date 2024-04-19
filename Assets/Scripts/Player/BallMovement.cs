@@ -83,22 +83,35 @@ public class BallMovement : MonoBehaviour
 
     void ProcessMonster(Monster monster)
     {
+        
         if (monster.monsterIndex == -1)
         {
-            CatchMonster(monster);
+            if (CanCatchMonster(monster))
+            {
+                CatchMonster(monster);
+                monster.Destroy();
+            }
         }
         else
         {
             UnReleaseMonster(monster);
+            monster.Destroy();
         }
         
-        monster.Destroy();
         Destroy(gameObject);
     }
 
     void CatchMonster(Monster monster)
     {
+        
+        
         MonsterInventory.Instance.AddMonster(monster.GetData());
+    }
+
+    bool CanCatchMonster(Monster monster)
+    {
+        if (monster.GetHealthPercent() > 0.5) return false;
+        return true;
     }
     
     void UnReleaseMonster(Monster monster)

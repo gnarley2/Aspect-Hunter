@@ -95,6 +95,11 @@ public class Monster : MonoBehaviour
         return data;
     }
 
+    public float GetHealthPercent()
+    {
+        return health.GetPercent();
+    }
+
     #endregion
 
     #region Events

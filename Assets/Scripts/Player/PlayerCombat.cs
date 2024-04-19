@@ -58,7 +58,7 @@ public class PlayerCombat : MonoBehaviour
 
     void Update()
     {
-        if (menuScript && menuScript.isPaused == false) return;
+        if (menuScript && menuScript.isPaused == true) return;
         
         CalculateDirection();
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
