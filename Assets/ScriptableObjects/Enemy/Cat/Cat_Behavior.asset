@@ -41,7 +41,7 @@ MonoBehaviour:
     started: 0
     guid: cc9b80aa7d6680548a540c4526ded8d4
     Tree: {fileID: 11400000}
-    position: {x: -720.8, y: 725.6001}
+    position: {x: -418.26245, y: 641.99994}
     Name: 
     description: 
   linkNode: {fileID: 0}
@@ -70,7 +70,7 @@ MonoBehaviour:
     Name: 
     description: 
   linkNode: {fileID: 0}
-  idleTime: 1
+  idleTime: 0.3
 --- !u!114 &-4490418288817932176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
     started: 0
     guid: af090cc3cb668914083f08051a4f47a4
     Tree: {fileID: 11400000}
-    position: {x: -720.4225, y: 589.39014}
+    position: {x: -418.26245, y: 505.19995}
     Name: 
     description: 
   child: {fileID: -8554894942179524726}
@@ -153,7 +153,7 @@ MonoBehaviour:
     started: 0
     guid: 31f3cfb41cd57b145a4b60aada115c80
     Tree: {fileID: 11400000}
-    position: {x: -309.6, y: 714.4}
+    position: {x: -7.062439, y: 630.8}
     Name: 
     description: 
   linkNode: {fileID: 0}
@@ -161,7 +161,7 @@ MonoBehaviour:
   height: 0
   width: 0
   radius: 5
-  speed: 3
+  speed: 1.5
 --- !u!114 &-1464476549122134218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
     description: 
   linkNode: {fileID: 0}
   type: 1
-  speed: 5
+  speed: 2
   minDis: 0.5
   maxDis: 6
 --- !u!114 &11400000
@@ -235,7 +235,7 @@ MonoBehaviour:
     started: 0
     guid: f1f50a364112f4f4c84741963dbff0bd
     Tree: {fileID: 11400000}
-    position: {x: -528.93, y: 588.8}
+    position: {x: -226.26251, y: 505.19995}
     Name: 
     description: 
   linkNode: {fileID: 0}
@@ -264,7 +264,7 @@ MonoBehaviour:
     started: 0
     guid: 5ac89798139973c4080bc354b32cb71d
     Tree: {fileID: 11400000}
-    position: {x: -118.3985, y: 714.5488}
+    position: {x: 184.13748, y: 630.8}
     Name: 
     description: 
   linkNode: {fileID: 0}
@@ -286,7 +286,7 @@ MonoBehaviour:
     started: 0
     guid: 5039564e9a0648a47909dcb2688933d4
     Tree: {fileID: 11400000}
-    position: {x: -234.40002, y: 487.20007}
+    position: {x: 68.13753, y: 403.59995}
     Name: 
     description: 
   children:
@@ -330,7 +330,7 @@ MonoBehaviour:
     started: 0
     guid: 7b54a443d7d3f2f4f92e2133b4236212
     Tree: {fileID: 11400000}
-    position: {x: -557.5698, y: 454.46118}
+    position: {x: -255.06244, y: 370.8}
     Name: 
     description: 
   children:
@@ -354,7 +354,7 @@ MonoBehaviour:
     started: 0
     guid: ca745a02625d81a40809831258b3baf6
     Tree: {fileID: 11400000}
-    position: {x: -328, y: 351.19995}
+    position: {x: -25.462494, y: 267.6}
     Name: 
     description: Move Sequence
   children:
