@@ -3,6 +3,7 @@ using Kryz.CharacterStats;
 using UnityEditor;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 using Transform = UnityEngine.Transform;
+using static PlayerCombat;
 
 public enum EquipmentType
 {
@@ -24,7 +25,7 @@ public class EquippableItem : Item
     public GameObject LanternBugPrefab;
     public GameObject LanternPrefab;
     public GameObject FlashLightPrefab;
-
+    [SerializeField] private ProjectileType aspectProjectileType = ProjectileType.Fire; // Assuming ProjectileType is an enum
     public void Equip(InventoryManager c)
     {
         //add code for buffs
@@ -50,6 +51,35 @@ public class EquippableItem : Item
 
         }
 
+
+        if (EquipmentType == EquipmentType.Aspect)
+        {
+            GameObject player = GameObject.FindWithTag("Player");
+            PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
+
+
+            EquippableItem aspectItem = this;
+            if (aspectItem.ItemName == "FireAspect")
+            {
+                playerCombat.currentProjectileType = ProjectileType.Fire;
+            }
+            if (aspectItem.ItemName == "FrostAspect")
+            {
+                playerCombat.currentProjectileType = ProjectileType.Frost;
+            }
+            if (aspectItem.ItemName == "ShockAspect")
+            {
+                playerCombat.currentProjectileType = ProjectileType.Shock;
+            }
+            if (aspectItem.ItemName == "PoisonAspect")
+            {
+                playerCombat.currentProjectileType = ProjectileType.Poison;
+            }
+            if (aspectItem.ItemName == "WaterAspect")
+            {
+                playerCombat.currentProjectileType = ProjectileType.Water;
+            }
+        }
 
 
     }

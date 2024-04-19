@@ -53,7 +53,7 @@ public class PlayerCombat : MonoBehaviour
         None,
     }
     
-    [SerializeField] private ProjectileType currentProjectileType = ProjectileType.Fire;
+    [SerializeField] public ProjectileType currentProjectileType = ProjectileType.Fire;
     [SerializeField] private GameObject[] projectilePrefabs;
 
     void Update()
