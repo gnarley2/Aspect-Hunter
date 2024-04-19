@@ -415,6 +415,13 @@ MonoBehaviour:
   meleeDamage: 15
   ballPrefab: {fileID: 6453512598273269386, guid: 91bd3bf1f52a8ad44b33866081a91521, type: 3}
   menuScript: {fileID: 0}
+  currentProjectileType: 0
+  projectilePrefabs:
+  - {fileID: 7169754804731957956, guid: 40f2b6663e0e6464bab4d1b7de421456, type: 3}
+  - {fileID: 5794424354934137544, guid: a70e1d23bd18aab4684eb28538df18b1, type: 3}
+  - {fileID: 3218951822580487631, guid: 5b0b110dcbc176d4788758ddd4c4ff88, type: 3}
+  - {fileID: 3841690771864285407, guid: 28dc510e954d9fc49ac0f0063ad20123, type: 3}
+  - {fileID: 7054150178034771586, guid: 2fd9495d029f58745b12cfa39b5fe76b, type: 3}
 --- !u!114 &3377700105377507868
 MonoBehaviour:
   m_ObjectHideFlags: 0

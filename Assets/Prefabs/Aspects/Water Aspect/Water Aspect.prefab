@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 7320625308823996839}
   - component: {fileID: 2658781555929267009}
   - component: {fileID: 2707905662019527102}
-  - component: {fileID: 3891837637042895876}
-  - component: {fileID: 86588233835209347}
+  - component: {fileID: 834091539318610937}
   m_Layer: 0
   m_Name: Water Aspect
   m_TagString: Untagged
@@ -34,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7320625308823996839
 SpriteRenderer:
@@ -153,7 +152,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &3891837637042895876
+--- !u!114 &834091539318610937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,21 +161,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5352863882244063085}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17e8d7256ba32774ab694eedcc57637e, type: 3}
+  m_Script: {fileID: 11500000, guid: 75def596ecae2724096abecdabf5945e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aspect: {fileID: 11400000, guid: 9d334319e534b294caddefbd6dd4dd9f, type: 2}
---- !u!114 &86588233835209347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5352863882244063085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd80396b09bf5ec48ada7e229e4456f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Aspect: {fileID: 11400000, guid: 9d334319e534b294caddefbd6dd4dd9f, type: 2}
-  Collider: {fileID: 2658781555929267009}
+  item: {fileID: 11400000, guid: d49650d5ea1da914db929be9e6be29f3, type: 2}
+  inventory: {fileID: 3816433579581527169, guid: 29e290e7a9b33654086841ea11fb96f9, type: 3}
