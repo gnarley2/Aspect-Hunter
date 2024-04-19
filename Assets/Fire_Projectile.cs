@@ -47,7 +47,7 @@ public class Fire_Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collided with: " + other.gameObject.name);
+       // Debug.Log("Collided with: " + other.gameObject.name);
         if (other.TryGetComponent<IDamageable>(out IDamageable target))
         {
             target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
