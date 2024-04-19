@@ -63,10 +63,8 @@ public class PlayerCombat : MonoBehaviour
         // if (menuScript.isPaused == false)
         // {
         // }
-        CalculateDirection();
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-
             ProjectileAttack(direction);
         }
 
@@ -86,6 +84,11 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    Vector2 GetMouseWorldPosition()
+    {
+        return Camera.main.ScreenPointToRay(Input.mousePosition).origin;
+    }
+
     void CalculateDirection()
     {
         // Get the mouse position in world coordinates
@@ -96,8 +99,8 @@ public class PlayerCombat : MonoBehaviour
 
     void ProjectileAttack(Vector3 attackDirection)
     {
+        CalculateDirection();
         GameObject projectilePrefab = projectilePrefabs[(int)currentProjectileType];
-
         
         // Perform additional actions based on the projectile type
         switch (currentProjectileType)
@@ -130,10 +133,9 @@ public class PlayerCombat : MonoBehaviour
                 break;
             case ProjectileType.Shock:
 
-                GameObject shockprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                GameObject shockprojectile = Instantiate(projectilePrefab, GetMouseWorldPosition(), Quaternion.identity);
                 Shock_Hit shockHit = shockprojectile.GetComponent<Shock_Hit>();
                 shockHit.Initialize(attackDirection, rangeDamage);
-                shockprojectile.transform.up = attackDirection;
 
 
                 break;
