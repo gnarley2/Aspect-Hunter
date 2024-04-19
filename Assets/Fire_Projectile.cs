@@ -5,6 +5,7 @@ using UnityEngine;
 public class Fire_Projectile : MonoBehaviour
 {
     [SerializeField] private float speed = 25f; // Speed of the projectile
+    private PlayerCombat.ProjectileType projectileType = PlayerCombat.ProjectileType.Fire;
     private Vector3 direction;
     private Vector3 initialPosition;
     public float maxDistance = 10f;
@@ -50,7 +51,10 @@ public class Fire_Projectile : MonoBehaviour
        // Debug.Log("Collided with: " + other.gameObject.name);
         if (other.TryGetComponent<IDamageable>(out IDamageable target))
         {
-            target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
+            if (target.GetDamagerType() == IDamageable.DamagerTarget.Player) return;
+            
+            target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero, projectileType);
+            Destroy(gameObject);
         }
 
         if (other.tag == "Item"||other.tag=="Aspect")
