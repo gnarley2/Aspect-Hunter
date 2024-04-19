@@ -151,7 +151,7 @@ Transform:
   - {fileID: 3568590094508884093}
   - {fileID: 3599005591699988982}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &897352486396679949
 GameObject:
@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 5458943330099212419}
   m_Layer: 7
   m_Name: Core
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -582,6 +582,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 4df405294bcd0f04dbf3d714cca6809a, type: 2}
+  damagerTarget: 1
+  monsterIndex: -1
 --- !u!114 &2651406014273561686
 MonoBehaviour:
   m_ObjectHideFlags: 0

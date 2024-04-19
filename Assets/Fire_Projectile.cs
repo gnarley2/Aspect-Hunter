@@ -58,11 +58,11 @@ public class Fire_Projectile : MonoBehaviour
             Instantiate(hitAnimation, transform.position, Quaternion.identity);
         }
 
-        if (other.gameObject.name != "Combat" && other.name != "Player" && other.tag != "Light"&& other.tag!="Item"&& other.tag!="Aspect")
+        if (other.tag=="Enemy")
         {
             Instantiate(hitAnimation, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-            //   StartCoroutine(DestroyWithDelay());
+            //Destroy(gameObject);
+              StartCoroutine(DestroyWithDelay());
         }
     }
 
