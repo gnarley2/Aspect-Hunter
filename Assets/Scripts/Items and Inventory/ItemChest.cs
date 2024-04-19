@@ -1,22 +1,24 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
+
 public class ItemChest : MonoBehaviour
 {
     [SerializeField] Item item;
-    [SerializeField] Inventory inventory;
+    [FormerlySerializedAs("inventory")] [SerializeField] InventoryUI inventoryUI;
     [SerializeField] KeyCode itemPickupKeyCode = KeyCode.E;
     private bool isInRange;
     private bool isEmpty;
     private void OnValidate()
     {
-        if (inventory == null)
-            inventory = FindObjectOfType<Inventory>();
+        if (inventoryUI == null)
+            inventoryUI = FindObjectOfType<InventoryUI>();
 
     }
     private void Update()
     {
-        if (isInRange && !isEmpty && Input.GetKeyDown(itemPickupKeyCode) && !inventory.IsFull())
+        if (isInRange && !isEmpty && Input.GetKeyDown(itemPickupKeyCode) && !inventoryUI.IsFull())
         {
-            inventory.AddItem(Instantiate(item));
+            inventoryUI.AddItem(Instantiate(item));
             isEmpty = true;
         }
     }

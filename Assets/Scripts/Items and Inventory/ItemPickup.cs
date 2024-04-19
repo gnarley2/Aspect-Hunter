@@ -6,41 +6,20 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     [SerializeField] Item item;
-    [SerializeField] Inventory inventory;
 
     private bool isInRange;
 
-    private void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        inventory = Inventory.Instance;
-    }
-
-    private void Update()
-    {
-        if (isInRange && !inventory.IsFull())
+        if (collision.CompareTag("Player"))
         {
-            inventory.AddItem(Instantiate(item));
+            if (Inventory.Instance.IsFull()) return;
+            
+            Inventory.Instance.AddItem(Instantiate(item));
             Destroy(gameObject);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        CheckCollision(collision.gameObject, true);
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        CheckCollision(collision.gameObject, false);
-    }
-
-    private void CheckCollision(GameObject gameObject, bool state)
-    {
-        if (gameObject.CompareTag("Player"))
-        {
-            isInRange = state;
-        }
-    }
 
 
 }

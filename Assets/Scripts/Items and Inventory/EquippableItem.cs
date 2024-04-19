@@ -25,7 +25,7 @@ public class EquippableItem : Item
     public GameObject LanternPrefab;
     public GameObject FlashLightPrefab;
 
-    public void Equip(InventoryManager c)
+    public void Equip(CharacterPanel c)
     {
         //add code for buffs
         if (EquipmentType == EquipmentType.LanternBug && LanternBugPrefab != null)
@@ -54,7 +54,7 @@ public class EquippableItem : Item
 
     }
 
-    public void Unequip(InventoryManager c)
+    public void Unequip(CharacterPanel c)
     {
         //add code to remove buffs
     }
