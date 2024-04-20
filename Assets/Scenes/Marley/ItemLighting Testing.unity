@@ -4332,7 +4332,7 @@ PrefabInstance:
       objectReference: {fileID: 3841690771864285407, guid: 28dc510e954d9fc49ac0f0063ad20123, type: 3}
     - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: currentProjectileType
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: projectilePrefabs.Array.size
@@ -5837,6 +5837,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9148773535441364120, guid: 208fcb7c3175f5a448e5a3e745c88017, type: 3}
+      propertyPath: m_Intensity
+      value: 0.17
+      objectReference: {fileID: 0}
     - target: {fileID: 9148773535441364121, guid: 208fcb7c3175f5a448e5a3e745c88017, type: 3}
       propertyPath: m_Name
       value: Global Light

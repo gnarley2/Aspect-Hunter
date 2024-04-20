@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4237996217077310725}
   m_Layer: 0
   m_Name: Ambient light
-  m_TagString: Untagged
+  m_TagString: Shock_Hit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 3841690771355364896}
   m_Layer: 0
   m_Name: Light
-  m_TagString: Untagged
+  m_TagString: Shock_Hit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 3841690771864285397}
   m_Layer: 0
   m_Name: Shock_Hit
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -319,9 +319,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1544450207
-  m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingLayerID: 237808439
+  m_SortingLayer: 2
+  m_SortingOrder: 10
   m_Sprite: {fileID: 1357084653, guid: 2319ada1e209d0f47b8e3cc000d4166c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -365,7 +365,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2147483647
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 3841690772803335292}
   m_Layer: 0
   m_Name: Strike_Light
-  m_TagString: Untagged
+  m_TagString: Shock_Hit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
