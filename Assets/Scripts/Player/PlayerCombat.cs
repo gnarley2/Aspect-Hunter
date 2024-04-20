@@ -31,7 +31,6 @@ public class PlayerCombat : MonoBehaviour
     private Vector3 attackDirection;
 
     [Header("Range")]
-    [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private int rangeDamage = 10;
     [SerializeField] private float speed = 15f;
     
@@ -43,18 +42,8 @@ public class PlayerCombat : MonoBehaviour
     
     public Menus menuScript;
 
-    public enum ProjectileType
-    {
-        Fire,
-        Frost,
-        Shock,
-        Poison,
-        Water,
-        None,
-    }
-    
-    [SerializeField] private ProjectileType currentProjectileType = ProjectileType.Fire;
-    [SerializeField] private GameObject[] projectilePrefabs;
+    [SerializeField] private int currentProjectileIndex = 0;
+    [SerializeField] private ProjectileData[] projectileDatas;
 
     void Update()
     {
@@ -97,12 +86,16 @@ public class PlayerCombat : MonoBehaviour
 
     void ProjectileAttack(Vector3 attackDirection)
     {
-        GameObject projectilePrefab = projectilePrefabs[(int)currentProjectileType];
+        if (!projectileDatas[currentProjectileIndex].isUnlocked) return;
+        
+        ProjectileData.ProjectileType currentType = projectileDatas[currentProjectileIndex].type;
+        GameObject projectilePrefab = projectileDatas[currentProjectileIndex].prefab;
+
         
         // Perform additional actions based on the projectile type
-        switch (currentProjectileType)
+        switch (currentType)
         {
-            case ProjectileType.Fire:
+            case ProjectileData.ProjectileType.Fire:
 
                 GameObject fireprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Fire_Projectile fireMovement = fireprojectile.GetComponent<Fire_Projectile>();
@@ -110,7 +103,7 @@ public class PlayerCombat : MonoBehaviour
                 fireprojectile.transform.up = attackDirection;
                 break;
 
-            case ProjectileType.Frost:
+            case ProjectileData.ProjectileType.Frost:
 
                 GameObject frostprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Frost_Wall frostWall = frostprojectile.GetComponent<Frost_Wall>();
@@ -119,7 +112,7 @@ public class PlayerCombat : MonoBehaviour
                 break;
 
 
-            case ProjectileType.Poison:
+            case ProjectileData.ProjectileType.Poison:
 
                 GameObject poisonprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Poison_Projectile poisonMovement = poisonprojectile.GetComponent<Poison_Projectile>();
@@ -128,7 +121,7 @@ public class PlayerCombat : MonoBehaviour
 
 
                 break;
-            case ProjectileType.Shock:
+            case ProjectileData.ProjectileType.Shock:
 
                 GameObject shockprojectile = Instantiate(projectilePrefab, GetMouseWorldPosition(), Quaternion.identity);
                 Shock_Hit shockHit = shockprojectile.GetComponent<Shock_Hit>();
@@ -136,7 +129,7 @@ public class PlayerCombat : MonoBehaviour
 
 
                 break;
-            case ProjectileType.Water:
+            case ProjectileData.ProjectileType.Water:
 
                 GameObject waterprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Water_Splash waterSplash = waterprojectile.GetComponent<Water_Splash>();

@@ -56,7 +56,7 @@ public class Combat : CoreComponent, IDamageable
         return damagerTarget;
     }
     
-    public void TakeDamage(int damage, IDamageable.DamagerTarget damagerType, Vector2 attackDirection, PlayerCombat.ProjectileType projectileType)
+    public void TakeDamage(int damage, IDamageable.DamagerTarget damagerType, Vector2 attackDirection, ProjectileData.ProjectileType projectileType)
     {
         TakeDamage(damage, damagerType, attackDirection, false);
     }

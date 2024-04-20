@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fire_Projectile : MonoBehaviour
 {
     [SerializeField] private float speed = 25f; // Speed of the projectile
-    private PlayerCombat.ProjectileType projectileType = PlayerCombat.ProjectileType.Fire;
+    private ProjectileData.ProjectileType projectileType = ProjectileData.ProjectileType.Fire;
     private Vector3 direction;
     private Vector3 initialPosition;
     public float maxDistance = 10f;

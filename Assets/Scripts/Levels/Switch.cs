@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour, IDamageable
 {
-    [SerializeField] private PlayerCombat.ProjectileType ProjectileType;
+    [SerializeField] private ProjectileData.ProjectileType ProjectileType;
 
     public Action OnActivate;
 
@@ -31,7 +31,7 @@ public class Switch : MonoBehaviour, IDamageable
     }
 
     public void TakeDamage(int damage, IDamageable.DamagerTarget damagerType, Vector2 attackDirection,
-        PlayerCombat.ProjectileType projectileType = PlayerCombat.ProjectileType.None)
+        ProjectileData.ProjectileType projectileType = ProjectileData.ProjectileType.None)
     {
         if (projectileType == this.ProjectileType)
         {
