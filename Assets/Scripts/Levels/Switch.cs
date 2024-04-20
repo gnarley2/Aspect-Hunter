@@ -30,6 +30,16 @@ public class Switch : MonoBehaviour, IDamageable
         return transform.position;
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            InformationPanel.Instance.ShowInformation("Look like you need some to hit it with something");
+        }
+    }
+    
+    
+
     public void TakeDamage(int damage, IDamageable.DamagerTarget damagerType, Vector2 attackDirection,
         ProjectileData.ProjectileType projectileType = ProjectileData.ProjectileType.None)
     {
