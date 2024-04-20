@@ -37,7 +37,7 @@ public class EnemyCanvas : MonoBehaviour
 
         if (bossMovement != null)
         {
-            transform.position = offset + (Vector2)Camera.main.transform.position + Vector2.down * 5f;
+            transform.position = offset + (Vector2)Camera.main.transform.position + Vector2.down * -6.5f;
         }
 
         if (movement == null && bossMovement == null)
