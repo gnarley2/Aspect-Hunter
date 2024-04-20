@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7169754804731957956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.456, y: 1.5977973, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.5, y: 3.5, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -203,8 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51050f953344f694eb1eb570cbc65602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
-  maxDistance: 60
+  speed: 20
+  maxDistance: 50
   hitAnimation: {fileID: 3942963689311010310, guid: 81e73f6d41d3e1141abb99c246db9906, type: 3}
 --- !u!1 &7169754804805494065
 GameObject:

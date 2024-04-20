@@ -9,7 +9,8 @@ public enum MonsterName
 {
     Cat = 100,
     Reptile = 200,
-    Soul = 300
+    Soul = 300,
+    Krabster = 400
 }
 
 [CreateAssetMenu(fileName = "Monster", menuName = "ScriptableObjects/Data/Monster")]
@@ -26,7 +27,7 @@ public class MonsterDetails : ScriptableObject
     }
     
     [Header("Information")]
-    public MonsterName name;
+    public MonsterName _name;
     [TextArea(5, 10)] public string description;
     public MonsterType type = MonsterType.None;
 
