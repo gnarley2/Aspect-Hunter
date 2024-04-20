@@ -103,14 +103,16 @@ public class BallMovement : MonoBehaviour
 
     void CatchMonster(Monster monster)
     {
-        
-        
         MonsterInventory.Instance.AddMonster(monster.GetData());
     }
 
     bool CanCatchMonster(Monster monster)
     {
-        if (monster.GetHealthPercent() > 0.5) return false;
+        if (monster.GetHealthPercent() > 0.5)
+        {
+            InformationPanel.Instance.ShowInformation("Monster's health is too high");
+            return false;
+        }
         return true;
     }
     

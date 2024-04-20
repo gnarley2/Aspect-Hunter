@@ -97,7 +97,7 @@ public class PlayerCombat : MonoBehaviour
         ProjectileData selectedProjectile = projectileDatas[currentProjectileIndex];
         if (!selectedProjectile.isUnlocked)
         {
-            Debug.Log($"{selectedProjectile.name} is locked");
+            InformationPanel.Instance.ShowInformation($"{selectedProjectile.name} is locked");
             return;
         }
         
