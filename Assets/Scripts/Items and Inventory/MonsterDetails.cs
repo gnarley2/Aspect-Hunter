@@ -27,7 +27,7 @@ public class MonsterDetails : ScriptableObject
     }
     
     [Header("Information")]
-    public MonsterName _name;
+    public MonsterName name;
     [TextArea(5, 10)] public string description;
     public MonsterType type = MonsterType.None;
 
