@@ -1645,6 +1645,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: meleePrefab
       value: 
       objectReference: {fileID: 5465766930649564204, guid: 21dd226fb64335b48814e21ec96fb51d, type: 3}
@@ -1654,7 +1658,7 @@ PrefabInstance:
       objectReference: {fileID: 3841690771864285407, guid: 28dc510e954d9fc49ac0f0063ad20123, type: 3}
     - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: currentProjectileType
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: projectilePrefabs.Array.size
@@ -4868,7 +4872,7 @@ GameObject:
   - component: {fileID: 1818020527}
   m_Layer: 0
   m_Name: BossKrabster
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5030,7 +5034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76be46f1e3d40e54b9ab12813fdb4da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 1818020526}
   damage: 20
 --- !u!1001 &1942811613
 PrefabInstance:

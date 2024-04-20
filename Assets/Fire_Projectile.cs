@@ -27,8 +27,8 @@ public class Fire_Projectile : MonoBehaviour
 
         if (Vector3.Distance(initialPosition, transform.position) >= maxDistance)
         {
-       
-           Destroy(gameObject); // Destroy the projectile
+
+            Destroy(gameObject); // Destroy the projectile
         }
     }
 
@@ -48,25 +48,25 @@ public class Fire_Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-       // Debug.Log("Collided with: " + other.gameObject.name);
+        // Debug.Log("Collided with: " + other.gameObject.name);
         if (other.TryGetComponent<IDamageable>(out IDamageable target))
         {
             if (target.GetDamagerType() == IDamageable.DamagerTarget.Player) return;
-            
+
             target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero, projectileType);
             Destroy(gameObject);
         }
 
-        if (other.tag == "Item"||other.tag=="Aspect")
+        if (other.tag == "Item" || other.tag == "Aspect")
         {
             Instantiate(hitAnimation, transform.position, Quaternion.identity);
         }
 
-        if (other.tag=="Enemy")
+        if (other.tag == "Enemy" || other.tag == "Boss")
         {
             Instantiate(hitAnimation, transform.position, Quaternion.identity);
             //Destroy(gameObject);
-              StartCoroutine(DestroyWithDelay());
+            StartCoroutine(DestroyWithDelay());
         }
     }
 
