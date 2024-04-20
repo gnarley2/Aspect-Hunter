@@ -55,11 +55,11 @@ public class Menus : MonoBehaviour
         isPaused = false;
         PauseMenuUI.SetActive(false);
 
-        // FindItem the UIManager component and close the inventory
-        UIManager uiManager = FindObjectOfType<UIManager>();
-        if (uiManager != null)
+        // FindItem the MenuController component and close the inventory
+        MenuController menuController = FindObjectOfType<MenuController>();
+        if (menuController != null)
         {
-            uiManager.CloseInventory();
+            menuController.CloseInventory();
         }
     }
 

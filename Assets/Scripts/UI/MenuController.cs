@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class MenuController : MonoBehaviour
 {
     [SerializeField] GameObject InventoryPanel;
     [SerializeField] Menus menus; // Assign this in the inspector or find it in Awake/Start
