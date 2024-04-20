@@ -87,5 +87,25 @@ public class EquippableItem : Item
     public void Unequip(InventoryManager c)
     {
         //add code to remove buffs
+        if (EquipmentType == EquipmentType.FlashLight && FlashLightPrefab != null)
+        {
+            GameObject flashlightInstance = GameObject.FindWithTag("FlashLight");
+            if (flashlightInstance != null)
+            {
+                // Destroy the instantiated Flashlight GameObject
+                Destroy(flashlightInstance);
+            }
+        }
+
+        if (EquipmentType == EquipmentType.LanternBug && LanternBugPrefab != null)
+        {
+            GameObject lanterbugInstance = GameObject.FindWithTag("LanternBug");
+            if (lanterbugInstance != null)
+            {
+                // Destroy the instantiated Flashlight GameObject
+                Destroy(lanterbugInstance);
+            }
+
+        }
     }
 }
