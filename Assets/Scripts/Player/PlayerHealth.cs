@@ -43,4 +43,9 @@ public class PlayerHealth : MonoBehaviour
     {
         return health;
     }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+    }
 }
