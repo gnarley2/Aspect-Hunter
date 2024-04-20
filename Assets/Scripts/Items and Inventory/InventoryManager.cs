@@ -4,6 +4,7 @@ using Kryz.CharacterStats;
 
 public class InventoryManager : MonoBehaviour
 {
+   
     [SerializeField] Inventory inventory;
     [SerializeField] EquipmentPanel equipmentPanel;
     [SerializeField] ItemTooltip itemTooltip;
@@ -11,8 +12,13 @@ public class InventoryManager : MonoBehaviour
 
     private ItemSlot dragItemSlot;
 
+
+
     private void Awake()
     {
+
+
+
         if (itemTooltip == null)
             itemTooltip = FindObjectOfType<ItemTooltip>();
 
