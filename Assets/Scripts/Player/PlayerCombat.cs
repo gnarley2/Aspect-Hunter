@@ -94,10 +94,15 @@ public class PlayerCombat : MonoBehaviour
 
     void ProjectileAttack(Vector3 attackDirection)
     {
-        if (!projectileDatas[currentProjectileIndex].isUnlocked) return;
+        ProjectileData selectedProjectile = projectileDatas[currentProjectileIndex];
+        if (!selectedProjectile.isUnlocked)
+        {
+            Debug.Log($"{selectedProjectile.name} is locked");
+            return;
+        }
         
-        ProjectileData.ProjectileType currentType = projectileDatas[currentProjectileIndex].type;
-        GameObject projectilePrefab = projectileDatas[currentProjectileIndex].prefab;
+        ProjectileData.ProjectileType currentType = selectedProjectile.type;
+        GameObject projectilePrefab = selectedProjectile.prefab;
 
         
         // Perform additional actions based on the projectile type
