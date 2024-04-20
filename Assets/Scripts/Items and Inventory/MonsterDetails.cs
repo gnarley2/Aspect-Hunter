@@ -15,10 +15,20 @@ public enum MonsterName
 [CreateAssetMenu(fileName = "Monster", menuName = "ScriptableObjects/Data/Monster")]
 public class MonsterDetails : ScriptableObject
 {
+    public enum MonsterType
+    {
+        Fire,
+        Frost,
+        Shock,
+        Poison,
+        Water,
+        None,
+    }
+    
     [Header("Information")]
     public MonsterName name;
     [TextArea(5, 10)] public string description;
-
+    public MonsterType type = MonsterType.None;
 
     [Header("Attack")] 
     public int damage;

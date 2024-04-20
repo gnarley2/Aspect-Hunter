@@ -45,6 +45,14 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private int currentProjectileIndex = 0;
     [SerializeField] private ProjectileData[] projectileDatas;
 
+    private void Start()
+    {
+        foreach (ProjectileData data in projectileDatas)
+        {
+            MonsterInventory.Instance.OnCatchMonster += data.Unlock;
+        }
+    }
+
     void Update()
     {
         if (menuScript && menuScript.isPaused == true) return;

@@ -15,6 +15,7 @@ public class MonsterInventory : MonoBehaviour
     
     public static MonsterInventory Instance;
     public List<SingleMonsterInventory> Monsters = new List<SingleMonsterInventory>();
+    public Action<MonsterData> OnCatchMonster;
     
     private void Awake()
     {
@@ -30,6 +31,8 @@ public class MonsterInventory : MonoBehaviour
         monsterInventory.monsterData = data;
         
         Monsters.Add(monsterInventory);
+        
+        OnCatchMonster?.Invoke(data);
     }
 
     public void RemoveMonster(int index)
