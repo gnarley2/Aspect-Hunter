@@ -23,6 +23,7 @@ public class PlayerHealthUI : MonoBehaviour
     {
         health.OnUpdateHealth += UpdateHealthUI;
     }
+    
 
     private void OnDisable()
     {

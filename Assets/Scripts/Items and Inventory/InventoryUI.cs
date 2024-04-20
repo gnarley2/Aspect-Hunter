@@ -31,10 +31,6 @@ public class InventoryUI : MonoBehaviour
         }
 
         SetStartingItems();
-    }
-
-    private void OnEnable()
-    {
         Inventory.Instance.OnAddItem += AddItem;
     }
 
