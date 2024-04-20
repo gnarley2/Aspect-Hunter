@@ -33,6 +33,12 @@ public class Health : CoreComponent
         base.Awake();
     }
 
+    public void Heal(int amount)
+    {
+        health = Mathf.Min(health + amount, maxHealth);
+        InformationPanel.Instance.ShowInformation($"Player current health {health}");
+    }
+
     public bool TakeDamage(int damage)
     {
         return TakeDamage(damage, false);
