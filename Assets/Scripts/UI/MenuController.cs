@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] GameObject InventoryPanel;
     [SerializeField] Menus menus; // Assign this in the inspector or find it in Awake/Start
     public static bool openInventory;
     bool itemDescription = false;
@@ -13,7 +12,6 @@ public class MenuController : MonoBehaviour
     private void Awake()
     {
         menus = FindObjectOfType<Menus>(); // Only use this if Menus is not a Singleton
-        InventoryPanel.SetActive(false);
         openInventory = false;
     }
 
@@ -25,15 +23,15 @@ public class MenuController : MonoBehaviour
             {
                 // Toggle the state of the inventory
                 openInventory = !openInventory;
-                InventoryPanel.SetActive(openInventory);
+                GameCanvas.Instance.ToggleCharacterPanel(openInventory); //todo inventory
             }
         }
 
         if (menus.isPaused && openInventory) // Again, use the instance of Menus
         {
             // Close inventory when the game is paused
-            InventoryPanel.SetActive(false);
             openInventory = false;
+            GameCanvas.Instance.ToggleCharacterPanel(openInventory);
         }
 
         if (itemDescription)
@@ -45,8 +43,8 @@ public class MenuController : MonoBehaviour
 
     public void CloseInventory()
     {
-        InventoryPanel.SetActive(false);
         openInventory = false;
+        GameCanvas.Instance.ToggleCharacterPanel(openInventory);
     }
 
     public void OpenDescription()
