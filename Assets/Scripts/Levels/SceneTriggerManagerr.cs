@@ -20,16 +20,15 @@ public class SceneTriggerManager : MonoBehaviour
 
     }
 
-    public void LoadSceneFromTrigger(SceneAsset targetScene)
+    public void LoadSceneFromTrigger(int targetSceneIndex)
     {
-        if (targetScene != null)
+        if (targetSceneIndex >= 0 && targetSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            
-            SceneManager.LoadScene(targetScene.name);
+            SceneManager.LoadScene(targetSceneIndex);
         }
         else
         {
-            Debug.LogWarning("Target scene is not assigned.");
+            Debug.LogWarning("Invalid target scene index.");
         }
     }
 
