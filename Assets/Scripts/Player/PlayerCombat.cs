@@ -42,7 +42,7 @@ public class PlayerCombat : MonoBehaviour
     
     public Menus menuScript;
 
-    [SerializeField] private int currentProjectileIndex = 0;
+    [SerializeField] public int currentProjectileIndex = 0;
     [SerializeField] private ProjectileData[] projectileDatas;
 
     private void Start()
