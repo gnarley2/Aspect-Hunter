@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class PlayerHealthUI : MonoBehaviour
 {
-    [SerializeField] private Health health;
+    [SerializeField] private Image fillImg;
 
     private Slider slider;
-    [SerializeField] private Image fillImg;
+    private Health health;
 
     private Color fullColor = Color.green;
     private Color noColor = Color.red;
@@ -17,6 +17,7 @@ public class PlayerHealthUI : MonoBehaviour
     private void Awake()
     {
         slider = GetComponent<Slider>();
+        health = GameObject.FindWithTag("Player").GetComponentInChildren<Health>();
     }
 
     private void OnEnable()

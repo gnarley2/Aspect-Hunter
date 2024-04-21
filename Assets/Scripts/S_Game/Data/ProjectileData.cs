@@ -25,7 +25,7 @@ public class ProjectileData : ScriptableObject
 
         if (String.Equals(data.monsterDetails.type.ToString(), type.ToString()))
         {
-            Debug.Log($"{name} is unlocked");
+            InformationPanel.Instance.ShowInformation($"{name} is unlocked");
             isUnlocked = true;
         }
     }
