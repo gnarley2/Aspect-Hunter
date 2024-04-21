@@ -57,5 +57,32 @@ public class EquippableItem : Item
     public void Unequip(CharacterPanel c)
     {
         //add code to remove buffs
+        if (EquipmentType == EquipmentType.LanternBug)
+        {
+            Debug.Log("Finding LanternBug instance...");
+            GameObject lanternBugInstance = GameObject.Find("LanternBug_Active(Clone)");
+
+
+            if (lanternBugInstance != null)
+            {
+                // Activate the LanternBug instance if it's inactive
+                if (!lanternBugInstance.activeSelf)
+                {
+                    lanternBugInstance.SetActive(true);
+                }
+
+                // Now destroy the LanternBug instance
+                Destroy(lanternBugInstance);
+            }
+        }
+    
+
+        if (EquipmentType == EquipmentType.FlashLight && FlashLightPrefab != null)
+        {
+            GameObject flashlightInstance = GameObject.FindWithTag("FlashLight");
+           
+            Destroy(flashlightInstance);
+
+        }
     }
 }
