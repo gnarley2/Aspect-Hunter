@@ -73,10 +73,10 @@ public class PlayerCombat : MonoBehaviour
             CatchMonster(direction);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            ReleaseMonster(direction);
-        }
+        // if (Input.GetKeyDown(KeyCode.E))
+        // {
+        //     ReleaseMonster(direction);
+        // }
     }
 
     Vector2 GetMouseWorldPosition()
