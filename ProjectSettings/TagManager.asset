@@ -11,6 +11,13 @@ TagManager:
   - Weapon
   - Icon
   - Key
+  - Light
+  - Enemy
+  - Inventory
+  - Shock_Hit
+  - FlashLight
+  - LanternBug
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -20,7 +27,7 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - 
+  - Ground
   - 
   - 
   - 
@@ -53,4 +60,7 @@ TagManager:
     locked: 0
   - name: Instance
     uniqueID: 237808439
+    locked: 0
+  - name: Instance 2
+    uniqueID: 2750517089
     locked: 0

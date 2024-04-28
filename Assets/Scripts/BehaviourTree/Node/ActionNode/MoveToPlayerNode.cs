@@ -10,7 +10,6 @@ public class MoveToPlayerNode : ActionNode
 
     public MoveToPlayerType type;
     
-    public bool canFly;
     public float speed;
     public float minDis = 0.5f;
     public float maxDis = 10f;
@@ -18,12 +17,12 @@ public class MoveToPlayerNode : ActionNode
     private Vector2 destination;
     private Vector2 startPos;
     private Vector2 direction;
+    
     public override void CopyNode(Node copyNode)
     {
         MoveToPlayerNode node = copyNode as MoveToPlayerNode;
         if (node)
         {
-            canFly = node.canFly;
             speed = node.speed;
             type = node.type;
             minDis = node.minDis;
@@ -42,28 +41,14 @@ public class MoveToPlayerNode : ActionNode
         startPos = treeComponent.transform.position;
         destination = treeComponent.player.transform.position;
 
-        if (canFly)
-        {
-            direction = (destination - startPos).normalized;
-            if (type == MoveToPlayerType.AwayPlayer)
-                direction = -direction;
-        }
-        else
-        {
-            direction.y = 0;
-            if (type == MoveToPlayerType.ToPlayer)
-            {
-                direction.x = destination.x > startPos.x ? 1 : -1;
-            }
-            else
-            {
-                direction.x = destination.x > startPos.x ? -1 : 1;
-            }
-        }
+        direction = (destination - startPos).normalized;
+        if (type == MoveToPlayerType.AwayPlayer)
+            direction = -direction;
     }
 
     protected override void OnStop()
     {
+        movement.SetVelocityZero();
         base.OnStop();
     }
 

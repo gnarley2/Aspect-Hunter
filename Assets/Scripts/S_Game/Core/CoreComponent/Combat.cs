@@ -10,9 +10,6 @@ public class Combat : CoreComponent, IDamageable
     IDamageable.DamagerTarget damagerTarget;
     IDamageable.KnockbackType knockbackType;
 
-    Movement movement {get => _movement ??= core.GetCoreComponent<Movement>(); }
-    Movement _movement;
-
     Health health {get => _heath ??= core.GetCoreComponent<Health>(); }
     Health _heath;
 
@@ -22,7 +19,6 @@ public class Combat : CoreComponent, IDamageable
     private bool canTouchCombat = true;
 
     Vector2 attackPosition;
-    Vector2 hitDirection;
 
 
     #region Set up
@@ -60,60 +56,45 @@ public class Combat : CoreComponent, IDamageable
         return damagerTarget;
     }
     
-    public void TakeDamage(int damage, IDamageable.DamagerTarget damagerType, Vector2 attackDirection)
+    public void TakeDamage(int damage, IDamageable.DamagerTarget damagerType, Vector2 attackDirection, ProjectileData.ProjectileType projectileType)
     {
         TakeDamage(damage, damagerType, attackDirection, false);
     }
 
     public void TakeDamage(int damage, IDamageable.DamagerTarget damagerType, Vector2 attackDirection, bool needResetPlayerPosition)
     {
-        if (this.damagerTarget == damagerType) return;
+        if (!CanAttack(damagerType)) return;
         if(!health.TakeDamage(damage, needResetPlayerPosition)) return;
-        if (needResetPlayerPosition) return;
+    }
 
-        if (attackDirection == Vector2.zero)
-        {
-            hitDirection = -movement.faceDirection;
-        }
-        else
-        {
-            hitDirection = attackDirection;
-        }
-        
-        Knockback(hitDirection);
+    bool CanAttack(IDamageable.DamagerTarget damagerType)
+    {
+        if (damagerTarget == damagerType) return false;
+        if ((damagerTarget == IDamageable.DamagerTarget.Player &&
+             damagerType == IDamageable.DamagerTarget.TamedMonster) ||
+            damagerTarget == IDamageable.DamagerTarget.TamedMonster &&
+            damagerType == IDamageable.DamagerTarget.Player) return false;
+
+        return true;
     }
 
     #endregion
-
-    #region Knockback
+    
 
     public IDamageable.KnockbackType GetKnockbackType()
     {
         return knockbackType;
     }
 
-    void Knockback(Vector2 hitDirection)
+    public Vector2 GetPosition()
     {
-        float knockbackAmount = 0;
-        switch(knockbackType)
-        {
-            case IDamageable.KnockbackType.weak:
-                knockbackAmount = settings.WeakKnockbackAmount;
-                break;
-            case IDamageable.KnockbackType.strong:
-                knockbackAmount = settings.StrongKnockbackAmount;
-                break;
-            case IDamageable.KnockbackType.player:
-                knockbackAmount = settings.PlayerKnockbackAmount;
-                break;
-            case IDamageable.KnockbackType.none:
-                return;
-        }
-        
-        movement.AddForce(hitDirection, knockbackAmount);
+        return transform.position;
     }
 
-    #endregion
+    public Health GetHealth()
+    {
+        return health;
+    }
 
     #region Collider
 

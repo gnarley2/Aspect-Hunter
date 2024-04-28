@@ -56,6 +56,7 @@ public class MoveRandomNode : ActionNode
 
     protected override void OnStop()
     {
+        movement.SetVelocityZero();
         base.OnStop();
     }
 

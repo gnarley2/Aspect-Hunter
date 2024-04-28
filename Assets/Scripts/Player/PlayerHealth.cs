@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private float health = 0f;
-
-    [SerializeField] private float maxHealth = 100f;
-
+    public float health = 0f;
+    public float maxHealth = 100f;
+    public event System.Action<float> OnHealthChanged;
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +28,24 @@ public class PlayerHealth : MonoBehaviour
         if (health > maxHealth)
         {
             health = maxHealth;
-        }else if (health <= 0f)
+        }
+        else if (health <= 0f)
         {
             health = 0f;
             Debug.Log("Player Died");
         }
+
+        // Invoke the OnHealthChanged event with the new health value
+        OnHealthChanged?.Invoke(health);
+    }
+
+    public float GetHealth()
+    {
+        return health;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
     }
 }

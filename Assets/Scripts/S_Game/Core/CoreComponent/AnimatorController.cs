@@ -51,18 +51,6 @@ public class AnimatorController : CoreComponent
         health.OnTakeDamage += StartHitVFX;
     }
 
-    private void OnEnable()
-    {
-        StartCoroutine(OnEnableCoroutine());
-    }
-
-    IEnumerator OnEnableCoroutine()
-    {
-        yield return new WaitUntil(() => core.GetCoreComponent<Health>() != null);
-        health = core.GetCoreComponent<Health>();
-        health.OnTakeDamage += StartHitVFX;
-    }
-
     private void OnDisable()
     {
         health.OnTakeDamage -= StartHitVFX;
@@ -131,27 +119,6 @@ public class AnimatorController : CoreComponent
     private float minFlashAmount = 0f;
     private float restLerpTime = .5f;
     
-    public void StartRestVFX()
-    {
-        StartCoroutine(RestVFXCoroutine());
-    }
-
-    IEnumerator RestVFXCoroutine()
-    {
-        sprite.material = GameSettings.Instance.flashGlowMat;
-        float startTime = 0f;
-        while (startTime <= restLerpTime)
-        {
-            float flashLerpAmount = Mathf.Lerp(maxFlashAmount, minFlashAmount, startTime / restLerpTime);
-            sprite.material.SetFloat(_flashAmount, flashLerpAmount);
-            
-            startTime += Time.deltaTime;
-            yield return null;
-        }
-        sprite.material.SetFloat(_flashAmount, minFlashAmount);
-        sprite.material = GameSettings.Instance.playerMat;
-        
-    }
 
     #endregion
 }

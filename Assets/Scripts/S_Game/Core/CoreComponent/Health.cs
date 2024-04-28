@@ -21,7 +21,7 @@ public class Health : CoreComponent
     
     public void SetHealth(HealthData data)
     {
-        maxHealth = data.health;
+        maxHealth = data.maxHealth;
         health = maxHealth;
         OnUpdateHealth?.Invoke(health);
     }
@@ -31,6 +31,12 @@ public class Health : CoreComponent
     protected override void Awake() 
     {
         base.Awake();
+    }
+
+    public void Heal(int amount)
+    {
+        health = Mathf.Min(health + amount, maxHealth);
+        InformationPanel.Instance.ShowInformation($"Player current health {health}");
     }
 
     public bool TakeDamage(int damage)
@@ -74,8 +80,8 @@ public class Health : CoreComponent
         OnDie?.Invoke();
     }
 
-    public int GetPercent()
+    public float GetPercent()
     {
-        return Mathf.RoundToInt(health * 1.0f / maxHealth * 100) ;
+        return health * 1.0f / maxHealth;
     }
 }
