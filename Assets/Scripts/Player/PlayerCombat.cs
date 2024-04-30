@@ -101,14 +101,14 @@ public class PlayerCombat : MonoBehaviour
             return;
         }
         
-        ProjectileData.ProjectileType currentType = selectedProjectile.type;
+        AspectType currentType = selectedProjectile.type;
         GameObject projectilePrefab = selectedProjectile.prefab;
 
         
         // Perform additional actions based on the projectile type
         switch (currentType)
         {
-            case ProjectileData.ProjectileType.Fire:
+            case AspectType.Fire:
 
                 GameObject fireprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Fire_Projectile fireMovement = fireprojectile.GetComponent<Fire_Projectile>();
@@ -116,7 +116,7 @@ public class PlayerCombat : MonoBehaviour
                 fireprojectile.transform.up = attackDirection;
                 break;
 
-            case ProjectileData.ProjectileType.Frost:
+            case AspectType.Frost:
 
                 GameObject frostprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Frost_Wall frostWall = frostprojectile.GetComponent<Frost_Wall>();
@@ -125,7 +125,7 @@ public class PlayerCombat : MonoBehaviour
                 break;
 
 
-            case ProjectileData.ProjectileType.Poison:
+            case AspectType.Poison:
 
                 GameObject poisonprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Poison_Projectile poisonMovement = poisonprojectile.GetComponent<Poison_Projectile>();
@@ -134,7 +134,7 @@ public class PlayerCombat : MonoBehaviour
 
 
                 break;
-            case ProjectileData.ProjectileType.Shock:
+            case AspectType.Shock:
 
                 GameObject shockprojectile = Instantiate(projectilePrefab, GetMouseWorldPosition(), Quaternion.identity);
                 Shock_Hit shockHit = shockprojectile.GetComponent<Shock_Hit>();
@@ -142,7 +142,7 @@ public class PlayerCombat : MonoBehaviour
 
 
                 break;
-            case ProjectileData.ProjectileType.Water:
+            case AspectType.Water:
 
                 GameObject waterprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Water_Splash waterSplash = waterprojectile.GetComponent<Water_Splash>();

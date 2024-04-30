@@ -2146,6 +2146,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1440484571966174779, guid: 2dbd5239bb22aa942bc4599f8a0d5010, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 243954438}
     - targetCorrespondingSourceObject: {fileID: 8813789255970679989, guid: 2dbd5239bb22aa942bc4599f8a0d5010, type: 3}
       insertIndex: -1
       addedObject: {fileID: 243954436}
@@ -2260,6 +2263,51 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &243954437 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1440484571966174779, guid: 2dbd5239bb22aa942bc4599f8a0d5010, type: 3}
+  m_PrefabInstance: {fileID: 243954432}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &243954438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243954437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9b92e9bdd9a46f4d90042fed4896b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AspectCombinations:
+  - aspect1: 0
+    aspect2: 4
+    aspect3: 6
+  - aspect1: 0
+    aspect2: 1
+    aspect3: 7
+  - aspect1: 0
+    aspect2: 2
+    aspect3: 8
+  - aspect1: 0
+    aspect2: 3
+    aspect3: 9
+  - aspect1: 4
+    aspect2: 2
+    aspect3: 10
+  - aspect1: 4
+    aspect2: 3
+    aspect3: 11
+  - aspect1: 1
+    aspect2: 2
+    aspect3: 12
+  - aspect1: 1
+    aspect2: 3
+    aspect3: 13
+  - aspect1: 2
+    aspect2: 3
+    aspect3: 14
 --- !u!1 &246149797
 GameObject:
   m_ObjectHideFlags: 0
@@ -20456,7 +20504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6253168743859355803, guid: b3ebac44159afc343a209b4712d74ff6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.2192955
+      value: -11.217612
       objectReference: {fileID: 0}
     - target: {fileID: 6253168743859355803, guid: b3ebac44159afc343a209b4712d74ff6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20524,7 +20572,7 @@ PrefabInstance:
       objectReference: {fileID: 243954434}
     - target: {fileID: 6253168745356334887, guid: b3ebac44159afc343a209b4712d74ff6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.0807047
+      value: -3.082388
       objectReference: {fileID: 0}
     - target: {fileID: 6253168745356334887, guid: b3ebac44159afc343a209b4712d74ff6, type: 3}
       propertyPath: m_LocalPosition.y
