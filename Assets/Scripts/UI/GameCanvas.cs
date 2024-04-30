@@ -16,6 +16,7 @@ public class GameCanvas : MonoBehaviour
     [SerializeField] private CanvasGroup PausedPanel;
     [SerializeField] private CanvasGroup OptionsPanel;
     [SerializeField] private CanvasGroup CharacterPanel;
+    [SerializeField] private CanvasGroup MapPanel;
     [SerializeField] private float lerpDuration = 0.3f;
 
     public void ToggleHUD(bool active)
@@ -40,6 +41,12 @@ public class GameCanvas : MonoBehaviour
     {
         float startAlpha = active ? 0 : 1;
         StartCoroutine(ToggleCoroutine(CharacterPanel, startAlpha, 1 - startAlpha));
+    }
+
+    public void ToggleMapPanel(bool active)
+    {
+        float startAlpha = active ? 0 : 1;
+        StartCoroutine(ToggleCoroutine(MapPanel, startAlpha, 1 - startAlpha));
     }
     
     IEnumerator ToggleCoroutine(CanvasGroup canvasGroup, float startAlpha, float targetAlpha)

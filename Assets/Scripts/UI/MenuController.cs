@@ -7,12 +7,14 @@ public class MenuController : MonoBehaviour
     [SerializeField] Menus menus;
     public static bool openInventory;
     bool itemDescription = false;
+    bool openMap;
     [SerializeField] GameObject DescriptionPanel;
 
     private void Awake()
     {
         menus = FindObjectOfType<Menus>();
         openInventory = false;
+        openMap = false;
     }
 
     void Update()
@@ -24,6 +26,20 @@ public class MenuController : MonoBehaviour
                 ToggleInventory();
             }
         }
+
+        if (Input.GetKeyDown("m"))
+        {
+            if (!menus.isPaused)
+            {
+                ToggleMap();
+            }
+        }
+    }
+
+    public void ToggleMap()
+    {
+        openMap = !openMap;
+        GameCanvas.Instance.ToggleMapPanel(openMap);
     }
 
     public void ToggleInventory()
