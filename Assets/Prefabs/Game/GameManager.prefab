@@ -970,7 +970,7 @@ Transform:
   - {fileID: 8813789255068050766}
   - {fileID: 1809744783756283338}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1440484571966174778
 MonoBehaviour:
@@ -1232,7 +1232,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1809744783756283338}
   - component: {fileID: 4618981566151591114}
-  - component: {fileID: 7487726965889226666}
   - component: {fileID: 8591874148729065341}
   m_Layer: 9
   m_Name: MapCamera
@@ -1307,14 +1306,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &7487726965889226666
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2560118137231855533}
-  m_Enabled: 1
 --- !u!114 &8591874148729065341
 MonoBehaviour:
   m_ObjectHideFlags: 0

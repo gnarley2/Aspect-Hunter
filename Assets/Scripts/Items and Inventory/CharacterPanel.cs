@@ -81,6 +81,7 @@ public class CharacterPanel : MonoBehaviour
     {
         if (itemSlot.Item != null)
         {
+            Debug.Log("Begin dragging: " + itemSlot.Item.name);
             dragItemSlot = itemSlot;
             draggableItem.sprite = itemSlot.Item.Icon;
             draggableItem.transform.position = Input.mousePosition;
