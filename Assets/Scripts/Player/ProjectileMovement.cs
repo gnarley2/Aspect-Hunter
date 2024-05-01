@@ -9,6 +9,8 @@ public class ProjectileMovement : MonoBehaviour
     private Vector3 direction;
     private Vector3 initialPosition;
     public float maxDistance = 10f;
+    
+    [SerializeField] private GameObject hitVFX;
 
     private IDamageable.DamagerTarget currentTarget;
     private int damage = 0;
@@ -38,7 +40,7 @@ public class ProjectileMovement : MonoBehaviour
     }
 
     // Set the direction of movement for the projectile
-    public void SetDirection(Vector3 newDirection)
+    void SetDirection(Vector3 newDirection)
     {
         direction = newDirection.normalized;
         // Optionally, rotate the projectile to face the direction
@@ -57,7 +59,20 @@ public class ProjectileMovement : MonoBehaviour
                 currentTarget == IDamageable.DamagerTarget.TamedMonster) return;
             
             target.TakeDamage(damage, currentTarget, Vector2.zero);
-            Destroy(gameObject);
+            Destroy();
         }
+    }
+
+    private void Destroy()
+    {
+        StartCoroutine(DestroyCoroutine());
+    }
+
+    IEnumerator DestroyCoroutine()
+    {
+        if (hitVFX != null) Instantiate(hitVFX, transform.position, Quaternion.Euler(transform.forward));
+        yield return null;
+        
+        Destroy(gameObject);
     }
 }
