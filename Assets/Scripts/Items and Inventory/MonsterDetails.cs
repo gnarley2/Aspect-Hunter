@@ -12,6 +12,7 @@ public enum MonsterName
     Soul = 300,
     Krabster = 400,
     Iceboy = 500,
+    FireRat = 600,
 }
 
 [CreateAssetMenu(fileName = "Monster", menuName = "ScriptableObjects/Data/Monster")]
