@@ -20463,11 +20463,11 @@ PrefabInstance:
       objectReference: {fileID: 228711973}
     - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: currentProjectileIndex
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: projectileDatas.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: projectileDatas.Array.data[5]
@@ -20477,6 +20477,10 @@ PrefabInstance:
       propertyPath: projectileDatas.Array.data[6]
       value: 
       objectReference: {fileID: 11400000, guid: 3004f46f217ce744d9d2ee87a92795fe, type: 2}
+    - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
+      propertyPath: projectileDatas.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: abcd4f80bf592b34fac09032d6a67a83, type: 2}
     - target: {fileID: 1568891421582735538, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: m_RootOrder
       value: 9

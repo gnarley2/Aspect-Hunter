@@ -173,6 +173,18 @@ public class PlayerCombat : MonoBehaviour
                 corroMovement.transform.up = attackDirection;
 
                 break;
+
+            case AspectType.Gas:
+
+                Vector3 worldPositionGas = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                worldPositionGas.z = 0f;
+
+                GameObject gasprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Gas_Projectile gasMovement = gasprojectile.GetComponent<Gas_Projectile>();
+               // Vector3 attackDirectionGas = (worldPositionGas - transform.position).normalized;
+                gasMovement.Initialize(attackDirection, rangeDamage);
+
+                break;
         }
 
     }
