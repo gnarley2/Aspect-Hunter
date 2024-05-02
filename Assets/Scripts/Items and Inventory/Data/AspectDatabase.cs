@@ -20,6 +20,7 @@ public enum AspectType
     Superconductor,
     Necrotic,
     Corrosion,
+    IceSpike, 
     
 }
 

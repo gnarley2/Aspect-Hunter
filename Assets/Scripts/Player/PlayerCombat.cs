@@ -185,6 +185,17 @@ public class PlayerCombat : MonoBehaviour
                 gasMovement.Initialize(attackDirection, rangeDamage);
 
                 break;
+
+
+            case AspectType.IceSpike:
+
+                GameObject spikeprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Ice_Spike spikeMovement = spikeprojectile.GetComponent<Ice_Spike>();
+                spikeMovement.Initialize(attackDirection, rangeDamage);
+                spikeMovement.transform.up = attackDirection;
+
+
+                break;
         }
 
     }
