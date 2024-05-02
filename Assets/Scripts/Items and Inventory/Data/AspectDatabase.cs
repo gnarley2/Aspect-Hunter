@@ -1,27 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public enum AspectType
 {
-    Fire,
-    Frost,
-    Shock,
-    Poison,
-    Water,
-    None,
+    Fire = 1,
+    Frost = 2,
+    Shock = 3,
+    Poison = 4,
+    Water = 5,
+    None = 0,
     // Combination
-    Steam,
-    Blast,
-    Radiation,
-    Gas,
-    Paralysis,
-    Pollution,
-    Superconductor,
-    Necrotic,
-    Corrosion,
-    IceSpike, 
-    
+    Steam = 100,
+    Blast = 200,
+    Radiation = 300,
+    Gas = 400,
+    Paralysis = 500,
+    Pollution = 600,
+    Superconductor = 700,
+    Necrotic = 800,
+    Corrosion = 900,
+    IceSpike = 1000,
 }
 
 public class AspectDatabase : MonoBehaviour
@@ -63,4 +63,34 @@ public class AspectDatabase : MonoBehaviour
         return AspectType.None;
     }
     
+    public bool IsCombination(AspectType aspectType)
+    {
+        foreach (AspectCombination combination in AspectCombinations)
+        {
+            if (combination.aspect3 == aspectType)
+            {
+                return true;
+            }
+        }
+
+        Debug.LogError("Cant find combination");
+        return false;
+    }
+
+    public AspectInventory.SingleAspectInventory CreateInventoryCombination(AspectType type)
+    {
+        AspectInventory.SingleAspectInventory inventory = new AspectInventory.SingleAspectInventory(type);
+        foreach (AspectCombination combination in AspectCombinations)
+        {
+            if (combination.aspect3 == inventory.type)
+            {
+                inventory.isCombination = true;
+                inventory.type1 = combination.aspect1;
+                inventory.type2 = combination.aspect2;
+                return inventory;
+            }
+        }
+
+        return null;
+    }
 }
