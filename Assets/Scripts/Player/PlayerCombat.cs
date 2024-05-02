@@ -221,6 +221,15 @@ public class PlayerCombat : MonoBehaviour
 
 
                 break;
+
+            case AspectType.Pollution:
+
+                GameObject pollprojectile = Instantiate(projectilePrefab, GetMouseWorldPosition(), Quaternion.identity);
+                Pollution_Hit pollHit = pollprojectile.GetComponent<Pollution_Hit>();
+                pollHit.Initialize(attackDirection, rangeDamage);
+
+
+                break;
         }
 
     }
