@@ -164,6 +164,15 @@ public class PlayerCombat : MonoBehaviour
                 blastMovement.transform.up = attackDirection;
 
                 break;
+
+            case AspectType.Corrosion:
+
+                GameObject corrosionprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Corrosive_Projectile corroMovement = corrosionprojectile.GetComponent<Corrosive_Projectile>();
+                corroMovement.Initialize(attackDirection, rangeDamage);
+                corroMovement.transform.up = attackDirection;
+
+                break;
         }
 
     }

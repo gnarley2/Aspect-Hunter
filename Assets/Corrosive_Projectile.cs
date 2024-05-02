@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Blast_Projectile : MonoBehaviour
+public class Corrosive_Projectile : MonoBehaviour
 {
     [SerializeField] private float speed = 25f; // Speed of the projectile
-    private AspectType m_AspectType = AspectType.Blast;
+    private AspectType m_AspectType = AspectType.Corrosion;
     private Vector3 direction;
     private Vector3 initialPosition;
     public float maxDistance = 10f;
@@ -27,7 +27,7 @@ public class Blast_Projectile : MonoBehaviour
 
         if (Vector3.Distance(initialPosition, transform.position) >= maxDistance)
         {
-            Instantiate(hitAnimation, transform.position, Quaternion.identity);
+
             Destroy(gameObject); // Destroy the projectile
         }
     }
@@ -78,5 +78,3 @@ public class Blast_Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 }
-
-
