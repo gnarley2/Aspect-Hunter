@@ -206,6 +206,21 @@ public class PlayerCombat : MonoBehaviour
 
 
                 break;
+
+            case AspectType.Paralysis:
+
+                Vector3 worldPositionpara = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                worldPositionpara.z = 0f;
+                GameObject paraprojectile = Instantiate(projectilePrefab, worldPositionpara, Quaternion.identity);
+                Paralysis_Splash paraMovement = paraprojectile.GetComponent<Paralysis_Splash>();
+              
+            
+               Vector3 attackDirectionpara = (worldPositionpara - transform.position).normalized;
+                paraMovement.Initialize(attackDirectionpara, rangeDamage, transform);
+               // paraMovement.transform.up = attackDirection;
+
+
+                break;
         }
 
     }
