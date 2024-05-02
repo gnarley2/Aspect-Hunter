@@ -5716,8 +5716,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubblesAmount: 10
-  startAngle: 90
-  endAngle: 270
+  startAngle: 0
+  endAngle: 360
+  time: 0
+  repeatRate: 1
 --- !u!70 &1818020525
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -5770,7 +5772,7 @@ MonoBehaviour:
   - {fileID: 1320455008}
   - {fileID: 1849492584}
   - {fileID: 1199032217}
-  speed: 10
+  speed: 5
 --- !u!1001 &1849492583
 PrefabInstance:
   m_ObjectHideFlags: 0
