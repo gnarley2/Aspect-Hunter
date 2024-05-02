@@ -20463,11 +20463,11 @@ PrefabInstance:
       objectReference: {fileID: 228711973}
     - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: currentProjectileIndex
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: projectileDatas.Array.size
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: projectileDatas.Array.data[5]
@@ -20493,6 +20493,14 @@ PrefabInstance:
       propertyPath: projectileDatas.Array.data[10]
       value: 
       objectReference: {fileID: 11400000, guid: 7fed3f87981cc474182d4d3dd7f38b19, type: 2}
+    - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
+      propertyPath: projectileDatas.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90ae786e02c50ce4ab2a7b7be21e649c, type: 2}
+    - target: {fileID: 1568891421582735532, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
+      propertyPath: projectileDatas.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: bed9baba43bbf4543a486d78c705e50b, type: 2}
     - target: {fileID: 1568891421582735538, guid: 4cdeccb6622d1c044b5e7e9d5f8f3df8, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -53881,7 +53889,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 20b18213a82a1d248b93e25661267456, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

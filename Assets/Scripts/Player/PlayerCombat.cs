@@ -230,6 +230,16 @@ public class PlayerCombat : MonoBehaviour
 
 
                 break;
+
+            case AspectType.Radiation:
+
+
+                GameObject radprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Radiation_Projectile radMovement = radprojectile.GetComponent<Radiation_Projectile>();
+                radMovement.Initialize(attackDirection, rangeDamage);
+                radMovement.transform.up = attackDirection;
+
+                break;
         }
 
     }
