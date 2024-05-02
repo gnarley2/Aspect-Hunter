@@ -14,7 +14,7 @@ public class ProjectileData : ScriptableObject
     {
         if (isUnlocked) return;
 
-        if (String.Equals(data.monsterDetails.type.ToString(), type.ToString()))
+        if (data.monsterDetails.type == type)
         {
             InformationPanel.Instance.ShowInformation($"{name} is unlocked");
             isUnlocked = true;

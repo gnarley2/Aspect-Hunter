@@ -30,6 +30,11 @@ public class AspectInventory : MonoBehaviour
         }
     }
     
+    public void AddAspect(MonsterDetails details)
+    {
+        AddAspect(details.type, details.GetLoot());
+    }
+    
     public void AddAspect(AspectType type, int amount)
     {
         int index = FindAspect(type);
