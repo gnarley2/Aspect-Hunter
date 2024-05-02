@@ -7,6 +7,7 @@ using UnityEngine;
 public class AspectInventory : MonoBehaviour
 {
     public static AspectInventory Instance;
+    private string errorMessage = "";
     
     [Serializable]
     public class SingleAspectInventory
@@ -47,6 +48,10 @@ public class AspectInventory : MonoBehaviour
         }
     }
 
+    void ResetErrorMessage()
+    {
+        errorMessage = "";
+    }
     
     public void AddAspect(MonsterDetails details)
     {
@@ -62,7 +67,10 @@ public class AspectInventory : MonoBehaviour
     bool CanUseAspect(AspectType type, int amount, out int index)
     {
         index = FindAspect(type);
-        return CanUseAspect(index, amount);
+        if (CanUseAspect(index, amount)) return true;
+
+        errorMessage += $"Not enough {amount} {type}\n";
+        return false;
     }
     
     bool CanUseAspect(int index, int amount)
@@ -72,32 +80,38 @@ public class AspectInventory : MonoBehaviour
 
     public bool UseAspect(AspectType type, int amount)
     {
+        ResetErrorMessage();
+        
         int index = FindAspect(type);
         
         if (AspectInventories[index].isCombination)
         {
-            if (CanUseAspect(AspectInventories[index].type1, amount, out int index1) &&
-                CanUseAspect(AspectInventories[index].type2, amount, out int index2))
+            bool canUse1 = CanUseAspect(AspectInventories[index].type1, amount, out int index1);
+            bool canUse2 = CanUseAspect(AspectInventories[index].type2, amount, out int index2);
+            
+            if (canUse1 && canUse2)
             {
-                return UseAspect(index1, amount) && UseAspect(index2, amount);
+                AspectInventories[index1].number -= amount;
+                AspectInventories[index2].number -= amount;
+                return true;
+            }
+            
+            InformationPanel.Instance.ShowInformation(errorMessage);
+            return false;
+        }
+        else
+        {
+            if (CanUseAspect(index, amount))
+            {
+                AspectInventories[index].number -= amount;
+                return true;
             }
         }
         
-        return UseAspect(index, amount);
-    }
-    
-    public bool UseAspect(int index, int amount)
-    {
-        if (AspectInventories[index].number >= amount)
-        {
-            AspectInventories[index].number -= amount;
-            return true;
-        }
-
+        InformationPanel.Instance.ShowInformation($"Not enough {amount} {type}");
         return false;
     }
     
-
     public int FindAspect(AspectType type)
     {
         for (int i = 0; i < AspectInventories.Count; i++)
