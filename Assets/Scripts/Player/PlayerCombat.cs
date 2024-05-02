@@ -196,6 +196,16 @@ public class PlayerCombat : MonoBehaviour
 
 
                 break;
+
+            case AspectType.Necrotic:
+
+                GameObject necroprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Necrotic_Projectile necroMovement = necroprojectile.GetComponent<Necrotic_Projectile>();
+                necroMovement.Initialize(attackDirection, rangeDamage);
+                necroMovement.transform.up = attackDirection;
+
+
+                break;
         }
 
     }
