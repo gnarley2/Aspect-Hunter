@@ -11,7 +11,6 @@ public class Water_Splash : MonoBehaviour
     private bool shouldFlipX;
 
 
-
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -20,13 +19,12 @@ public class Water_Splash : MonoBehaviour
             Debug.LogError("SpriteRenderer component not found on " + gameObject.name);
         }
     }
+
     private void Start()
     {
-        // Start a coroutine to destroy the game object after the specified duration
         StartCoroutine(DestroyAfterDuration());
-
-        
     }
+
     public void Initialize(Vector3 newDirection, int damage, Transform playerTransform)
     {
         this.damage = damage;
