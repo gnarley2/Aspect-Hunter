@@ -117,11 +117,12 @@ public class PlayerCombat : MonoBehaviour
                 break;
 
             case AspectType.Frost:
-
-                GameObject frostprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Vector3 worldPositionF = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                worldPositionF.z = 0f;
+                GameObject frostprojectile = Instantiate(projectilePrefab, worldPositionF, Quaternion.identity);
                 Frost_Wall frostWall = frostprojectile.GetComponent<Frost_Wall>();
                 frostWall.Initialize(attackDirection, rangeDamage);
-                frostprojectile.transform.up = attackDirection;
+               // frostprojectile.transform.up = attackDirection;
                 break;
 
 
@@ -133,9 +134,6 @@ public class PlayerCombat : MonoBehaviour
                 Poison_Projectile poisonMovement = poisonprojectile.GetComponent<Poison_Projectile>();
                 Vector3 attackDirectionPoison = (worldPosition1 - transform.position).normalized;
                 poisonMovement.Initialize(attackDirectionPoison, rangeDamage, transform);
-
-
-
 
 
                 break;
