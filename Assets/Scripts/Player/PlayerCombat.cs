@@ -95,21 +95,21 @@ public class PlayerCombat : MonoBehaviour
     void ProjectileAttack(Vector3 attackDirection)
     {
         ProjectileData selectedProjectile = projectileDatas[currentProjectileIndex];
-        if (!selectedProjectile.isUnlocked)
-        {
-            InformationPanel.Instance.ShowInformation($"{selectedProjectile.name} is locked");
-            return;
-        }
+        // if (!selectedProjectile.isUnlocked)
+        // {
+        //     InformationPanel.Instance.ShowInformation($"{selectedProjectile.name} is locked");
+        //     return;
+        // }
         
         AspectType currentType = selectedProjectile.type;
         GameObject projectilePrefab = selectedProjectile.prefab;
 
         
         // Perform additional actions based on the projectile type
+        if (!AspectInventory.Instance.UseAspect(currentType, 1)) return;
         switch (currentType)
         {
             case AspectType.Fire:
-
                 GameObject fireprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Fire_Projectile fireMovement = fireprojectile.GetComponent<Fire_Projectile>();
                 fireMovement.Initialize(attackDirection, rangeDamage);
