@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ice_Spike_Shatter : MonoBehaviour
+public class SuperConductor_Shatter : MonoBehaviour
 {
     private Animator animator;
     private SpriteRenderer spriteRenderer;

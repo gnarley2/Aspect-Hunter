@@ -251,6 +251,17 @@ public class PlayerCombat : MonoBehaviour
                 steamMovement.transform.up = attackDirection;
 
                 break;
+
+
+            case AspectType.Superconductor:
+
+
+                GameObject superprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                SuperConductor_Projectile superMovement = superprojectile.GetComponent<SuperConductor_Projectile>();
+                superMovement.Initialize(attackDirection, rangeDamage);
+                superMovement.transform.up = attackDirection;
+
+                break;
         }
 
     }
