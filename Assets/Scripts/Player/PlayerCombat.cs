@@ -114,6 +114,7 @@ public class PlayerCombat : MonoBehaviour
                 Fire_Projectile fireMovement = fireprojectile.GetComponent<Fire_Projectile>();
                 fireMovement.Initialize(attackDirection, rangeDamage);
                 fireprojectile.transform.up = attackDirection;
+
                 break;
 
             case AspectType.Frost:
@@ -122,9 +123,8 @@ public class PlayerCombat : MonoBehaviour
                 GameObject frostprojectile = Instantiate(projectilePrefab, worldPositionF, Quaternion.identity);
                 Frost_Wall frostWall = frostprojectile.GetComponent<Frost_Wall>();
                 frostWall.Initialize(attackDirection, rangeDamage);
-               // frostprojectile.transform.up = attackDirection;
+          
                 break;
-
 
             case AspectType.Poison:
 
@@ -135,16 +135,16 @@ public class PlayerCombat : MonoBehaviour
                 Vector3 attackDirectionPoison = (worldPosition1 - transform.position).normalized;
                 poisonMovement.Initialize(attackDirectionPoison, rangeDamage, transform);
 
-
                 break;
+
             case AspectType.Shock:
 
                 GameObject shockprojectile = Instantiate(projectilePrefab, GetMouseWorldPosition(), Quaternion.identity);
                 Shock_Hit shockHit = shockprojectile.GetComponent<Shock_Hit>();
                 shockHit.Initialize(attackDirection, rangeDamage);
 
-
                 break;
+
             case AspectType.Water:
            
                 Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -155,6 +155,15 @@ public class PlayerCombat : MonoBehaviour
                 waterSplash.Initialize(attackDirectionWater, rangeDamage, transform);
 
                 break;
+
+            case AspectType.Blast:
+
+                GameObject blastprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Blast_Projectile blastMovement = blastprojectile.GetComponent<Blast_Projectile>();
+                blastMovement.Initialize(attackDirection, rangeDamage);
+                blastMovement.transform.up = attackDirection;
+
+                break;
         }
 
     }
@@ -162,10 +171,7 @@ public class PlayerCombat : MonoBehaviour
     void MeleeAttack(Vector2 attackDirection)
     {
         GameObject meleeWeapon = Instantiate(meleePrefab, transform.position, Quaternion.identity);
-        // Calculate the direction based on the mouse position
         meleeWeapon.transform.up = attackDirection;
-       // Vector3 directionToMouse = (attackDirection - transform.position).normalized;
-       
         MeleeMovement meleeMovement = meleeWeapon.GetComponent<MeleeMovement>();
         meleeMovement.Initialize(transform, attackDirection, meleeDamage);
     }
