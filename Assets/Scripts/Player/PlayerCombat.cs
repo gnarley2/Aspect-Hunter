@@ -240,6 +240,17 @@ public class PlayerCombat : MonoBehaviour
                 radMovement.transform.up = attackDirection;
 
                 break;
+
+
+            case AspectType.Steam:
+
+
+                GameObject steamprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Steam_Projectile steamMovement = steamprojectile.GetComponent<Steam_Projectile>();
+                steamMovement.Initialize(attackDirection, rangeDamage);
+                steamMovement.transform.up = attackDirection;
+
+                break;
         }
 
     }

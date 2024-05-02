@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Radiation_Projectile : MonoBehaviour
+public class Steam_Projectile : MonoBehaviour
 {
     [SerializeField] private float speed = 25f; // Speed of the projectile
-    private AspectType m_AspectType = AspectType.Radiation;
+    private AspectType m_AspectType = AspectType.Steam;
     private Vector3 direction;
     private Vector3 initialPosition;
     public float maxDistance = 10f;
     public GameObject hitAnimation;
+    public GameObject hitAnimation2;
     private int damage = 10;
 
     void Start()
@@ -56,10 +57,10 @@ public class Radiation_Projectile : MonoBehaviour
             if (target.GetDamagerType() == IDamageable.DamagerTarget.Player) return;
 
             target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero, m_AspectType);
-    
+
 
             GameObject hitAnimationInstance = Instantiate(hitAnimation, enemyTransform.position + Vector3.up * yOffset, Quaternion.identity, enemyTransform);
-
+            GameObject hitAnimationInstance2 = Instantiate(hitAnimation2, transform.position + Vector3.up * yOffset, Quaternion.identity, enemyTransform);
             Destroy(gameObject);
         }
     }
