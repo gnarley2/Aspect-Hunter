@@ -143,12 +143,14 @@ public class PlayerCombat : MonoBehaviour
 
                 break;
             case AspectType.Water:
-
-                GameObject waterprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+           
+                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                worldPosition.z = 0f; 
+                GameObject waterprojectile = Instantiate(projectilePrefab, worldPosition, Quaternion.identity);
                 Water_Splash waterSplash = waterprojectile.GetComponent<Water_Splash>();
-                waterSplash.Initialize(attackDirection, rangeDamage);
-                waterprojectile.transform.up = attackDirection;
-
+                Vector3 attackDirectionWater = (worldPosition - transform.position).normalized;
+                waterSplash.Initialize(attackDirectionWater, rangeDamage, transform);
+              //  waterprojectile.transform.up = attackDirectionWater;
 
                 break;
         }
