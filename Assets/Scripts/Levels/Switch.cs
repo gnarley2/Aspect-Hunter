@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Switch : MonoBehaviour, IDamageable
 {
-    [SerializeField] private ProjectileData.ProjectileType ProjectileType;
+    [FormerlySerializedAs("ProjectileType")] [SerializeField] private AspectType aspectType;
 
     public Action OnActivate;
 
@@ -41,9 +42,9 @@ public class Switch : MonoBehaviour, IDamageable
     
 
     public void TakeDamage(int damage, IDamageable.DamagerTarget damagerType, Vector2 attackDirection,
-        ProjectileData.ProjectileType projectileType = ProjectileData.ProjectileType.None)
+        AspectType aspectType = AspectType.None)
     {
-        if (projectileType == this.ProjectileType)
+        if (aspectType == this.aspectType)
         {
             OnActivate?.Invoke();
         }

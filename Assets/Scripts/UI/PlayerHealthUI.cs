@@ -35,6 +35,5 @@ public class PlayerHealthUI : MonoBehaviour
     {
         slider.value = health.GetPercent();
         fillImg.color = Color.Lerp(noColor, fullColor, slider.value);
-        Debug.Log(slider.value);
     }
 }

@@ -49,7 +49,37 @@ public class EquippableItem : Item
           Instantiate(FlashLightPrefab);
 
         }
+        if (EquipmentType == EquipmentType.Aspect)
+        {
+            // Get the name of the item
+            string itemName = ItemName; // Assuming ItemName is the name of the item
 
+            // Access PlayerCombat script
+            GameObject player = GameObject.FindWithTag("Player");
+            PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
+
+            // Check the name of the item and adjust currentType accordingly
+            if (itemName == "FireAspect")
+            {
+                playerCombat.currentProjectileIndex = 0;
+            }
+            else if (itemName == "FrostAspect")
+            {
+                playerCombat.currentProjectileIndex = 1;
+            }
+            else if (itemName == "ShockAspect")
+            {
+                playerCombat.currentProjectileIndex = 3;
+            }
+            else if (itemName == "PoisonAspect")
+            {
+                playerCombat.currentProjectileIndex = 2;
+            }
+            else if (itemName == "WaterAspect")
+            {
+                playerCombat.currentProjectileIndex = 4;
+            }
+        }
 
 
     }

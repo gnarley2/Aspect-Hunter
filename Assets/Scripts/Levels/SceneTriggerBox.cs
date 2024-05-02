@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneTriggerBox : MonoBehaviour
 {
+
     private SceneTriggerManager levelManager;
-    public SceneAsset targetScene;
+    public int targetSceneBuildIndex; // Use int to represent scene build index instead of SceneAsset
 
     private void Start()
     {
@@ -21,15 +22,9 @@ public class SceneTriggerBox : MonoBehaviour
             LoadTargetScene();
         }
     }
+
     private void LoadTargetScene()
     {
-        if (targetScene != null)
-        {
-            levelManager.LoadSceneFromTrigger(targetScene);
-        }
-        else
-        {
-            Debug.LogWarning("Target scene is not assigned.");
-        }
+        levelManager.LoadSceneFromTrigger(targetSceneBuildIndex);
     }
 }

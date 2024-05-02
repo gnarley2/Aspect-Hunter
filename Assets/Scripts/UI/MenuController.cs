@@ -4,41 +4,48 @@ using UnityEngine;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] Menus menus; // Assign this in the inspector or find it in Awake/Start
+    [SerializeField] Menus menus;
     public static bool openInventory;
     bool itemDescription = false;
+    bool openMap;
     [SerializeField] GameObject DescriptionPanel;
 
     private void Awake()
     {
-        menus = FindObjectOfType<Menus>(); // Only use this if Menus is not a Singleton
+        menus = FindObjectOfType<Menus>();
         openInventory = false;
+        openMap = false;
     }
 
     void Update()
     {
         if (Input.GetKeyDown("i"))
         {
-            if (!menus.isPaused) // Use the instance of Menus to check if it's paused
+            if (!menus.isPaused) // Check if the game is paused
             {
-                // Toggle the state of the inventory
-                openInventory = !openInventory;
-                GameCanvas.Instance.ToggleCharacterPanel(openInventory); //todo inventory
+                ToggleInventory();
             }
         }
 
-        if (menus.isPaused && openInventory) // Again, use the instance of Menus
+        if (Input.GetKeyDown("m"))
         {
-            // Close inventory when the game is paused
-            openInventory = false;
-            GameCanvas.Instance.ToggleCharacterPanel(openInventory);
+            if (!menus.isPaused)
+            {
+                ToggleMap();
+            }
         }
+    }
 
-        if (itemDescription)
-        {
-            DescriptionPanel.SetActive(true);
-        }
+    public void ToggleMap()
+    {
+        openMap = !openMap;
+        GameCanvas.Instance.ToggleMapPanel(openMap);
+    }
 
+    public void ToggleInventory()
+    {
+        openInventory = !openInventory;
+        GameCanvas.Instance.ToggleCharacterPanel(openInventory);
     }
 
     public void CloseInventory()

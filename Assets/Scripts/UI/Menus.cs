@@ -26,16 +26,29 @@ public class Menus : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isPaused = !isPaused;
-
-            if (isPaused)
+            if (MenuController.openInventory)
             {
-                Time.timeScale = 0f;
-                GameCanvas.Instance.TogglePausedPanel(isPaused);
+                // If inventory is open, just close it and don't pause the game
+                MenuController menuController = FindObjectOfType<MenuController>();
+                if (menuController != null)
+                {
+                    menuController.CloseInventory();
+                }
             }
             else
             {
-                Resume();
+                // Toggle pause state only if inventory is not open
+                isPaused = !isPaused;
+
+                if (isPaused)
+                {
+                    Time.timeScale = 0f;
+                    GameCanvas.Instance.TogglePausedPanel(isPaused);
+                }
+                else
+                {
+                    Resume();
+                }
             }
         }
     }
@@ -46,7 +59,6 @@ public class Menus : MonoBehaviour
         isPaused = false;
         GameCanvas.Instance.TogglePausedPanel(isPaused);
 
-        // FindItem the MenuController component and close the inventory
         MenuController menuController = FindObjectOfType<MenuController>();
         if (menuController != null)
         {

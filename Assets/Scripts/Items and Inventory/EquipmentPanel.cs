@@ -35,6 +35,18 @@ public class EquipmentPanel : MonoBehaviour
 
     public bool AddItem(EquippableItem item, out EquippableItem previousItem)
     {
+        // First, try to find an empty slot of the same equipment type
+        for (int i = 0; i < equipmentSlots.Length; i++)
+        {
+            if (equipmentSlots[i].EquipmentType == item.EquipmentType && equipmentSlots[i].Item == null)
+            {
+                equipmentSlots[i].Item = item;
+                previousItem = null;
+                return true;
+            }
+        }
+
+        // If no empty slot is found, look for an occupied slot of the same type
         for (int i = 0; i < equipmentSlots.Length; i++)
         {
             if (equipmentSlots[i].EquipmentType == item.EquipmentType)
@@ -44,9 +56,12 @@ public class EquipmentPanel : MonoBehaviour
                 return true;
             }
         }
+
+        // If no slot of the same type is found, return false
         previousItem = null;
         return false;
     }
+
 
     public bool RemoveItem(EquippableItem item)
     {
