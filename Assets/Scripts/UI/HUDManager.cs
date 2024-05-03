@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class HUDManager : MonoBehaviour
 {
@@ -27,6 +28,18 @@ public class HUDManager : MonoBehaviour
             {
                 aspectSlot2.sprite = item.Icon;
                 itemToSlotMap[item] = aspectSlot2;
+            }
+            else
+            {
+                // Both slots are occupied, replace the first slot
+                EquippableItem firstItem = itemToSlotMap.Keys.FirstOrDefault();
+                if (firstItem != null)
+                {
+                    Image firstSlot = itemToSlotMap[firstItem];
+                    firstSlot.sprite = item.Icon;
+                    itemToSlotMap.Remove(firstItem);
+                    itemToSlotMap[item] = firstSlot;
+                }
             }
         }
         else
