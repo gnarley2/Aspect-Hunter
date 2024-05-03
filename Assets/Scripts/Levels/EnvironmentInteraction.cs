@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EnvironmentInteraction : MonoBehaviour, IDamageable
 {
+    [SerializeField] private bool canDestroy = true;
+    
     [Serializable]
     public class EnvironmentTriggerElement
     {
@@ -14,8 +16,9 @@ public class EnvironmentInteraction : MonoBehaviour, IDamageable
 
     [SerializeField] private List<EnvironmentTriggerElement> Elements = new List<EnvironmentTriggerElement>();
 
+    public Action OnTrigger;
     private Animator anim;
-    private bool isDestroyed = false;
+    private bool isActivated = false;
 
     private void Awake()
     {
@@ -46,15 +49,15 @@ public class EnvironmentInteraction : MonoBehaviour, IDamageable
     public void TakeDamage(int damage, IDamageable.DamagerTarget damagerType, Vector2 attackDirection,
         AspectType aspectType = AspectType.None)
     {
-        if (isDestroyed) return;
-        
+        if (isActivated) return;
         foreach (EnvironmentTriggerElement element in Elements)
         {
             if (element.type == aspectType)
             {
-                isDestroyed = true;
+                isActivated = true;
                 anim.Play(element.animName);
-                Destroy(gameObject, 2f);
+                OnTrigger?.Invoke();
+                if (canDestroy) Destroy(gameObject, 2f);
                 break;
             }
         }
