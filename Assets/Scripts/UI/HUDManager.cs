@@ -9,7 +9,16 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Image aspectSlot1;
     [SerializeField] private Image aspectSlot2;
 
+    Vector2 aspect1Size;
+    Vector2 aspect2Size;
+
     private Dictionary<EquippableItem, Image> itemToSlotMap = new Dictionary<EquippableItem, Image>();
+
+    void Start()
+    {
+        aspect1Size = aspectSlot1.rectTransform.sizeDelta;
+        aspect2Size = aspectSlot2.rectTransform.sizeDelta;
+    }
 
     public void UpdateAspectSlot(EquippableItem item, bool isEquipping)
     {
@@ -50,6 +59,20 @@ public class HUDManager : MonoBehaviour
                 slot.sprite = null;
                 itemToSlotMap.Remove(item);
             }
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown("1") && aspectSlot1.sprite != null)
+        {
+            aspectSlot1.rectTransform.sizeDelta = new Vector2(80, 80);
+            aspectSlot2.rectTransform.sizeDelta = aspect2Size; // Reset aspectSlot2 to its original size
+        }
+        else if (Input.GetKeyDown("2") && aspectSlot2.sprite != null)
+        {
+            aspectSlot2.rectTransform.sizeDelta = new Vector2(80, 80);
+            aspectSlot1.rectTransform.sizeDelta = aspect1Size; // Reset aspectSlot1 to its original size
         }
     }
 }
