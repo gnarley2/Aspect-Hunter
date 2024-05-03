@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class EnvironmentInteraction : MonoBehaviour, IDamageable
 {
+    [SerializeField] private bool canPlayOnce = true;
     [SerializeField] private bool canDestroy = true;
+    [SerializeField] private bool canPush = false;
     
     [Serializable]
     public class EnvironmentTriggerElement
@@ -18,11 +20,13 @@ public class EnvironmentInteraction : MonoBehaviour, IDamageable
 
     public Action OnTrigger;
     private Animator anim;
+    private Rigidbody2D rb;
     private bool isActivated = false;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
 
@@ -49,17 +53,39 @@ public class EnvironmentInteraction : MonoBehaviour, IDamageable
     public void TakeDamage(int damage, IDamageable.DamagerTarget damagerType, Vector2 attackDirection,
         AspectType aspectType = AspectType.None)
     {
-        if (isActivated) return;
+        if (isActivated && canPlayOnce) return;
+        
         foreach (EnvironmentTriggerElement element in Elements)
         {
             if (element.type == aspectType)
             {
                 isActivated = true;
-                anim.Play(element.animName);
+                PlayAnim(element);
+                Push(attackDirection);
+                
                 OnTrigger?.Invoke();
-                if (canDestroy) Destroy(gameObject, 2f);
+                
+                Destroy();
                 break;
             }
         }
+    }
+
+    void Destroy()
+    {
+        if (canDestroy) Destroy(gameObject, 2f);
+    }
+
+    void PlayAnim(EnvironmentTriggerElement element)
+    {
+        if (!String.IsNullOrWhiteSpace(element.animName)) anim.Play(element.animName);
+    }
+
+    void Push(Vector2 attackDirection)
+    {
+        if (!canPush) return;
+        Debug.Log(attackDirection);
+        float force = 100f;
+        rb.AddForce(attackDirection * force, ForceMode2D.Impulse);
     }
 }
