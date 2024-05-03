@@ -4,32 +4,32 @@ using UnityEngine;
 
 public class BossPhase : MonoBehaviour
 {
-    enum Phase
+    public enum Phase
     {
         Start,
         End
     }
 
     [SerializeField]
-    Phase phase = new();
+    public static Phase phase = Phase.Start;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if(phase == Phase.Start)
-        {
-            Debug.Log($"{Phase.Start.ToString()} phase");
-        }
-        else
-        {
-            Debug.Log($"{Phase.End.ToString()} phase");
-        }
+        //if(phase == Phase.Start)
+        //{
+        //    Debug.Log($"{Phase.Start.ToString()} phase");
+        //}
+        //else
+        //{
+        //    Debug.Log($"{Phase.End.ToString()} phase");
+        //}
     }
 }

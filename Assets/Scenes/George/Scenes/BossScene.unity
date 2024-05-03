@@ -5628,6 +5628,7 @@ GameObject:
   - component: {fileID: 1818020524}
   - component: {fileID: 1818020526}
   - component: {fileID: 1818020527}
+  - component: {fileID: 1818020528}
   m_Layer: 0
   m_Name: BossKrabster
   m_TagString: Boss
@@ -5786,7 +5787,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40a933ed6f75dc458fccc9e92f3e903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phase: 1
+--- !u!114 &1818020528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818020520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adfec3dc04acb134391f6bd726aed4d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1001 &1849492583
 PrefabInstance:
   m_ObjectHideFlags: 0

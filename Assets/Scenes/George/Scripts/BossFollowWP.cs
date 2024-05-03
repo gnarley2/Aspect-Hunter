@@ -24,11 +24,33 @@ public class BossFollowWP : MonoBehaviour
             currentWP++;
         }
 
-        if (currentWP >= waypoints.Length)
+        switch (BossPhase.phase)
         {
-            currentWP = 0;
+            case BossPhase.Phase.Start:
+                //if (currentWP == 2)
+                //{
+                //    currentWP = 0;
+                //}
+                //if (currentWP == 3)
+                //{
+                //    currentWP = 1;
+                //}
+                break;
+
+            case BossPhase.Phase.End:
+                //if (currentWP >= waypoints.Length) currentWP = 0;
+                break;
         }
+        if (currentWP >= waypoints.Length) currentWP = 0;
 
         this.transform.position = Vector2.MoveTowards(this.transform.position, waypoints[currentWP].transform.position, step);
+
+        StartCoroutine(PrintPhase());
+    }
+
+    IEnumerator PrintPhase()
+    {
+        Debug.Log($"{BossPhase.phase} phase");
+        yield return new WaitForSeconds(5);
     }
 }
