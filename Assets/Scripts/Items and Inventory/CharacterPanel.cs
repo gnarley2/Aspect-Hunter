@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Kryz.CharacterStats;
 using UnityEngine.Serialization;
 
 public class CharacterPanel : MonoBehaviour

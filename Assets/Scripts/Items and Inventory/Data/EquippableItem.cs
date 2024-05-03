@@ -1,8 +1,8 @@
 using UnityEngine;
-using Kryz.CharacterStats;
 using UnityEditor;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 using Transform = UnityEngine.Transform;
+using System;
 
 public enum EquipmentType
 {
@@ -24,6 +24,8 @@ public class EquippableItem : Item
     public GameObject LanternBugPrefab;
     public GameObject LanternPrefab;
     public GameObject FlashLightPrefab;
+    public event Action OnEquipped;
+    public event Action OnUnequipped;
 
     public void Equip(CharacterPanel c)
     {
@@ -81,6 +83,7 @@ public class EquippableItem : Item
             }
         }
 
+        OnEquipped?.Invoke();
 
     }
 
@@ -114,5 +117,7 @@ public class EquippableItem : Item
             Destroy(flashlightInstance);
 
         }
+
+        OnUnequipped?.Invoke();
     }
 }
