@@ -18,5 +18,9 @@ public class BossHealth : MonoBehaviour
         {
             BossPhase.phase = BossPhase.Phase.End;
         }
+        else
+        {
+            BossPhase.phase = BossPhase.Phase.Start;
+        }
     }
 }
