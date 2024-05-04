@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Kryz.CharacterStats;
 using UnityEngine.Serialization;
 
 public class CharacterPanel : MonoBehaviour
@@ -9,6 +8,7 @@ public class CharacterPanel : MonoBehaviour
     [SerializeField] EquipmentPanel equipmentPanel;
     [SerializeField] ItemTooltip itemTooltip;
     [SerializeField] Image draggableItem;
+    [SerializeField] HUDManager hudManager;
 
     private ItemSlot dragItemSlot;
 
@@ -111,13 +111,29 @@ public class CharacterPanel : MonoBehaviour
 
             if (dropItemSlot is EquipmentSlot)
             {
-                if (dragItem != null) dragItem.Equip(this);
-                if (dropItem != null) dropItem.Unequip(this);
+                if (dragItem != null)
+                {
+                    dragItem.Equip(this);
+                    hudManager.UpdateAspectSlot(dragItem, true); // Update HUD for the equipped item
+                }
+                if (dropItem != null)
+                {
+                    dropItem.Unequip(this);
+                    hudManager.UpdateAspectSlot(dropItem, false); // Update HUD for the unequipped item
+                }
             }
             if (dragItemSlot is EquipmentSlot)
             {
-                if (dragItem != null) dragItem.Unequip(this);
-                if (dropItem != null) dropItem.Equip(this);
+                if (dragItem != null)
+                {
+                    dragItem.Unequip(this);
+                    hudManager.UpdateAspectSlot(dragItem, false); // Update HUD for the unequipped item
+                }
+                if (dropItem != null)
+                {
+                    dropItem.Equip(this);
+                    hudManager.UpdateAspectSlot(dropItem, true); // Update HUD for the equipped item
+                }
             }
 
             Item draggedItem = dragItemSlot.Item;
