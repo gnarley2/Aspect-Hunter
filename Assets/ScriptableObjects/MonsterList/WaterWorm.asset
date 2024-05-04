@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49ca29b059f0c524e91946ec5012d091, type: 3}
+  m_Script: {fileID: 11500000, guid: 32d2e7ec43489474da0310780a5fe456, type: 3}
   m_Name: WaterWorm
   m_EditorClassIdentifier: 
-  ID: 
-  monsterDetails: {fileID: 11400000, guid: 2523dc821ac4d29408b779d86724d23c, type: 2}
-  healthData: {fileID: 11400000, guid: 2fe81ed89107d034dbc0ed3cf2f03da3, type: 2}
-  currentHealth: 0
-  KnockbackType: 1
+  name: 800
+  description: 
+  type: 5
+  damage: 1
+  tamedTree: {fileID: 11400000, guid: a43a57192a37ad44fb06e17f11b07014, type: 2}
+  maxNumAspect: 5
+  minNumAspect: 3

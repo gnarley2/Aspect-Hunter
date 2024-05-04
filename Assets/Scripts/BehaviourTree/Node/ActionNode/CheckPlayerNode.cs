@@ -68,6 +68,7 @@ public class CheckPlayerNode : ActionNode
         }
         else
         {
+            Debug.Log(Mathf.Abs(playerPos.y - checkPos.y) );
             return (Mathf.Abs(playerPos.x - checkPos.x) < size.x / 2 && Mathf.Abs(playerPos.y - checkPos.y) < size.y / 2);
         }
     }

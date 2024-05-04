@@ -93,6 +93,7 @@ MonoBehaviour:
     Name: 
     description: 
   children:
+  - {fileID: 5666535852155615255}
   - {fileID: -6429485835466029539}
 --- !u!114 &-4334834234558546235
 MonoBehaviour:
@@ -188,6 +189,7 @@ MonoBehaviour:
   - {fileID: 8019817616436312244}
   - {fileID: 2522351015106703294}
   - {fileID: -3893844615328036102}
+  - {fileID: 5666535852155615255}
   groups: []
   offset: {x: 300, y: 0}
 --- !u!114 &137742696219337016
@@ -211,10 +213,10 @@ MonoBehaviour:
     Name: 
     description: 
   linkNode: {fileID: 0}
-  checkType: 0
-  checkRelativePos: {x: 0, y: 1}
+  checkType: 1
+  checkRelativePos: {x: -3, y: 0}
   radius: 6
-  size: {x: 0, y: 0}
+  size: {x: 7, y: 1}
 --- !u!114 &2522351015106703294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +308,29 @@ MonoBehaviour:
     Name: 
     description: 
   child: {fileID: -8688324086256755511}
+--- !u!114 &5666535852155615255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18971eeeca6b3d4a9ad977c3fc60b2e, type: 3}
+  m_Name: SpawnWaterCannonNode
+  m_EditorClassIdentifier: 
+  NodeComponent:
+    state: 0
+    started: 0
+    guid: 0385634e035d00047b707078628bca80
+    Tree: {fileID: 11400000}
+    position: {x: 882.1805, y: 415.6}
+    Name: 
+    description: 
+  linkNode: {fileID: 0}
+  prefab: {fileID: 7557307482816978047, guid: e239603a28647614f805e3261bb3473d, type: 3}
+  offset: {x: -0.3, y: 0.4}
 --- !u!114 &6815537652337133885
 MonoBehaviour:
   m_ObjectHideFlags: 0

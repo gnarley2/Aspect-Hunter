@@ -19,7 +19,16 @@ public class SpawnWaterCannonNode : ActionNode
     protected override void OnStart()
     {
         base.OnStart();
-        Instantiate(prefab, (Vector2)treeComponent.transform.position - movement.GetDirectionMagnitude() * offset, Quaternion.identity);
+        float direction = movement.GetDirectionMagnitude();
+        Vector2 spawnPos = movement.GetWorldPosFromRelativePos(offset);
+        if (direction == -1)
+        {
+            Instantiate(prefab, spawnPos, Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(prefab, spawnPos, Quaternion.Euler (0f, 180f, 0f));
+        }
     }
 
     protected override void OnStop()
