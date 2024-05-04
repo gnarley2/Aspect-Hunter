@@ -51,13 +51,13 @@ public class SpawnBubblesNew : MonoBehaviour
             //StartCoroutine(SpawnInCirclePattern());
         }
         
-        if(!IsInvoking("PrintPhase"))
-        {
-            StartCoroutine("PrintPhase");
-        }
+        //if(!IsInvoking("PrintPhase"))
+        //{
+        //    StartCoroutine("PrintPhase");
+        //}
 
         float currentTime = elapsedTime >= maxTimeInSeconds ? elapsedTime = 0 : elapsedTime += Time.deltaTime;
-        Debug.Log($"Current time: {currentTime}");
+        //Debug.Log($"Current time: {currentTime}");
     }
 
     IEnumerator PrintPhase()

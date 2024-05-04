@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class BossHealthNew : MonoBehaviour
 {
-    //public int health;
+    public int health;
     Health bossHealth;
-    [SerializeField]
-    float phaseShiftThreshold;
+    //[SerializeField]
+    //float phaseShiftThreshold = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        bossHealth = GetComponent<Health>();
-        phaseShiftThreshold = bossHealth.GetPercent();
+        bossHealth = this.transform.GetChild(0).GetChild(0).GetComponent<Health>();
+        health = bossHealth.GetHealth();
+        //Debug.Log($"boss health percent: {health}");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (phaseShiftThreshold < 50f)
+        health = bossHealth.GetHealth();
+        Debug.Log($"boss health percent: {health}");
+
+        if (health < 50f)
         {
             BossPhase.phase = BossPhase.Phase.End;
         }
