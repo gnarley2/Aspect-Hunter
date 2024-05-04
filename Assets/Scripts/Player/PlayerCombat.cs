@@ -92,6 +92,62 @@ public class PlayerCombat : MonoBehaviour
         direction = (mouseWorldPosition - transform.position).normalized;
     }
 
+    public void SetCurrentProjectileIndexBasedOnAspect(EquippableItem aspectItem)
+    {
+        switch (aspectItem.ItemName)
+        {
+            case "FireAspect":
+                currentProjectileIndex = 0;
+                break;
+            case "FrostAspect":
+                currentProjectileIndex = 1;
+                break;
+            case "ShockAspect":
+                currentProjectileIndex = 3;
+                break;
+            case "PoisonAspect":
+                currentProjectileIndex = 2;
+                break;
+            case "WaterAspect":
+                currentProjectileIndex = 4;
+                break;
+            case "SteamAspect":
+                currentProjectileIndex = 13;
+                break;
+            case "BlastAspect":
+                currentProjectileIndex = 5;
+                break;
+            case "RadiationAspect":
+                currentProjectileIndex = 12;
+                break;
+            case "GasAspect":
+                currentProjectileIndex = 7;
+                break;
+            case "ParalysisAspect":
+                currentProjectileIndex = 10;
+                break;
+            case "PollutionAspect":
+                currentProjectileIndex = 11;
+                break;
+            case "SuperconductorAspect":
+                currentProjectileIndex = 14;
+                break;
+            case "NecroticAspect":
+                currentProjectileIndex = 9;
+                break;
+            case "CorrosionAspect":
+                currentProjectileIndex = 6;
+                break;
+            case "IceSpikeAspect":
+                currentProjectileIndex = 8;
+                break;
+            // Continue for other aspects as necessary
+            default:
+                Debug.LogError("Aspect not recognized: " + aspectItem.ItemName);
+                break;
+        }
+    }
+
     void ProjectileAttack(Vector3 attackDirection)
     {
         ProjectileData selectedProjectile = projectileDatas[currentProjectileIndex];

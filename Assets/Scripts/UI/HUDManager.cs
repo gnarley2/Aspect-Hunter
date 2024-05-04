@@ -67,21 +67,24 @@ public class HUDManager : MonoBehaviour
         if (Input.GetKeyDown("1") && aspectSlot1.sprite != null)
         {
             aspectSlot1.rectTransform.sizeDelta = new Vector2(80, 80);
-            aspectSlot2.rectTransform.sizeDelta = aspect2Size; // Reset aspectSlot2 to its original size
-
-            //current projectile index change to whatever is equipped
+            aspectSlot2.rectTransform.sizeDelta = aspect2Size;
+            // Change projectile index based on the aspect in slot 1
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
+            EquippableItem itemInSlot1 = itemToSlotMap.FirstOrDefault(x => x.Value == aspectSlot1).Key;
+            playerCombat.SetCurrentProjectileIndexBasedOnAspect(itemInSlot1);
+            Debug.Log(itemInSlot1);
         }
         else if (Input.GetKeyDown("2") && aspectSlot2.sprite != null)
         {
             aspectSlot2.rectTransform.sizeDelta = new Vector2(80, 80);
-            aspectSlot1.rectTransform.sizeDelta = aspect1Size; // Reset aspectSlot1 to its original size
-
-            //current projectile index change to whatever is equipped
+            aspectSlot1.rectTransform.sizeDelta = aspect1Size;
+            // Change projectile index based on the aspect in slot 2
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
+            EquippableItem itemInSlot2 = itemToSlotMap.FirstOrDefault(x => x.Value == aspectSlot2).Key;
+            playerCombat.SetCurrentProjectileIndexBasedOnAspect(itemInSlot2);
+            Debug.Log(itemInSlot2);
         }
-
-
-        //aspectdatabase reference here to update 3rd slot
-
-        //fix size when no aspects in slot
     }
 }
