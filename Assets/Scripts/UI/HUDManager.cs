@@ -74,5 +74,8 @@ public class HUDManager : MonoBehaviour
             aspectSlot2.rectTransform.sizeDelta = new Vector2(80, 80);
             aspectSlot1.rectTransform.sizeDelta = aspect1Size; // Reset aspectSlot1 to its original size
         }
+
+
+        //aspectdatabase reference here to update 3rd slot
     }
 }
