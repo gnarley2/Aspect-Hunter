@@ -53,7 +53,7 @@ public class Fire_Projectile : MonoBehaviour
         {
             if (target.GetDamagerType() == IDamageable.DamagerTarget.Player) return;
             
-            target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero, m_AspectType);
+            target.TakeDamage(damage, IDamageable.DamagerTarget.Player, direction, m_AspectType);
             Destroy(gameObject);
         }
 

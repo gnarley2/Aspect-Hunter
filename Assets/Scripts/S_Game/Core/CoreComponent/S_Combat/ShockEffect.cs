@@ -33,7 +33,7 @@ public class Shock_Effect : MonoBehaviour
         if (other.TryGetComponent<IDamageable>(out IDamageable newTarget))
         {
             target = newTarget;
-            target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
+            target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero, AspectType.Shock);
             damageCoroutine = StartCoroutine(DamageOverTime());
         }
     }
@@ -46,7 +46,7 @@ public class Shock_Effect : MonoBehaviour
             timer -= damageInterval;
             if (target != null)
             {
-                target.TakeDamage(damagePerSecond, IDamageable.DamagerTarget.Player, Vector2.zero);
+                target.TakeDamage(damagePerSecond, IDamageable.DamagerTarget.Player, Vector2.zero, AspectType.Shock);
             }
         }
 
