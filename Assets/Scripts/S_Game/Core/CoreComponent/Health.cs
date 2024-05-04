@@ -84,4 +84,9 @@ public class Health : CoreComponent
     {
         return health * 1.0f / maxHealth;
     }
+
+    public int GetHealth()
+    {
+        return health;
+    }
 }

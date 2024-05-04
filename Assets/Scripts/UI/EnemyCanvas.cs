@@ -7,6 +7,7 @@ public class EnemyCanvas : MonoBehaviour
 {
     [SerializeField] private Movement movement;
     [SerializeField] private BossMovement bossMovement;
+    [SerializeField] private BossFollowWP bossFollowWP;
 
     private Vector2 offset;
 
@@ -20,6 +21,11 @@ public class EnemyCanvas : MonoBehaviour
         if (bossMovement != null)
         {
             offset = (Vector2)transform.position - (Vector2)bossMovement.transform.position;
+        }
+
+        if (bossFollowWP != null)
+        {
+            offset = (Vector2)transform.position - (Vector2)bossFollowWP.transform.position;
         }
     }
 
@@ -40,7 +46,12 @@ public class EnemyCanvas : MonoBehaviour
             transform.position = offset + (Vector2)Camera.main.transform.position + Vector2.down * -6.5f;
         }
 
-        if (movement == null && bossMovement == null)
+        if (bossFollowWP != null)
+        {
+            transform.position = offset + (Vector2)Camera.main.transform.position + Vector2.down * -6.5f;
+        }
+
+        if (movement == null && bossMovement == null && bossFollowWP == null)
         {
             gameObject.SetActive(false);
         }
