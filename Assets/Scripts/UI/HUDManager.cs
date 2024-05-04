@@ -77,5 +77,7 @@ public class HUDManager : MonoBehaviour
 
 
         //aspectdatabase reference here to update 3rd slot
+
+        //fix size when no aspects in slot
     }
 }
