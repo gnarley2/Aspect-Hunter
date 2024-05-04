@@ -2449,10 +2449,10 @@ GameObject:
   - component: {fileID: 1818020522}
   - component: {fileID: 1818020521}
   - component: {fileID: 1818020525}
+  - component: {fileID: 1818020530}
   - component: {fileID: 1818020526}
   - component: {fileID: 1818020527}
   - component: {fileID: 1818020529}
-  - component: {fileID: 1818020530}
   m_Layer: 0
   m_Name: BossKrabster
   m_TagString: Boss
@@ -2617,12 +2617,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1818020520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a04f9e8dbf4b36d44a12a268f7059054, type: 3}
+  m_Script: {fileID: 11500000, guid: b7ed7ccdbf4a0cc47a1106daaf5eda79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubblesAmount: 10
-  startAngle: 90
-  endAngle: 270
+  _bubblesAmount: 10
+  _startAngle: 0
+  _endAngle: 0
+  time: 0
+  repeatRate: 1
 --- !u!1 &1961120859 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5018643723181029245, guid: 43d4e05ed2c04794b9bf56ecad8a2752, type: 3}
