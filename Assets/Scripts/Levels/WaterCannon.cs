@@ -1,17 +1,16 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoisonOrb : MonoBehaviour
+public class WaterCannon : MonoBehaviour
 {
-    [SerializeField] private float radius;
-    [SerializeField] private Vector2 offset = Vector2.zero;
+    [SerializeField] private Vector2 box;
+    [SerializeField] private Vector2 offset;
     [SerializeField] private int damage;
     
     void DealDamage()
     {
-        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position+ (Vector3)offset, radius);
+        Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position + (Vector3)offset, box, 0);
         foreach (Collider2D col in cols)
         {
             if (col.TryGetComponent<IDamageable>(out IDamageable target))
@@ -25,7 +24,7 @@ public class PoisonOrb : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(transform.position + (Vector3)offset, radius);
+        Gizmos.DrawWireCube(transform.position + (Vector3)offset, box);
     }
 
     void Destroy()
