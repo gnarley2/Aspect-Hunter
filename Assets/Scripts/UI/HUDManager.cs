@@ -68,11 +68,15 @@ public class HUDManager : MonoBehaviour
         {
             aspectSlot1.rectTransform.sizeDelta = new Vector2(80, 80);
             aspectSlot2.rectTransform.sizeDelta = aspect2Size; // Reset aspectSlot2 to its original size
+
+            //current projectile index change to whatever is equipped
         }
         else if (Input.GetKeyDown("2") && aspectSlot2.sprite != null)
         {
             aspectSlot2.rectTransform.sizeDelta = new Vector2(80, 80);
             aspectSlot1.rectTransform.sizeDelta = aspect1Size; // Reset aspectSlot1 to its original size
+
+            //current projectile index change to whatever is equipped
         }
 
 
