@@ -32,6 +32,9 @@ public class MonsterInventory : MonoBehaviour
         
         Monsters.Add(monsterInventory);
         
+        
+        AspectInventory.Instance.AddAspect(monsterInventory.monsterData.monsterDetails);
+        
         OnCatchMonster?.Invoke(data);
     }
 
