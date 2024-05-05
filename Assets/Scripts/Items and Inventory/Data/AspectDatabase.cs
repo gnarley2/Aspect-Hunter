@@ -47,7 +47,22 @@ public class AspectDatabase : MonoBehaviour
         Instance = this;
     }
 
+    [SerializeField] private List<EquippableItem> EquippableAspects = new List<EquippableItem>();
     [SerializeField] private List<AspectCombination> AspectCombinations = new List<AspectCombination>();
+
+    public EquippableItem GetEquippableAspect(AspectType aspectType)
+    {
+        foreach (EquippableItem item in EquippableAspects)
+        {
+            if (item.aspectType == aspectType)
+            {
+                return item;
+            }
+        }
+
+        Debug.LogError("Can not find equippable aspect");
+        return null;
+    }
 
     public AspectType GetCombination(AspectType aspectType1, AspectType aspectType2)
     {

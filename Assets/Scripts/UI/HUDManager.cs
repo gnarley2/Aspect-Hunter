@@ -12,13 +12,16 @@ public class HUDManager : MonoBehaviour
 
     Vector2 aspect1Size;
     Vector2 aspect2Size;
+    Vector2 aspect3Size;
 
     private Dictionary<EquippableItem, Image> itemToSlotMap = new Dictionary<EquippableItem, Image>();
+    private Dictionary<int, AspectType> slotToAspectMap = new Dictionary<int, AspectType>();
 
     void Start()
     {
         aspect1Size = aspectSlot1.rectTransform.sizeDelta;
         aspect2Size = aspectSlot2.rectTransform.sizeDelta;
+        aspect3Size = aspectSlot3.rectTransform.sizeDelta;
     }
 
     public void UpdateAspectSlot(EquippableItem item, bool isEquipping, int index)
@@ -33,11 +36,13 @@ public class HUDManager : MonoBehaviour
             {
                 aspectSlot1.sprite = item.Icon;
                 itemToSlotMap[item] = aspectSlot1;
+                slotToAspectMap[1] = item.aspectType;
             }
             else if (index == 2)
             {
                 aspectSlot2.sprite = item.Icon;
                 itemToSlotMap[item] = aspectSlot2;
+                slotToAspectMap[2] = item.aspectType;
             }
             // else
             // {
@@ -61,6 +66,15 @@ public class HUDManager : MonoBehaviour
                 itemToSlotMap.Remove(item);
             }
         }
+
+        if (slotToAspectMap.ContainsKey(1) &&  slotToAspectMap[1] != null && slotToAspectMap.ContainsKey(2) && slotToAspectMap[2] != null)
+        {
+            slotToAspectMap[3] =
+                AspectDatabase.Instance.GetCombination(slotToAspectMap[1], slotToAspectMap[2]);
+            EquippableItem combinationItem = AspectDatabase.Instance.GetEquippableAspect(slotToAspectMap[3]);
+            aspectSlot3.sprite = combinationItem.Icon;
+            itemToSlotMap[combinationItem] = aspectSlot3;
+        }
     }
 
     void Update()
@@ -69,6 +83,8 @@ public class HUDManager : MonoBehaviour
         {
             aspectSlot1.rectTransform.sizeDelta = new Vector2(80, 80);
             aspectSlot2.rectTransform.sizeDelta = aspect2Size;
+            aspectSlot3.rectTransform.sizeDelta = aspect3Size;
+            
             // Change projectile index based on the aspect in slot 1
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
@@ -80,12 +96,27 @@ public class HUDManager : MonoBehaviour
         {
             aspectSlot2.rectTransform.sizeDelta = new Vector2(80, 80);
             aspectSlot1.rectTransform.sizeDelta = aspect1Size;
+            aspectSlot3.rectTransform.sizeDelta = aspect3Size;
+            
             // Change projectile index based on the aspect in slot 2
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
             EquippableItem itemInSlot2 = itemToSlotMap.FirstOrDefault(x => x.Value == aspectSlot2).Key;
             playerCombat.SetCurrentProjectileIndexBasedOnAspect(itemInSlot2);
             Debug.Log(itemInSlot2);
+        }
+        else if (Input.GetKeyDown("3") && aspectSlot3.sprite != null)
+        {
+            aspectSlot3.rectTransform.sizeDelta = new Vector2(80, 80);
+            aspectSlot1.rectTransform.sizeDelta = aspect1Size;
+            aspectSlot2.rectTransform.sizeDelta = aspect2Size;
+            
+            // Change projectile index based on the aspect in slot 2
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
+            EquippableItem itemInSlot3 = itemToSlotMap.FirstOrDefault(x => x.Value == aspectSlot3).Key;
+            playerCombat.SetCurrentProjectileIndexBasedOnAspect(itemInSlot3);
+            Debug.Log(itemInSlot3);
         }
     }
 }
