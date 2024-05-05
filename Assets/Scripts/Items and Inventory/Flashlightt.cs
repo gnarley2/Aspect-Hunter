@@ -10,8 +10,6 @@ public class Flashlight : MonoBehaviour
     [SerializeField] private float arcAngle = 180f;
 
     private Transform playerTransform;
-    private float currentAngle;
-    private Quaternion targetRotation;
 
     void Start()
     {
@@ -38,8 +36,7 @@ public class Flashlight : MonoBehaviour
         // Calculate the target position on the arc
         Vector3 playerPos = playerTransform.position;
         Vector3 direction = (mousePos - playerPos).normalized;
-
-        currentAngle = Vector2.SignedAngle(Vector2.right, direction);
+        float currentAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         currentAngle = Mathf.Clamp(currentAngle, -arcAngle / 2, arcAngle / 2);
 
         float x = playerPos.x + arcRadius * Mathf.Cos(currentAngle * Mathf.Deg2Rad);
@@ -48,10 +45,9 @@ public class Flashlight : MonoBehaviour
         // Move the flashlight to the target position
         transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, transform.position.z), arcRotationSpeed * Time.deltaTime);
 
-        // Rotate the flashlight to point away from the player
-        Vector3 targetDirection = transform.position - playerPos;
-        float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
-        targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        // Rotate the flashlight to point towards the mouse cursor
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         // Smoothly rotate the flashlight towards the target rotation
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, flashlightRotationSpeed * Time.deltaTime);
