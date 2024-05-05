@@ -1,6 +1,7 @@
 public class EquipmentSlot : ItemSlot
 {
     public EquipmentType EquipmentType;
+    public int index;
 
     protected override void OnValidate()
     {

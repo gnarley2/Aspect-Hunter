@@ -20,8 +20,8 @@ public class CharacterPanel : MonoBehaviour
 
         // Setup Events:
         // Right Click
-        inventoryUI.OnRightClickEvent += Equip;
         equipmentPanel.OnRightClickEvent += Unequip;
+        inventoryUI.OnRightClickEvent += Equip;
         // Pointer Enter
         inventoryUI.OnPointerEnterEvent += ShowTooltip;
         equipmentPanel.OnPointerEnterEvent += ShowTooltip;
@@ -109,30 +109,33 @@ public class CharacterPanel : MonoBehaviour
             EquippableItem dragItem = dragItemSlot.Item as EquippableItem;
             EquippableItem dropItem = dropItemSlot.Item as EquippableItem;
 
-            if (dropItemSlot is EquipmentSlot)
+            EquipmentSlot dropEquipmentSlot = dropItemSlot as EquipmentSlot; 
+            if (dropEquipmentSlot)
             {
-                if (dragItem != null)
-                {
-                    dragItem.Equip(this);
-                    hudManager.UpdateAspectSlot(dragItem, true); // Update HUD for the equipped item
-                }
                 if (dropItem != null)
                 {
                     dropItem.Unequip(this);
-                    hudManager.UpdateAspectSlot(dropItem, false); // Update HUD for the unequipped item
+                    hudManager.UpdateAspectSlot(dropItem, false, dropEquipmentSlot.index); // Update HUD for the unequipped item
                 }
-            }
-            if (dragItemSlot is EquipmentSlot)
-            {
                 if (dragItem != null)
                 {
-                    dragItem.Unequip(this);
-                    hudManager.UpdateAspectSlot(dragItem, false); // Update HUD for the unequipped item
+                    dragItem.Equip(this);
+                    hudManager.UpdateAspectSlot(dragItem, true, dropEquipmentSlot.index); // Update HUD for the equipped item
                 }
+            }
+            
+            EquipmentSlot dragEquipmentSlot = dragItemSlot as EquipmentSlot;
+            if (dragItemSlot is EquipmentSlot)
+            {
                 if (dropItem != null)
                 {
                     dropItem.Equip(this);
-                    hudManager.UpdateAspectSlot(dropItem, true); // Update HUD for the equipped item
+                    hudManager.UpdateAspectSlot(dropItem, true, dragEquipmentSlot.index); // Update HUD for the equipped item
+                }
+                if (dragItem != null)
+                {
+                    dragItem.Unequip(this);
+                    hudManager.UpdateAspectSlot(dragItem, false, dragEquipmentSlot.index); // Update HUD for the unequipped item
                 }
             }
 
@@ -151,8 +154,8 @@ public class CharacterPanel : MonoBehaviour
             {
                 if (previousItem != null)
                 {
-                    inventoryUI.AddItem(previousItem);
                     previousItem.Unequip(this);
+                    inventoryUI.AddItem(previousItem);
                 }
                 item.Equip(this);
             }

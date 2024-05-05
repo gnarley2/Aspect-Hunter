@@ -20,7 +20,7 @@ public class HUDManager : MonoBehaviour
         aspect2Size = aspectSlot2.rectTransform.sizeDelta;
     }
 
-    public void UpdateAspectSlot(EquippableItem item, bool isEquipping)
+    public void UpdateAspectSlot(EquippableItem item, bool isEquipping, int index)
     {
         if (item.EquipmentType != EquipmentType.Aspect)
             return;
@@ -28,28 +28,28 @@ public class HUDManager : MonoBehaviour
         if (isEquipping)
         {
             // Assign the item to the first available slot
-            if (aspectSlot1.sprite == null)
+            if (index == 1)
             {
                 aspectSlot1.sprite = item.Icon;
                 itemToSlotMap[item] = aspectSlot1;
             }
-            else if (aspectSlot2.sprite == null)
+            else if (index == 2)
             {
                 aspectSlot2.sprite = item.Icon;
                 itemToSlotMap[item] = aspectSlot2;
             }
-            else
-            {
-                // Both slots are occupied, replace the first slot
-                EquippableItem firstItem = itemToSlotMap.Keys.FirstOrDefault();
-                if (firstItem != null)
-                {
-                    Image firstSlot = itemToSlotMap[firstItem];
-                    firstSlot.sprite = item.Icon;
-                    itemToSlotMap.Remove(firstItem);
-                    itemToSlotMap[item] = firstSlot;
-                }
-            }
+            // else
+            // {
+            //     // Both slots are occupied, replace the first slot
+            //     EquippableItem firstItem = itemToSlotMap.Keys.FirstOrDefault();
+            //     if (firstItem != null)
+            //     {
+            //         Image firstSlot = itemToSlotMap[firstItem];
+            //         firstSlot.sprite = item.Icon;
+            //         itemToSlotMap.Remove(firstItem);
+            //         itemToSlotMap[item] = firstSlot;
+            //     }
+            // }
         }
         else
         {

@@ -43,7 +43,7 @@ public class EquipmentPanel : MonoBehaviour
             {
                 equipmentSlots[i].Item = item;
                 previousItem = null;
-                hudManager.UpdateAspectSlot(item, true);  // Update HUD
+                hudManager.UpdateAspectSlot(item, true, i);  // Update HUD
                 return true;
             }
         }
@@ -54,7 +54,7 @@ public class EquipmentPanel : MonoBehaviour
             {
                 previousItem = (EquippableItem)equipmentSlots[i].Item;
                 equipmentSlots[i].Item = item;
-                hudManager.UpdateAspectSlot(item, true);
+                hudManager.UpdateAspectSlot(item, true, i);
                 return true;
             }
         }
@@ -70,7 +70,7 @@ public class EquipmentPanel : MonoBehaviour
             if (equipmentSlots[i].Item == item)
             {
                 equipmentSlots[i].Item = null;
-                hudManager.UpdateAspectSlot(item, false);
+                hudManager.UpdateAspectSlot(item, false, i);
                 return true;
             }
         }
