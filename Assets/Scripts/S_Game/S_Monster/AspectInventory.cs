@@ -48,6 +48,20 @@ public class AspectInventory : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Inventory.Instance.OnAddItem += OnAddItem;
+    }
+
+    private void OnAddItem(Item addedItem)
+    {
+        EquippableItem item = addedItem as EquippableItem;
+        if (item && item.EquipmentType == EquipmentType.Aspect)
+        {
+            AddAspect(item.aspectType, 4);
+        }
+    }
+
     void ResetErrorMessage()
     {
         errorMessage = "";

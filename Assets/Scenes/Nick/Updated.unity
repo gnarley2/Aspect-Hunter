@@ -1343,7 +1343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1018723249, guid: 1bb321990c9eb4541b260b626fedfa6c, type: 3}
       propertyPath: m_Alpha
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 48339525631168585, guid: 1bb321990c9eb4541b260b626fedfa6c, type: 3}
       propertyPath: m_AnchorMax.y
@@ -19894,6 +19894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aspectSlot1: {fileID: 625260990}
   aspectSlot2: {fileID: 1708633671}
+  aspectSlot3: {fileID: 0}
 --- !u!1001 &1848498582
 PrefabInstance:
   m_ObjectHideFlags: 0

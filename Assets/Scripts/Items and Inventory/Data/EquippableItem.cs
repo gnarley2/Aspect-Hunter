@@ -21,6 +21,7 @@ public enum EquipmentType
 public class EquippableItem : Item
 {
     public EquipmentType EquipmentType;
+    public AspectType aspectType = AspectType.None;
     public GameObject LanternBugPrefab;
     public GameObject LanternPrefab;
     public GameObject FlashLightPrefab;

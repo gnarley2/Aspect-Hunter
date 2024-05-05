@@ -8,6 +8,7 @@ public class HUDManager : MonoBehaviour
 {
     [SerializeField] private Image aspectSlot1;
     [SerializeField] private Image aspectSlot2;
+    [SerializeField] private Image aspectSlot3;
 
     Vector2 aspect1Size;
     Vector2 aspect2Size;

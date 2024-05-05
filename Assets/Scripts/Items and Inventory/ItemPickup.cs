@@ -48,7 +48,7 @@ public class ItemPickup : MonoBehaviour
     void AddToInventory()
     {
         if (Inventory.Instance.IsFull()) return;
-            
+        
         Inventory.Instance.AddItem(Instantiate(item));
         Destroy(gameObject);
     }
