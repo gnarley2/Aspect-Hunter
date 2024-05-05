@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 4691925278375471698}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2737691525866810733
 SpriteRenderer:
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   maxDistance: 10
-  poisonAoe: {fileID: 1580532891494031507, guid: 7649e6ac6372cbb4e9f613cec230413b, type: 3}
+  hitAnimation: {fileID: 1580532891494031507, guid: 7649e6ac6372cbb4e9f613cec230413b, type: 3}
 --- !u!1 &4170352318728871149
 GameObject:
   m_ObjectHideFlags: 0

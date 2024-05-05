@@ -193,10 +193,12 @@ public class PlayerCombat : MonoBehaviour
 
                 Vector3 worldPosition1 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 worldPosition1.z = 0f;
-                GameObject poisonprojectile = Instantiate(projectilePrefab, worldPosition1, Quaternion.identity);
+                GameObject poisonprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Poison_Projectile poisonMovement = poisonprojectile.GetComponent<Poison_Projectile>();
-                Vector3 attackDirectionPoison = (worldPosition1 - transform.position).normalized;
-                poisonMovement.Initialize(attackDirectionPoison, rangeDamage, transform);
+               // Vector3 attackDirectionPoison = (worldPosition1 - transform.position).normalized;
+                poisonMovement.Initialize(attackDirection, rangeDamage);
+
+
 
                 break;
 
