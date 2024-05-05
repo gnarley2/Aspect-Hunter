@@ -14,7 +14,7 @@ public class HUDManager : MonoBehaviour
     Vector2 aspect2Size;
     Vector2 aspect3Size;
 
-    private Dictionary<EquippableItem, Image> itemToSlotMap = new Dictionary<EquippableItem, Image>();
+    private Dictionary<Image, EquippableItem> slotToItemMap = new Dictionary<Image, EquippableItem>();
     private Dictionary<int, AspectType> slotToAspectMap = new Dictionary<int, AspectType>();
 
     void Start()
@@ -35,35 +35,36 @@ public class HUDManager : MonoBehaviour
             if (index == 1)
             {
                 aspectSlot1.sprite = item.Icon;
-                itemToSlotMap[item] = aspectSlot1;
+                slotToItemMap[aspectSlot1] = item;
                 slotToAspectMap[1] = item.aspectType;
             }
             else if (index == 2)
             {
                 aspectSlot2.sprite = item.Icon;
-                itemToSlotMap[item] = aspectSlot2;
+                slotToItemMap[aspectSlot2] = item;
                 slotToAspectMap[2] = item.aspectType;
             }
             // else
             // {
             //     // Both slots are occupied, replace the first slot
-            //     EquippableItem firstItem = itemToSlotMap.Keys.FirstOrDefault();
+            //     EquippableItem firstItem = slotToItemMap.Keys.FirstOrDefault();
             //     if (firstItem != null)
             //     {
-            //         Image firstSlot = itemToSlotMap[firstItem];
+            //         Image firstSlot = slotToItemMap[firstItem];
             //         firstSlot.sprite = item.Icon;
-            //         itemToSlotMap.Remove(firstItem);
-            //         itemToSlotMap[item] = firstSlot;
+            //         slotToItemMap.Remove(firstItem);
+            //         slotToItemMap[item] = firstSlot;
             //     }
             // }
         }
         else
         {
+            Image slot = slotToItemMap.FirstOrDefault(x => x.Value == item).Key;
             // Find the item in the map and clear the slot
-            if (itemToSlotMap.TryGetValue(item, out Image slot))
+            if (slot != null)
             {
                 slot.sprite = null;
-                itemToSlotMap.Remove(item);
+                slotToItemMap.Remove(slot);
             }
         }
 
@@ -72,11 +73,11 @@ public class HUDManager : MonoBehaviour
             slotToAspectMap[3] =
                 AspectDatabase.Instance.GetCombination(slotToAspectMap[1], slotToAspectMap[2]);
             EquippableItem combinationItem = AspectDatabase.Instance.GetEquippableAspect(slotToAspectMap[3]);
-            
+
             if (combinationItem != null)
             {
                 aspectSlot3.sprite = combinationItem.Icon;
-                itemToSlotMap[combinationItem] = aspectSlot3;
+                slotToItemMap[aspectSlot3] = combinationItem;
             }
         }
     }
@@ -92,7 +93,7 @@ public class HUDManager : MonoBehaviour
             // Change projectile index based on the aspect in slot 1
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
-            EquippableItem itemInSlot1 = itemToSlotMap.FirstOrDefault(x => x.Value == aspectSlot1).Key;
+            EquippableItem itemInSlot1 = slotToItemMap.FirstOrDefault(x => x.Key == aspectSlot1).Value;
             playerCombat.SetCurrentProjectileIndexBasedOnAspect(itemInSlot1);
             Debug.Log(itemInSlot1);
         }
@@ -105,7 +106,7 @@ public class HUDManager : MonoBehaviour
             // Change projectile index based on the aspect in slot 2
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
-            EquippableItem itemInSlot2 = itemToSlotMap.FirstOrDefault(x => x.Value == aspectSlot2).Key;
+            EquippableItem itemInSlot2 = slotToItemMap.FirstOrDefault(x => x.Key == aspectSlot2).Value;
             playerCombat.SetCurrentProjectileIndexBasedOnAspect(itemInSlot2);
             Debug.Log(itemInSlot2);
         }
@@ -118,7 +119,7 @@ public class HUDManager : MonoBehaviour
             // Change projectile index based on the aspect in slot 2
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
-            EquippableItem itemInSlot3 = itemToSlotMap.FirstOrDefault(x => x.Value == aspectSlot3).Key;
+            EquippableItem itemInSlot3 = slotToItemMap.FirstOrDefault(x => x.Key == aspectSlot3).Value;
             playerCombat.SetCurrentProjectileIndexBasedOnAspect(itemInSlot3);
             Debug.Log(itemInSlot3);
         }
