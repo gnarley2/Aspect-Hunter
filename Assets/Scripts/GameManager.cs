@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
+    
     void Awake()
     {
         if (instance == null)
