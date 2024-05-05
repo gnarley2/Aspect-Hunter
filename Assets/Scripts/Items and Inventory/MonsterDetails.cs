@@ -37,6 +37,7 @@ public class MonsterDetails : ScriptableObject
     [Header("Loot")] 
     public int maxNumAspect;
     public int minNumAspect;
+    public Item item;
 
 
     public int GetLoot()
