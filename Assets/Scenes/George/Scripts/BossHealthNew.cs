@@ -21,7 +21,7 @@ public class BossHealthNew : MonoBehaviour
     void Update()
     {
         health = bossHealth.GetHealth();
-        Debug.Log($"boss health percent: {health}");
+        //Debug.Log($"boss health percent: {health}");
 
         if (health < 50f)
         {

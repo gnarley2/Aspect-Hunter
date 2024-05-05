@@ -23,5 +23,5 @@ public interface IDamageable
     public DamagerTarget GetDamagerType();
     public KnockbackType GetKnockbackType();
     public Vector2 GetPosition();
-    public void TakeDamage(int damage, DamagerTarget damagerType, Vector2 attackDirection, ProjectileData.ProjectileType projectileType = ProjectileData.ProjectileType.None);
+    public void TakeDamage(int damage, DamagerTarget damagerType, Vector2 attackDirection, AspectType aspectType = AspectType.None);
 }

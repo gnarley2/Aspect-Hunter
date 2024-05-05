@@ -35,7 +35,7 @@ public class Poison_Projectile : MonoBehaviour
         }
     }
 
-    public void Initialize(Vector3 newDirection, int damage)
+    public void Initialize(Vector3 newDirection, int damage, Transform playerTransform)
     {
         SetDirection(newDirection);
         this.damage = damage;

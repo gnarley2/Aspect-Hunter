@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EquipmentPanel : MonoBehaviour
 {
     [SerializeField] Transform equipmentSlotsParent;
     [SerializeField] EquipmentSlot[] equipmentSlots;
+    [SerializeField] HUDManager hudManager;
 
     public event Action<ItemSlot> OnPointerEnterEvent;
     public event Action<ItemSlot> OnPointerExitEvent;
@@ -37,13 +39,26 @@ public class EquipmentPanel : MonoBehaviour
     {
         for (int i = 0; i < equipmentSlots.Length; i++)
         {
+            if (equipmentSlots[i].EquipmentType == item.EquipmentType && equipmentSlots[i].Item == null)
+            {
+                equipmentSlots[i].Item = item;
+                previousItem = null;
+                hudManager.UpdateAspectSlot(item, true);  // Update HUD
+                return true;
+            }
+        }
+
+        for (int i = 0; i < equipmentSlots.Length; i++)
+        {
             if (equipmentSlots[i].EquipmentType == item.EquipmentType)
             {
                 previousItem = (EquippableItem)equipmentSlots[i].Item;
                 equipmentSlots[i].Item = item;
+                hudManager.UpdateAspectSlot(item, true);
                 return true;
             }
         }
+
         previousItem = null;
         return false;
     }
@@ -55,6 +70,7 @@ public class EquipmentPanel : MonoBehaviour
             if (equipmentSlots[i].Item == item)
             {
                 equipmentSlots[i].Item = null;
+                hudManager.UpdateAspectSlot(item, false);
                 return true;
             }
         }
