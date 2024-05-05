@@ -32,7 +32,7 @@ public class Poison_HIt : MonoBehaviour
     {
         if (other.TryGetComponent<IDamageable>(out IDamageable target))
         {
-            target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
+            target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero, AspectType.Poison);
             damageCoroutine = StartCoroutine(DamageOverTime(target));
         }
     }
@@ -45,7 +45,7 @@ public class Poison_HIt : MonoBehaviour
             timer -= damageInterval;
             if (target != null)
             {
-                target.TakeDamage(damagePerSecond, IDamageable.DamagerTarget.Player, Vector2.zero);
+                target.TakeDamage(damagePerSecond, IDamageable.DamagerTarget.Player, Vector2.zero, AspectType.Poison);
             }
         }
     }

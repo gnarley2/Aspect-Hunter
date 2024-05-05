@@ -51,7 +51,7 @@ public class Poison_Projectile : MonoBehaviour
     {
         if (other.TryGetComponent<IDamageable>(out IDamageable target))
         {
-            target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
+            target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero, AspectType.Poison);
             Instantiate(poisonAoe, transform.position, Quaternion.identity);
             Destroy(gameObject); // Destroy the projectile
         }
