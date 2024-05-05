@@ -72,8 +72,12 @@ public class HUDManager : MonoBehaviour
             slotToAspectMap[3] =
                 AspectDatabase.Instance.GetCombination(slotToAspectMap[1], slotToAspectMap[2]);
             EquippableItem combinationItem = AspectDatabase.Instance.GetEquippableAspect(slotToAspectMap[3]);
-            aspectSlot3.sprite = combinationItem.Icon;
-            itemToSlotMap[combinationItem] = aspectSlot3;
+            
+            if (combinationItem != null)
+            {
+                aspectSlot3.sprite = combinationItem.Icon;
+                itemToSlotMap[combinationItem] = aspectSlot3;
+            }
         }
     }
 

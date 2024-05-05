@@ -32,6 +32,10 @@ public class AspectInventory : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        foreach (SingleAspectInventory aspect in AspectInventories)
+        {
+            aspect.number = 100;
+        }
     }
 
     [ContextMenu("Create Inventory based on type")]

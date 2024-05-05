@@ -42,7 +42,7 @@ public class PlayerCombat : MonoBehaviour
     
     public Menus menuScript;
 
-    [SerializeField] public int currentProjectileIndex = 0;
+    [SerializeField] public int currentProjectileIndex = -1;
     [SerializeField] private ProjectileData[] projectileDatas;
 
     private void Start()
@@ -60,6 +60,7 @@ public class PlayerCombat : MonoBehaviour
         CalculateDirection();
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
+            
             ProjectileAttack(direction);
         }
 
@@ -94,51 +95,51 @@ public class PlayerCombat : MonoBehaviour
 
     public void SetCurrentProjectileIndexBasedOnAspect(EquippableItem aspectItem)
     {
-        switch (aspectItem.ItemName)
+        switch (aspectItem.aspectType)
         {
-            case "FireAspect":
+            case AspectType.Fire:
                 currentProjectileIndex = 0;
                 break;
-            case "FrostAspect":
+            case AspectType.Frost:
                 currentProjectileIndex = 1;
                 break;
-            case "ShockAspect":
+            case AspectType.Shock:
                 currentProjectileIndex = 3;
                 break;
-            case "PoisonAspect":
+            case AspectType.Poison:
                 currentProjectileIndex = 2;
                 break;
-            case "WaterAspect":
+            case AspectType.Water:
                 currentProjectileIndex = 4;
                 break;
-            case "SteamAspect":
+            case AspectType.Steam:
                 currentProjectileIndex = 13;
                 break;
-            case "BlastAspect":
+            case AspectType.Blast:
                 currentProjectileIndex = 5;
                 break;
-            case "RadiationAspect":
+            case AspectType.Radiation:
                 currentProjectileIndex = 12;
                 break;
-            case "GasAspect":
+            case AspectType.Gas:
                 currentProjectileIndex = 7;
                 break;
-            case "ParalysisAspect":
+            case AspectType.Paralysis:
                 currentProjectileIndex = 10;
                 break;
-            case "PollutionAspect":
+            case AspectType.Pollution:
                 currentProjectileIndex = 11;
                 break;
-            case "SuperconductorAspect":
+            case AspectType.Superconductor:
                 currentProjectileIndex = 14;
                 break;
-            case "NecroticAspect":
+            case AspectType.Necrotic:
                 currentProjectileIndex = 9;
                 break;
-            case "CorrosionAspect":
+            case AspectType.Corrosion:
                 currentProjectileIndex = 6;
                 break;
-            case "IceSpikeAspect":
+            case AspectType.IceSpike:
                 currentProjectileIndex = 8;
                 break;
             // Continue for other aspects as necessary
@@ -151,6 +152,12 @@ public class PlayerCombat : MonoBehaviour
     void ProjectileAttack(Vector3 attackDirection)
     {
         ProjectileData selectedProjectile = projectileDatas[currentProjectileIndex];
+        if (currentProjectileIndex <= -1 || currentProjectileIndex >= projectileDatas.Length)
+        {
+            InformationPanel.Instance.ShowInformation($"You haven't selected an aspect");
+            return;
+        }
+
         // if (!selectedProjectile.isUnlocked)
         // {
         //     InformationPanel.Instance.ShowInformation($"{selectedProjectile.name} is locked");
