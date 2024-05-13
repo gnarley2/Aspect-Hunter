@@ -46,6 +46,7 @@ public class GameCanvas : MonoBehaviour
     public void ToggleMapPanel(bool active)
     {
         float startAlpha = active ? 0 : 1;
+        Time.timeScale = active ? 0 : 1;
         StartCoroutine(ToggleCoroutine(MapPanel, startAlpha, 1 - startAlpha));
     }
     
