@@ -9,6 +9,9 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Image aspectSlot1;
     [SerializeField] private Image aspectSlot2;
     [SerializeField] private Image aspectSlot3;
+    [SerializeField] private Text aspectCount1;
+    [SerializeField] private Text aspectCount2;
+    [SerializeField] private Text aspectCount3;
 
     Vector2 aspect1Size;
     Vector2 aspect2Size;
@@ -22,6 +25,7 @@ public class HUDManager : MonoBehaviour
         aspect1Size = aspectSlot1.rectTransform.sizeDelta;
         aspect2Size = aspectSlot2.rectTransform.sizeDelta;
         aspect3Size = aspectSlot3.rectTransform.sizeDelta;
+        UpdateAspectCount();
     }
 
     public void UpdateAspectSlot(EquippableItem item, bool isEquipping, int index)
@@ -80,6 +84,7 @@ public class HUDManager : MonoBehaviour
                 slotToItemMap[aspectSlot3] = combinationItem;
             }
         }
+        UpdateAspectCount();
     }
 
     void Update()
@@ -122,6 +127,22 @@ public class HUDManager : MonoBehaviour
             EquippableItem itemInSlot3 = slotToItemMap.FirstOrDefault(x => x.Key == aspectSlot3).Value;
             playerCombat.SetCurrentProjectileIndexBasedOnAspect(itemInSlot3);
             Debug.Log(itemInSlot3);
+        }
+    }
+
+    public void UpdateAspectCount()
+    {
+        if (slotToAspectMap.ContainsKey(1))
+        {
+            aspectCount1.text = AspectInventory.Instance.GetAspectCount(slotToAspectMap[1]).ToString();
+        }
+        if (slotToAspectMap.ContainsKey(2))
+        {
+            aspectCount2.text = AspectInventory.Instance.GetAspectCount(slotToAspectMap[2]).ToString();
+        }
+        if (slotToAspectMap.ContainsKey(3))
+        {
+            aspectCount3.text = AspectInventory.Instance.GetAspectCount(slotToAspectMap[3]).ToString();
         }
     }
 }

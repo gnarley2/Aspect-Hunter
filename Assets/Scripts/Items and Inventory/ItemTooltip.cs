@@ -6,7 +6,7 @@ public class ItemTooltip : MonoBehaviour
 {
     [SerializeField] Text ItemNameText;
     [SerializeField] Text ItemSlotText;
-    [SerializeField] Text ItemStatsText;
+    [SerializeField] Text ItemDescriptionText;
 
     private StringBuilder sb = new StringBuilder();
 
@@ -14,11 +14,7 @@ public class ItemTooltip : MonoBehaviour
     {
         ItemNameText.text = item.ItemName;
         ItemSlotText.text = item.EquipmentType.ToString();
-
-        sb.Length = 0;
-
-        ItemStatsText.text = sb.ToString();
-
+        ItemDescriptionText.text = item.Description;
         gameObject.SetActive(true);
     }
 

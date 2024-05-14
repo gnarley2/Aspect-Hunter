@@ -3914,6 +3914,9 @@ MonoBehaviour:
   aspectSlot1: {fileID: 625260990}
   aspectSlot2: {fileID: 1708633671}
   aspectSlot3: {fileID: 1056533905}
+  aspectCount1: {fileID: 0}
+  aspectCount2: {fileID: 0}
+  aspectCount3: {fileID: 0}
 --- !u!1 &4530978998304128398
 GameObject:
   m_ObjectHideFlags: 0
@@ -7171,7 +7174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemNameText: {fileID: 8813789255952932179}
   ItemSlotText: {fileID: 8813789255931226728}
-  ItemStatsText: {fileID: 8813789255153755190}
+  ItemDescriptionText: {fileID: 0}
 --- !u!1 &8813789254831559435
 GameObject:
   m_ObjectHideFlags: 0

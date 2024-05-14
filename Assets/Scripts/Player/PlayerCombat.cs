@@ -45,6 +45,8 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] public int currentProjectileIndex = -1;
     [SerializeField] private ProjectileData[] projectileDatas;
 
+    public HUDManager hudManager;
+
     private void Start()
     {
         foreach (ProjectileData data in projectileDatas)
@@ -328,7 +330,10 @@ public class PlayerCombat : MonoBehaviour
 
                 break;
         }
-
+        if (hudManager != null)
+        {
+            hudManager.UpdateAspectCount();
+        }
     }
 
     void MeleeAttack(Vector2 attackDirection)

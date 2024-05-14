@@ -22,6 +22,7 @@ public class EquippableItem : Item
 {
     public EquipmentType EquipmentType;
     public AspectType aspectType = AspectType.None;
+    public string Description;
     public GameObject LanternBugPrefab;
     public GameObject LanternPrefab;
     public GameObject FlashLightPrefab;

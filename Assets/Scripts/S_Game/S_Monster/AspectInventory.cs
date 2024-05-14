@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AspectInventory : MonoBehaviour
 {
@@ -142,5 +143,15 @@ public class AspectInventory : MonoBehaviour
 
         Debug.LogError("Can't not find aspect");
         return -1;
+    }
+
+    public int GetAspectCount(AspectType type)
+    {
+        int index = FindAspect(type);
+        if (index != -1)
+        {
+            return AspectInventories[index].number;
+        }
+        return 0;
     }
 }
