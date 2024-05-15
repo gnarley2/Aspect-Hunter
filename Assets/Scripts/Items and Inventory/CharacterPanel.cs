@@ -17,7 +17,6 @@ public class CharacterPanel : MonoBehaviour
         if (itemTooltip == null)
             itemTooltip = FindObjectOfType<ItemTooltip>();
 
-
         // Setup Events:
         // Right Click
         equipmentPanel.OnRightClickEvent += Unequip;
@@ -81,7 +80,6 @@ public class CharacterPanel : MonoBehaviour
     {
         if (itemSlot.Item != null)
         {
-            Debug.Log("Begin dragging: " + itemSlot.Item.name);
             dragItemSlot = itemSlot;
             draggableItem.sprite = itemSlot.Item.Icon;
             draggableItem.transform.position = Input.mousePosition;
@@ -109,7 +107,9 @@ public class CharacterPanel : MonoBehaviour
             EquippableItem dragItem = dragItemSlot.Item as EquippableItem;
             EquippableItem dropItem = dropItemSlot.Item as EquippableItem;
 
-            EquipmentSlot dropEquipmentSlot = dropItemSlot as EquipmentSlot; 
+            EquipmentSlot dropEquipmentSlot = dropItemSlot as EquipmentSlot;
+            EquipmentSlot dragEquipmentSlot = dragItemSlot as EquipmentSlot;
+
             if (dropEquipmentSlot)
             {
                 if (dropItem != null)
@@ -123,9 +123,8 @@ public class CharacterPanel : MonoBehaviour
                     hudManager.UpdateAspectSlot(dragItem, true, dropEquipmentSlot.index); // Update HUD for the equipped item
                 }
             }
-            
-            EquipmentSlot dragEquipmentSlot = dragItemSlot as EquipmentSlot;
-            if (dragItemSlot is EquipmentSlot)
+
+            if (dragEquipmentSlot)
             {
                 if (dropItem != null)
                 {

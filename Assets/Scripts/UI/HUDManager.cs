@@ -35,56 +35,72 @@ public class HUDManager : MonoBehaviour
 
         if (isEquipping)
         {
-            // Assign the item to the first available slot
             if (index == 1)
             {
                 aspectSlot1.sprite = item.Icon;
+                aspectSlot1.color = new Color(1, 1, 1, 1);
                 slotToItemMap[aspectSlot1] = item;
                 slotToAspectMap[1] = item.aspectType;
             }
             else if (index == 2)
             {
                 aspectSlot2.sprite = item.Icon;
+                aspectSlot2.color = new Color(1, 1, 1, 1);
                 slotToItemMap[aspectSlot2] = item;
                 slotToAspectMap[2] = item.aspectType;
             }
-            // else
-            // {
-            //     // Both slots are occupied, replace the first slot
-            //     EquippableItem firstItem = slotToItemMap.Keys.FirstOrDefault();
-            //     if (firstItem != null)
-            //     {
-            //         Image firstSlot = slotToItemMap[firstItem];
-            //         firstSlot.sprite = item.Icon;
-            //         slotToItemMap.Remove(firstItem);
-            //         slotToItemMap[item] = firstSlot;
-            //     }
-            // }
         }
         else
         {
-            Image slot = slotToItemMap.FirstOrDefault(x => x.Value == item).Key;
-            // Find the item in the map and clear the slot
-            if (slot != null)
+            if (index == 1)
             {
-                slot.sprite = null;
-                slotToItemMap.Remove(slot);
+                aspectSlot1.sprite = null;
+                aspectSlot1.color = new Color(1, 1, 1, 0); // Set the slot color to transparent
+                slotToItemMap.Remove(aspectSlot1);
+                slotToAspectMap[1] = AspectType.None;
+            }
+            else if (index == 2)
+            {
+                aspectSlot2.sprite = null;
+                aspectSlot2.color = new Color(1, 1, 1, 0); // Set the slot color to transparent
+                slotToItemMap.Remove(aspectSlot2);
+                slotToAspectMap[2] = AspectType.None;
             }
         }
 
-        if (slotToAspectMap.ContainsKey(1) &&  slotToAspectMap[1] != null && slotToAspectMap.ContainsKey(2) && slotToAspectMap[2] != null)
+            UpdateCombination();
+        UpdateAspectCount();
+    }
+
+    private void UpdateCombination()
+    {
+        if (slotToAspectMap.ContainsKey(1) && slotToAspectMap[1] != AspectType.None &&
+            slotToAspectMap.ContainsKey(2) && slotToAspectMap[2] != AspectType.None)
         {
-            slotToAspectMap[3] =
-                AspectDatabase.Instance.GetCombination(slotToAspectMap[1], slotToAspectMap[2]);
+            slotToAspectMap[3] = AspectDatabase.Instance.GetCombination(slotToAspectMap[1], slotToAspectMap[2]);
             EquippableItem combinationItem = AspectDatabase.Instance.GetEquippableAspect(slotToAspectMap[3]);
 
             if (combinationItem != null)
             {
                 aspectSlot3.sprite = combinationItem.Icon;
+                aspectSlot3.color = new Color(1, 1, 1, 1);
                 slotToItemMap[aspectSlot3] = combinationItem;
             }
+            else
+            {
+                aspectSlot3.sprite = null;
+                aspectSlot3.color = new Color(1, 1, 1, 0);
+                slotToItemMap.Remove(aspectSlot3);
+                slotToAspectMap[3] = AspectType.None;
+            }
         }
-        UpdateAspectCount();
+        else
+        {
+            aspectSlot3.sprite = null;
+            aspectSlot3.color = new Color(1, 1, 1, 0);
+            slotToAspectMap[3] = AspectType.None;
+            slotToItemMap.Remove(aspectSlot3);
+        }
     }
 
     void Update()
@@ -94,7 +110,7 @@ public class HUDManager : MonoBehaviour
             aspectSlot1.rectTransform.sizeDelta = new Vector2(80, 80);
             aspectSlot2.rectTransform.sizeDelta = aspect2Size;
             aspectSlot3.rectTransform.sizeDelta = aspect3Size;
-            
+
             // Change projectile index based on the aspect in slot 1
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
@@ -107,7 +123,7 @@ public class HUDManager : MonoBehaviour
             aspectSlot2.rectTransform.sizeDelta = new Vector2(80, 80);
             aspectSlot1.rectTransform.sizeDelta = aspect1Size;
             aspectSlot3.rectTransform.sizeDelta = aspect3Size;
-            
+
             // Change projectile index based on the aspect in slot 2
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
@@ -120,7 +136,7 @@ public class HUDManager : MonoBehaviour
             aspectSlot3.rectTransform.sizeDelta = new Vector2(80, 80);
             aspectSlot1.rectTransform.sizeDelta = aspect1Size;
             aspectSlot2.rectTransform.sizeDelta = aspect2Size;
-            
+
             // Change projectile index based on the aspect in slot 2
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
@@ -132,17 +148,8 @@ public class HUDManager : MonoBehaviour
 
     public void UpdateAspectCount()
     {
-        if (slotToAspectMap.ContainsKey(1))
-        {
-            aspectCount1.text = AspectInventory.Instance.GetAspectCount(slotToAspectMap[1]).ToString();
-        }
-        if (slotToAspectMap.ContainsKey(2))
-        {
-            aspectCount2.text = AspectInventory.Instance.GetAspectCount(slotToAspectMap[2]).ToString();
-        }
-        if (slotToAspectMap.ContainsKey(3))
-        {
-            aspectCount3.text = AspectInventory.Instance.GetAspectCount(slotToAspectMap[3]).ToString();
-        }
+        aspectCount1.text = slotToAspectMap.ContainsKey(1) ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[1]).ToString() : "";
+        aspectCount2.text = slotToAspectMap.ContainsKey(2) ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[2]).ToString() : "";
+        aspectCount3.text = slotToAspectMap.ContainsKey(3) ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[3]).ToString() : "";
     }
 }

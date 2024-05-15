@@ -35,8 +35,16 @@ public class EquipmentPanel : MonoBehaviour
         equipmentSlots = equipmentSlotsParent.GetComponentsInChildren<EquipmentSlot>();
     }
 
-    public bool AddItem(EquippableItem item, out EquippableItem previousItem)
+    public bool AddItem(EquippableItem item, out EquippableItem previousItem, int slotIndex = -1)
     {
+        if (slotIndex >= 0 && slotIndex < equipmentSlots.Length)
+        {
+            previousItem = (EquippableItem)equipmentSlots[slotIndex].Item;
+            equipmentSlots[slotIndex].Item = item;
+            hudManager.UpdateAspectSlot(item, true, slotIndex);  // Update HUD
+            return true;
+        }
+
         for (int i = 0; i < equipmentSlots.Length; i++)
         {
             if (equipmentSlots[i].EquipmentType == item.EquipmentType && equipmentSlots[i].Item == null)
@@ -54,7 +62,7 @@ public class EquipmentPanel : MonoBehaviour
             {
                 previousItem = (EquippableItem)equipmentSlots[i].Item;
                 equipmentSlots[i].Item = item;
-                hudManager.UpdateAspectSlot(item, true, i);
+                hudManager.UpdateAspectSlot(item, true, i);  // Update HUD
                 return true;
             }
         }
@@ -69,8 +77,8 @@ public class EquipmentPanel : MonoBehaviour
         {
             if (equipmentSlots[i].Item == item)
             {
-                equipmentSlots[i].Item = null;
-                hudManager.UpdateAspectSlot(item, false, i);
+                equipmentSlots[i].ClearSlot();
+                hudManager.UpdateAspectSlot(item, false, i);  // Update HUD
                 return true;
             }
         }

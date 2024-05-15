@@ -50,6 +50,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         return true;
     }
 
+    public void ClearSlot()
+    {
+        Item = null;
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
