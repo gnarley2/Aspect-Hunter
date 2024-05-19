@@ -17,10 +17,7 @@ public class CharacterPanel : MonoBehaviour
         if (itemTooltip == null)
             itemTooltip = FindObjectOfType<ItemTooltip>();
 
-        // Setup Events:
-        // Right Click
-        equipmentPanel.OnRightClickEvent += Unequip;
-        inventoryUI.OnRightClickEvent += Equip;
+
         // Pointer Enter
         inventoryUI.OnPointerEnterEvent += ShowTooltip;
         equipmentPanel.OnPointerEnterEvent += ShowTooltip;
@@ -39,24 +36,6 @@ public class CharacterPanel : MonoBehaviour
         // Drop
         inventoryUI.OnDropEvent += Drop;
         equipmentPanel.OnDropEvent += Drop;
-    }
-
-    private void Equip(ItemSlot itemSlot)
-    {
-        EquippableItem equippableItem = itemSlot.Item as EquippableItem;
-        if (equippableItem != null)
-        {
-            Equip(equippableItem);
-        }
-    }
-
-    private void Unequip(ItemSlot itemSlot)
-    {
-        EquippableItem equippableItem = itemSlot.Item as EquippableItem;
-        if (equippableItem != null)
-        {
-            Unequip(equippableItem);
-        }
     }
 
     private void ShowTooltip(ItemSlot itemSlot)

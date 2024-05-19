@@ -10,7 +10,6 @@ public class EquipmentPanel : MonoBehaviour
 
     public event Action<ItemSlot> OnPointerEnterEvent;
     public event Action<ItemSlot> OnPointerExitEvent;
-    public event Action<ItemSlot> OnRightClickEvent;
     public event Action<ItemSlot> OnBeginDragEvent;
     public event Action<ItemSlot> OnEndDragEvent;
     public event Action<ItemSlot> OnDragEvent;
@@ -22,7 +21,6 @@ public class EquipmentPanel : MonoBehaviour
         {
             equipmentSlots[i].OnPointerEnterEvent += OnPointerEnterEvent;
             equipmentSlots[i].OnPointerExitEvent += OnPointerExitEvent;
-            equipmentSlots[i].OnRightClickEvent += OnRightClickEvent;
             equipmentSlots[i].OnBeginDragEvent += OnBeginDragEvent;
             equipmentSlots[i].OnEndDragEvent += OnEndDragEvent;
             equipmentSlots[i].OnDragEvent += OnDragEvent;
