@@ -68,7 +68,7 @@ public class HUDManager : MonoBehaviour
             }
         }
 
-            UpdateCombination();
+        UpdateCombination();
         UpdateAspectCount();
     }
 
@@ -148,8 +148,8 @@ public class HUDManager : MonoBehaviour
 
     public void UpdateAspectCount()
     {
-        aspectCount1.text = slotToAspectMap.ContainsKey(1) ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[1]).ToString() : "";
-        aspectCount2.text = slotToAspectMap.ContainsKey(2) ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[2]).ToString() : "";
-        aspectCount3.text = slotToAspectMap.ContainsKey(3) ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[3]).ToString() : "";
+        aspectCount1.text = slotToAspectMap.ContainsKey(1) && slotToAspectMap[1] != AspectType.None ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[1]).ToString() : "";
+        aspectCount2.text = slotToAspectMap.ContainsKey(2) && slotToAspectMap[2] != AspectType.None ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[2]).ToString() : "";
+        aspectCount3.text = slotToAspectMap.ContainsKey(3) && slotToAspectMap[3] != AspectType.None ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[3]).ToString() : "";
     }
 }

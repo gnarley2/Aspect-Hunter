@@ -100,21 +100,22 @@ public class AspectInventory : MonoBehaviour
     public bool UseAspect(AspectType type, int amount)
     {
         ResetErrorMessage();
-        
+
         int index = FindAspect(type);
-        
+
         if (AspectInventories[index].isCombination)
         {
             bool canUse1 = CanUseAspect(AspectInventories[index].type1, amount, out int index1);
             bool canUse2 = CanUseAspect(AspectInventories[index].type2, amount, out int index2);
-            
+
             if (canUse1 && canUse2)
             {
                 AspectInventories[index1].number -= amount;
                 AspectInventories[index2].number -= amount;
+                FindObjectOfType<HUDManager>()?.UpdateAspectCount();
                 return true;
             }
-            
+
             InformationPanel.Instance.ShowInformation(errorMessage);
             return false;
         }
@@ -123,14 +124,15 @@ public class AspectInventory : MonoBehaviour
             if (CanUseAspect(index, amount))
             {
                 AspectInventories[index].number -= amount;
+                FindObjectOfType<HUDManager>()?.UpdateAspectCount();
                 return true;
             }
         }
-        
+
         InformationPanel.Instance.ShowInformation($"Not enough {amount} {type}");
         return false;
     }
-    
+
     public int FindAspect(AspectType type)
     {
         for (int i = 0; i < AspectInventories.Count; i++)
