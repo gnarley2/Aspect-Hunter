@@ -14,6 +14,10 @@ public class SceneTriggerBox : MonoBehaviour
     {
         levelManager = FindObjectOfType<SceneTriggerManager>();
     }
+    private void Update()
+    {
+        levelManager = FindObjectOfType<SceneTriggerManager>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
 
 public class SceneTriggerManager : MonoBehaviour
 {
     //for scene transitions
     [SerializeField] Animator transistionAnim;
-
+ 
     private string currentLevelName;
     private Vector3 playerTargetPosition; // The position to move the player to in the new scene
     private int savedProjectileIndex = -1;
@@ -16,6 +17,7 @@ public class SceneTriggerManager : MonoBehaviour
     private int tsceneIndex;
     private void Start()
     {
+        DontDestroyOnLoad(this);
         currentLevelName = SceneManager.GetActiveScene().name;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
