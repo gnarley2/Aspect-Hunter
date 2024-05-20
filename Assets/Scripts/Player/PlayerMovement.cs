@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
+        GameManager.Instance.SetPlayer(transform);
         _anim = GetComponentInChildren<Animator>();
     }
     void Update()

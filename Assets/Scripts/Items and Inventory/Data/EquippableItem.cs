@@ -33,8 +33,9 @@ public class EquippableItem : Item
     {
         //add code for buffs
         if (EquipmentType == EquipmentType.LanternBug && LanternBugPrefab != null)
-        { 
-            Instantiate(LanternBugPrefab);
+        {
+            GameObject lanternBug = Instantiate(LanternBugPrefab);
+            lanternBug.transform.parent = GameManager.Instance.transform;
 
         }
         if (EquipmentType == EquipmentType.Lantern && LanternPrefab != null)

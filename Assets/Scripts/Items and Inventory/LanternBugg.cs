@@ -12,12 +12,15 @@ public class LanternBug : MonoBehaviour
 
     void Start()
     {
-        playerTransform = Camera.main.transform; // Assuming the player is at the camera position
+       // DontDestroyOnLoad(gameObject);
+        playerTransform = GameManager.Instance.PlayerTransform;
+        
     }
 
     void Update()
     {
-        // Calculate the target position on the orbit circle
+        playerTransform = GameManager.Instance.PlayerTransform;
+        // playerTransform = Camera.main.transform; // Assuming the player is at the camera position
         Vector3 playerPos = playerTransform.position;
         currentAngle += orbitSpeed * Time.deltaTime;
         currentAngle = currentAngle % 360f; // Keep the angle within 0-360 degrees
