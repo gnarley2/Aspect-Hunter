@@ -369,5 +369,13 @@ public class PlayerCombat : MonoBehaviour
         //    // Pass the direction to the ProjectileMovement script
         //    ballMovement.Initialize(throwPosition, 0);
     }
+    public int GetCurrentProjectileIndex()
+    {
+        return currentProjectileIndex;
+    }
+    public void SetProjectileIndex(int index)
+    {
+        currentProjectileIndex = index;
+    }
 }
 

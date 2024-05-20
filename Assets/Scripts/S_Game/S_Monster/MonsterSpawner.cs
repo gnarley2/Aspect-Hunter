@@ -9,7 +9,7 @@ public class MonsterSpawner : MonoBehaviour
     [SerializeField] private int maxNumber;
     [SerializeField] private float duration;
     [SerializeField] private Transform spawnPos;
-    
+    [SerializeField] private float spawnDelay;
     [SerializeField] private List<Monster> monsters;
 
     [SerializeField] private int currentNumber;
@@ -22,7 +22,7 @@ public class MonsterSpawner : MonoBehaviour
 
     void MonsterDied()
     {
-        InvokeRepeating("SpawnMonster", 0f, duration);
+        InvokeRepeating("SpawnMonster", spawnDelay, duration);
     }
     
     private void SpawnMonster()
