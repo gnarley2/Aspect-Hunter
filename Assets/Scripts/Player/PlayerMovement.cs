@@ -69,4 +69,6 @@ public class PlayerMovement : MonoBehaviour
         // Update current state
         _currState = newState;
     }
+
+
 }

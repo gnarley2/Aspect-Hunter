@@ -5,6 +5,8 @@ using System.Numerics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UIElements;
+using static UnityEditor.Experimental.GraphView.GraphView;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -165,7 +167,8 @@ public class PlayerCombat : MonoBehaviour
         //     InformationPanel.Instance.ShowInformation($"{selectedProjectile.name} is locked");
         //     return;
         // }
-        
+        float safeDistance = 1.5f;
+        Vector3 playerPosition = transform.position;
         AspectType currentType = selectedProjectile.type;
         GameObject projectilePrefab = selectedProjectile.prefab;
 
@@ -185,9 +188,14 @@ public class PlayerCombat : MonoBehaviour
             case AspectType.Frost:
                 Vector3 worldPositionF = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 worldPositionF.z = 0f;
-                GameObject frostprojectile = Instantiate(projectilePrefab, worldPositionF, Quaternion.identity);
-                Frost_Wall frostWall = frostprojectile.GetComponent<Frost_Wall>();
-                frostWall.Initialize(attackDirection, rangeDamage);
+                if (Vector3.Distance(worldPositionF, playerPosition) > safeDistance)
+                {
+                    GameObject frostprojectile = Instantiate(projectilePrefab, worldPositionF, Quaternion.identity);
+                    Frost_Wall frostWall = frostprojectile.GetComponent<Frost_Wall>();
+                    frostWall.Initialize(attackDirection, rangeDamage);
+                }
+
+       
           
                 break;
 
@@ -197,10 +205,7 @@ public class PlayerCombat : MonoBehaviour
                 worldPosition1.z = 0f;
                 GameObject poisonprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Poison_Projectile poisonMovement = poisonprojectile.GetComponent<Poison_Projectile>();
-               // Vector3 attackDirectionPoison = (worldPosition1 - transform.position).normalized;
                 poisonMovement.Initialize(attackDirection, rangeDamage);
-
-
 
                 break;
 
