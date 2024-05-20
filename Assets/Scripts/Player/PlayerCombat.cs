@@ -195,8 +195,6 @@ public class PlayerCombat : MonoBehaviour
                     frostWall.Initialize(attackDirection, rangeDamage);
                 }
 
-       
-          
                 break;
 
             case AspectType.Poison:
