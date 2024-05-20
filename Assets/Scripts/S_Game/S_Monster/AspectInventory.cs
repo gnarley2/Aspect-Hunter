@@ -156,4 +156,22 @@ public class AspectInventory : MonoBehaviour
         }
         return 0;
     }
+
+    public void AddOrUpdateAspect(AspectType type, int amount)
+    {
+        int index = FindAspect(type);
+        if (index != -1)
+        {
+            // Aspect exists, only add ammo
+            AspectInventories[index].number += amount;
+        }
+        else
+        {
+            // Aspect does not exist, add it
+            SingleAspectInventory newAspect = new SingleAspectInventory(type);
+            newAspect.number = amount;
+            AspectInventories.Add(newAspect);
+        }
+        FindObjectOfType<HUDManager>()?.UpdateAspectCount(); // Update HUD
+    }
 }

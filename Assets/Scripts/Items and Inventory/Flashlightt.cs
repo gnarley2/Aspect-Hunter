@@ -19,7 +19,6 @@ public class Flashlight : MonoBehaviour
 
     void Update()
     {
-
         playerTransform = GameManager.Instance.PlayerTransform;
         // Calculate the mouse position relative to the player
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
