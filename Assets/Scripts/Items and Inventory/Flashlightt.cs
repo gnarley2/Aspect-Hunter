@@ -14,22 +14,13 @@ public class Flashlight : MonoBehaviour
     void Start()
     {
         // Find the player's transform
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        if (playerObject != null)
-        {
-            playerTransform = playerObject.transform;
-        }
-        else
-        {
-            Debug.LogError("Player GameObject not found in the scene.");
-        }
+        playerTransform = GameManager.Instance.PlayerTransform;
     }
 
     void Update()
     {
-        if (playerTransform == null)
-            return;
 
+        playerTransform = GameManager.Instance.PlayerTransform;
         // Calculate the mouse position relative to the player
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 

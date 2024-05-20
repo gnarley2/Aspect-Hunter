@@ -51,7 +51,8 @@ public class EquippableItem : Item
         }
         if (EquipmentType == EquipmentType.FlashLight && FlashLightPrefab != null)
         {
-          Instantiate(FlashLightPrefab);
+            GameObject flashlight = Instantiate(FlashLightPrefab);
+            flashlight.transform.parent = GameManager.Instance.transform;
 
         }
         if (EquipmentType == EquipmentType.Aspect)
@@ -115,7 +116,7 @@ public class EquippableItem : Item
 
         if (EquipmentType == EquipmentType.FlashLight && FlashLightPrefab != null)
         {
-            GameObject flashlightInstance = GameObject.FindWithTag("FlashLight");
+            GameObject flashlightInstance = GameObject.Find("Flashlight_Active(Clone)");
            
             Destroy(flashlightInstance);
 
