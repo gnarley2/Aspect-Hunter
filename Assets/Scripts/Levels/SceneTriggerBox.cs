@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneTriggerBox : MonoBehaviour
 {
-
     private SceneTriggerManager levelManager;
-    public int targetSceneBuildIndex; // Use int to represent scene build index instead of SceneAsset
+    public int targetSceneBuildIndex;
+    public Vector3 playerTargetPosition; // The position where the player should be placed in the new scene
 
     private void Start()
     {
@@ -19,6 +19,8 @@ public class SceneTriggerBox : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            // Save the player's target position to the SceneTriggerManager
+            levelManager.SetPlayerTargetPosition(playerTargetPosition);
             LoadTargetScene();
         }
     }
