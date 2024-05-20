@@ -8,7 +8,7 @@ public class EnvironmentInteraction : MonoBehaviour, IDamageable
     [SerializeField] private bool canPlayOnce = true;
     [SerializeField] private bool canDestroy = true;
     [SerializeField] private bool canPush = false;
-    
+
     [Serializable]
     public class EnvironmentTriggerElement
     {
@@ -29,7 +29,34 @@ public class EnvironmentInteraction : MonoBehaviour, IDamageable
         rb = GetComponent<Rigidbody2D>();
     }
 
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the collided object is the player
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Check if the current game object's name is "Fire_Rock"
+            if (gameObject.name == "Fire_Rock")
+            {
+                // Deactivate the Rigidbody2D component
+                rb.isKinematic = true;
+                rb.velocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+            }
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        // Check if the collided object is the player
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Check if the current game object's name is "Fire_Rock"
+            if (gameObject.name == "Fire_Rock")
+            {
+                // Reactivate the Rigidbody2D component
+                rb.isKinematic = false;
+            }
+        }
+    }
     public Health GetHealth()
     {
         return null;
@@ -54,7 +81,7 @@ public class EnvironmentInteraction : MonoBehaviour, IDamageable
         AspectType aspectType = AspectType.None)
     {
         if (isActivated && canPlayOnce) return;
-        
+
         foreach (EnvironmentTriggerElement element in Elements)
         {
             if (element.type == aspectType)
@@ -62,9 +89,9 @@ public class EnvironmentInteraction : MonoBehaviour, IDamageable
                 isActivated = true;
                 PlayAnim(element);
                 Push(attackDirection);
-                
+
                 OnTrigger?.Invoke();
-                
+
                 Destroy();
                 break;
             }
@@ -88,4 +115,6 @@ public class EnvironmentInteraction : MonoBehaviour, IDamageable
         float force = 100f;
         rb.AddForce(attackDirection * force, ForceMode2D.Impulse);
     }
+
+
 }
