@@ -6,11 +6,14 @@ using UnityEditor;
 
 public class SceneTriggerManager : MonoBehaviour
 {
-   
+    //for scene transitions
+    [SerializeField] Animator transistionAnim;
+
     private string currentLevelName;
     private Vector3 playerTargetPosition; // The position to move the player to in the new scene
     private int savedProjectileIndex = -1;
 
+    private int tsceneIndex;
     private void Start()
     {
         currentLevelName = SceneManager.GetActiveScene().name;
@@ -31,8 +34,11 @@ public class SceneTriggerManager : MonoBehaviour
     {
         if (targetSceneIndex >= 0 && targetSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
+            tsceneIndex=targetSceneIndex;
+          //  transistionAnim.SetTrigger("End");
+            StartCoroutine(SceneTransition());
             SavePlayerState(); // Save the player's state before loading the new scene
-            SceneManager.LoadScene(targetSceneIndex);
+           
         }
         else
         {
@@ -42,6 +48,7 @@ public class SceneTriggerManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+       // transistionAnim.SetTrigger("Start");
         currentLevelName = scene.name;
         Debug.Log($"Entered Level: {currentLevelName}");
 
@@ -59,6 +66,15 @@ public class SceneTriggerManager : MonoBehaviour
             }
         }
     }
+
+    IEnumerator SceneTransition()
+    {
+        transistionAnim.SetTrigger("End");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(tsceneIndex);
+        transistionAnim.SetTrigger("Start");
+    }
+
 
     private void SavePlayerState()
     {
