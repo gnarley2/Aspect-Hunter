@@ -78,6 +78,8 @@ public class HUDManager : MonoBehaviour
             slotToAspectMap.ContainsKey(2) && slotToAspectMap[2] != AspectType.None)
         {
             slotToAspectMap[3] = AspectDatabase.Instance.GetCombination(slotToAspectMap[1], slotToAspectMap[2]);
+            if (slotToAspectMap[3] == AspectType.None) return;
+            
             EquippableItem combinationItem = AspectDatabase.Instance.GetEquippableAspect(slotToAspectMap[3]);
 
             if (combinationItem != null)

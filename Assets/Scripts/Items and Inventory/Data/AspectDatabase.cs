@@ -74,7 +74,7 @@ public class AspectDatabase : MonoBehaviour
             }
         }
 
-        Debug.LogError("Cant find combination for {aspectType1} and {aspectType2}");
+        Debug.LogError($"Cant find combination for {aspectType1} and {aspectType2}");
         return AspectType.None;
     }
     
