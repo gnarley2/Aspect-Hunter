@@ -105,15 +105,14 @@ public class CharacterPanel : MonoBehaviour
 
             if (dragEquipmentSlot)
             {
-                if (dropItem != null)
-                {
-                    dropItem.Equip(this);
-                    hudManager.UpdateAspectSlot(dropItem, true, dragEquipmentSlot.index); // Update HUD for the equipped item
-                }
                 if (dragItem != null)
                 {
                     dragItem.Unequip(this);
                     hudManager.UpdateAspectSlot(dragItem, false, dragEquipmentSlot.index); // Update HUD for the unequipped item
+                }
+                if (dropItem != null)
+                {
+                    hudManager.UpdateAspectSlot(dropItem, true, dragEquipmentSlot.index); // Update HUD for the equipped item
                 }
             }
 
