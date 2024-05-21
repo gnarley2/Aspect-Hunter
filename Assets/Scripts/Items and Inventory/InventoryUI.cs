@@ -19,6 +19,7 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(123);
         for (int i = 0; i < itemSlots.Length; i++)
         {
             itemSlots[i].OnPointerEnterEvent += OnPointerEnterEvent;
@@ -32,6 +33,11 @@ public class InventoryUI : MonoBehaviour
 
         SetStartingItems();
         Inventory.Instance.OnAddItem += AddItem;
+    }
+
+    private void OnDisable()
+    {
+        Inventory.Instance.OnAddItem -= AddItem;
     }
 
     private void OnValidate()

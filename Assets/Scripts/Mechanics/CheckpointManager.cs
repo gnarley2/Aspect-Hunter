@@ -12,6 +12,7 @@ public class CheckpointManager : MonoBehaviour
 
     public Vector2 playerCheckPoint;
     public int sceneIndex;
+    public bool saveOnStart;
 
     private void Awake()
     {
@@ -27,6 +28,15 @@ public class CheckpointManager : MonoBehaviour
         }
 
         sceneTriggerManager = GetComponentInChildren<SceneTriggerManager>();
+    }
+
+    private void Start()
+    {
+        if (saveOnStart)
+        {
+            sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            playerCheckPoint = GameObject.FindWithTag("Player").transform.position;
+        }
     }
 
     public void LoadLastCheckpoint()
