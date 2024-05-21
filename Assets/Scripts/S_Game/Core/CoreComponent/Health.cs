@@ -49,7 +49,7 @@ public class Health : CoreComponent
         if (health <= 0 || IsInvulnerable()) return false;
 
         health -= damage;
-
+        
         OnUpdateHealth?.Invoke(health);
 
         if (health > 0)

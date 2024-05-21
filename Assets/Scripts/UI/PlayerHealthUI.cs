@@ -22,6 +22,7 @@ public class PlayerHealthUI : MonoBehaviour
 
     private void OnEnable()
     {
+        
         health.OnUpdateHealth += UpdateHealthUI;
     }
     
@@ -31,7 +32,7 @@ public class PlayerHealthUI : MonoBehaviour
         health.OnUpdateHealth -= UpdateHealthUI;
     }
 
-    private void UpdateHealthUI(int obj)
+    private void UpdateHealthUI(int value)
     {
         slider.value = health.GetPercent();
         fillImg.color = Color.Lerp(noColor, fullColor, slider.value);

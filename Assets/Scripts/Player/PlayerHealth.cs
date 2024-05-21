@@ -10,8 +10,8 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         health = GetComponentInChildren<Health>();
-        health.OnUpdateHealth = OnUpdateHealth;
-        health.OnDie = OnDie;
+        health.OnUpdateHealth += OnUpdateHealth;
+        health.OnDie += OnDie;
     }
 
     public void TakeDamage(int value)
@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
 
     void OnDie()
     {
-        
+        CheckpointManager.Instance.LoadLastCheckpoint();
     }
     
 

@@ -8,6 +8,7 @@ using UnityEngine.Serialization;
 public class CheckpointManager : MonoBehaviour
 {
     public static CheckpointManager Instance;
+    private SceneTriggerManager sceneTriggerManager;
 
     public Vector2 playerCheckPoint;
     public int sceneIndex;
@@ -25,13 +26,13 @@ public class CheckpointManager : MonoBehaviour
             return;
         }
 
-        sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        playerCheckPoint = GameObject.FindWithTag("Player").transform.position;
+        sceneTriggerManager = GetComponentInChildren<SceneTriggerManager>();
     }
 
     public void LoadLastCheckpoint()
     {
-        
+        sceneTriggerManager.SetPlayerTargetPosition(playerCheckPoint);
+        sceneTriggerManager.LoadSceneFromTrigger(sceneIndex);
     }
     
     public void SetCheckpoint(Vector2 newCheckpoint)
