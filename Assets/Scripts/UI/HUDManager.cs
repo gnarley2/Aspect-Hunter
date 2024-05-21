@@ -37,17 +37,11 @@ public class HUDManager : MonoBehaviour
         {
             if (index == 1)
             {
-                aspectSlot1.sprite = item.Icon;
-                aspectSlot1.color = new Color(1, 1, 1, 1);
-                slotToItemMap[aspectSlot1] = item;
-                slotToAspectMap[1] = item.aspectType;
+                EquipAspectSlot(item, 1);
             }
             else if (index == 2)
             {
-                aspectSlot2.sprite = item.Icon;
-                aspectSlot2.color = new Color(1, 1, 1, 1);
-                slotToItemMap[aspectSlot2] = item;
-                slotToAspectMap[2] = item.aspectType;
+                EquipAspectSlot(item, 2);
             }
         }
         else
@@ -72,12 +66,34 @@ public class HUDManager : MonoBehaviour
         UpdateAspectCount();
     }
 
+    void EquipAspectSlot(EquippableItem item, int index)
+    {
+        switch (index)
+        {
+            case 1:
+                aspectSlot1.sprite = item.Icon;
+                aspectSlot1.color = new Color(1, 1, 1, 1);
+                slotToItemMap[aspectSlot1] = item;
+                slotToAspectMap[1] = item.aspectType;
+                break;
+            case 2:
+                aspectSlot2.sprite = item.Icon;
+                aspectSlot2.color = new Color(1, 1, 1, 1);
+                slotToItemMap[aspectSlot2] = item;
+                slotToAspectMap[2] = item.aspectType;
+                break;
+        }
+        
+    }
+
     private void UpdateCombination()
     {
         if (slotToAspectMap.ContainsKey(1) && slotToAspectMap[1] != AspectType.None &&
             slotToAspectMap.ContainsKey(2) && slotToAspectMap[2] != AspectType.None)
         {
             slotToAspectMap[3] = AspectDatabase.Instance.GetCombination(slotToAspectMap[1], slotToAspectMap[2]);
+            if (slotToAspectMap[3] == AspectType.None) return;
+            
             EquippableItem combinationItem = AspectDatabase.Instance.GetEquippableAspect(slotToAspectMap[3]);
 
             if (combinationItem != null)

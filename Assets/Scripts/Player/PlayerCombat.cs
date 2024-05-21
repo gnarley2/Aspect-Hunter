@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
@@ -155,12 +155,13 @@ public class PlayerCombat : MonoBehaviour
 
     void ProjectileAttack(Vector3 attackDirection)
     {
-        ProjectileData selectedProjectile = projectileDatas[currentProjectileIndex];
         if (currentProjectileIndex <= -1 || currentProjectileIndex >= projectileDatas.Length)
         {
             InformationPanel.Instance.ShowInformation($"You haven't selected an aspect");
             return;
         }
+        
+        ProjectileData selectedProjectile = projectileDatas[currentProjectileIndex];
 
         // if (!selectedProjectile.isUnlocked)
         // {
