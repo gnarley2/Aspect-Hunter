@@ -4,8 +4,6 @@ using UnityEngine;
 public class AudioNode : ActionNode
 {
     public AudioClip clip;
-
-    private AudioSource source;
     
     public override void CopyNode(Node copyNode)
     {
@@ -19,13 +17,12 @@ public class AudioNode : ActionNode
     public override void OnInitialize(BehaviourTreeComponent component)
     {
         base.OnInitialize(component);
-        source = component.gameObject.GetComponent<AudioSource>();
     }
     
     protected override void OnStart()
     {
         base.OnStart();
-        source.PlayOneShot(clip);
+        SoundManager.Instance.PlayOneShot(clip);
     }
 
     protected override void OnStop()

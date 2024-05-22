@@ -93,7 +93,7 @@ MonoBehaviour:
     Name: 
     description: 
   linkNode: {fileID: 0}
-  prefab: {fileID: 3934221966773532347, guid: 353f10057ed832948bcb78300e9704c0, type: 3}
+  prefab: {fileID: 3934221966773532347, guid: 3d210c047dc754b4f8ee177fd967fd97, type: 3}
   offset: {x: 0, y: 1}
   speed: 5
   damage: 10
@@ -120,6 +120,7 @@ MonoBehaviour:
   children:
   - {fileID: -4921954284583080329}
   - {fileID: -6429485835466029539}
+  - {fileID: 2263649033223437288}
 --- !u!114 &-4334834234558546235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +216,7 @@ MonoBehaviour:
   - {fileID: 8019817616436312244}
   - {fileID: 2522351015106703294}
   - {fileID: -3893844615328036102}
+  - {fileID: 2263649033223437288}
   groups: []
   offset: {x: 300, y: 0}
 --- !u!114 &137742696219337016
@@ -242,6 +244,28 @@ MonoBehaviour:
   checkRelativePos: {x: 0, y: 1}
   radius: 6
   size: {x: 0, y: 0}
+--- !u!114 &2263649033223437288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a727d3bd068ebb438263919d033e8a2, type: 3}
+  m_Name: AudioNode
+  m_EditorClassIdentifier: 
+  NodeComponent:
+    state: 0
+    started: 0
+    guid: 9826126d605728749b209a21b6fbf6dd
+    Tree: {fileID: 11400000}
+    position: {x: 1275.1395, y: 383.2}
+    Name: 
+    description: 
+  linkNode: {fileID: 0}
+  clip: {fileID: 0}
 --- !u!114 &2522351015106703294
 MonoBehaviour:
   m_ObjectHideFlags: 0

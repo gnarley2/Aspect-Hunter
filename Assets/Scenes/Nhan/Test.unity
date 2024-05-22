@@ -2076,7 +2076,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1440484571966174779, guid: 1bb321990c9eb4541b260b626fedfa6c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1450612373}
   m_SourcePrefab: {fileID: 100100000, guid: 1bb321990c9eb4541b260b626fedfa6c, type: 3}
 --- !u!60 &243954434 stripped
 PolygonCollider2D:
@@ -17070,6 +17073,23 @@ MeshRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1450612361 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1440484571966174779, guid: 1bb321990c9eb4541b260b626fedfa6c, type: 3}
+  m_PrefabInstance: {fileID: 243954432}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1450612373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450612361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e856552e8fc01114db6afe6614617aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1465888193
 GameObject:
   m_ObjectHideFlags: 0
