@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: '[ RIGHT CLICK ] to melee and lower a creature''s Health. Then press [
-    Q ] to throw a Capture Ball. The creature''s Aspect will be added to your Inventory..'
+    Q ] to throw a Capture Ball. The creature''s Aspect will be added to your Inventory.'
   messageWindowPrefab: {fileID: 3973930839487107989, guid: faa7967c2a02da24f800c86039909c00, type: 3}
 --- !u!1001 &102847400
 PrefabInstance:
@@ -7307,7 +7307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4217585577092313099, guid: df3bf147b6502bb47999f885e76711f2, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4864049015008296067, guid: df3bf147b6502bb47999f885e76711f2, type: 3}
       propertyPath: m_Name
@@ -7411,9 +7411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93a525fd16f4ae4c8187a5b3fa444b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Drag an Aspect to a slot in your Inventory to Equip it. [ LEFT CLICK ]
-    to use current Aspect. Equip other Aspects in other slots to combine them into
-    something new! Press [ 1, 2, 3 ] to change current Aspect
+  message: Equip Aspects in a slots in your Inventory. [ LEFT CLICK ] to use current
+    Aspect. Use these abilities to find a way to escape these caverns!
   messageWindowPrefab: {fileID: 3973930839487107989, guid: faa7967c2a02da24f800c86039909c00, type: 3}
 --- !u!1001 &1041720030
 PrefabInstance:
@@ -11629,11 +11628,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6866603827873513020, guid: 6b7ce1441db7ea348976bd9c8c5c51c2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.2058315
+      value: 7.051
       objectReference: {fileID: 0}
     - target: {fileID: 6866603827873513020, guid: 6b7ce1441db7ea348976bd9c8c5c51c2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5015717
+      value: 1.705
       objectReference: {fileID: 0}
     - target: {fileID: 6866603827873513020, guid: 6b7ce1441db7ea348976bd9c8c5c51c2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12383,11 +12382,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6253168743859355803, guid: b3ebac44159afc343a209b4712d74ff6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.641108
+      value: -15.29
       objectReference: {fileID: 0}
     - target: {fileID: 6253168743859355803, guid: b3ebac44159afc343a209b4712d74ff6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.52874
+      value: 0.54
       objectReference: {fileID: 0}
     - target: {fileID: 6253168743859355803, guid: b3ebac44159afc343a209b4712d74ff6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12451,11 +12450,11 @@ PrefabInstance:
       objectReference: {fileID: 243954434}
     - target: {fileID: 6253168745356334887, guid: b3ebac44159afc343a209b4712d74ff6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.6488924
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6253168745356334887, guid: b3ebac44159afc343a209b4712d74ff6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.011260033
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6253168745356334887, guid: b3ebac44159afc343a209b4712d74ff6, type: 3}
       propertyPath: m_LocalPosition.z
