@@ -19,6 +19,9 @@ public class MoveRandomNode : ActionNode
 
     public float speed;
 
+    public float expiredTime = 0f;
+    private float elapsedExpiredTime = 0f;
+
     private Vector2 destination;
     private Vector2 startPos;
     private Vector2 direction;
@@ -46,6 +49,10 @@ public class MoveRandomNode : ActionNode
     {
         base.OnStart();
 
+        if (expiredTime > 0f)
+        {
+            elapsedExpiredTime = expiredTime;
+        }
         if (type == MoveRandomType.Circle)
         {
             destination = startPos + Random.insideUnitCircle * radius;
@@ -63,7 +70,15 @@ public class MoveRandomNode : ActionNode
     protected override NodeComponent.State OnUpdate()
     {
         Move();
-        
+
+        if (elapsedExpiredTime > 0f)
+        {
+            elapsedExpiredTime -= Time.deltaTime;
+            if (elapsedExpiredTime <= 0f)
+            {
+                return NodeComponent.State.FAILURE;
+            }
+        }
         if (Vector2.Distance(destination, treeComponent.transform.position) < 0.1f) 
             return NodeComponent.State.SUCCESS;
         return NodeComponent.State.RUNNING;

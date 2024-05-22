@@ -14,15 +14,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 897352485747607548, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 897352485747607548, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 38.53583
+      value: 29.5
       objectReference: {fileID: 0}
     - target: {fileID: 897352485747607548, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.848429
+      value: -7.7
       objectReference: {fileID: 0}
     - target: {fileID: 897352485747607548, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -92,6 +92,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.9792001
       objectReference: {fileID: 0}
+    - target: {fileID: 5711360619311740564, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.03
+      objectReference: {fileID: 0}
     - target: {fileID: 6036266667003885628, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -100,6 +104,14 @@ PrefabInstance:
       propertyPath: data
       value: 
       objectReference: {fileID: 11400000, guid: 865feaf73d31ad9458a8374f910f06b1, type: 2}
+    - target: {fileID: 8462477059734519702, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
+      propertyPath: MaxDistance
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462477059734519702, guid: a84b4107e11d9ea4bb2b62ebab87ff6f, type: 3}
+      propertyPath: MinDistance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

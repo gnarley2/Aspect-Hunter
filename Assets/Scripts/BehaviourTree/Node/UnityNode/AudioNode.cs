@@ -19,7 +19,7 @@ public class AudioNode : ActionNode
     public override void OnInitialize(BehaviourTreeComponent component)
     {
         base.OnInitialize(component);
-        source = component.gameObject.GetComponent<AudioSource>();
+        source = component.gameObject.GetComponentInChildren<AudioSource>();
     }
     
     protected override void OnStart()

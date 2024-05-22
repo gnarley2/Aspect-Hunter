@@ -1,28 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8688324086256755511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f351e5af1fc61a34eb6390f66c912c75, type: 3}
-  m_Name: SelectorNode
-  m_EditorClassIdentifier: 
-  NodeComponent:
-    state: 0
-    started: 0
-    guid: 546230eb3f5a0fd47995e0d4cea54a39
-    Tree: {fileID: 11400000}
-    position: {x: 304.07953, y: 151.59201}
-    Name: 
-    description: 
-  children:
-  - {fileID: 4670155928922819180}
-  currentIndex: -1
 --- !u!114 &-4334834234558546235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,6 +21,28 @@ MonoBehaviour:
     Name: 
     description: 
   child: {fileID: 5199882927292344719}
+--- !u!114 &-2469440847962195372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a727d3bd068ebb438263919d033e8a2, type: 3}
+  m_Name: AudioNode
+  m_EditorClassIdentifier: 
+  NodeComponent:
+    state: 0
+    started: 0
+    guid: 06a460c3b9580634982558a134d2301d
+    Tree: {fileID: 11400000}
+    position: {x: 594.70013, y: 949.05023}
+    Name: 
+    description: 
+  linkNode: {fileID: 0}
+  clip: {fileID: 8300000, guid: 4fd1d068c1bd030418aedb05680e5143, type: 3}
 --- !u!114 &-1573274582560339618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,6 +69,7 @@ MonoBehaviour:
   width: 0
   radius: 6
   speed: 5
+  expiredTime: 5
 --- !u!114 &-1333821190030971907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,56 +91,6 @@ MonoBehaviour:
     Name: 
     description: 
   child: {fileID: 6572119884591860768}
---- !u!114 &-847900937016277479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8385646add66fa479e1002a73e2715d, type: 3}
-  m_Name: CheckGroundNode
-  m_EditorClassIdentifier: 
-  NodeComponent:
-    state: 0
-    started: 0
-    guid: 36d4f7ebeed85324f9a4b0a6bc98eb97
-    Tree: {fileID: 11400000}
-    position: {x: -166.60976, y: 690}
-    Name: 
-    description: 
-  linkNode: {fileID: 0}
-  checkGroundList:
-  - layerMask:
-      serializedVersion: 2
-      m_Bits: 256
-    size: {x: 1.57, y: 1.43}
-    relativeStartPos: {x: 0.24, y: 0.82}
-    gizmosColor: {r: 1, g: 0, b: 0, a: 1}
-    shouldBe: 1
---- !u!114 &-164954265895511332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddb1c6a8ab31b7f4eabd96fedea1a1ad, type: 3}
-  m_Name: InverterNode
-  m_EditorClassIdentifier: 
-  NodeComponent:
-    state: 0
-    started: 0
-    guid: e3d577446779d424fae6e9154be2fc02
-    Tree: {fileID: 11400000}
-    position: {x: -159.40974, y: 580.39996}
-    Name: 
-    description: 
-  child: {fileID: -847900937016277479}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,16 +110,14 @@ MonoBehaviour:
   - {fileID: 5199882927292344719}
   - {fileID: 4670155928922819180}
   - {fileID: 3762964257190147803}
-  - {fileID: -8688324086256755511}
   - {fileID: -1573274582560339618}
-  - {fileID: -847900937016277479}
-  - {fileID: 7067393187690903807}
-  - {fileID: -164954265895511332}
   - {fileID: 3351643826286499361}
   - {fileID: -1333821190030971907}
   - {fileID: 6572119884591860768}
   - {fileID: 8161181159081868537}
   - {fileID: 8580072355115070414}
+  - {fileID: -2469440847962195372}
+  - {fileID: 5678802989032043168}
   groups: []
   offset: {x: 300, y: 0}
 --- !u!114 &3351643826286499361
@@ -239,8 +187,8 @@ MonoBehaviour:
     Name: 
     description: 
   children:
-  - {fileID: 7067393187690903807}
   - {fileID: 3762964257190147803}
+  - {fileID: 5678802989032043168}
 --- !u!114 &5199882927292344719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,7 +209,29 @@ MonoBehaviour:
     position: {x: 259.9292, y: -5.6933556}
     Name: 
     description: 
-  child: {fileID: -8688324086256755511}
+  child: {fileID: 4670155928922819180}
+--- !u!114 &5678802989032043168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987adf93acf05af4c9a3f385ca8652e7, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  NodeComponent:
+    state: 0
+    started: 0
+    guid: 825d1cf92c4ff434bb0ddd53352caec3
+    Tree: {fileID: 11400000}
+    position: {x: 232.40001, y: 475.20004}
+    Name: 
+    description: 
+  children:
+  - {fileID: 3351643826286499361}
 --- !u!114 &6572119884591860768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,30 +255,7 @@ MonoBehaviour:
   children:
   - {fileID: 8161181159081868537}
   - {fileID: 8580072355115070414}
---- !u!114 &7067393187690903807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea41c23d1af55c14ebc6839e6ae73ad1, type: 3}
-  m_Name: DepSequencerNode
-  m_EditorClassIdentifier: 
-  NodeComponent:
-    state: 0
-    started: 0
-    guid: 4947ea6156d020647a6abbdc4e742fec
-    Tree: {fileID: 11400000}
-    position: {x: 37.825012, y: 454.80005}
-    Name: 
-    description: 
-  children:
-  - {fileID: -164954265895511332}
-  - {fileID: 3351643826286499361}
-  currentIndex: -1
+  - {fileID: -2469440847962195372}
 --- !u!114 &8161181159081868537
 MonoBehaviour:
   m_ObjectHideFlags: 0
