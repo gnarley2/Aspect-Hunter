@@ -41,7 +41,7 @@ MonoBehaviour:
     started: 0
     guid: cc9b80aa7d6680548a540c4526ded8d4
     Tree: {fileID: 11400000}
-    position: {x: -418.26245, y: 641.99994}
+    position: {x: -390.6433, y: 674.4}
     Name: 
     description: 
   linkNode: {fileID: 0}
@@ -92,6 +92,7 @@ MonoBehaviour:
     Name: 
     description: 
   children:
+  - {fileID: 5092436284268052915}
   - {fileID: -1464476549122134218}
   - {fileID: -6429485835466029539}
 --- !u!114 &-4334834234558546235
@@ -132,7 +133,7 @@ MonoBehaviour:
     started: 0
     guid: af090cc3cb668914083f08051a4f47a4
     Tree: {fileID: 11400000}
-    position: {x: -418.26245, y: 505.19995}
+    position: {x: -390.6433, y: 537.60004}
     Name: 
     description: 
   child: {fileID: -8554894942179524726}
@@ -162,6 +163,7 @@ MonoBehaviour:
   width: 0
   radius: 5
   speed: 1.5
+  expiredTime: 0
 --- !u!114 &-1464476549122134218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +181,7 @@ MonoBehaviour:
     started: 0
     guid: 36b4db6751bf4e84a96a44ad4caa273e
     Tree: {fileID: 11400000}
-    position: {x: 484, y: 455.20004}
+    position: {x: 559.2, y: 455.2}
     Name: 
     description: 
   linkNode: {fileID: 0}
@@ -216,6 +218,7 @@ MonoBehaviour:
   - {fileID: -1573274582560339618}
   - {fileID: 2000107601557866700}
   - {fileID: 6856982119510146370}
+  - {fileID: 5092436284268052915}
   groups: []
   offset: {x: 300, y: 0}
 --- !u!114 &2000107601557866700
@@ -235,7 +238,7 @@ MonoBehaviour:
     started: 0
     guid: f1f50a364112f4f4c84741963dbff0bd
     Tree: {fileID: 11400000}
-    position: {x: -226.26251, y: 505.19995}
+    position: {x: -198.64331, y: 537.60004}
     Name: 
     description: 
   linkNode: {fileID: 0}
@@ -292,6 +295,28 @@ MonoBehaviour:
   children:
   - {fileID: -1573274582560339618}
   - {fileID: 3762964257190147803}
+--- !u!114 &5092436284268052915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a727d3bd068ebb438263919d033e8a2, type: 3}
+  m_Name: AudioNode
+  m_EditorClassIdentifier: 
+  NodeComponent:
+    state: 0
+    started: 0
+    guid: 5a08cc8452cd4944f8241f87a3fe7b7b
+    Tree: {fileID: 11400000}
+    position: {x: 379.6001, y: 455.20007}
+    Name: 
+    description: 
+  linkNode: {fileID: 0}
+  clip: {fileID: 8300000, guid: ed617908710196947a4f0842d6e018c6, type: 3}
 --- !u!114 &5199882927292344719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,7 +355,7 @@ MonoBehaviour:
     started: 0
     guid: 7b54a443d7d3f2f4f92e2133b4236212
     Tree: {fileID: 11400000}
-    position: {x: -255.06244, y: 370.8}
+    position: {x: -227.44328, y: 403.2}
     Name: 
     description: 
   children:
