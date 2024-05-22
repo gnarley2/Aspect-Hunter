@@ -74,7 +74,6 @@ public class MoveRandomNode : ActionNode
         if (elapsedExpiredTime > 0f)
         {
             elapsedExpiredTime -= Time.deltaTime;
-            Debug.Log(elapsedExpiredTime);
             if (elapsedExpiredTime <= 0f)
             {
                 return NodeComponent.State.FAILURE;
