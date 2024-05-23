@@ -22,23 +22,23 @@ public enum MonsterName
 [CreateAssetMenu(fileName = "Monster", menuName = "ScriptableObjects/Data/Monster")]
 public class MonsterDetails : ScriptableObject
 {
-    
+
     [Header("Information")]
     public MonsterName name;
     [TextArea(5, 10)] public string description;
     public AspectType type = AspectType.None;
+    public Sprite icon;
 
-    [Header("Attack")] 
+    [Header("Attack")]
     public int damage;
 
-    [Header("Tamed Behaviour")] 
+    [Header("Tamed Behaviour")]
     public BehaviourTree tamedTree;
 
-    [Header("Loot")] 
+    [Header("Loot")]
     public int maxNumAspect;
     public int minNumAspect;
     public Item item;
-
 
     public int GetLoot()
     {
