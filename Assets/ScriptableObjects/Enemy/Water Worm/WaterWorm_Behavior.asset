@@ -48,7 +48,7 @@ MonoBehaviour:
   linkNode: {fileID: 0}
   checkType: 0
   checkRelativePos: {x: 0, y: 1}
-  radius: 8
+  radius: 6
   size: {x: 0, y: 0}
 --- !u!114 &-6429485835466029539
 MonoBehaviour:
@@ -213,7 +213,7 @@ MonoBehaviour:
   linkNode: {fileID: 0}
   checkType: 0
   checkRelativePos: {x: 0, y: 1}
-  radius: 6
+  radius: 5
   size: {x: 0, y: 0}
 --- !u!114 &2522351015106703294
 MonoBehaviour:
@@ -262,6 +262,7 @@ MonoBehaviour:
   width: 0
   radius: 14
   speed: 3
+  expiredTime: 0
 --- !u!114 &4670155928922819180
 MonoBehaviour:
   m_ObjectHideFlags: 0
