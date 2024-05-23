@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class GameManager : MonoBehaviour
     public int currentLevel;
     public int maxLevels = 10; // Set the maximum number of levels
     public LevelData[] levelData;
+
+    public string targetSceneName; // Set this to the name of the scene where you want the child to be disabled
+    public GameObject parentGameObject; // Assign the parent GameObject in the inspector
+    public GameObject childObject; // Assign the name of the child GameObject to disable
+
 
 
     public int totalCoinsCollected;
@@ -74,6 +80,27 @@ public class GameManager : MonoBehaviour
         {
             levelData[i] = new LevelData();
             levelData[i].xpRequired = 10 * (i + 1); // This is where we set the increasing xp requirements for each lvl. 
+        }
+    }
+
+    void Update()
+    {
+        if (childObject != null)
+        {
+            if (SceneManager.GetActiveScene().name == targetSceneName)
+            {
+                if (childObject.activeSelf)
+                {
+                    childObject.SetActive(false);
+                }
+            }
+            else
+            {
+                if (!childObject.activeSelf)
+                {
+                    childObject.SetActive(true);
+                }
+            }
         }
     }
 
