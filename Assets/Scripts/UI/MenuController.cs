@@ -8,7 +8,7 @@ public class MenuController : MonoBehaviour
     public static bool openInventory;
     bool itemDescription = false;
     bool openMap;
-    bool openBestiary;
+    public static bool openBestiary;
     [SerializeField] GameObject DescriptionPanel;
 
     private void Awake()
@@ -47,6 +47,12 @@ public class MenuController : MonoBehaviour
     }
 
     public void ToggleBestiary()
+    {
+        openBestiary = !openBestiary;
+        GameCanvas.Instance.ToggleBestiaryPanel(openBestiary);
+    }
+
+    public void CloseBestiary()
     {
         openBestiary = !openBestiary;
         GameCanvas.Instance.ToggleBestiaryPanel(openBestiary);
