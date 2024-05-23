@@ -17,6 +17,12 @@ public class PlayerMovement : MonoBehaviour
     const string PLAYER_WALK_UP = "MC_L_Walk_Anim";
     const string PLAYER_WALK_DOWN = "MC_R_Walk_Anim";
 
+
+    const string IDLE = "idle [new]";
+    const string WALK_LEFT = "Walking Left";
+    const string WALK_Right = "Walking Right";
+
+
     // Update is called once per frame
     void Start()
     {
@@ -34,23 +40,23 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_movement.x > 0)
         {
-            ChangeAnimationState(PLAYER_WALK_RIGHT);
+            ChangeAnimationState(WALK_Right);
         }
         else if (_movement.x < 0)
         {
-            ChangeAnimationState(PLAYER_WALK_LEFT);
+            ChangeAnimationState(WALK_LEFT);
         }
         else if (_movement.y > 0)
         {
-            ChangeAnimationState(PLAYER_WALK_UP);
+            ChangeAnimationState(WALK_Right);
         }
         else if (_movement.y < 0)
         {
-            ChangeAnimationState(PLAYER_WALK_DOWN);
+            ChangeAnimationState(WALK_LEFT);
         }
         else
         {
-            ChangeAnimationState(PLAYER_IDLE);
+            ChangeAnimationState(IDLE);
         }
 
         rb.MovePosition(rb.position + _movement * moveSpeed * Time.fixedDeltaTime);

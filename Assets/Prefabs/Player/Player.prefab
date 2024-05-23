@@ -304,7 +304,7 @@ Transform:
   m_Children:
   - {fileID: 1175919156}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1568891421582735536
 Rigidbody2D:
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f6f37721e9f944fae647e2177cc096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  health: {fileID: 0}
 --- !u!114 &1568891421582735532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,3 +420,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e99e99787d08c240ae230d2385606f0, type: 2}
   - {fileID: 11400000, guid: 7966fc394b9a67d4e84eb6b12cd90e76, type: 2}
   - {fileID: 11400000, guid: 04c40cdf932cf0a4fa1963f46240db68, type: 2}
+  hudManager: {fileID: 0}
