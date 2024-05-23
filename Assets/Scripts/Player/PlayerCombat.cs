@@ -59,7 +59,7 @@ public class PlayerCombat : MonoBehaviour
 
     void Update()
     {
-        if (menuScript && menuScript.isPaused == true) return;
+        if (menuScript && menuScript.isPaused  ||  MenuController.openInventory) return;
         
         CalculateDirection();
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
