@@ -35,7 +35,7 @@ public class BestiaryPanel : MonoBehaviour
         if (monsterData != null)
         {
             Debug.Log("Showing tooltip for monster: " + monsterData.monsterDetails.name); // Debug log
-            monsterTooltip.ShowTooltip(monsterData.monsterDetails, monsterData.currentHealth);
+            monsterTooltip.ShowTooltip(monsterData.monsterDetails);
         }
         else
         {
