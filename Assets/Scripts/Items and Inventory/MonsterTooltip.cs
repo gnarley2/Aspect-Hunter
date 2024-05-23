@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,28 +6,50 @@ using UnityEngine.UI;
 
 public class MonsterTooltip : MonoBehaviour
 {
+    [SerializeField] Image image;
     [SerializeField] Text MonsterNameText;
-    [SerializeField] Text TamedText;
-    [SerializeField] Text HealthText;
-    [SerializeField] Text DamageText;
-    [SerializeField] Text AspectText;
+    [SerializeField] Image Aspect;
     [SerializeField] Text DetailsText;
 
-    public void ShowTooltip(MonsterDetails monsterDetails, int currentHealth)
+    private CanvasGroup canvasGroup;
+
+    private void Awake()
+    {
+        canvasGroup = GetComponent<CanvasGroup>();
+        ToggleUI(false);
+    }
+
+    public void ToggleUI(bool isActive)
+    {
+        if (isActive)
+        {
+            canvasGroup.alpha = 1;
+            canvasGroup.interactable = true;
+            canvasGroup.blocksRaycasts = true;
+        }
+        else
+        {
+            canvasGroup.alpha = 0;
+            canvasGroup.interactable = false;
+            canvasGroup.blocksRaycasts = false;
+        }
+    }
+
+    public void ShowTooltip(MonsterDetails monsterDetails)
     {
         Debug.Log("Showing tooltip"); // Debug log
-        MonsterNameText.text = monsterDetails.name.ToString();
-        TamedText.text = "Tamed: Yes"; // Assume the monster is tamed if it is in the bestiary
-        HealthText.text = "Health: " + currentHealth.ToString();
-        DamageText.text = "Damage: " + monsterDetails.damage.ToString();
-        AspectText.text = "Aspect: " + monsterDetails.type.ToString();
+
+        image.sprite = monsterDetails.icon;
+        MonsterNameText.text = "Name: " + monsterDetails.name.ToString();
+        if (monsterDetails.item != null) Aspect.sprite = monsterDetails.item.Icon; 
         DetailsText.text = monsterDetails.description;
-        gameObject.SetActive(true);
+        
+        ToggleUI(true);
     }
 
     public void HideTooltip()
     {
         Debug.Log("Hiding tooltip"); // Debug log
-        gameObject.SetActive(false);
+        ToggleUI(false);
     }
 }
