@@ -3,7 +3,8 @@ using UnityEngine.Serialization;
 
 public class VFXNode : ActionNode
 {
-    [SerializeField] private GameObject vfx;
+    [SerializeField] private VFXObject vfx;
+    [SerializeField] private Vector2 spawnPos;
     
     public override void CopyNode(Node copyNode)
     {
@@ -22,8 +23,8 @@ public class VFXNode : ActionNode
     protected override void OnStart()
     {
         base.OnStart();
-        
-        //todo
+
+        Instantiate(vfx.gameObject, treeComponent.transform.position + (Vector3)spawnPos, Quaternion.identity);
     }
 
     protected override void OnStop()
@@ -35,6 +36,10 @@ public class VFXNode : ActionNode
     {
         return NodeComponent.State.SUCCESS;
     }
-    
 
+    public override void DrawGizmos(GameObject selectedGameObject)
+    {
+        base.DrawGizmos(selectedGameObject);
+        GizmosDrawer.DrawSphere(selectedGameObject.transform.position + (Vector3)spawnPos, 0.5f);
+    }
 }

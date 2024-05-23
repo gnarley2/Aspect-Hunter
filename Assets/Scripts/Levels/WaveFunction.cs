@@ -8,30 +8,30 @@ using UnityEngine;
 // [ExecuteInEditMode]
 public class WaveFunction : MonoBehaviour
 {
-    public int dimensionsX;
-    public int dimensionsY;
-    public Tile[] tileObjects;
-    public List<Cell> gridComponents;
-    public Cell cellObject;
+    public int width;
+    public int height;
+    public Tile[] tiles;
+    public List<Cell> grid;
+    public Cell cell;
 
     int iterations = 0;
 
     void Awake()
     {
-        gridComponents = new List<Cell>();
+        grid = new List<Cell>();
         InitializeGrid();
     }
     public void InitializeGrid()
     {
-        for (int y = 0; y < dimensionsY; y++)
+        for (int y = 0; y < height; y++)
         {
-            for (int x = 0; x < dimensionsX; x++)
+            for (int x = 0; x < width; x++)
             {
-                Cell newCell = Instantiate(cellObject, new Vector2(
-                    (3.8f * x + this.transform.position.x) - dimensionsX - 3.8f,
-                    (3.8f * y + this.transform.position.y) - dimensionsY), Quaternion.identity);
-                newCell.CreateCell(false, tileObjects);
-                gridComponents.Add(newCell);
+                Cell newCell = Instantiate(cell, new Vector2(
+                    (3.8f * x + this.transform.position.x) - width - 3.8f,
+                    (3.8f * y + this.transform.position.y) - height), Quaternion.identity);
+                newCell.CreateCell(false, tiles);
+                grid.Add(newCell);
             }
         }
 
@@ -42,7 +42,7 @@ public class WaveFunction : MonoBehaviour
 
     IEnumerator CheckEntropy()
     {
-        List<Cell> tempGrid = new List<Cell>(gridComponents);
+        List<Cell> tempGrid = new List<Cell>(grid);
 
         tempGrid.RemoveAll(c => c.collapsed);
 
@@ -88,22 +88,22 @@ public class WaveFunction : MonoBehaviour
 
     void UpdateGeneration()
     {
-        List<Cell> newGenerationCell = new List<Cell>(gridComponents);
+        List<Cell> newGenerationCell = new List<Cell>(grid);
 
-        for (int y = 0; y < dimensionsY; y++)
+        for (int y = 0; y < height; y++)
         {
-            for (int x = 0; x < dimensionsX; x++)
+            for (int x = 0; x < width; x++)
             {
-                var index = x + y * dimensionsY;
-                if (gridComponents[index].collapsed)
+                var index = x + y * height;
+                if (grid[index].collapsed)
                 {
                     Debug.Log("called");
-                    newGenerationCell[index] = gridComponents[index];
+                    newGenerationCell[index] = grid[index];
                 }
                 else
                 {
                     List<Tile> options = new List<Tile>();
-                    foreach (Tile t in tileObjects)
+                    foreach (Tile t in tiles)
                     {
                         options.Add(t);
                     }
@@ -111,13 +111,13 @@ public class WaveFunction : MonoBehaviour
                     // Update up
                     if (y > 0)
                     {
-                        Cell up = gridComponents[x + (y - 1) * dimensionsY];
+                        Cell up = grid[x + (y - 1) * height];
                         List<Tile> validOptions = new List<Tile>();
 
                         foreach (Tile possibleOptions in up.tileOptions)
                         {
-                            var valOption = Array.FindIndex(tileObjects, obj => obj == possibleOptions);
-                            var valid = tileObjects[valOption].upNeighbours;
+                            var valOption = Array.FindIndex(tiles, obj => obj == possibleOptions);
+                            var valid = tiles[valOption].upNeighbours;
 
                             validOptions = validOptions.Concat(valid).ToList();
                         }
@@ -126,16 +126,16 @@ public class WaveFunction : MonoBehaviour
                     }
 
                     //Update right
-                    if (x < dimensionsX - 1)
+                    if (x < width - 1)
                     {
-                        // Cell right = gridComponents[x + 1 + y * dimensions].GetComponent<Cell>();
-                        Cell right = gridComponents[x + 1 + y * dimensionsX];
+                        // Cell right = grid[x + 1 + y * dimensions].GetComponent<Cell>();
+                        Cell right = grid[x + 1 + y * width];
                         List<Tile> validOptions = new List<Tile>();
 
                         foreach (Tile possibleOptions in right.tileOptions)
                         {
-                            var valOption = Array.FindIndex(tileObjects, obj => obj == possibleOptions);
-                            var valid = tileObjects[valOption].leftNeighbours;
+                            var valOption = Array.FindIndex(tiles, obj => obj == possibleOptions);
+                            var valid = tiles[valOption].leftNeighbours;
 
                             validOptions = validOptions.Concat(valid).ToList();
                         }
@@ -145,16 +145,16 @@ public class WaveFunction : MonoBehaviour
                     }
 
                     // Update down
-                    if (y < dimensionsY - 1)
+                    if (y < height - 1)
                     {
-                        // Cell right = gridComponents[x + (y + 1) * dimensions].GetComponent<Cell>();
-                        Cell down = gridComponents[x + (y + 1) * dimensionsY];
+                        // Cell right = grid[x + (y + 1) * dimensions].GetComponent<Cell>();
+                        Cell down = grid[x + (y + 1) * height];
                         List<Tile> validOptions = new List<Tile>();
 
                         foreach (Tile possibleOptions in down.tileOptions)
                         {
-                            var valOption = Array.FindIndex(tileObjects, obj => obj == possibleOptions);
-                            var valid = tileObjects[valOption].downNeighbours;
+                            var valOption = Array.FindIndex(tiles, obj => obj == possibleOptions);
+                            var valid = tiles[valOption].downNeighbours;
 
                             validOptions = validOptions.Concat(valid).ToList();
                         }
@@ -166,13 +166,13 @@ public class WaveFunction : MonoBehaviour
                     // Update left
                     if (x > 0)
                     {
-                        Cell left = gridComponents[x - 1 + y * dimensionsX];
+                        Cell left = grid[x - 1 + y * width];
                         List<Tile> validOptions = new List<Tile>();
 
                         foreach (Tile possibleOptions in left.tileOptions)
                         {
-                            var valOption = Array.FindIndex(tileObjects, obj => obj == possibleOptions);
-                            var valid = tileObjects[valOption].rightNeighbours;
+                            var valOption = Array.FindIndex(tiles, obj => obj == possibleOptions);
+                            var valid = tiles[valOption].rightNeighbours;
 
                             validOptions = validOptions.Concat(valid).ToList();
                         }
@@ -192,10 +192,10 @@ public class WaveFunction : MonoBehaviour
             }
         }
 
-        gridComponents = newGenerationCell;
+        grid = newGenerationCell;
         iterations++;
 
-        if (iterations < dimensionsX * dimensionsY)
+        if (iterations < width * height)
         {
             StartCoroutine(CheckEntropy());
         }
@@ -225,7 +225,7 @@ public class WaveFunction : MonoBehaviour
 
 //         if (GUILayout.Button("Generate Map"))
 //         {
-//             wf.gridComponents = new List<Cell>();
+//             wf.grid = new List<Cell>();
 //             wf.InitializeGrid();
 //         }
 //     }

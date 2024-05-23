@@ -39,6 +39,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
     }
 
+    private void Awake()
+    {
+        image = GetComponent<Image>();
+    }
+
     protected virtual void OnValidate()
     {
         if (image == null)
@@ -48,6 +53,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     public virtual bool CanReceiveItem(Item item)
     {
         return true;
+    }
+
+    public void ClearSlot()
+    {
+        Item = null;
     }
 
     public void OnPointerClick(PointerEventData eventData)

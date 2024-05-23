@@ -11,9 +11,7 @@ public class Menus : MonoBehaviour
     TextMeshPro quitButton;
     [SerializeField] GameObject MenuPanel;
     [SerializeField] GameObject InstructionPanel;
-
-    [SerializeField] GameObject PauseMenuUI;
-    [SerializeField] GameObject OptionsUI;
+    
     public bool isPaused;
 
     // Start is called before the first frame update
@@ -21,7 +19,6 @@ public class Menus : MonoBehaviour
     {
         Time.timeScale = 1f;
         isPaused = false;
-        PauseMenuUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,44 +26,50 @@ public class Menus : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isPaused = !isPaused;
-
-            if (isPaused)
+            if (MenuController.openInventory)
             {
-                Time.timeScale = 0f;
-                PauseMenuUI.SetActive(true);
+                // If inventory is open, just close it and don't pause the game
+                MenuController menuController = FindObjectOfType<MenuController>();
+                if (menuController != null)
+                {
+                    menuController.CloseInventory();
+                }
             }
             else
             {
-                Resume();
+                // Toggle pause state only if inventory is not open
+                isPaused = !isPaused;
+
+                if (isPaused)
+                {
+                    Time.timeScale = 0f;
+                    GameCanvas.Instance.TogglePausedPanel(isPaused);
+                }
+                else
+                {
+                    Resume();
+                }
             }
         }
-
-        if (MenuPanel == null || InstructionPanel == null)
-            return;
-
-        if (PauseMenuUI == null || OptionsUI == null)
-            return;
     }
 
     public void Resume()
     {
         Time.timeScale = 1f;
         isPaused = false;
-        PauseMenuUI.SetActive(false);
+        GameCanvas.Instance.TogglePausedPanel(isPaused);
 
-        // FindItem the InventoryUI component and close the inventory
-        InventoryUI inventoryUI = FindObjectOfType<InventoryUI>();
-        if (inventoryUI != null)
+        MenuController menuController = FindObjectOfType<MenuController>();
+        if (menuController != null)
         {
-            inventoryUI.CloseInventory();
+            menuController.CloseInventory();
         }
     }
 
     public void Options()
     {
-        PauseMenuUI.SetActive(false);
-        OptionsUI.SetActive(true);
+        GameCanvas.Instance.TogglePausedPanel(false);
+        GameCanvas.Instance.ToggleOptionPanel(true);
     }
 
     public void StartGame()
@@ -89,8 +92,8 @@ public class Menus : MonoBehaviour
     {
         if (isPaused == true)
         {
-            OptionsUI.SetActive(false);
-            PauseMenuUI.SetActive(true);
+            GameCanvas.Instance.ToggleOptionPanel(false);
+            GameCanvas.Instance.TogglePausedPanel(true);
         }
         else
         {

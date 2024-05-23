@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ca29b059f0c524e91946ec5012d091, type: 3}
+  m_Name: FireRat
+  m_EditorClassIdentifier: 
+  ID: 
+  monsterDetails: {fileID: 11400000, guid: 4f21c63c54810974583cacfb33759a0d, type: 2}
+  healthData: {fileID: 11400000, guid: 2fe81ed89107d034dbc0ed3cf2f03da3, type: 2}
+  currentHealth: 0
+  KnockbackType: 1

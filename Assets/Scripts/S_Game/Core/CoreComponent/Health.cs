@@ -33,6 +33,12 @@ public class Health : CoreComponent
         base.Awake();
     }
 
+    public void Heal(int amount)
+    {
+        health = Mathf.Min(health + amount, maxHealth);
+        InformationPanel.Instance.ShowInformation($"Player current health {health}");
+    }
+
     public bool TakeDamage(int damage)
     {
         return TakeDamage(damage, false);
@@ -43,7 +49,7 @@ public class Health : CoreComponent
         if (health <= 0 || IsInvulnerable()) return false;
 
         health -= damage;
-
+        
         OnUpdateHealth?.Invoke(health);
 
         if (health > 0)
@@ -77,5 +83,10 @@ public class Health : CoreComponent
     public float GetPercent()
     {
         return health * 1.0f / maxHealth;
+    }
+
+    public int GetHealth()
+    {
+        return health;
     }
 }

@@ -16,6 +16,8 @@ public class Monster : MonoBehaviour
     private Health health;
     private Combat combat;
 
+    public Action OnDied;
+
     void Awake()
     {
         core = GetComponentInChildren<Core>();
@@ -74,6 +76,7 @@ public class Monster : MonoBehaviour
 
     private void Die()
     {
+        OnDied?.Invoke();
         PlayHitClip();
         
         Destroy();
@@ -93,6 +96,11 @@ public class Monster : MonoBehaviour
     public MonsterData GetData()
     {
         return data;
+    }
+
+    public float GetHealthPercent()
+    {
+        return health.GetPercent();
     }
 
     #endregion

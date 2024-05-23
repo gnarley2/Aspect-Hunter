@@ -1,14 +1,15 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EquipmentPanel : MonoBehaviour
 {
     [SerializeField] Transform equipmentSlotsParent;
     [SerializeField] EquipmentSlot[] equipmentSlots;
+    [SerializeField] HUDManager hudManager;
 
     public event Action<ItemSlot> OnPointerEnterEvent;
     public event Action<ItemSlot> OnPointerExitEvent;
-    public event Action<ItemSlot> OnRightClickEvent;
     public event Action<ItemSlot> OnBeginDragEvent;
     public event Action<ItemSlot> OnEndDragEvent;
     public event Action<ItemSlot> OnDragEvent;
@@ -20,7 +21,6 @@ public class EquipmentPanel : MonoBehaviour
         {
             equipmentSlots[i].OnPointerEnterEvent += OnPointerEnterEvent;
             equipmentSlots[i].OnPointerExitEvent += OnPointerExitEvent;
-            equipmentSlots[i].OnRightClickEvent += OnRightClickEvent;
             equipmentSlots[i].OnBeginDragEvent += OnBeginDragEvent;
             equipmentSlots[i].OnEndDragEvent += OnEndDragEvent;
             equipmentSlots[i].OnDragEvent += OnDragEvent;
@@ -33,17 +33,38 @@ public class EquipmentPanel : MonoBehaviour
         equipmentSlots = equipmentSlotsParent.GetComponentsInChildren<EquipmentSlot>();
     }
 
-    public bool AddItem(EquippableItem item, out EquippableItem previousItem)
+    public bool AddItem(EquippableItem item, out EquippableItem previousItem, int slotIndex = -1)
     {
+        if (slotIndex >= 0 && slotIndex < equipmentSlots.Length)
+        {
+            previousItem = (EquippableItem)equipmentSlots[slotIndex].Item;
+            equipmentSlots[slotIndex].Item = item;
+            hudManager.UpdateAspectSlot(item, true, slotIndex);  // Update HUD
+            return true;
+        }
+
+        for (int i = 0; i < equipmentSlots.Length; i++)
+        {
+            if (equipmentSlots[i].EquipmentType == item.EquipmentType && equipmentSlots[i].Item == null)
+            {
+                equipmentSlots[i].Item = item;
+                previousItem = null;
+                hudManager.UpdateAspectSlot(item, true, i);  // Update HUD
+                return true;
+            }
+        }
+
         for (int i = 0; i < equipmentSlots.Length; i++)
         {
             if (equipmentSlots[i].EquipmentType == item.EquipmentType)
             {
                 previousItem = (EquippableItem)equipmentSlots[i].Item;
                 equipmentSlots[i].Item = item;
+                hudManager.UpdateAspectSlot(item, true, i);  // Update HUD
                 return true;
             }
         }
+
         previousItem = null;
         return false;
     }
@@ -54,7 +75,8 @@ public class EquipmentPanel : MonoBehaviour
         {
             if (equipmentSlots[i].Item == item)
             {
-                equipmentSlots[i].Item = null;
+                equipmentSlots[i].ClearSlot();
+                hudManager.UpdateAspectSlot(item, false, i);  // Update HUD
                 return true;
             }
         }

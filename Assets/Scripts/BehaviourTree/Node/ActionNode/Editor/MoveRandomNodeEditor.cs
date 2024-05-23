@@ -10,6 +10,7 @@ public class MoveRandomNodeEditor : ActionNodeEditor
     private SerializedProperty widthProperty;
     private SerializedProperty radiusProperty;
     private SerializedProperty speedProperty;
+    private SerializedProperty expiredTimeProperty;
 
     private MoveRandomNode node;
 
@@ -21,6 +22,7 @@ public class MoveRandomNodeEditor : ActionNodeEditor
         widthProperty = serializedObject.FindProperty("width");
         radiusProperty = serializedObject.FindProperty("radius");
         speedProperty = serializedObject.FindProperty("speed");
+        expiredTimeProperty = serializedObject.FindProperty("expiredTime");
     }
 
     protected override void Awake()
@@ -47,6 +49,7 @@ public class MoveRandomNodeEditor : ActionNodeEditor
         GUILayout.Space(10f);
         
         EditorGUILayout.PropertyField(speedProperty);
+        EditorGUILayout.PropertyField(expiredTimeProperty);
         serializedObject.ApplyModifiedProperties();
     }
 }

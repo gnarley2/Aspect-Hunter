@@ -20,6 +20,7 @@ public class IdleNode : ActionNode
     protected override void OnStart()
     {
         base.OnStart();
+        movement.SetVelocityZero();
         time = Time.time;
     }
 

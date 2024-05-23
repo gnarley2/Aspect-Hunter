@@ -1,0 +1,681 @@
+{
+  "roomDescriptionsList": [
+    {
+      "Key": {
+        "Id": 0,
+        "Name": "Spawn"
+      },
+      "Value": {
+        "IsCorridor": false,
+        "RoomTemplates": [
+          {
+            "$id": "4",
+            "Name": "EntryA",
+            "Outline": {
+              "points": [
+                {
+                  "X": 0,
+                  "Y": 6
+                },
+                {
+                  "X": 10,
+                  "Y": 6
+                },
+                {
+                  "X": 10,
+                  "Y": -4
+                },
+                {
+                  "X": 0,
+                  "Y": -4
+                }
+              ]
+            },
+            "Doors": {
+              "$type": "Edgar.GraphBasedGenerator.Grid2D.ManualDoorModeGrid2D, EdgarSingleFile",
+              "Doors": [
+                {
+                  "From": {
+                    "X": 4,
+                    "Y": 6
+                  },
+                  "To": {
+                    "X": 6,
+                    "Y": 6
+                  },
+                  "Socket": null,
+                  "Type": 0
+                }
+              ],
+              "DoorLines": null
+            },
+            "RepeatMode": 0,
+            "AllowedTransformations": [
+              0
+            ]
+          },
+          {
+            "$id": "14",
+            "Name": "SmallRoom1",
+            "Outline": {
+              "points": [
+                {
+                  "X": -4,
+                  "Y": 6
+                },
+                {
+                  "X": 14,
+                  "Y": 6
+                },
+                {
+                  "X": 14,
+                  "Y": -4
+                },
+                {
+                  "X": -4,
+                  "Y": -4
+                }
+              ]
+            },
+            "Doors": {
+              "$type": "Edgar.GraphBasedGenerator.Grid2D.ManualDoorModeGrid2D, EdgarSingleFile",
+              "Doors": null,
+              "DoorLines": [
+                {
+                  "Line": {
+                    "From": {
+                      "X": -4,
+                      "Y": -3
+                    },
+                    "To": {
+                      "X": -4,
+                      "Y": 3
+                    },
+                    "degeneratedDirection": 1,
+                    "Length": 6
+                  },
+                  "Length": 2,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": -3,
+                      "Y": 6
+                    },
+                    "To": {
+                      "X": 11,
+                      "Y": 6
+                    },
+                    "degeneratedDirection": 2,
+                    "Length": 14
+                  },
+                  "Length": 2,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 14,
+                      "Y": -3
+                    },
+                    "To": {
+                      "X": 14,
+                      "Y": 3
+                    },
+                    "degeneratedDirection": 1,
+                    "Length": 6
+                  },
+                  "Length": 2,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": -3,
+                      "Y": -4
+                    },
+                    "To": {
+                      "X": 11,
+                      "Y": -4
+                    },
+                    "degeneratedDirection": 2,
+                    "Length": 14
+                  },
+                  "Length": 2,
+                  "DoorSocket": null,
+                  "Type": 0
+                }
+              ]
+            },
+            "RepeatMode": 0,
+            "AllowedTransformations": [
+              0
+            ]
+          },
+          {
+            "$id": "37",
+            "Name": "SmallRoom2",
+            "Outline": {
+              "points": [
+                {
+                  "X": -4,
+                  "Y": 14
+                },
+                {
+                  "X": 6,
+                  "Y": 14
+                },
+                {
+                  "X": 6,
+                  "Y": -4
+                },
+                {
+                  "X": -4,
+                  "Y": -4
+                }
+              ]
+            },
+            "Doors": {
+              "$type": "Edgar.GraphBasedGenerator.Grid2D.ManualDoorModeGrid2D, EdgarSingleFile",
+              "Doors": null,
+              "DoorLines": [
+                {
+                  "Line": {
+                    "From": {
+                      "X": -4,
+                      "Y": -3
+                    },
+                    "To": {
+                      "X": -4,
+                      "Y": 11
+                    },
+                    "degeneratedDirection": 1,
+                    "Length": 14
+                  },
+                  "Length": 2,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": -3,
+                      "Y": 14
+                    },
+                    "To": {
+                      "X": 3,
+                      "Y": 14
+                    },
+                    "degeneratedDirection": 2,
+                    "Length": 6
+                  },
+                  "Length": 2,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 6,
+                      "Y": -3
+                    },
+                    "To": {
+                      "X": 6,
+                      "Y": 11
+                    },
+                    "degeneratedDirection": 1,
+                    "Length": 14
+                  },
+                  "Length": 2,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": -3,
+                      "Y": -4
+                    },
+                    "To": {
+                      "X": 3,
+                      "Y": -4
+                    },
+                    "degeneratedDirection": 2,
+                    "Length": 6
+                  },
+                  "Length": 2,
+                  "DoorSocket": null,
+                  "Type": 0
+                }
+              ]
+            },
+            "RepeatMode": 0,
+            "AllowedTransformations": [
+              0
+            ]
+          },
+          {
+            "$id": "60",
+            "Name": "LBendRoom",
+            "Outline": {
+              "points": [
+                {
+                  "X": -4,
+                  "Y": 6
+                },
+                {
+                  "X": 14,
+                  "Y": 6
+                },
+                {
+                  "X": 14,
+                  "Y": -13
+                },
+                {
+                  "X": 5,
+                  "Y": -13
+                },
+                {
+                  "X": 5,
+                  "Y": -4
+                },
+                {
+                  "X": -4,
+                  "Y": -4
+                }
+              ]
+            },
+            "Doors": {
+              "$type": "Edgar.GraphBasedGenerator.Grid2D.ManualDoorModeGrid2D, EdgarSingleFile",
+              "Doors": null,
+              "DoorLines": [
+                {
+                  "Line": {
+                    "From": {
+                      "X": -4,
+                      "Y": -3
+                    },
+                    "To": {
+                      "X": -4,
+                      "Y": 3
+                    },
+                    "degeneratedDirection": 1,
+                    "Length": 6
+                  },
+                  "Length": 2,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": -3,
+                      "Y": 6
+                    },
+                    "To": {
+                      "X": 11,
+                      "Y": 6
+                    },
+                    "degeneratedDirection": 2,
+                    "Length": 14
+                  },
+                  "Length": 2,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 14,
+                      "Y": -12
+                    },
+                    "To": {
+                      "X": 14,
+                      "Y": 3
+                    },
+                    "degeneratedDirection": 1,
+                    "Length": 15
+                  },
+                  "Length": 2,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 6,
+                      "Y": -13
+                    },
+                    "To": {
+                      "X": 11,
+                      "Y": -13
+                    },
+                    "degeneratedDirection": 2,
+                    "Length": 5
+                  },
+                  "Length": 2,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": 5,
+                      "Y": -12
+                    },
+                    "To": {
+                      "X": 5,
+                      "Y": -7
+                    },
+                    "degeneratedDirection": 1,
+                    "Length": 5
+                  },
+                  "Length": 2,
+                  "DoorSocket": null,
+                  "Type": 0
+                },
+                {
+                  "Line": {
+                    "From": {
+                      "X": -3,
+                      "Y": -4
+                    },
+                    "To": {
+                      "X": 2,
+                      "Y": -4
+                    },
+                    "degeneratedDirection": 2,
+                    "Length": 5
+                  },
+                  "Length": 2,
+                  "DoorSocket": null,
+                  "Type": 0
+                }
+              ]
+            },
+            "RepeatMode": 0,
+            "AllowedTransformations": [
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "Key": {
+        "Id": 1,
+        "Name": "Arena"
+      },
+      "Value": {
+        "IsCorridor": false,
+        "RoomTemplates": [
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "14"
+          },
+          {
+            "$ref": "37"
+          },
+          {
+            "$ref": "60"
+          }
+        ]
+      }
+    },
+    {
+      "Key": {
+        "Id": 2,
+        "Name": "Shop"
+      },
+      "Value": {
+        "IsCorridor": false,
+        "RoomTemplates": [
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "14"
+          },
+          {
+            "$ref": "37"
+          },
+          {
+            "$ref": "60"
+          }
+        ]
+      }
+    },
+    {
+      "Key": {
+        "Id": 3,
+        "Name": "Boss"
+      },
+      "Value": {
+        "IsCorridor": false,
+        "RoomTemplates": [
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "14"
+          },
+          {
+            "$ref": "37"
+          },
+          {
+            "$ref": "60"
+          }
+        ]
+      }
+    },
+    {
+      "Key": {
+        "Id": 4,
+        "Name": "Arena"
+      },
+      "Value": {
+        "IsCorridor": false,
+        "RoomTemplates": [
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "14"
+          },
+          {
+            "$ref": "37"
+          },
+          {
+            "$ref": "60"
+          }
+        ]
+      }
+    },
+    {
+      "Key": {
+        "Id": 5,
+        "Name": "Room"
+      },
+      "Value": {
+        "IsCorridor": false,
+        "RoomTemplates": [
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "14"
+          },
+          {
+            "$ref": "37"
+          },
+          {
+            "$ref": "60"
+          }
+        ]
+      }
+    },
+    {
+      "Key": {
+        "Id": 6,
+        "Name": "Loot"
+      },
+      "Value": {
+        "IsCorridor": false,
+        "RoomTemplates": [
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "14"
+          },
+          {
+            "$ref": "37"
+          },
+          {
+            "$ref": "60"
+          }
+        ]
+      }
+    },
+    {
+      "Key": {
+        "Id": 7,
+        "Name": "Room"
+      },
+      "Value": {
+        "IsCorridor": false,
+        "RoomTemplates": [
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "14"
+          },
+          {
+            "$ref": "37"
+          },
+          {
+            "$ref": "60"
+          }
+        ]
+      }
+    },
+    {
+      "Key": {
+        "Id": 8,
+        "Name": "Key"
+      },
+      "Value": {
+        "IsCorridor": false,
+        "RoomTemplates": [
+          {
+            "$ref": "4"
+          },
+          {
+            "$ref": "14"
+          },
+          {
+            "$ref": "37"
+          },
+          {
+            "$ref": "60"
+          }
+        ]
+      }
+    }
+  ],
+  "passages": [
+    {
+      "Room1": {
+        "Id": 0,
+        "Name": "Spawn"
+      },
+      "Room2": {
+        "Id": 1,
+        "Name": "Arena"
+      }
+    },
+    {
+      "Room1": {
+        "Id": 1,
+        "Name": "Arena"
+      },
+      "Room2": {
+        "Id": 5,
+        "Name": "Room"
+      }
+    },
+    {
+      "Room1": {
+        "Id": 1,
+        "Name": "Arena"
+      },
+      "Room2": {
+        "Id": 2,
+        "Name": "Shop"
+      }
+    },
+    {
+      "Room1": {
+        "Id": 2,
+        "Name": "Shop"
+      },
+      "Room2": {
+        "Id": 4,
+        "Name": "Arena"
+      }
+    },
+    {
+      "Room1": {
+        "Id": 3,
+        "Name": "Boss"
+      },
+      "Room2": {
+        "Id": 4,
+        "Name": "Arena"
+      }
+    },
+    {
+      "Room1": {
+        "Id": 4,
+        "Name": "Arena"
+      },
+      "Room2": {
+        "Id": 7,
+        "Name": "Room"
+      }
+    },
+    {
+      "Room1": {
+        "Id": 5,
+        "Name": "Room"
+      },
+      "Room2": {
+        "Id": 6,
+        "Name": "Loot"
+      }
+    },
+    {
+      "Room1": {
+        "Id": 7,
+        "Name": "Room"
+      },
+      "Room2": {
+        "Id": 8,
+        "Name": "Key"
+      }
+    }
+  ],
+  "MinimumRoomDistance": 0,
+  "Clusters": null,
+  "Constraints": null,
+  "RoomTemplateRepeatModeDefault": 2,
+  "RoomTemplateRepeatModeOverride": null,
+  "Name": "Test"
+}

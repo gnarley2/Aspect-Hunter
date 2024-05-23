@@ -6,18 +6,26 @@ public class ItemTooltip : MonoBehaviour
 {
     [SerializeField] Text ItemNameText;
     [SerializeField] Text ItemSlotText;
-    [SerializeField] Text ItemStatsText;
-
-    private StringBuilder sb = new StringBuilder();
+    [SerializeField] Text ItemDescriptionText;
+    [SerializeField] Text AmmoCountText;
 
     public void ShowTooltip(EquippableItem item)
     {
         ItemNameText.text = item.ItemName;
         ItemSlotText.text = item.EquipmentType.ToString();
+        ItemDescriptionText.text = item.Description;
+        gameObject.SetActive(true);
 
-        sb.Length = 0;
-
-        ItemStatsText.text = sb.ToString();
+        if (item.EquipmentType == EquipmentType.Aspect)
+        {
+            int ammoCount = AspectInventory.Instance.GetAspectCount(item.aspectType);
+            AmmoCountText.text = "Ammo: " + ammoCount;
+            AmmoCountText.gameObject.SetActive(true);
+        }
+        else
+        {
+            AmmoCountText.gameObject.SetActive(false);
+        }
 
         gameObject.SetActive(true);
     }

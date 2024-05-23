@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class PlayerHealthUI : MonoBehaviour
 {
-    [SerializeField] private Health health;
+    [SerializeField] private Image fillImg;
 
     private Slider slider;
-    [SerializeField] private Image fillImg;
+    private Health health;
 
     private Color fullColor = Color.green;
     private Color noColor = Color.red;
@@ -17,22 +17,24 @@ public class PlayerHealthUI : MonoBehaviour
     private void Awake()
     {
         slider = GetComponent<Slider>();
+        health = GameObject.FindWithTag("Player").GetComponentInChildren<Health>();
     }
 
     private void OnEnable()
     {
+        
         health.OnUpdateHealth += UpdateHealthUI;
     }
+    
 
     private void OnDisable()
     {
         health.OnUpdateHealth -= UpdateHealthUI;
     }
 
-    private void UpdateHealthUI(int obj)
+    private void UpdateHealthUI(int value)
     {
         slider.value = health.GetPercent();
         fillImg.color = Color.Lerp(noColor, fullColor, slider.value);
-        Debug.Log(slider.value);
     }
 }

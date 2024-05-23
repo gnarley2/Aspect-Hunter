@@ -5,47 +5,29 @@ using System;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float health = 0f;
-    public float maxHealth = 100f;
-    public event System.Action<float> OnHealthChanged;
-
-    // Start is called before the first frame update
-    void Start()
+    public Health health;
+    
+    private void Start()
     {
-        health = maxHealth;
+        health = GetComponentInChildren<Health>();
+        health.OnUpdateHealth += OnUpdateHealth;
+        health.OnDie += OnDie;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(int value)
+    {
+        health.TakeDamage(value);
+    }
+
+    void OnUpdateHealth(int value)
     {
         
     }
 
-    public void UpdateHealth(float mod)
+    void OnDie()
     {
-        health += mod;
-
-        if (health > maxHealth)
-        {
-            health = maxHealth;
-        }
-        else if (health <= 0f)
-        {
-            health = 0f;
-            Debug.Log("Player Died");
-        }
-
-        // Invoke the OnHealthChanged event with the new health value
-        OnHealthChanged?.Invoke(health);
+        CheckpointManager.Instance.LoadLastCheckpoint();
     }
+    
 
-    public float GetHealth()
-    {
-        return health;
-    }
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-    }
 }

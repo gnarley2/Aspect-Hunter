@@ -41,6 +41,12 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
+    public Transform PlayerTransform { get; private set; }
+    public void SetPlayer(Transform playerTransform)
+    {
+        PlayerTransform = playerTransform;
+    }
+
     void Awake()
     {
         if (instance == null)

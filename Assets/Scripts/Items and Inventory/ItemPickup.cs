@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,42 +6,59 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     [SerializeField] Item item;
-    [SerializeField] Inventory inventory;
 
     private bool isInRange;
-
-    private void OnValidate()
+    private UsableItem usableItem;
+    private Core core;
+    
+    private void Awake()
     {
-        if (inventory == null)
-            inventory = FindObjectOfType<Inventory>();
+        core = GameObject.FindWithTag("Player").GetComponentInChildren<Core>();
     }
 
-    private void Update()
+    private void Start()
     {
-        if (isInRange && !inventory.IsFull())
+        Init();
+    }
+
+    void Init()
+    {
+        usableItem = item as UsableItem;
+        if (usableItem)
         {
-            inventory.AddItem(Instantiate(item));
-            Destroy(gameObject);
+            usableItem.Initialize(core);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        CheckCollision(collision.gameObject, true);
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        CheckCollision(collision.gameObject, false);
-    }
-
-    private void CheckCollision(GameObject gameObject, bool state)
-    {
-        if (gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            isInRange = state;
+            if (usableItem)
+            {
+                UseItem();
+            }
+            else
+            {
+                AddToInventory();
+            }
         }
     }
 
+    void AddToInventory()
+    {
+        if (Inventory.Instance.IsFull()) return;
+        
+        Inventory.Instance.AddItem(Instantiate(item));
+        Destroy(gameObject);
+    }
+
+    void UseItem()
+    {
+        if (usableItem.Use())
+        {
+            Destroy(gameObject);
+        }
+    }
 
 }

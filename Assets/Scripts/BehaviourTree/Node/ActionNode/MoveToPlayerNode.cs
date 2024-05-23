@@ -48,6 +48,7 @@ public class MoveToPlayerNode : ActionNode
 
     protected override void OnStop()
     {
+        movement.SetVelocityZero();
         base.OnStop();
     }
 
