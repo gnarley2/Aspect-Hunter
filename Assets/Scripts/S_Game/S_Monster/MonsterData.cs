@@ -10,7 +10,8 @@ public class MonsterData : ScriptableObject
 {
     public string ID;
     public MonsterDetails monsterDetails;
-    
+    public bool isTamed;
+
     [Header("Changed Component")]
     public HealthData healthData;
     public int currentHealth;
