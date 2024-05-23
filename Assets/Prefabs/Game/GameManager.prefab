@@ -2654,6 +2654,7 @@ GameObject:
   - component: {fileID: 1709272112700387801}
   - component: {fileID: 1372663294777316200}
   - component: {fileID: 2517361931872319723}
+  - component: {fileID: 3994201409181423794}
   m_Layer: 5
   m_Name: MonsterImage (1)
   m_TagString: Untagged
@@ -2719,6 +2720,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3994201409181423794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700009640046201102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee62b4c85990108428d407a4c93c0a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterImage: {fileID: 2517361931872319723}
 --- !u!1 &781265245371145807
 GameObject:
   m_ObjectHideFlags: 0
@@ -3826,6 +3840,7 @@ GameObject:
   - component: {fileID: 7824282882831319754}
   - component: {fileID: 3693521418802079187}
   - component: {fileID: 1032081638047686938}
+  - component: {fileID: 4271222813034533483}
   m_Layer: 5
   m_Name: MonsterImage (2)
   m_TagString: Untagged
@@ -3891,6 +3906,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4271222813034533483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2180335142929296369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee62b4c85990108428d407a4c93c0a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterImage: {fileID: 1032081638047686938}
 --- !u!1 &2299959372463235650
 GameObject:
   m_ObjectHideFlags: 0
@@ -3977,6 +4005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2318788992489606612}
   - component: {fileID: 7555909570578573928}
+  - component: {fileID: 6638222834353579324}
   m_Layer: 5
   m_Name: Container
   m_TagString: Untagged
@@ -4036,6 +4065,24 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &6638222834353579324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2371925051565225358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e686ad501e067b141bd5ea4d2b6a6f04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MonsterNameText: {fileID: 5679763773898504763}
+  TamedText: {fileID: 4957819886872755474}
+  HealthText: {fileID: 5040497223585996131}
+  DamageText: {fileID: 8616120184321524454}
+  AspectText: {fileID: 6201414610773849807}
+  DetailsText: {fileID: 270702127922017749}
 --- !u!1 &2372524152042139924
 GameObject:
   m_ObjectHideFlags: 0
@@ -4373,6 +4420,7 @@ GameObject:
   - component: {fileID: 3834506042664703634}
   - component: {fileID: 7148908045503163196}
   - component: {fileID: 3037230723824881744}
+  - component: {fileID: 4101653724819418279}
   m_Layer: 5
   m_Name: MonsterImage
   m_TagString: Untagged
@@ -4438,6 +4486,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4101653724819418279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2601015936618910365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee62b4c85990108428d407a4c93c0a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterImage: {fileID: 3037230723824881744}
 --- !u!1 &2676216253599541578
 GameObject:
   m_ObjectHideFlags: 0
@@ -4525,6 +4586,7 @@ GameObject:
   - component: {fileID: 3208284649734854482}
   - component: {fileID: 3248349882827957344}
   - component: {fileID: 1464006043156612642}
+  - component: {fileID: 6361794902498699045}
   m_Layer: 5
   m_Name: MonsterImage (4)
   m_TagString: Untagged
@@ -4590,6 +4652,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6361794902498699045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2702633391011596737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee62b4c85990108428d407a4c93c0a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterImage: {fileID: 1464006043156612642}
 --- !u!1 &2852168787289739850
 GameObject:
   m_ObjectHideFlags: 0
@@ -5141,6 +5216,7 @@ GameObject:
   - component: {fileID: 9082277822071697995}
   - component: {fileID: 21585655160066876}
   - component: {fileID: 6337226517811398382}
+  - component: {fileID: 8082556513235739728}
   m_Layer: 5
   m_Name: MonsterImage (6)
   m_TagString: Untagged
@@ -5206,6 +5282,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8082556513235739728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3373540189629074672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee62b4c85990108428d407a4c93c0a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterImage: {fileID: 6337226517811398382}
 --- !u!1 &3749181660478817722
 GameObject:
   m_ObjectHideFlags: 0
@@ -5297,6 +5386,7 @@ GameObject:
   - component: {fileID: 1403646196104639043}
   - component: {fileID: 3563588128126654831}
   - component: {fileID: 6012392953302210702}
+  - component: {fileID: 8293912991057475170}
   m_Layer: 5
   m_Name: MonsterImage (3)
   m_TagString: Untagged
@@ -5362,6 +5452,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8293912991057475170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3772079820548470265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee62b4c85990108428d407a4c93c0a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterImage: {fileID: 6012392953302210702}
 --- !u!1 &3772477116480642037
 GameObject:
   m_ObjectHideFlags: 0
@@ -5791,6 +5894,7 @@ GameObject:
   - component: {fileID: 5660785344840579497}
   - component: {fileID: 8290968003221932249}
   - component: {fileID: 227147032414860345}
+  - component: {fileID: 2527989701305576614}
   m_Layer: 5
   m_Name: Bestiary
   m_TagString: Untagged
@@ -5869,6 +5973,36 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2527989701305576614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263467026471409249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70e8c038e6e5f7c4da09d7506d3b0c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterTooltip: {fileID: 0}
+  monsterSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  monsterDataArray:
+  - {fileID: 11400000, guid: 4df405294bcd0f04dbf3d714cca6809a, type: 2}
+  - {fileID: 11400000, guid: b4f304a41db8a8c40a12406e3c02610d, type: 2}
+  - {fileID: 11400000, guid: 49786f85e3fc4a04a9991ad8134b52dc, type: 2}
+  - {fileID: 11400000, guid: ee4172d1d8b2a7d4cb9a1e46ea3e4401, type: 2}
+  - {fileID: 11400000, guid: 5899442c0ee61c74d92a1fa341d10737, type: 2}
+  - {fileID: 11400000, guid: dcf321f46f3427e43a9a2788c469462b, type: 2}
+  - {fileID: 11400000, guid: 865feaf73d31ad9458a8374f910f06b1, type: 2}
 --- !u!1 &4429078423963900911
 GameObject:
   m_ObjectHideFlags: 0
@@ -7411,6 +7545,7 @@ GameObject:
   - component: {fileID: 8016326712536726655}
   - component: {fileID: 8613584315908624559}
   - component: {fileID: 7098872331177132269}
+  - component: {fileID: 4968357335293289292}
   m_Layer: 5
   m_Name: MonsterImage (5)
   m_TagString: Untagged
@@ -7476,6 +7611,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4968357335293289292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6436441743360437639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee62b4c85990108428d407a4c93c0a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterImage: {fileID: 7098872331177132269}
 --- !u!1 &6535495541270268911
 GameObject:
   m_ObjectHideFlags: 0
@@ -12629,6 +12777,7 @@ GameObject:
   - component: {fileID: 4113027364068653986}
   - component: {fileID: 1524750045696754853}
   - component: {fileID: 1715569322957675653}
+  - component: {fileID: 7118456794580196937}
   m_Layer: 5
   m_Name: MonsterImage (7)
   m_TagString: Untagged
@@ -12694,6 +12843,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7118456794580196937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8826125037651921717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee62b4c85990108428d407a4c93c0a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterImage: {fileID: 1715569322957675653}
 --- !u!1 &8888035627685040069
 GameObject:
   m_ObjectHideFlags: 0
