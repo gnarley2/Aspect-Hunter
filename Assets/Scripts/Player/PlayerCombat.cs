@@ -59,12 +59,11 @@ public class PlayerCombat : MonoBehaviour
 
     void Update()
     {
-        if (menuScript && menuScript.isPaused  ||  MenuController.openInventory) return;
+        if (menuScript && menuScript.isPaused  ||  MenuController.openInventory || MenuController.openBestiary) return;
         
         CalculateDirection();
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            
             ProjectileAttack(direction);
         }
 

@@ -21,6 +21,7 @@ public class MenuController : MonoBehaviour
 
     void Update()
     {
+
         if (Input.GetKeyDown("i"))
         {
             if (!menus.isPaused) // Check if the game is paused
