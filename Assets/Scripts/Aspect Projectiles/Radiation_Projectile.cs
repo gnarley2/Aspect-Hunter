@@ -24,6 +24,7 @@ public class Radiation_Projectile : MonoBehaviour
 
         // Move the projectile in the specified direction
         transform.Translate(direction * (speed * Time.deltaTime), Space.World);
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
 
         if (Vector3.Distance(initialPosition, transform.position) >= maxDistance)
         {
@@ -51,15 +52,33 @@ public class Radiation_Projectile : MonoBehaviour
         float yOffset = 1.0f;
 
         // Debug.Log("Collided with: " + other.gameObject.name);
+
         if (other.TryGetComponent<IDamageable>(out IDamageable target))
         {
             if (target.GetDamagerType() == IDamageable.DamagerTarget.Player) return;
 
             target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero, m_AspectType);
-    
 
-            GameObject hitAnimationInstance = Instantiate(hitAnimation, enemyTransform.position + Vector3.up * yOffset, Quaternion.identity, enemyTransform);
+            if (other.tag == "Enemy")
+            {
+                GameObject hitAnimationInstance = Instantiate(hitAnimation,
+                    enemyTransform.position + Vector3.up * yOffset, Quaternion.identity, enemyTransform);
+            }
 
+            Destroy(gameObject);
+        }
+
+
+        if (other.tag == "Enemy")
+        {
+
+            GameObject hitAnimationInstance = Instantiate(hitAnimation, enemyTransform.position + Vector3.up * yOffset,
+                Quaternion.identity, enemyTransform);
+        }
+
+        if (other.tag == "Environment")
+        {
+            //  Instantiate(hitAnimation, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

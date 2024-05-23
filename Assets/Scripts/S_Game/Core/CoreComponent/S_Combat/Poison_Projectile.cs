@@ -24,6 +24,7 @@ public class Poison_Projectile : MonoBehaviour
 
         // Move the projectile in the specified direction
         transform.Translate(direction * (speed * Time.deltaTime), Space.World);
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
 
         if (Vector3.Distance(initialPosition, transform.position) >= maxDistance)
         {
@@ -60,6 +61,12 @@ public class Poison_Projectile : MonoBehaviour
         if (other.tag == "Item" || other.tag == "Aspect")
         {
             Instantiate(hitAnimation, transform.position, Quaternion.identity);
+        }
+
+        if (other.tag == "Environment")
+        {
+            Instantiate(hitAnimation, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
 
         if (other.tag == "Enemy")

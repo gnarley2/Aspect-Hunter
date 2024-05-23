@@ -26,6 +26,8 @@ public class Necrotic_Projectile : MonoBehaviour
 
         // Move the projectile in the specified direction
         transform.Translate(direction * (speed * Time.deltaTime), Space.World);
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+
 
         if (Vector3.Distance(initialPosition, transform.position) >= maxDistance)
         {
@@ -59,10 +61,16 @@ public class Necrotic_Projectile : MonoBehaviour
             // Destroy(gameObject);
             Transform enemyTransform = other.transform;
             float yOffset = 1.0f;
-            GameObject hitAnimationInstance = Instantiate(hitAnimation, enemyTransform.position + Vector3.up * yOffset, Quaternion.identity, enemyTransform);
-            Necrotic_Effect necroticEffect = hitAnimationInstance.GetComponent<Necrotic_Effect>();
-            necroticEffect.Initialize(target);
-            StartCoroutine(DestroyWithDelay());
+
+
+            if (other.tag == "Enemy")
+            {
+                GameObject hitAnimationInstance = Instantiate(hitAnimation,
+                    enemyTransform.position + Vector3.up * yOffset, Quaternion.identity, enemyTransform);
+                Necrotic_Effect necroticEffect = hitAnimationInstance.GetComponent<Necrotic_Effect>();
+                necroticEffect.Initialize(target);
+                StartCoroutine(DestroyWithDelay());
+            }
 
         }
 
@@ -74,6 +82,11 @@ public class Necrotic_Projectile : MonoBehaviour
         if (other.tag == "Enemy")
         {
 
+        }
+        if (other.tag == "Environment")
+        {
+           // Instantiate(hitAnimation, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 

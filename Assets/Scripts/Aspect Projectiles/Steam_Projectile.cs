@@ -25,6 +25,8 @@ public class Steam_Projectile : MonoBehaviour
 
         // Move the projectile in the specified direction
         transform.Translate(direction * (speed * Time.deltaTime), Space.World);
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+
 
         if (Vector3.Distance(initialPosition, transform.position) >= maxDistance)
         {
@@ -61,6 +63,12 @@ public class Steam_Projectile : MonoBehaviour
 
             GameObject hitAnimationInstance = Instantiate(hitAnimation, enemyTransform.position + Vector3.up * yOffset, Quaternion.identity, enemyTransform);
             GameObject hitAnimationInstance2 = Instantiate(hitAnimation2, transform.position + Vector3.up * yOffset, Quaternion.identity, enemyTransform);
+            StartCoroutine(DestroyWithDelay());
+          //  Destroy(gameObject);
+        }
+        if (other.tag == "Environment")
+        {
+            Instantiate(hitAnimation, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

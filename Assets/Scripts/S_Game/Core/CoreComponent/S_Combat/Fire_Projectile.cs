@@ -24,6 +24,7 @@ public class Fire_Projectile : MonoBehaviour
 
         // Move the projectile in the specified direction
         transform.Translate(direction * (speed * Time.deltaTime), Space.World);
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
 
         if (Vector3.Distance(initialPosition, transform.position) >= maxDistance)
         {
@@ -62,11 +63,17 @@ public class Fire_Projectile : MonoBehaviour
             Instantiate(hitAnimation, transform.position, Quaternion.identity);
         }
 
+        if (other.tag == "Environment")
+        {
+            Instantiate(hitAnimation, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+
         if (other.tag=="Enemy")
         {
             Instantiate(hitAnimation, transform.position, Quaternion.identity);
             //Destroy(gameObject);
-              StartCoroutine(DestroyWithDelay());
+             StartCoroutine(DestroyWithDelay());
         }
     }
 

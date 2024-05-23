@@ -25,6 +25,7 @@ public class SuperConductor_Projectile : MonoBehaviour
 
         // Move the projectile in the specified direction
         transform.Translate(direction * (speed * Time.deltaTime), Space.World);
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
 
         if (Vector3.Distance(initialPosition, transform.position) >= maxDistance)
         {
@@ -57,10 +58,21 @@ public class SuperConductor_Projectile : MonoBehaviour
             if (target.GetDamagerType() == IDamageable.DamagerTarget.Player) return;
 
             target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero, m_AspectType);
+            if (other.tag == "Enemy")
+            {
 
+                GameObject hitAnimationInstance = Instantiate(hitAnimation,
+                    enemyTransform.position + Vector3.up * yOffset, Quaternion.identity, enemyTransform);
+                GameObject hitAnimationInstance2 =
+                    Instantiate(hitAnimation2, transform.position, Quaternion.identity, enemyTransform);
+                Destroy(gameObject);
+            }
+        }
 
-            GameObject hitAnimationInstance = Instantiate(hitAnimation, enemyTransform.position + Vector3.up * yOffset, Quaternion.identity, enemyTransform);
-            GameObject hitAnimationInstance2 = Instantiate(hitAnimation2, transform.position , Quaternion.identity, enemyTransform);
+        if (other.tag == "Environment")
+        {
+            //  Instantiate(hitAnimation, transform.position, Quaternion.identity);
+            Instantiate(hitAnimation2, transform.position, Quaternion.identity, enemyTransform);
             Destroy(gameObject);
         }
     }
