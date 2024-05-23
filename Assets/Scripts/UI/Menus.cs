@@ -35,6 +35,14 @@ public class Menus : MonoBehaviour
                     menuController.CloseInventory();
                 }
             }
+            else if (MenuController.openBestiary)
+            {
+                MenuController menuController = FindObjectOfType<MenuController>();
+                if (menuController != null)
+                {
+                    menuController.CloseBestiary();
+                }
+            }
             else
             {
                 // Toggle pause state only if inventory is not open

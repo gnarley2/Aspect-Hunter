@@ -8,6 +8,7 @@ public class MenuController : MonoBehaviour
     public static bool openInventory;
     bool itemDescription = false;
     bool openMap;
+    public static bool openBestiary;
     [SerializeField] GameObject DescriptionPanel;
 
     private void Awake()
@@ -15,6 +16,7 @@ public class MenuController : MonoBehaviour
         menus = FindObjectOfType<Menus>();
         openInventory = false;
         openMap = false;
+        openBestiary = false;
     }
 
     void Update()
@@ -34,6 +36,26 @@ public class MenuController : MonoBehaviour
                 ToggleMap();
             }
         }
+
+        if (Input.GetKeyDown("b"))
+        {
+            if (!menus.isPaused)
+            {
+                ToggleBestiary();
+            }
+        }
+    }
+
+    public void ToggleBestiary()
+    {
+        openBestiary = !openBestiary;
+        GameCanvas.Instance.ToggleBestiaryPanel(openBestiary);
+    }
+
+    public void CloseBestiary()
+    {
+        openBestiary = !openBestiary;
+        GameCanvas.Instance.ToggleBestiaryPanel(openBestiary);
     }
 
     public void ToggleMap()
