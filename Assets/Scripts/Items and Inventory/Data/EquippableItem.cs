@@ -111,14 +111,14 @@ public class EquippableItem : Item
             switch (LightSourceType)
             {
                 case LightSourceType.LanternBug:
-                    Debug.Log("Finding LanternBug instance...");
                     GameObject lanternBugInstance = GameObject.Find("LanternBug_Active(Clone)");
 
                     if (lanternBugInstance != null)
                     {
-                        if (!lanternBugInstance.activeSelf)
+                        ToggleFlash toggleFlashScript = lanternBugInstance.GetComponent<ToggleFlash>();
+                        if (toggleFlashScript != null)
                         {
-                            lanternBugInstance.SetActive(true);
+                            toggleFlashScript.TurnOffFlashlight();
                         }
 
                         Destroy(lanternBugInstance);
@@ -128,15 +128,17 @@ public class EquippableItem : Item
                     GameObject flashlightInstance = GameObject.Find("Flashlight_Active(Clone)");
                     if (flashlightInstance != null)
                     {
+                        ToggleFlash toggleFlashScript = flashlightInstance.GetComponent<ToggleFlash>();
+                        if (toggleFlashScript != null)
+                        {
+                            toggleFlashScript.TurnOffFlashlight();
+                        }
+
                         Destroy(flashlightInstance);
                     }
                     break;
-                case LightSourceType.Lantern:
-                    // Add any specific unequip logic for lantern if necessary
-                    break;
             }
         }
-
         OnUnequipped?.Invoke();
     }
 }

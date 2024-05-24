@@ -92,6 +92,25 @@ public class ToggleFlash : MonoBehaviour
         UpdateBatteryUI();
     }
 
+    public void TurnOffFlashlight()
+    {
+        isFlashlightOn = false;
+        batteryManager.RechargeBattery(batteryRechargeRate);
+        if (lightComponent != null)
+        {
+            lightComponent.intensity = 0;
+        }
+        if (isFlashing)
+        {
+            StopCoroutine(FlashBatteryUI());
+            isFlashing = false;
+            if (batteryFill != null)
+            {
+                batteryFill.color = normalColor; // Reset the color when the flashlight is turned off
+            }
+        }
+    }
+
     void ToggleFlashlight()
     {
         if (lightComponent == null)
@@ -114,7 +133,10 @@ public class ToggleFlash : MonoBehaviour
             {
                 StopCoroutine(FlashBatteryUI());
                 isFlashing = false;
-                batteryFill.color = normalColor; // Reset the color when the flashlight is turned off
+                if (batteryFill != null)
+                {
+                    batteryFill.color = normalColor; // Reset the color when the flashlight is turned off
+                }
             }
         }
     }
@@ -165,10 +187,16 @@ public class ToggleFlash : MonoBehaviour
         isFlashing = true;
         while (isFlashlightOn && batteryManager.currentBattery <= criticalBatteryThreshold)
         {
-            batteryFill.color = batteryFill.color == lowBatteryColor ? Color.clear : lowBatteryColor;
+            if (batteryFill != null)
+            {
+                batteryFill.color = batteryFill.color == lowBatteryColor ? Color.clear : lowBatteryColor;
+            }
             yield return new WaitForSeconds(0.1f);
         }
-        batteryFill.color = lowBatteryColor;
+        if (batteryFill != null)
+        {
+            batteryFill.color = lowBatteryColor;
+        }
         isFlashing = false;
     }
 }
