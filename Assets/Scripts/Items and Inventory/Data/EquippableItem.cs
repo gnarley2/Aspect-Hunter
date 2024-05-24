@@ -6,21 +6,25 @@ using System;
 
 public enum EquipmentType
 {
+    LightSource, // New generalized type
+    Flare,
+    Key,
+    Aspect,
+}
+
+public enum LightSourceType
+{
     Lantern,
     FlashLight,
     LanternBug,
-    Flare,
-
-    Key,
-
-    Aspect,
-
+    None
 }
 
 [CreateAssetMenu]
 public class EquippableItem : Item
 {
     public EquipmentType EquipmentType;
+    public LightSourceType LightSourceType; // New property for light source subtype
     public AspectType aspectType = AspectType.None;
     public string Description;
     public GameObject LanternBugPrefab;
@@ -31,30 +35,40 @@ public class EquippableItem : Item
 
     public void Equip(CharacterPanel c)
     {
-        //add code for buffs
-        if (EquipmentType == EquipmentType.LanternBug && LanternBugPrefab != null)
+        if (EquipmentType == EquipmentType.LightSource)
         {
-            GameObject lanternBug = Instantiate(LanternBugPrefab);
-            lanternBug.transform.parent = GameManager.Instance.transform;
-
-        }
-        if (EquipmentType == EquipmentType.Lantern && LanternPrefab != null)
-        {
-            GameObject player = GameObject.FindWithTag("Player");
-            GameObject lanternInstance = Instantiate(LanternPrefab);
-            lantern lanternScript = lanternInstance.GetComponent<lantern>();
-
-            if (lanternScript != null)
+            switch (LightSourceType)
             {
-                lanternScript.isLanternEquipped = true; // Set the boolean variable to true
+                case LightSourceType.LanternBug:
+                    if (LanternBugPrefab != null)
+                    {
+                        GameObject lanternBug = Instantiate(LanternBugPrefab);
+                        lanternBug.transform.parent = GameManager.Instance.transform;
+                    }
+                    break;
+                case LightSourceType.Lantern:
+                    if (LanternPrefab != null)
+                    {
+                        GameObject player = GameObject.FindWithTag("Player");
+                        GameObject lanternInstance = Instantiate(LanternPrefab);
+                        lantern lanternScript = lanternInstance.GetComponent<lantern>();
+
+                        if (lanternScript != null)
+                        {
+                            lanternScript.isLanternEquipped = true; // Set the boolean variable to true
+                        }
+                    }
+                    break;
+                case LightSourceType.FlashLight:
+                    if (FlashLightPrefab != null)
+                    {
+                        GameObject flashlight = Instantiate(FlashLightPrefab);
+                        flashlight.transform.parent = GameManager.Instance.transform;
+                    }
+                    break;
             }
         }
-        if (EquipmentType == EquipmentType.FlashLight && FlashLightPrefab != null)
-        {
-            GameObject flashlight = Instantiate(FlashLightPrefab);
-            flashlight.transform.parent = GameManager.Instance.transform;
 
-        }
         if (EquipmentType == EquipmentType.Aspect)
         {
             // Get the name of the item
@@ -88,40 +102,43 @@ public class EquippableItem : Item
         }
 
         OnEquipped?.Invoke();
-
     }
 
     public void Unequip(CharacterPanel c)
     {
-        //add code to remove buffs
-        if (EquipmentType == EquipmentType.LanternBug)
+        if (EquipmentType == EquipmentType.LightSource)
         {
-            Debug.Log("Finding LanternBug instance...");
-            GameObject lanternBugInstance = GameObject.Find("LanternBug_Active(Clone)");
-
-
-            if (lanternBugInstance != null)
+            switch (LightSourceType)
             {
-                // Activate the LanternBug instance if it's inactive
-                if (!lanternBugInstance.activeSelf)
-                {
-                    lanternBugInstance.SetActive(true);
-                }
+                case LightSourceType.LanternBug:
+                    GameObject lanternBugInstance = GameObject.Find("LanternBug_Active(Clone)");
 
-                // Now destroy the LanternBug instance
-                Destroy(lanternBugInstance);
+                    if (lanternBugInstance != null)
+                    {
+                        ToggleFlash toggleFlashScript = lanternBugInstance.GetComponent<ToggleFlash>();
+                        if (toggleFlashScript != null)
+                        {
+                            toggleFlashScript.TurnOffFlashlight();
+                        }
+
+                        Destroy(lanternBugInstance);
+                    }
+                    break;
+                case LightSourceType.FlashLight:
+                    GameObject flashlightInstance = GameObject.Find("Flashlight_Active(Clone)");
+                    if (flashlightInstance != null)
+                    {
+                        ToggleFlash toggleFlashScript = flashlightInstance.GetComponent<ToggleFlash>();
+                        if (toggleFlashScript != null)
+                        {
+                            toggleFlashScript.TurnOffFlashlight();
+                        }
+
+                        Destroy(flashlightInstance);
+                    }
+                    break;
             }
         }
-    
-
-        if (EquipmentType == EquipmentType.FlashLight && FlashLightPrefab != null)
-        {
-            GameObject flashlightInstance = GameObject.Find("Flashlight_Active(Clone)");
-           
-            Destroy(flashlightInstance);
-
-        }
-
         OnUnequipped?.Invoke();
     }
 }

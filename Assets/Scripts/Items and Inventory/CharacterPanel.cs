@@ -149,6 +149,35 @@ public class CharacterPanel : MonoBehaviour
         {
             item.Unequip(this);
             inventoryUI.AddItem(item);
+
+            // Ensure the flashlight or lantern bug is turned off when unequipped
+            if (item.EquipmentType == EquipmentType.LightSource)
+            {
+                if (item.LightSourceType == LightSourceType.FlashLight)
+                {
+                    GameObject flashlightInstance = GameObject.Find("Flashlight_Active(Clone)");
+                    if (flashlightInstance != null)
+                    {
+                        ToggleFlash toggleFlashScript = flashlightInstance.GetComponent<ToggleFlash>();
+                        if (toggleFlashScript != null)
+                        {
+                            toggleFlashScript.TurnOffFlashlight();
+                        }
+                    }
+                }
+                else if (item.LightSourceType == LightSourceType.LanternBug)
+                {
+                    GameObject lanternBugInstance = GameObject.Find("LanternBug_Active(Clone)");
+                    if (lanternBugInstance != null)
+                    {
+                        ToggleFlash toggleFlashScript = lanternBugInstance.GetComponent<ToggleFlash>();
+                        if (toggleFlashScript != null)
+                        {
+                            toggleFlashScript.TurnOffFlashlight();
+                        }
+                    }
+                }
+            }
         }
     }
 }
