@@ -7,7 +7,6 @@ public class ToggleFlash : MonoBehaviour
 {
     Light2D lightComponent;
     bool isFlashlightOn = false;
-    float batteryLife = 100f; // Battery life in percentage
     float batteryDrainRate = 4f; // Battery drain rate per second
     float batteryRechargeRate = 3f; // Battery recharge rate per second
     float batteryMinIntensity = 0.2f; // Minimum light intensity when battery is low
@@ -19,9 +18,12 @@ public class ToggleFlash : MonoBehaviour
     float lowBatteryThreshold = 28f; // Battery percentage threshold to turn red
     float criticalBatteryThreshold = 16f; // Battery percentage threshold to start flashing
     bool isFlashing = false;
+    BatteryManager batteryManager;
 
     void Start()
     {
+        batteryManager = BatteryManager.instance;
+
         // Find the GameObject with the tag "BatterySlider" and get its Slider component
         GameObject sliderObject = GameObject.FindWithTag("BatterySlider");
         if (sliderObject != null)
@@ -47,8 +49,8 @@ public class ToggleFlash : MonoBehaviour
                     }
                     else
                     {
-                        batterySlider.maxValue = 100f; // Set the max value of the slider to 100
-                        batterySlider.value = batteryLife; // Initialize the slider value
+                        batterySlider.maxValue = batteryManager.maxBattery; // Set the max value of the slider to max battery
+                        batterySlider.value = batteryManager.currentBattery; // Initialize the slider value
                         batteryFill.color = normalColor; // Set the initial color to normal
                     }
                 }
@@ -79,11 +81,11 @@ public class ToggleFlash : MonoBehaviour
 
         if (isFlashlightOn)
         {
-            DrainBattery();
+            batteryManager.DrainBattery(batteryDrainRate);
         }
         else
         {
-            RechargeBattery();
+            batteryManager.RechargeBattery(batteryRechargeRate);
         }
 
         AdjustLightIntensity();
@@ -98,40 +100,22 @@ public class ToggleFlash : MonoBehaviour
             return;
         }
 
-        isFlashlightOn = !isFlashlightOn;
-        lightComponent.intensity = isFlashlightOn ? batteryMaxIntensity : 0;
-
-        if (!isFlashlightOn && isFlashing)
+        if (batteryManager.IsBatteryEmpty())
         {
-            StopCoroutine(FlashBatteryUI());
-            isFlashing = false;
-            batteryFill.color = normalColor; // Reset the color when the flashlight is turned off
-        }
-    }
-
-    void DrainBattery()
-    {
-        if (batteryLife > 0)
-        {
-            batteryLife -= batteryDrainRate * Time.deltaTime;
-            batteryLife = Mathf.Clamp(batteryLife, 0, 100);
+            isFlashlightOn = false;
+            lightComponent.intensity = 0;
         }
         else
         {
-            isFlashlightOn = false; // Turn off flashlight when battery is empty
-            if (lightComponent != null)
-            {
-                lightComponent.intensity = 0;
-            }
-        }
-    }
+            isFlashlightOn = !isFlashlightOn;
+            lightComponent.intensity = isFlashlightOn ? batteryMaxIntensity : 0;
 
-    void RechargeBattery()
-    {
-        if (batteryLife < 100)
-        {
-            batteryLife += batteryRechargeRate * Time.deltaTime;
-            batteryLife = Mathf.Clamp(batteryLife, 0, 100);
+            if (!isFlashlightOn && isFlashing)
+            {
+                StopCoroutine(FlashBatteryUI());
+                isFlashing = false;
+                batteryFill.color = normalColor; // Reset the color when the flashlight is turned off
+            }
         }
     }
 
@@ -146,7 +130,7 @@ public class ToggleFlash : MonoBehaviour
         if (isFlashlightOn)
         {
             // Adjust the light intensity based on the remaining battery life
-            float intensity = Mathf.Lerp(batteryMinIntensity, batteryMaxIntensity, batteryLife / 100);
+            float intensity = Mathf.Lerp(batteryMinIntensity, batteryMaxIntensity, batteryManager.currentBattery / batteryManager.maxBattery);
             lightComponent.intensity = intensity;
         }
     }
@@ -155,16 +139,16 @@ public class ToggleFlash : MonoBehaviour
     {
         if (batterySlider != null && batteryFill != null)
         {
-            batterySlider.value = batteryLife; // Update the slider value to reflect the battery life
+            batterySlider.value = batteryManager.currentBattery; // Update the slider value to reflect the battery life
 
-            if (isFlashlightOn && batteryLife <= criticalBatteryThreshold)
+            if (isFlashlightOn && batteryManager.currentBattery <= criticalBatteryThreshold)
             {
                 if (!isFlashing)
                 {
                     StartCoroutine(FlashBatteryUI());
                 }
             }
-            else if (batteryLife <= lowBatteryThreshold)
+            else if (batteryManager.currentBattery <= lowBatteryThreshold)
             {
                 batteryFill.color = lowBatteryColor; // Change the color to red
             }
@@ -179,7 +163,7 @@ public class ToggleFlash : MonoBehaviour
     IEnumerator FlashBatteryUI()
     {
         isFlashing = true;
-        while (isFlashlightOn && batteryLife <= criticalBatteryThreshold)
+        while (isFlashlightOn && batteryManager.currentBattery <= criticalBatteryThreshold)
         {
             batteryFill.color = batteryFill.color == lowBatteryColor ? Color.clear : lowBatteryColor;
             yield return new WaitForSeconds(0.1f);
