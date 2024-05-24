@@ -15263,6 +15263,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 566600984036730955, guid: dd637bc6e9c85aa498021fcc8fde66aa, type: 3}
+      propertyPath: fallSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 566600984036730955, guid: dd637bc6e9c85aa498021fcc8fde66aa, type: 3}
+      propertyPath: destroyDelay
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 566600984036730957, guid: dd637bc6e9c85aa498021fcc8fde66aa, type: 3}
       propertyPath: m_Name
       value: Tutorial Player_Falling
