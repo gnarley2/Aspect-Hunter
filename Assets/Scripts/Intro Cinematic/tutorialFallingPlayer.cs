@@ -11,7 +11,7 @@ public class tutorialFallingPlayer : MonoBehaviour
 
 
     public Animator anim;
-    public GameObject prefab;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +42,6 @@ public class tutorialFallingPlayer : MonoBehaviour
     {
         // Delay before destroying the projectile
         yield return new WaitForSeconds(destroyDelay); // Adjust the delay time as needed
-        Instantiate(prefab, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }

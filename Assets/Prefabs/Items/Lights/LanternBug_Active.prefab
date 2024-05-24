@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3612874585030435291}
   - component: {fileID: 7201436576443955896}
   - component: {fileID: 7827079298951491563}
+  - component: {fileID: 8917911396632739427}
   m_Layer: 0
   m_Name: LanternBug_Active
   m_TagString: LanternBug
@@ -236,3 +237,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbitRadius: 1.5
   orbitSpeed: 100
+--- !u!114 &8917911396632739427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3612874585030435300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64aa424b9fff0a4cac8c289196560c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
