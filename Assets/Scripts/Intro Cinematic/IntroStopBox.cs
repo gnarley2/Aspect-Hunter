@@ -78,7 +78,7 @@ public class IntroStopBox : MonoBehaviour
     IEnumerator sceneDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        sceneEndScript.LoadSceneFromTrigger(0);
+        sceneEndScript.LoadSceneFromTrigger(1);
 
     }
 
