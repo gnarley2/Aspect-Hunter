@@ -13588,6 +13588,10 @@ PrefabInstance:
       propertyPath: aspectCount3
       value: 
       objectReference: {fileID: 761061569}
+    - target: {fileID: 1837185510, guid: 1bb321990c9eb4541b260b626fedfa6c, type: 3}
+      propertyPath: playercombat
+      value: 
+      objectReference: {fileID: 1599254679}
     - target: {fileID: 1994992280, guid: 1bb321990c9eb4541b260b626fedfa6c, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -458.1
@@ -16031,6 +16035,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4563175175039201289, guid: c2ee2a5bec8b2714c836add191c7bbe1, type: 3}
   m_PrefabInstance: {fileID: 1573432092}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1599254679 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 375172478150158262, guid: 0880a3e4ab62c9b42a167921faeefeb4, type: 3}
+  m_PrefabInstance: {fileID: 2012565339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08139ec8be27abc4c8bc05fb9f4ab20c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1606803571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19524,11 +19539,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6253168743859355803, guid: b3ebac44159afc343a209b4712d74ff6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7273.904
+      value: -81.747
       objectReference: {fileID: 0}
     - target: {fileID: 6253168743859355803, guid: b3ebac44159afc343a209b4712d74ff6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -53.339638
+      value: -0.66284895
       objectReference: {fileID: 0}
     - target: {fileID: 6253168743859355803, guid: b3ebac44159afc343a209b4712d74ff6, type: 3}
       propertyPath: m_LocalPosition.z
