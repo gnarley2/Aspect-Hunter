@@ -214,7 +214,7 @@ public class PlayerCombat : MonoBehaviour
 
                     if (!frostWallFound)
                     {
-                        Debug.Log("didn't hit frost wall");
+                       // Debug.Log("didn't hit frost wall");
                         // No frost wall found, so create a new one
                         GameObject frostprojectile = Instantiate(projectilePrefab, worldPositionF, Quaternion.identity);
                         Frost_Wall frostWall = frostprojectile.GetComponent<Frost_Wall>();

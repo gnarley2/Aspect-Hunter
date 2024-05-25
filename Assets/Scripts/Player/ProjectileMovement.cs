@@ -61,6 +61,18 @@ public class ProjectileMovement : MonoBehaviour
             target.TakeDamage(damage, currentTarget, Vector2.zero);
             Destroy();
         }
+
+        if (other.CompareTag("Frost_Wall"))
+        {
+            Instantiate(hitVFX, transform.position, Quaternion.Euler(transform.forward));
+            Destroy();
+        }
+
+        if (other.CompareTag("Environment"))
+        {
+            Instantiate(hitVFX, transform.position, Quaternion.Euler(transform.forward));
+            Destroy();
+        }
     }
 
     private void Destroy()
