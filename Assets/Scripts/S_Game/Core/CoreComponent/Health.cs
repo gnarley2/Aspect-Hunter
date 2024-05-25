@@ -36,6 +36,7 @@ public class Health : CoreComponent
     public void Heal(int amount)
     {
         health = Mathf.Min(health + amount, maxHealth);
+        OnUpdateHealth?.Invoke(health);
         InformationPanel.Instance.ShowInformation($"Player current health {health}");
     }
 
