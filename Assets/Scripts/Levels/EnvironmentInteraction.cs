@@ -43,11 +43,31 @@ public class EnvironmentInteraction : MonoBehaviour, IDamageable
                 rb.angularVelocity = 0f;
             }
         }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            if (gameObject.name == "Fire_Rock")
+            {
+                // Deactivate the Rigidbody2D component
+                rb.isKinematic = true;
+                rb.velocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+            }
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         // Check if the collided object is the player
         if (collision.gameObject.CompareTag("Player"))
+        {
+            // Check if the current game object's name is "Fire_Rock"
+            if (gameObject.name == "Fire_Rock")
+            {
+                // Reactivate the Rigidbody2D component
+                rb.isKinematic = false;
+            }
+        }
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             // Check if the current game object's name is "Fire_Rock"
             if (gameObject.name == "Fire_Rock")
