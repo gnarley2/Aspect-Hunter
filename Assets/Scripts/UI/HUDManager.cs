@@ -20,6 +20,8 @@ public class HUDManager : MonoBehaviour
     private Dictionary<Image, EquippableItem> slotToItemMap = new Dictionary<Image, EquippableItem>();
     private Dictionary<int, AspectType> slotToAspectMap = new Dictionary<int, AspectType>();
 
+    [SerializeField] private PlayerCombat playercombat;
+
     void Start()
     {
         aspect1Size = aspectSlot1.rectTransform.sizeDelta;
@@ -164,8 +166,11 @@ public class HUDManager : MonoBehaviour
 
     public void UpdateAspectCount()
     {
-        aspectCount1.text = slotToAspectMap.ContainsKey(1) && slotToAspectMap[1] != AspectType.None ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[1]).ToString() : "";
-        aspectCount2.text = slotToAspectMap.ContainsKey(2) && slotToAspectMap[2] != AspectType.None ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[2]).ToString() : "";
-        aspectCount3.text = slotToAspectMap.ContainsKey(3) && slotToAspectMap[3] != AspectType.None ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[3]).ToString() : "";
+       if(playercombat.FrostTooClose==false)
+        {
+            aspectCount1.text = slotToAspectMap.ContainsKey(1) && slotToAspectMap[1] != AspectType.None ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[1]).ToString() : "";
+            aspectCount2.text = slotToAspectMap.ContainsKey(2) && slotToAspectMap[2] != AspectType.None ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[2]).ToString() : "";
+            aspectCount3.text = slotToAspectMap.ContainsKey(3) && slotToAspectMap[3] != AspectType.None ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[3]).ToString() : "";
+        }
     }
 }

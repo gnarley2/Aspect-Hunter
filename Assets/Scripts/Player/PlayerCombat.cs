@@ -48,6 +48,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private ProjectileData[] projectileDatas;
 
     public HUDManager hudManager;
+    public bool FrostTooClose;
 
     private void Start()
     {
@@ -55,6 +56,7 @@ public class PlayerCombat : MonoBehaviour
         {
             MonsterInventory.Instance.OnCatchMonster += data.Unlock;
         }
+        FrostTooClose = false;
     }
 
     void Update()
@@ -154,6 +156,7 @@ public class PlayerCombat : MonoBehaviour
 
     void ProjectileAttack(Vector3 attackDirection)
     {
+      //  FrostTooClose = false;
         if (currentProjectileIndex <= -1 || currentProjectileIndex >= projectileDatas.Length)
         {
             InformationPanel.Instance.ShowInformation($"You haven't selected an aspect");
@@ -175,77 +178,87 @@ public class PlayerCombat : MonoBehaviour
         
         // Perform additional actions based on the projectile type
         if (!AspectInventory.Instance.UseAspect(currentType, 1)) return;
+    
+
         switch (currentType)
         {
             case AspectType.Fire:
+                FrostTooClose = false;
                 GameObject fireprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Fire_Projectile fireMovement = fireprojectile.GetComponent<Fire_Projectile>();
                 fireMovement.Initialize(attackDirection, rangeDamage);
                 fireprojectile.transform.up = attackDirection;
-
+         
                 break;
 
             case AspectType.Frost:
                 Vector3 worldPositionF = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 worldPositionF.z = 0f;
-                if (Vector3.Distance(worldPositionF, playerPosition) > safeDistance)
-                {
-                    GameObject frostprojectile = Instantiate(projectilePrefab, worldPositionF, Quaternion.identity);
-                    Frost_Wall frostWall = frostprojectile.GetComponent<Frost_Wall>();
-                    frostWall.Initialize(attackDirection, rangeDamage);
-                }
+ 
+                
+                if (Vector3.Distance(worldPositionF, playerPosition) > safeDistance) 
+                    {
+                        GameObject frostprojectile = Instantiate(projectilePrefab, worldPositionF, Quaternion.identity);
+                       Frost_Wall frostWall = frostprojectile.GetComponent<Frost_Wall>();
+                        frostWall.Initialize(attackDirection, rangeDamage);
+                       FrostTooClose = false;
+                    }
+                    else
+                    {
+                        FrostTooClose = true;
+                    }
 
-                break;
+                    break;
 
             case AspectType.Poison:
-
+                FrostTooClose = false;
                 Vector3 worldPosition1 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 worldPosition1.z = 0f;
                 GameObject poisonprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Poison_Projectile poisonMovement = poisonprojectile.GetComponent<Poison_Projectile>();
                 poisonMovement.Initialize(attackDirection, rangeDamage);
-
+         
                 break;
 
             case AspectType.Shock:
-
+                FrostTooClose = false;
                 GameObject shockprojectile = Instantiate(projectilePrefab, GetMouseWorldPosition(), Quaternion.identity);
                 Shock_Hit shockHit = shockprojectile.GetComponent<Shock_Hit>();
                 shockHit.Initialize(attackDirection, rangeDamage);
-
+              
                 break;
 
             case AspectType.Water:
-           
+                FrostTooClose = false;
                 Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 worldPosition.z = 0f; 
                 GameObject waterprojectile = Instantiate(projectilePrefab, worldPosition, Quaternion.identity);
                 Water_Splash waterSplash = waterprojectile.GetComponent<Water_Splash>();
                 Vector3 attackDirectionWater = (worldPosition - transform.position).normalized;
                 waterSplash.Initialize(attackDirectionWater, rangeDamage, transform);
-
+           
                 break;
 
             case AspectType.Blast:
-
+                FrostTooClose = false;
                 GameObject blastprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Blast_Projectile blastMovement = blastprojectile.GetComponent<Blast_Projectile>();
                 blastMovement.Initialize(attackDirection, rangeDamage);
                 blastMovement.transform.up = attackDirection;
-
+        
                 break;
 
             case AspectType.Corrosion:
-
+                FrostTooClose = false;
                 GameObject corrosionprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Corrosive_Projectile corroMovement = corrosionprojectile.GetComponent<Corrosive_Projectile>();
                 corroMovement.Initialize(attackDirection, rangeDamage);
                 corroMovement.transform.up = attackDirection;
-
+            
                 break;
 
             case AspectType.Gas:
-
+                FrostTooClose = false;
                 Vector3 worldPositionGas = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 worldPositionGas.z = 0f;
 
@@ -253,90 +266,90 @@ public class PlayerCombat : MonoBehaviour
                 Gas_Projectile gasMovement = gasprojectile.GetComponent<Gas_Projectile>();
                // Vector3 attackDirectionGas = (worldPositionGas - transform.position).normalized;
                 gasMovement.Initialize(attackDirection, rangeDamage);
-
+     
                 break;
 
 
             case AspectType.IceSpike:
-
+                FrostTooClose = false;
                 GameObject spikeprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Ice_Spike spikeMovement = spikeprojectile.GetComponent<Ice_Spike>();
                 spikeMovement.Initialize(attackDirection, rangeDamage);
                 spikeMovement.transform.up = attackDirection;
 
-
+            
                 break;
 
             case AspectType.Necrotic:
-
+                FrostTooClose = false;
                 GameObject necroprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Necrotic_Projectile necroMovement = necroprojectile.GetComponent<Necrotic_Projectile>();
                 necroMovement.Initialize(attackDirection, rangeDamage);
                 necroMovement.transform.up = attackDirection;
 
-
+       
                 break;
 
             case AspectType.Paralysis:
-
+                FrostTooClose = false;
                 Vector3 worldPositionpara = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 worldPositionpara.z = 0f;
                 GameObject paraprojectile = Instantiate(projectilePrefab, worldPositionpara, Quaternion.identity);
                 Paralysis_Splash paraMovement = paraprojectile.GetComponent<Paralysis_Splash>();
-              
-            
-               Vector3 attackDirectionpara = (worldPositionpara - transform.position).normalized;
+                hudManager.UpdateAspectCount();
+
+                Vector3 attackDirectionpara = (worldPositionpara - transform.position).normalized;
                 paraMovement.Initialize(attackDirectionpara, rangeDamage, transform);
-               // paraMovement.transform.up = attackDirection;
+                // paraMovement.transform.up = attackDirection;
 
-
+         
                 break;
 
             case AspectType.Pollution:
-
+                FrostTooClose = false;
                 GameObject pollprojectile = Instantiate(projectilePrefab, GetMouseWorldPosition(), Quaternion.identity);
                 Pollution_Hit pollHit = pollprojectile.GetComponent<Pollution_Hit>();
                 pollHit.Initialize(attackDirection, rangeDamage);
-
-
+            ;
+   
                 break;
 
             case AspectType.Radiation:
 
-
+                FrostTooClose = false;
                 GameObject radprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Radiation_Projectile radMovement = radprojectile.GetComponent<Radiation_Projectile>();
                 radMovement.Initialize(attackDirection, rangeDamage);
                 radMovement.transform.up = attackDirection;
-
+      
                 break;
 
 
             case AspectType.Steam:
 
-
+                FrostTooClose = false;
                 GameObject steamprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 Steam_Projectile steamMovement = steamprojectile.GetComponent<Steam_Projectile>();
                 steamMovement.Initialize(attackDirection, rangeDamage);
                 steamMovement.transform.up = attackDirection;
-
+        
                 break;
 
 
             case AspectType.Superconductor:
 
-
+                FrostTooClose = false;
                 GameObject superprojectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
                 SuperConductor_Projectile superMovement = superprojectile.GetComponent<SuperConductor_Projectile>();
                 superMovement.Initialize(attackDirection, rangeDamage);
                 superMovement.transform.up = attackDirection;
-
+             
                 break;
         }
-        if (hudManager != null)
-        {
-            hudManager.UpdateAspectCount();
-        }
+        // if (hudManager != null)
+       // {
+       //    hudManager.UpdateAspectCount();
+       // }
     }
 
     void MeleeAttack(Vector2 attackDirection)
