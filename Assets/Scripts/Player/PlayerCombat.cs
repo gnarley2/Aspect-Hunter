@@ -194,21 +194,44 @@ public class PlayerCombat : MonoBehaviour
             case AspectType.Frost:
                 Vector3 worldPositionF = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 worldPositionF.z = 0f;
- 
-                
-                if (Vector3.Distance(worldPositionF, playerPosition) > safeDistance) 
+                if (Vector3.Distance(worldPositionF, playerPosition) > safeDistance)
+                {
+                    // Define a small radius to check for existing frost walls
+                    float checkRadius = 0.5f;
+
+                    // Check if there's an existing frost wall within the defined radius
+                    Collider2D[] colliders = Physics2D.OverlapCircleAll(worldPositionF, checkRadius);
+
+                    bool frostWallFound = false;
+                    foreach (var collider in colliders)
                     {
+                        if (collider.CompareTag("Frost_Wall"))
+                        {
+                            frostWallFound = true;
+                            break;
+                        }
+                    }
+
+                    if (!frostWallFound)
+                    {
+                        Debug.Log("didn't hit frost wall");
+                        // No frost wall found, so create a new one
                         GameObject frostprojectile = Instantiate(projectilePrefab, worldPositionF, Quaternion.identity);
-                       Frost_Wall frostWall = frostprojectile.GetComponent<Frost_Wall>();
+                        Frost_Wall frostWall = frostprojectile.GetComponent<Frost_Wall>();
                         frostWall.Initialize(attackDirection, rangeDamage);
-                       FrostTooClose = false;
+                        FrostTooClose = false;
                     }
                     else
                     {
+                        // Frost wall found, so set FrostTooClose to true
                         FrostTooClose = true;
                     }
-
-                    break;
+                }
+                else
+                {
+                    FrostTooClose = true;
+                }
+                break;
 
             case AspectType.Poison:
                 FrostTooClose = false;
