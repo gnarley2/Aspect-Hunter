@@ -149,8 +149,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3568590094508884093}
-  - {fileID: 3599005591699988982}
-  - {fileID: 9207823358540678632}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -587,6 +585,8 @@ Transform:
   - {fileID: 897352485184396563}
   - {fileID: 897352486396679948}
   - {fileID: 5711360619311740564}
+  - {fileID: 3599005591699988982}
+  - {fileID: 9207823358540678632}
   m_Father: {fileID: 897352485747607548}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -869,12 +869,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5473922659424469501}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.13, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.1300001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 897352485747607548}
+  m_Father: {fileID: 3568590094508884093}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6714233490533780480
@@ -922,9 +922,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.05287385, y: 0}
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 0.6865728
 --- !u!1 &8002139791827914072
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,7 +959,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1749888600627965475}
-  m_Father: {fileID: 897352485747607548}
+  m_Father: {fileID: 3568590094508884093}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

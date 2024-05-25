@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ToggleFlash : MonoBehaviour
 {
+    PolygonCollider2D polygonCollider;
     Light2D lightComponent;
     bool isFlashlightOn = false;
     float batteryDrainRate = 4f; // Battery drain rate per second
@@ -60,7 +61,7 @@ public class ToggleFlash : MonoBehaviour
         {
             Debug.LogError("No GameObject found with tag 'BatterySlider'");
         }
-
+        polygonCollider = gameObject.GetComponent<PolygonCollider2D>();
         lightComponent = gameObject.GetComponent<Light2D>();
         if (lightComponent == null)
         {
@@ -99,6 +100,7 @@ public class ToggleFlash : MonoBehaviour
         if (lightComponent != null)
         {
             lightComponent.intensity = 0;
+            polygonCollider.enabled = false;
         }
         if (isFlashing)
         {
@@ -123,12 +125,13 @@ public class ToggleFlash : MonoBehaviour
         {
             isFlashlightOn = false;
             lightComponent.intensity = 0;
+            polygonCollider.enabled = false;
         }
         else
         {
             isFlashlightOn = !isFlashlightOn;
             lightComponent.intensity = isFlashlightOn ? batteryMaxIntensity : 0;
-
+            polygonCollider.enabled = isFlashlightOn ?  true : false;
             if (!isFlashlightOn && isFlashing)
             {
                 StopCoroutine(FlashBatteryUI());

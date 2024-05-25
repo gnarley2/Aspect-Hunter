@@ -6,6 +6,7 @@ using UnityEngine;
 public class MonsterCanvas : MonoBehaviour
 {
     [SerializeField] private CanvasGroup canvasGroup;
+    private int lightCollisionCount = 0;
 
     private void Awake()
     {
@@ -14,17 +15,23 @@ public class MonsterCanvas : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Light"))
         {
+            lightCollisionCount++;
             canvasGroup.alpha = 1f;
         }
     }
-    
+
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Light"))
         {
-            canvasGroup.alpha = 0f;
+            lightCollisionCount--;
+            if (lightCollisionCount <= 0)
+            {
+                canvasGroup.alpha = 0f;
+                lightCollisionCount = 0; // Ensure the count doesn't go below zero
+            }
         }
     }
 }
