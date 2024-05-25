@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ToggleFlash : MonoBehaviour
 {
     PolygonCollider2D polygonCollider;
+   // CircleCollider2D circleCollider;
     Light2D lightComponent;
     bool isFlashlightOn = false;
     float batteryDrainRate = 4f; // Battery drain rate per second
@@ -63,6 +64,7 @@ public class ToggleFlash : MonoBehaviour
         }
         polygonCollider = gameObject.GetComponent<PolygonCollider2D>();
         lightComponent = gameObject.GetComponent<Light2D>();
+      //  circleCollider = gameObject.GetComponent<CircleCollider2D>();
         if (lightComponent == null)
         {
             Debug.LogError("No Light2D component found on this GameObject");
