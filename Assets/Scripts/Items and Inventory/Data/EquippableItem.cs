@@ -63,7 +63,7 @@ public class EquippableItem : Item
                     if (FlashLightPrefab != null)
                     {
                         GameObject flashlight = Instantiate(FlashLightPrefab);
-                        flashlight.transform.parent = GameManager.Instance.transform;
+                       // flashlight.transform.parent = GameManager.Instance.transform;
                     }
                     break;
             }

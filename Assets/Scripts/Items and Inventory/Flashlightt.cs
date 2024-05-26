@@ -33,7 +33,7 @@ public class Flashlight : MonoBehaviour
         float y = playerPos.y + arcRadius * Mathf.Sin(currentAngle * Mathf.Deg2Rad);
 
         // Move the flashlight to the target position
-        transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, transform.position.z), arcRotationSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(GameManager.Instance.PlayerTransform.position, new Vector3(x, y, transform.position.z), arcRotationSpeed * Time.deltaTime);
 
         // Rotate the flashlight to point towards the mouse cursor
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
