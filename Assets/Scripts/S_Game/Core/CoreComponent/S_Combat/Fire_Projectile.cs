@@ -53,7 +53,12 @@ public class Fire_Projectile : MonoBehaviour
         if (other.TryGetComponent<IDamageable>(out IDamageable target))
         {
             if (target.GetDamagerType() == IDamageable.DamagerTarget.Player) return;
-            
+            if (other.gameObject.CompareTag("Soul"))
+            {
+                // Deal half damage to Grubs
+                int soulDamage = damage = 2;
+                target.TakeDamage(soulDamage, IDamageable.DamagerTarget.Player, Vector2.zero);
+            }
             target.TakeDamage(damage, IDamageable.DamagerTarget.Player, direction, m_AspectType);
             Destroy(gameObject);
         }
