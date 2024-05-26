@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7557307482816978047}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.364, y: -2.47, z: 0}
+  m_LocalPosition: {x: -8.364, y: -2.39, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   box: {x: 6.7, y: 1}
-  offset: {x: -4, y: 0.05}
+  offset: {x: 0, y: 0}
   damage: 15
 --- !u!1 &7557307482927007137
 GameObject:

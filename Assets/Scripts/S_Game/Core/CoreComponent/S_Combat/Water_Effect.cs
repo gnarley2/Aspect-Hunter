@@ -34,7 +34,7 @@ public class Water_Effect : MonoBehaviour
     {
         if (other.TryGetComponent<IDamageable>(out IDamageable target))
         {
-            target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
+          //  target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
             damageCoroutine = StartCoroutine(DamageOverTime(target));
 
             // Attach the game object to the target

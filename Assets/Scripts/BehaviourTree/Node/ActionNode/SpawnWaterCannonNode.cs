@@ -15,11 +15,29 @@ public class SpawnWaterCannonNode : ActionNode
     {
         base.OnInitialize(component);
     }
-    
+
     protected override void OnStart()
     {
         base.OnStart();
-        Instantiate(prefab, (Vector2)treeComponent.transform.position - movement.GetDirectionMagnitude() * offset, Quaternion.identity);
+
+        Vector2 spawnPosition = (Vector2)treeComponent.transform.position + offset;
+        Quaternion rotation;
+
+        // Check if the player is on the left or right side
+        if (treeComponent.transform.position.x < GameObject.FindGameObjectWithTag("Player").transform.position.x)
+        {
+            // Player is on the right side, rotate the prefab to the left
+            rotation = Quaternion.Euler(0f, 0f, 180f);
+            Instantiate(prefab, spawnPosition, rotation);
+        }
+        if (treeComponent.transform.position.x > GameObject.FindGameObjectWithTag("Player").transform.position.x)
+        {
+            // Player is on the left side, rotate the prefab to the right
+            rotation = Quaternion.Euler(0f, 0f, -180f);
+            Instantiate(prefab, spawnPosition, rotation);
+        }
+
+      
     }
 
     protected override void OnStop()

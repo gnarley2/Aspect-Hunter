@@ -46,4 +46,18 @@ public class Inventory : MonoBehaviour
     {
         return items.Count > maxItem;
     }
+
+    public bool HasItem(Item item)
+    {
+        bool hasItem = items.Contains(item);
+        if (hasItem)
+        {
+            Debug.Log($"Item {item.name} is already in the inventory.");
+        }
+        else
+        {
+            Debug.Log($"Item {item.name} is not in the inventory.");
+        }
+        return hasItem;
+    }
 }
