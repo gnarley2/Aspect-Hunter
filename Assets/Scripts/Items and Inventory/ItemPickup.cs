@@ -40,17 +40,22 @@ public class ItemPickup : MonoBehaviour
             }
             else
             {
-                AddToInventory();
+                if (!Inventory.Instance.HasItem(item))
+                {
+                    AddToInventory();
+                }
             }
         }
     }
 
     void AddToInventory()
     {
-        if (Inventory.Instance.IsFull()) return;
-        
-        Inventory.Instance.AddItem(Instantiate(item));
-        Destroy(gameObject);
+        if (Inventory.Instance.IsFull() || Inventory.Instance.HasItem(item)) return;
+        if (!Inventory.Instance.HasItem(item))
+        {
+            Inventory.Instance.AddItem(Instantiate(item));
+            Destroy(gameObject);
+        }
     }
 
     void UseItem()
