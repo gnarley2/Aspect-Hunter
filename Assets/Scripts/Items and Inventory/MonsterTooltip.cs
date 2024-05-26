@@ -39,7 +39,17 @@ public class MonsterTooltip : MonoBehaviour
     {
         image.sprite = monsterDetails.icon;
         MonsterNameText.text = "Name: " + monsterDetails.name.ToString();
-        if (monsterDetails.item != null) Aspect.sprite = monsterDetails.item.Icon; 
+        if (monsterDetails.item != null)
+        {
+            Aspect.sprite = monsterDetails.item.Icon;
+            Aspect.color = new Color(1, 1, 1);
+        }
+        else
+        {
+            Aspect.sprite = null;
+            Aspect.color = new Color(1, 1, 1, 0);
+        }
+
         DetailsText.text = monsterDetails.description;
         
         ToggleUI(true);
