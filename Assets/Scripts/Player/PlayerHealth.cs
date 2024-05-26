@@ -28,6 +28,4 @@ public class PlayerHealth : MonoBehaviour
     {
         CheckpointManager.Instance.LoadLastCheckpoint();
     }
-    
-
 }

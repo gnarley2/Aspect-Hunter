@@ -13,13 +13,15 @@ public class SceneTriggerManager : MonoBehaviour
     private string currentLevelName;
     private Vector3 playerTargetPosition; // The position to move the player to in the new scene
     private int savedProjectileIndex = -1;
-
+    public Health health;
     private int tsceneIndex;
     private void Start()
     {
         DontDestroyOnLoad(this);
         currentLevelName = SceneManager.GetActiveScene().name;
         SceneManager.sceneLoaded += OnSceneLoaded;
+        health = GetComponentInChildren<Health>();
+
     }
 
     public void SetPlayerTargetPosition(Vector3 position)
@@ -75,6 +77,7 @@ public class SceneTriggerManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(tsceneIndex);
         transistionAnim.SetTrigger("Start");
+        health.SetHealthToMax();
     }
 
 
