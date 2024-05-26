@@ -37,8 +37,6 @@ public class MonsterTooltip : MonoBehaviour
 
     public void ShowTooltip(MonsterDetails monsterDetails)
     {
-        Debug.Log("Showing tooltip"); // Debug log
-
         image.sprite = monsterDetails.icon;
         MonsterNameText.text = "Name: " + monsterDetails.name.ToString();
         if (monsterDetails.item != null) Aspect.sprite = monsterDetails.item.Icon; 

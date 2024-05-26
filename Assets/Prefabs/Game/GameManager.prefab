@@ -3311,7 +3311,7 @@ Transform:
   - {fileID: 1719209229828045493}
   - {fileID: 6572536680374496217}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1440484571966174778
 MonoBehaviour:
@@ -4833,8 +4833,6 @@ GameObject:
   - component: {fileID: 5721110402777159481}
   - component: {fileID: 5965852786393681093}
   - component: {fileID: 6338935822765806482}
-  - component: {fileID: 2057778351}
-  - component: {fileID: 2057778350}
   m_Layer: 5
   m_Name: Monsters Details
   m_TagString: Untagged
@@ -4901,34 +4899,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!225 &2057778351
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2927501014247544723}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
---- !u!114 &2057778350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2927501014247544723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e686ad501e067b141bd5ea4d2b6a6f04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 2099842746}
-  MonsterNameText: {fileID: 5679763773898504763}
-  Aspect: {fileID: 48560447}
-  DetailsText: {fileID: 270702127922017749}
 --- !u!1 &2944152369752909208
 GameObject:
   m_ObjectHideFlags: 0

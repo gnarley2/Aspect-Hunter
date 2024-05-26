@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093179027}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.308, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2459b6fc126a3e44af3f7434246950c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthData: {fileID: 11400000, guid: 2fe81ed89107d034dbc0ed3cf2f03da3, type: 2}
+  healthData: {fileID: 11400000, guid: a782c2fa5a5de9c4bb773bf679f6d5d7, type: 2}
 --- !u!1 &458280312653895885
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458280312653895885}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.9, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5919999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -304,7 +304,7 @@ Transform:
   m_Children:
   - {fileID: 1175919156}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1568891421582735536
 Rigidbody2D:
@@ -365,8 +365,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0045785904, y: -0.3295536}
-  m_Size: {x: 0.6611576, y: 1.2493134}
+  m_Offset: {x: 0, y: -0.13709605}
+  m_Size: {x: 0.6611576, y: 0.97512126}
   m_Direction: 0
 --- !u!114 &1568891421582735543
 MonoBehaviour:
@@ -420,4 +420,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e99e99787d08c240ae230d2385606f0, type: 2}
   - {fileID: 11400000, guid: 7966fc394b9a67d4e84eb6b12cd90e76, type: 2}
   - {fileID: 11400000, guid: 04c40cdf932cf0a4fa1963f46240db68, type: 2}
+  - {fileID: 11400000, guid: d5a8a11068330e0418e25bd08fe7812c, type: 2}
+  - {fileID: 11400000, guid: 3004f46f217ce744d9d2ee87a92795fe, type: 2}
+  - {fileID: 11400000, guid: abcd4f80bf592b34fac09032d6a67a83, type: 2}
+  - {fileID: 11400000, guid: 2bf9f754e19e34e468e33887c66a8fd4, type: 2}
+  - {fileID: 11400000, guid: 436d8c4d43a38f049a48bb095a4aba1c, type: 2}
+  - {fileID: 11400000, guid: 7fed3f87981cc474182d4d3dd7f38b19, type: 2}
+  - {fileID: 11400000, guid: 90ae786e02c50ce4ab2a7b7be21e649c, type: 2}
+  - {fileID: 11400000, guid: bed9baba43bbf4543a486d78c705e50b, type: 2}
+  - {fileID: 11400000, guid: 6c08299822486c549a17a0ccc6106c1a, type: 2}
+  - {fileID: 11400000, guid: 26dca8c806a6d7d42a5e45df0c91c874, type: 2}
   hudManager: {fileID: 0}
+  FrostTooClose: 0
