@@ -12,7 +12,8 @@ public class LanternBug : MonoBehaviour
 
     void Start()
     {
-       // DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(this);
+        // DontDestroyOnLoad(gameObject);
         playerTransform = GameManager.Instance.PlayerTransform;
         
     }

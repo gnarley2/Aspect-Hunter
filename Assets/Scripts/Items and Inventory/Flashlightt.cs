@@ -13,6 +13,7 @@ public class Flashlight : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(this);
         // Find the player's transform
         playerTransform = GameManager.Instance.PlayerTransform;
     }
