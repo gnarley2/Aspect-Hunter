@@ -3279,6 +3279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transistionAnim: {fileID: 1719209229828045482}
+  health: {fileID: 0}
 --- !u!114 &243954436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3656,6 +3657,7 @@ MonoBehaviour:
   playerCheckPoint: {x: 0, y: 0}
   sceneIndex: 0
   saveOnStart: 1
+  health: {fileID: 0}
 --- !u!114 &1450612373
 MonoBehaviour:
   m_ObjectHideFlags: 0

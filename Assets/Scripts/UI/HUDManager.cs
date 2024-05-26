@@ -21,6 +21,8 @@ public class HUDManager : MonoBehaviour
 
     [SerializeField] private PlayerCombat playercombat;
 
+    private int lastInputIndex = -1;
+
     void Start()
     {
         aspect1Size = aspectSlot1.rectTransform.sizeDelta;
@@ -65,6 +67,7 @@ public class HUDManager : MonoBehaviour
 
         UpdateCombination();
         UpdateAspectCount();
+        UpdatePlayerAspect(lastInputIndex);
     }
 
     void EquipAspectSlot(EquippableItem item, int index)
@@ -84,7 +87,6 @@ public class HUDManager : MonoBehaviour
                 slotToAspectMap[2] = item.aspectType;
                 break;
         }
-        
     }
 
     private void UpdateCombination()
@@ -124,48 +126,75 @@ public class HUDManager : MonoBehaviour
     {
         if (Input.GetKeyDown("1") && aspectSlot1.sprite != null)
         {
-            aspectSlot1.rectTransform.sizeDelta = new Vector2(80, 80);
-            aspectSlot2.rectTransform.sizeDelta = aspect2Size;
-            aspectSlot3.rectTransform.sizeDelta = aspect3Size;
-
-            // Change projectile index based on the aspect in slot 1
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
-            EquippableItem itemInSlot1 = slotToItemMap.FirstOrDefault(x => x.Key == aspectSlot1).Value;
-            playerCombat.SetCurrentProjectileIndexBasedOnAspect(itemInSlot1);
-            Debug.Log(itemInSlot1);
+            lastInputIndex = 1;
+            
+            UpdatePlayerAspect(1);
         }
         else if (Input.GetKeyDown("2") && aspectSlot2.sprite != null)
         {
-            aspectSlot2.rectTransform.sizeDelta = new Vector2(80, 80);
-            aspectSlot1.rectTransform.sizeDelta = aspect1Size;
-            aspectSlot3.rectTransform.sizeDelta = aspect3Size;
-
-            // Change projectile index based on the aspect in slot 2
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
-            EquippableItem itemInSlot2 = slotToItemMap.FirstOrDefault(x => x.Key == aspectSlot2).Value;
-            playerCombat.SetCurrentProjectileIndexBasedOnAspect(itemInSlot2);
-            Debug.Log(itemInSlot2);
+            lastInputIndex = 2;
+            
+            UpdatePlayerAspect(2);
+            
         }
         else if (Input.GetKeyDown("3") && aspectSlot3.sprite != null)
         {
-            aspectSlot3.rectTransform.sizeDelta = new Vector2(80, 80);
-            aspectSlot1.rectTransform.sizeDelta = aspect1Size;
-            aspectSlot2.rectTransform.sizeDelta = aspect2Size;
+            lastInputIndex = 3;
+            
+            UpdatePlayerAspect(3);
+        }
+    }
+    
+    void UpdatePlayerAspect(int index)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
+        
+        switch (index)
+        {
+            case 1:
+                aspectSlot1.rectTransform.sizeDelta = new Vector2(80, 80);
+                aspectSlot2.rectTransform.sizeDelta = aspect2Size;
+                aspectSlot3.rectTransform.sizeDelta = aspect3Size;
 
-            // Change projectile index based on the aspect in slot 2
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            PlayerCombat playerCombat = player.GetComponent<PlayerCombat>();
-            EquippableItem itemInSlot3 = slotToItemMap.FirstOrDefault(x => x.Key == aspectSlot3).Value;
-            playerCombat.SetCurrentProjectileIndexBasedOnAspect(itemInSlot3);
-            Debug.Log(itemInSlot3);
+                // Change projectile index based on the aspect in slot 1
+                EquippableItem itemInSlot1 = slotToItemMap.FirstOrDefault(x => x.Key == aspectSlot1).Value;
+                if (itemInSlot1)
+                    playerCombat.SetCurrentProjectileIndexBasedOnAspect(itemInSlot1);
+                else playerCombat.SetProjectileIndex(-1);
+                
+                Debug.Log(itemInSlot1);
+                break;
+            case 2:
+                aspectSlot2.rectTransform.sizeDelta = new Vector2(80, 80);
+                aspectSlot1.rectTransform.sizeDelta = aspect1Size;
+                aspectSlot3.rectTransform.sizeDelta = aspect3Size;
+
+                EquippableItem itemInSlot2 = slotToItemMap.FirstOrDefault(x => x.Key == aspectSlot2).Value;
+                if (itemInSlot2)
+                    playerCombat.SetCurrentProjectileIndexBasedOnAspect(itemInSlot2);
+                else playerCombat.SetProjectileIndex(-1);
+                
+                Debug.Log(itemInSlot2);
+                break;
+            case 3:
+                aspectSlot3.rectTransform.sizeDelta = new Vector2(80, 80);
+                aspectSlot1.rectTransform.sizeDelta = aspect1Size;
+                aspectSlot2.rectTransform.sizeDelta = aspect2Size;
+                
+                EquippableItem itemInSlot3 = slotToItemMap.FirstOrDefault(x => x.Key == aspectSlot3).Value;
+                if (itemInSlot3)
+                    playerCombat.SetCurrentProjectileIndexBasedOnAspect(itemInSlot3);
+                else playerCombat.SetProjectileIndex(-1);
+                
+                Debug.Log(itemInSlot3);
+                break;
         }
     }
 
     public void UpdateAspectCount()
     {
-       if(playercombat.FrostTooClose==false)
+       if (playercombat.FrostTooClose == false)
         {
             aspectCount1.text = slotToAspectMap.ContainsKey(1) && slotToAspectMap[1] != AspectType.None ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[1]).ToString() : "";
             aspectCount2.text = slotToAspectMap.ContainsKey(2) && slotToAspectMap[2] != AspectType.None ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[2]).ToString() : "";
