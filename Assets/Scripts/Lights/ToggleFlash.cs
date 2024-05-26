@@ -81,6 +81,13 @@ public class ToggleFlash : MonoBehaviour
         {
             ToggleFlashlight();
         }
+        if (batteryManager.IsBatteryEmpty())
+        {
+            isFlashlightOn = false;
+            lightComponent.intensity = 0;
+            polygonCollider.enabled = false;
+        }
+
 
         if (isFlashlightOn)
         {
