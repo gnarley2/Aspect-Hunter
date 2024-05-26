@@ -11,7 +11,6 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Image aspectSlot3;
     [SerializeField] private Text aspectCount1;
     [SerializeField] private Text aspectCount2;
-    [SerializeField] private Text aspectCount3;
 
     Vector2 aspect1Size;
     Vector2 aspect2Size;
@@ -170,7 +169,6 @@ public class HUDManager : MonoBehaviour
         {
             aspectCount1.text = slotToAspectMap.ContainsKey(1) && slotToAspectMap[1] != AspectType.None ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[1]).ToString() : "";
             aspectCount2.text = slotToAspectMap.ContainsKey(2) && slotToAspectMap[2] != AspectType.None ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[2]).ToString() : "";
-            aspectCount3.text = slotToAspectMap.ContainsKey(3) && slotToAspectMap[3] != AspectType.None ? AspectInventory.Instance.GetAspectCount(slotToAspectMap[3]).ToString() : "";
         }
     }
 }
