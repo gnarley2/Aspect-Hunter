@@ -116,7 +116,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0020080805, y: -0.022089325}
@@ -165,4 +165,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: f6b3591fed1abcf42976bfb0260b4802, type: 2}
-  inventory: {fileID: 3816433579581527169, guid: 29e290e7a9b33654086841ea11fb96f9, type: 3}
