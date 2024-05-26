@@ -90,4 +90,10 @@ public class Health : CoreComponent
     {
         return health;
     }
+
+    public void SetHealthToMax()
+    {
+        health = maxHealth;
+        OnUpdateHealth?.Invoke(health);
+    }
 }
