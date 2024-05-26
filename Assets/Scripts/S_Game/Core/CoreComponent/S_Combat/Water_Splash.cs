@@ -55,7 +55,19 @@ public class Water_Splash : MonoBehaviour
     {
         if (other.TryGetComponent<IDamageable>(out IDamageable target))
         {
-            target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
+            // Check if the other GameObject is tagged as "Grub"
+            if (other.gameObject.CompareTag("Grub"))
+            {
+                // Deal half damage to Grubs
+                int grubDamage = damage = 2;
+                target.TakeDamage(grubDamage, IDamageable.DamagerTarget.Player, Vector2.zero);
+            }
+            else
+            {
+                // Deal full damage to other enemies
+                target.TakeDamage(damage, IDamageable.DamagerTarget.Player, Vector2.zero);
+            }
+
             Instantiate(waterEffect, transform.position, Quaternion.identity);
         }
     }
