@@ -57,11 +57,12 @@ public class PlayerCombat : MonoBehaviour
             MonsterInventory.Instance.OnCatchMonster += data.Unlock;
         }
         FrostTooClose = false;
+         menuScript = FindObjectOfType<Menus>();
     }
 
     void Update()
     {
-        if (menuScript && menuScript.isPaused  ||  MenuController.openInventory || MenuController.openBestiary) return;
+        if (menuScript.isPaused  ||  MenuController.openInventory || MenuController.openBestiary) return;
         
         CalculateDirection();
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
