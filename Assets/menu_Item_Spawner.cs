@@ -6,18 +6,33 @@ using UnityEngine;
 public class menu_Item_Spawner : MonoBehaviour
 
 {
-    public GameObject[] prefabs; 
+    public GameObject[] prefabs;
     public float minSpawnInterval = 1f;
-    public float maxSpawnInterval = 5f; 
-    public Canvas canvas; 
+    public float maxSpawnInterval = 5f;
+    public Canvas canvas;
 
     private BoxCollider2D boxCollider;
+    private Coroutine spawnCoroutine;
 
-    // Start is called before the first frame update
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
-        StartCoroutine(SpawnItemAtIntervals());
+    }
+
+    void OnEnable()
+    {
+        // Start the spawning coroutine when the object is enabled
+        spawnCoroutine = StartCoroutine(SpawnItemAtIntervals());
+    }
+
+    void OnDisable()
+    {
+        // Stop the spawning coroutine when the object is disabled
+        if (spawnCoroutine != null)
+        {
+            StopCoroutine(spawnCoroutine);
+            spawnCoroutine = null;
+        }
     }
 
     private IEnumerator SpawnItemAtIntervals()
@@ -43,13 +58,7 @@ public class menu_Item_Spawner : MonoBehaviour
             GameObject prefabToInstantiate = prefabs[Random.Range(0, prefabs.Length)];
 
             // Instantiate the prefab at the random position within the Canvas
-            GameObject instantiatedPrefab = Instantiate(prefabToInstantiate, randomPosition, Quaternion.identity, canvas.transform);
-
-        
-        }
-        else
-        {
-          
+            Instantiate(prefabToInstantiate, randomPosition, Quaternion.identity, canvas.transform);
         }
     }
 }
